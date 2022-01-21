@@ -12,6 +12,7 @@ object AlgoritmoEclat extends App {
     result
   }
 
+  //Funzione per prendere il dataset dal file
   def prendiDataset(): List[String] = {
     val filePath = "src/main/resources/dataset/datasetKaggleAlimenti.txt"
     val file = new File(filePath)
@@ -47,8 +48,6 @@ object AlgoritmoEclat extends App {
       } yield tupla
     }.toList
 
-    //println(combinazioniAlimenti)
-
     //Restituisce l'indice delle transazioni nella quale è presente tale alimento o tupla di alimenti
     def getTransationIDs(tupleAlimenti: List[String], transazione: List[Int]): Boolean = {
       val transitionIDs = for {
@@ -72,8 +71,6 @@ object AlgoritmoEclat extends App {
     //Raggruppamento della listaAlimentiDSTransazioniNonRagg per ottenere tutte le transazioni riguardo una certa combinazione
     val listaAlimTransaz = listaAlimentiDSTransazioniNonRagg.toList.groupBy(_._1).filter(_._2.size >= minSupport)
 
-    //println(listaAlimTransaz.mkString("\n"))
-
     //Creiamo la lista delle tuple con il relativo numero di transazioni annesso
     val listaAlimTransazSupport = listaAlimTransaz.map({
       case (k, v) => k -> v.size
@@ -83,8 +80,10 @@ object AlgoritmoEclat extends App {
   }
 
 
+  //Valutiamo il risultato
   val result = time(avvia())
 
+  //Scriviamo il risultato nel file
   val writingFile = new File("src/main/resources/results/EclatResult.txt")
   val bw = new BufferedWriter(new FileWriter(writingFile))
   for (row <- result) {
