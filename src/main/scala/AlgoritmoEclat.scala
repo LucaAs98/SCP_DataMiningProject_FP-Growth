@@ -25,7 +25,7 @@ object AlgoritmoEclat extends App {
   //Contenuto File in Lista
   val scalaFileContentsList = prendiDataset()
 
-  def avvia(): Seq[(List[String], Int)] = {
+  def avvia(): Map[List[String], Int] = {
     //Lista degli alimenti presenti nel dataset (colonne) senza ripetizioni
     val listaAlimentiDS = scalaFileContentsList.mkString("").replaceAll("\n", ",").split(",").toList.distinct
 
@@ -74,7 +74,7 @@ object AlgoritmoEclat extends App {
     //Creiamo la lista delle tuple con il relativo numero di transazioni annesso
     val listaAlimTransazSupport = listaAlimTransaz.map({
       case (k, v) => k -> v.size
-    }).toSeq.sortBy(_._2)
+    })
 
     listaAlimTransazSupport
   }
@@ -83,10 +83,13 @@ object AlgoritmoEclat extends App {
   //Valutiamo il risultato
   val result = time(avvia())
 
+  //Riordiniamo il risultato per visualizzarlo meglio sul file
+  val resultOrdered = result.toSeq.sortBy(_._2)
+
   //Scriviamo il risultato nel file
   val writingFile = new File("src/main/resources/results/EclatResult.txt")
   val bw = new BufferedWriter(new FileWriter(writingFile))
-  for (row <- result) {
+  for (row <- resultOrdered) {
     bw.write(row + "\n")
   }
   bw.close
