@@ -1,4 +1,5 @@
 import java.io.{BufferedWriter, File, FileWriter}
+import scala.annotation.tailrec
 import scala.io.Source
 import scala.collection.parallel.CollectionConverters._
 import scala.collection.parallel.{ParMap, ParSeq}
@@ -15,73 +16,62 @@ object AlgoritmoEclatParallelo extends App {
   }
 
   //Funzione per prendere il dataset dal file
-  def prendiDatasetParallelo(): ParSeq[String] = {
+  def prendiDataset(): List[String] = {
     val filePath = "src/main/resources/dataset/datasetKaggleAlimenti.txt"
     val file = new File(filePath)
-    Source.fromFile(file).getLines().toList.par //Contenuto di tutto il file come lista
+    Source.fromFile(file).getLines().toList //Contenuto di tutto il file come lista
   }
 
   //Parametro di Eclat
-  val minSupport = 30
+  val minSupport = 3
 
   //Contenuto File in Lista
-  val scalaFileContentsList = prendiDatasetParallelo()
+  val scalaFileContentsList = prendiDataset()
+  val transazioniFile = scalaFileContentsList.zipWithIndex.map({
+    case (k, v) => (v, k)
+  }).par
 
-  def avvia(): Map[List[String], Int] = {
+  def avvia(): ParMap[List[String], List[Int]] = {
+
     //Lista degli alimenti presenti nel dataset (colonne) senza ripetizioni
     val listaAlimentiDS = scalaFileContentsList.mkString("").replaceAll("\n", ",").split(",").toList.distinct
 
-
-    //Creo la lista di transazioni come matrice di zeri e uni
-    val listaTransazioniIntermediaDS = for {
-      list <- scalaFileContentsList
+    val primoPasso = for {
+      transazione <- transazioniFile
       alimento <- listaAlimentiDS
-      presente = if (list.contains(alimento)) 1 else 0
-    } yield presente
+      if (transazione._2.split(",").toList.contains(alimento))
+    } yield (alimento, transazione._1)
 
 
-    //Formatto bene la lista a seconda di quanti alimenti univoci abbiamo
-    val listaTransazioniDS = listaTransazioniIntermediaDS.seq.toList.grouped(listaAlimentiDS.size).toList.par
+    val transazioniElementiSingoli = primoPasso.groupBy(_._1).map({
+      case (k, v) => (List(k), v.map(_._2).toList)
+    }) filter (_._2.size > minSupport)
 
-    /* Vettore con tutte le combinazioni di alimenti Es: Vector(List(Pane), List(Burro), List(Latte), List(CocaCola), List(Prosciutto), List(Pane, Burro), List(Pane, Latte), ...., List(Pane, Burro, Latte, CocaCola, Prosciutto))
-     Senza ripetizioni */
-    val combinazioniAlimenti = {
-      for {
-        iterazione <- 1 to (listaAlimentiDS.size)
-        tupla <- listaAlimentiDS.combinations(iterazione)
-      } yield tupla
-    }.toList
+    val keysAlimentiSingoli = transazioniElementiSingoli.keys
 
-    //Restituisce l'indice delle transazioni nella quale è presente tale alimento o tupla di alimenti
-    def getTransationIDs(tupleAlimenti: Seq[String], transazione: List[Int]): Boolean = {
-      val transitionIDs = for {
-        a <- tupleAlimenti
-      } yield transazione(listaAlimentiDS.indexOf(a))
+    @tailrec
+    def intersezione(livelloCombinazione: Int, transazioni: ParMap[List[String], List[Int]]): ParMap[List[String], List[Int]] = {
+      val listeAlimentiGrandi = transazioni.filter(_._1.size == livelloCombinazione - 1)
+      val lista = for {
+        elementoPiccolo <- keysAlimentiSingoli
+        elementoGrande <- listeAlimentiGrandi.keys
+        if (!elementoGrande.contains(elementoPiccolo.head))
+        risultato = transazioniElementiSingoli(elementoPiccolo) intersect listeAlimentiGrandi(elementoGrande)
+        if (risultato.size > minSupport)
+      } yield ((elementoGrande appended (elementoPiccolo.head)), risultato)
 
-      //println(transitionIDs)
-      val result = transitionIDs forall (x => {
-        x == 1
+      val listaOrdinata = lista.map({
+        case (k, v) => (k.sortBy(x => x), v)
       })
-      result
+
+      val merged = transazioni.toSet union listaOrdinata.toMap.toSet
+
+      if (livelloCombinazione < listaAlimentiDS.size)
+        intersezione(livelloCombinazione + 1, merged.par.toMap)
+      else merged.toMap
     }
 
-    //Lista degli alimenti (o tuple di alimenti) assieme alle transazioni dove essi appaiono senza che siano raggruppati
-    val listaAlimentiDSTransazioniNonRagg = for {
-      transazione <- listaTransazioniDS
-      tupleAlim <- combinazioniAlimenti
-      if (getTransationIDs(tupleAlim, transazione))
-    } yield (tupleAlim, transazione)
-
-
-    //Raggruppamento della listaAlimentiDSTransazioniNonRagg per ottenere tutte le transazioni riguardo una certa combinazione
-    val listaAlimTransaz = listaAlimentiDSTransazioniNonRagg.toList.par.groupBy(_._1).filter(_._2.size >= minSupport).seq
-
-    //Creiamo la lista delle tuple con il relativo numero di transazioni annesso
-    val listaAlimTransazSupport = listaAlimTransaz.map({
-      case (k, v) => k -> v.size
-    })
-
-    listaAlimTransazSupport
+    intersezione(2, transazioniElementiSingoli)
   }
 
 
@@ -89,13 +79,15 @@ object AlgoritmoEclatParallelo extends App {
   val result = time(avvia())
 
   //Riordiniamo il risultato per visualizzarlo meglio sul file
-  val resultOrdered = result.toSeq.sortBy(_._2)
+  val resultOrdered = result.seq.toSeq.sortBy(_._2.size).map({
+    case (k, v) => (k, v.size)
+  })
 
   //Scriviamo il risultato nel file
-  val writingFile = new File("src/main/resources/results/EclatParallelResult.txt")
+  val writingFile = new File("src/main/resources/results/EclatResultParallelo.txt")
   val bw = new BufferedWriter(new FileWriter(writingFile))
   for (row <- resultOrdered) {
     bw.write(row + "\n")
   }
-  bw.close
+  bw.close()
 }
