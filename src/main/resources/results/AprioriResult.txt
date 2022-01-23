@@ -1,0 +1,3325 @@
+Set(Tea Powder)->5383
+Set(Lassi)->5431
+Set(Yougurt)->5502
+Set(Coffee Powder)->5508
+Set(Panner)->5444
+Set(Butter)->5480
+Set(Sugar)->5482
+Set(Sweet)->5483
+Set(Bread)->5484
+Set(Ghee)->5509
+Set(Milk)->5526
+Set(Cheese)->5475
+Set(Sweet, Panner)->2505
+Set(Milk, Panner)->2483
+Set(Tea Powder, Coffee Powder)->2451
+Set(Butter, Panner)->2483
+Set(Sweet, Milk)->2512
+Set(Coffee Powder, Bread)->2528
+Set(Sweet, Ghee)->2504
+Set(Sweet, Yougurt)->2478
+Set(Butter, Milk)->2491
+Set(Ghee, Panner)->2523
+Set(Sweet, Bread)->2539
+Set(Butter, Lassi)->2500
+Set(Coffee Powder, Milk)->2518
+Set(Lassi, Cheese)->2483
+Set(Yougurt, Coffee Powder)->2554
+Set(Tea Powder, Bread)->2445
+Set(Sugar, Milk)->2563
+Set(Sweet, Tea Powder)->2503
+Set(Lassi, Coffee Powder)->2511
+Set(Sugar, Coffee Powder)->2503
+Set(Sweet, Cheese)->2498
+Set(Sugar, Ghee)->2516
+Set(Sweet, Lassi)->2576
+Set(Sugar, Lassi)->2503
+Set(Butter, Ghee)->2529
+Set(Yougurt, Cheese)->2531
+Set(Tea Powder, Cheese)->2391
+Set(Tea Powder, Ghee)->2418
+Set(Yougurt, Milk)->2513
+Set(Coffee Powder, Cheese)->2516
+Set(Butter, Yougurt)->2528
+Set(Butter, Cheese)->2484
+Set(Sugar, Tea Powder)->2473
+Set(Tea Powder, Panner)->2409
+Set(Cheese, Bread)->2530
+Set(Tea Powder, Milk)->2444
+Set(Lassi, Panner)->2497
+Set(Butter, Coffee Powder)->2501
+Set(Cheese, Panner)->2497
+Set(Tea Powder, Lassi)->2439
+Set(Ghee, Coffee Powder)->2577
+Set(Tea Powder, Yougurt)->2486
+Set(Lassi, Bread)->2506
+Set(Butter, Sweet)->2543
+Set(Ghee, Cheese)->2471
+Set(Sugar, Bread)->2479
+Set(Yougurt, Panner)->2498
+Set(Ghee, Milk)->2511
+Set(Yougurt, Bread)->2507
+Set(Coffee Powder, Panner)->2482
+Set(Bread, Milk)->2517
+Set(Lassi, Milk)->2539
+Set(Sugar, Panner)->2505
+Set(Ghee, Bread)->2503
+Set(Sugar, Yougurt)->2529
+Set(Butter, Tea Powder)->2417
+Set(Cheese, Milk)->2468
+Set(Butter, Bread)->2467
+Set(Bread, Panner)->2550
+Set(Ghee, Yougurt)->2476
+Set(Yougurt, Lassi)->2465
+Set(Sugar, Sweet)->2495
+Set(Sugar, Cheese)->2460
+Set(Sweet, Coffee Powder)->2496
+Set(Ghee, Lassi)->2510
+Set(Sugar, Butter)->2571
+Set(Butter, Sweet, Coffee Powder)->1174
+Set(Sugar, Lassi, Cheese)->1145
+Set(Sugar, Butter, Milk)->1237
+Set(Coffee Powder, Cheese, Panner)->1171
+Set(Cheese, Bread, Panner)->1224
+Set(Sugar, Butter, Lassi)->1203
+Set(Sugar, Yougurt, Lassi)->1188
+Set(Cheese, Milk, Panner)->1165
+Set(Yougurt, Coffee Powder, Panner)->1191
+Set(Butter, Ghee, Lassi)->1205
+Set(Ghee, Cheese, Panner)->1168
+Set(Lassi, Bread, Panner)->1213
+Set(Butter, Yougurt, Cheese)->1182
+Set(Tea Powder, Bread, Milk)->1148
+Set(Sweet, Cheese, Bread)->1190
+Set(Tea Powder, Ghee, Coffee Powder)->1169
+Set(Butter, Cheese, Bread)->1164
+Set(Sugar, Ghee, Yougurt)->1179
+Set(Sugar, Butter, Ghee)->1226
+Set(Lassi, Bread, Milk)->1195
+Set(Butter, Sweet, Lassi)->1247
+Set(Yougurt, Cheese, Bread)->1203
+Set(Butter, Coffee Powder, Milk)->1159
+Set(Cheese, Bread, Milk)->1183
+Set(Ghee, Bread, Panner)->1221
+Set(Sweet, Yougurt, Panner)->1174
+Set(Sweet, Tea Powder, Coffee Powder)->1166
+Set(Sweet, Tea Powder, Ghee)->1149
+Set(Sweet, Lassi, Cheese)->1219
+Set(Sugar, Sweet, Coffee Powder)->1174
+Set(Sugar, Yougurt, Bread)->1166
+Set(Sweet, Cheese, Panner)->1192
+Set(Butter, Yougurt, Lassi)->1173
+Set(Sugar, Tea Powder, Panner)->1153
+Set(Sweet, Tea Powder, Panner)->1168
+Set(Butter, Yougurt, Panner)->1203
+Set(Sugar, Coffee Powder, Panner)->1183
+Set(Yougurt, Coffee Powder, Bread)->1201
+Set(Ghee, Lassi, Bread)->1207
+Set(Sugar, Butter, Cheese)->1174
+Set(Yougurt, Bread, Panner)->1188
+Set(Sweet, Lassi, Panner)->1265
+Set(Yougurt, Lassi, Milk)->1180
+Set(Yougurt, Lassi, Bread)->1149
+Set(Yougurt, Lassi, Coffee Powder)->1178
+Set(Sugar, Yougurt, Coffee Powder)->1207
+Set(Ghee, Lassi, Milk)->1203
+Set(Butter, Lassi, Panner)->1186
+Set(Sugar, Sweet, Tea Powder)->1190
+Set(Ghee, Yougurt, Cheese)->1183
+Set(Tea Powder, Yougurt, Milk)->1148
+Set(Sugar, Ghee, Coffee Powder)->1189
+Set(Butter, Ghee, Panner)->1217
+Set(Tea Powder, Coffee Powder, Cheese)->1104
+Set(Butter, Ghee, Cheese)->1133
+Set(Tea Powder, Coffee Powder, Panner)->1111
+Set(Butter, Milk, Panner)->1139
+Set(Sugar, Tea Powder, Lassi)->1180
+Set(Butter, Ghee, Milk)->1176
+Set(Butter, Cheese, Milk)->1140
+Set(Tea Powder, Lassi, Panner)->1172
+Set(Coffee Powder, Bread, Milk)->1191
+Set(Tea Powder, Yougurt, Cheese)->1160
+Set(Tea Powder, Ghee, Bread)->1138
+Set(Lassi, Coffee Powder, Bread)->1200
+Set(Butter, Sweet, Milk)->1197
+Set(Tea Powder, Lassi, Bread)->1153
+Set(Sweet, Yougurt, Cheese)->1191
+Set(Ghee, Cheese, Bread)->1180
+Set(Yougurt, Cheese, Milk)->1183
+Set(Ghee, Yougurt, Milk)->1163
+Set(Sugar, Yougurt, Cheese)->1176
+Set(Sugar, Lassi, Panner)->1209
+Set(Sugar, Sweet, Ghee)->1173
+Set(Sweet, Ghee, Coffee Powder)->1178
+Set(Lassi, Cheese, Milk)->1173
+Set(Sugar, Tea Powder, Cheese)->1121
+Set(Sweet, Milk, Panner)->1178
+Set(Sugar, Lassi, Milk)->1211
+Set(Sugar, Tea Powder, Yougurt)->1189
+Set(Tea Powder, Milk, Panner)->1113
+Set(Sweet, Coffee Powder, Panner)->1175
+Set(Sugar, Bread, Milk)->1203
+Set(Butter, Sweet, Panner)->1221
+Set(Sweet, Bread, Panner)->1218
+Set(Coffee Powder, Milk, Panner)->1155
+Set(Butter, Tea Powder, Lassi)->1117
+Set(Sugar, Butter, Tea Powder)->1167
+Set(Sugar, Tea Powder, Bread)->1148
+Set(Ghee, Lassi, Coffee Powder)->1232
+Set(Sweet, Lassi, Milk)->1230
+Set(Sugar, Bread, Panner)->1192
+Set(Butter, Sweet, Yougurt)->1210
+Set(Tea Powder, Ghee, Lassi)->1163
+Set(Lassi, Milk, Panner)->1205
+Set(Tea Powder, Lassi, Coffee Powder)->1163
+Set(Tea Powder, Yougurt, Coffee Powder)->1193
+Set(Butter, Sweet, Cheese)->1186
+Set(Sweet, Ghee, Cheese)->1140
+Set(Sweet, Yougurt, Coffee Powder)->1185
+Set(Sugar, Sweet, Milk)->1214
+Set(Butter, Tea Powder, Milk)->1120
+Set(Sugar, Butter, Bread)->1184
+Set(Sugar, Cheese, Milk)->1182
+Set(Sweet, Coffee Powder, Cheese)->1152
+Set(Sugar, Coffee Powder, Cheese)->1156
+Set(Butter, Coffee Powder, Bread)->1157
+Set(Ghee, Yougurt, Lassi)->1165
+Set(Sugar, Butter, Panner)->1208
+Set(Sugar, Tea Powder, Ghee)->1152
+Set(Butter, Tea Powder, Bread)->1126
+Set(Butter, Ghee, Bread)->1158
+Set(Ghee, Yougurt, Bread)->1163
+Set(Sugar, Ghee, Milk)->1204
+Set(Sweet, Ghee, Yougurt)->1130
+Set(Butter, Sweet, Ghee)->1173
+Set(Lassi, Cheese, Bread)->1189
+Set(Sweet, Cheese, Milk)->1153
+Set(Yougurt, Milk, Panner)->1173
+Set(Sugar, Coffee Powder, Bread)->1181
+Set(Sugar, Coffee Powder, Milk)->1218
+Set(Sweet, Lassi, Coffee Powder)->1231
+Set(Sweet, Tea Powder, Yougurt)->1158
+Set(Sugar, Sweet, Bread)->1162
+Set(Butter, Coffee Powder, Panner)->1149
+Set(Ghee, Coffee Powder, Milk)->1197
+Set(Lassi, Coffee Powder, Milk)->1204
+Set(Tea Powder, Lassi, Cheese)->1100
+Set(Ghee, Coffee Powder, Bread)->1206
+Set(Yougurt, Cheese, Panner)->1198
+Set(Coffee Powder, Cheese, Milk)->1177
+Set(Sugar, Sweet, Yougurt)->1185
+Set(Sugar, Cheese, Bread)->1171
+Set(Ghee, Coffee Powder, Cheese)->1180
+Set(Tea Powder, Yougurt, Bread)->1187
+Set(Lassi, Cheese, Panner)->1184
+Set(Sweet, Ghee, Bread)->1198
+Set(Coffee Powder, Cheese, Bread)->1213
+Set(Tea Powder, Bread, Panner)->1165
+Set(Tea Powder, Ghee, Milk)->1150
+Set(Yougurt, Lassi, Panner)->1169
+Set(Butter, Tea Powder, Cheese)->1092
+Set(Ghee, Coffee Powder, Panner)->1192
+Set(Lassi, Coffee Powder, Cheese)->1180
+Set(Sweet, Ghee, Panner)->1169
+Set(Sugar, Sweet, Panner)->1167
+Set(Tea Powder, Ghee, Cheese)->1087
+Set(Yougurt, Coffee Powder, Milk)->1237
+Set(Sugar, Ghee, Bread)->1178
+Set(Butter, Yougurt, Bread)->1184
+Set(Sugar, Tea Powder, Coffee Powder)->1182
+Set(Coffee Powder, Bread, Panner)->1216
+Set(Tea Powder, Ghee, Panner)->1139
+Set(Butter, Ghee, Coffee Powder)->1215
+Set(Ghee, Bread, Milk)->1184
+Set(Sweet, Lassi, Bread)->1238
+Set(Sugar, Butter, Coffee Powder)->1211
+Set(Sugar, Yougurt, Panner)->1184
+Set(Butter, Lassi, Cheese)->1149
+Set(Tea Powder, Coffee Powder, Bread)->1166
+Set(Butter, Tea Powder, Yougurt)->1169
+Set(Butter, Sweet, Bread)->1177
+Set(Sugar, Ghee, Panner)->1187
+Set(Tea Powder, Cheese, Bread)->1131
+Set(Sweet, Coffee Powder, Bread)->1205
+Set(Butter, Ghee, Yougurt)->1194
+Set(Lassi, Coffee Powder, Panner)->1198
+Set(Tea Powder, Cheese, Milk)->1094
+Set(Butter, Sweet, Tea Powder)->1172
+Set(Tea Powder, Yougurt, Lassi)->1130
+Set(Ghee, Milk, Panner)->1166
+Set(Sweet, Bread, Milk)->1204
+Set(Sweet, Tea Powder, Lassi)->1216
+Set(Sweet, Ghee, Lassi)->1211
+Set(Butter, Bread, Panner)->1174
+Set(Ghee, Lassi, Cheese)->1170
+Set(Tea Powder, Coffee Powder, Milk)->1146
+Set(Sweet, Yougurt, Bread)->1166
+Set(Sugar, Yougurt, Milk)->1199
+Set(Sweet, Yougurt, Milk)->1163
+Set(Butter, Coffee Powder, Cheese)->1157
+Set(Butter, Lassi, Coffee Powder)->1190
+Set(Butter, Yougurt, Coffee Powder)->1215
+Set(Sugar, Ghee, Cheese)->1129
+Set(Sugar, Butter, Yougurt)->1235
+Set(Yougurt, Lassi, Cheese)->1187
+Set(Sugar, Butter, Sweet)->1249
+Set(Sugar, Ghee, Lassi)->1193
+Set(Tea Powder, Cheese, Panner)->1117
+Set(Sweet, Ghee, Milk)->1178
+Set(Yougurt, Bread, Milk)->1192
+Set(Butter, Yougurt, Milk)->1181
+Set(Sugar, Lassi, Coffee Powder)->1192
+Set(Butter, Cheese, Panner)->1183
+Set(Yougurt, Coffee Powder, Cheese)->1206
+Set(Sugar, Tea Powder, Milk)->1207
+Set(Butter, Bread, Milk)->1178
+Set(Butter, Lassi, Milk)->1201
+Set(Bread, Milk, Panner)->1217
+Set(Sugar, Sweet, Cheese)->1136
+Set(Butter, Tea Powder, Coffee Powder)->1142
+Set(Sugar, Sweet, Lassi)->1235
+Set(Sugar, Milk, Panner)->1207
+Set(Sweet, Tea Powder, Cheese)->1135
+Set(Sweet, Tea Powder, Milk)->1187
+Set(Tea Powder, Ghee, Yougurt)->1129
+Set(Ghee, Lassi, Panner)->1218
+Set(Sweet, Coffee Powder, Milk)->1169
+Set(Tea Powder, Lassi, Milk)->1159
+Set(Sweet, Yougurt, Lassi)->1197
+Set(Ghee, Yougurt, Coffee Powder)->1225
+Set(Sweet, Tea Powder, Bread)->1168
+Set(Sugar, Cheese, Panner)->1172
+Set(Sugar, Lassi, Bread)->1176
+Set(Tea Powder, Yougurt, Panner)->1143
+Set(Ghee, Cheese, Milk)->1162
+Set(Butter, Tea Powder, Ghee)->1158
+Set(Butter, Tea Powder, Panner)->1117
+Set(Ghee, Yougurt, Panner)->1179
+Set(Butter, Lassi, Bread)->1149
+Set(Sweet, Yougurt, Lassi, Bread)->558
+Set(Butter, Tea Powder, Coffee Powder, Bread)->536
+Set(Sugar, Ghee, Yougurt, Panner)->563
+Set(Sweet, Lassi, Cheese, Milk)->573
+Set(Sugar, Yougurt, Bread, Milk)->563
+Set(Lassi, Coffee Powder, Milk, Panner)->567
+Set(Sweet, Tea Powder, Milk, Panner)->556
+Set(Sweet, Ghee, Lassi, Coffee Powder)->586
+Set(Tea Powder, Lassi, Coffee Powder, Panner)->558
+Set(Sugar, Sweet, Tea Powder, Yougurt)->555
+Set(Sugar, Butter, Sweet, Milk)->607
+Set(Butter, Sweet, Tea Powder, Lassi)->574
+Set(Ghee, Coffee Powder, Bread, Milk)->555
+Set(Ghee, Bread, Milk, Panner)->580
+Set(Tea Powder, Coffee Powder, Bread, Milk)->543
+Set(Butter, Yougurt, Coffee Powder, Cheese)->560
+Set(Ghee, Lassi, Bread, Panner)->601
+Set(Sugar, Butter, Sweet, Lassi)->623
+Set(Sweet, Tea Powder, Bread, Milk)->561
+Set(Sugar, Ghee, Coffee Powder, Milk)->567
+Set(Sugar, Sweet, Tea Powder, Cheese)->536
+Set(Yougurt, Coffee Powder, Milk, Panner)->566
+Set(Sweet, Ghee, Cheese, Bread)->554
+Set(Ghee, Coffee Powder, Cheese, Panner)->563
+Set(Lassi, Coffee Powder, Cheese, Bread)->580
+Set(Sugar, Butter, Sweet, Tea Powder)->586
+Set(Sugar, Butter, Yougurt, Lassi)->586
+Set(Butter, Yougurt, Coffee Powder, Panner)->575
+Set(Sweet, Yougurt, Cheese, Milk)->549
+Set(Sugar, Tea Powder, Lassi, Panner)->562
+Set(Butter, Ghee, Yougurt, Panner)->603
+Set(Butter, Tea Powder, Milk, Panner)->498
+Set(Sweet, Coffee Powder, Milk, Panner)->550
+Set(Ghee, Coffee Powder, Cheese, Bread)->587
+Set(Sugar, Tea Powder, Lassi, Cheese)->519
+Set(Sugar, Tea Powder, Ghee, Lassi)->568
+Set(Sweet, Yougurt, Coffee Powder, Milk)->572
+Set(Butter, Tea Powder, Yougurt, Cheese)->535
+Set(Sugar, Yougurt, Lassi, Coffee Powder)->562
+Set(Sugar, Ghee, Yougurt, Lassi)->571
+Set(Sugar, Yougurt, Lassi, Milk)->568
+Set(Sugar, Yougurt, Coffee Powder, Bread)->559
+Set(Sweet, Tea Powder, Yougurt, Lassi)->548
+Set(Tea Powder, Ghee, Yougurt, Cheese)->530
+Set(Butter, Tea Powder, Ghee, Coffee Powder)->573
+Set(Sweet, Yougurt, Cheese, Bread)->555
+Set(Butter, Lassi, Cheese, Bread)->526
+Set(Sugar, Tea Powder, Lassi, Coffee Powder)->577
+Set(Yougurt, Lassi, Cheese, Bread)->571
+Set(Lassi, Coffee Powder, Cheese, Panner)->570
+Set(Ghee, Yougurt, Coffee Powder, Bread)->575
+Set(Sugar, Ghee, Yougurt, Coffee Powder)->571
+Set(Sweet, Lassi, Bread, Milk)->592
+Set(Sugar, Butter, Sweet, Bread)->578
+Set(Tea Powder, Yougurt, Cheese, Bread)->563
+Set(Yougurt, Coffee Powder, Bread, Milk)->585
+Set(Butter, Ghee, Lassi, Bread)->554
+Set(Sugar, Tea Powder, Yougurt, Lassi)->552
+Set(Ghee, Lassi, Coffee Powder, Bread)->593
+Set(Sugar, Yougurt, Bread, Panner)->556
+Set(Sweet, Yougurt, Lassi, Milk)->575
+Set(Sugar, Butter, Yougurt, Milk)->586
+Set(Butter, Cheese, Milk, Panner)->538
+Set(Lassi, Coffee Powder, Cheese, Milk)->566
+Set(Sweet, Tea Powder, Coffee Powder, Cheese)->517
+Set(Sugar, Butter, Ghee, Milk)->591
+Set(Butter, Coffee Powder, Cheese, Milk)->545
+Set(Ghee, Yougurt, Coffee Powder, Cheese)->584
+Set(Ghee, Yougurt, Bread, Milk)->559
+Set(Butter, Sweet, Tea Powder, Coffee Powder)->546
+Set(Ghee, Lassi, Coffee Powder, Cheese)->573
+Set(Butter, Sweet, Coffee Powder, Panner)->549
+Set(Sugar, Butter, Ghee, Yougurt)->586
+Set(Sugar, Ghee, Coffee Powder, Panner)->554
+Set(Tea Powder, Lassi, Coffee Powder, Milk)->548
+Set(Sugar, Sweet, Ghee, Bread)->553
+Set(Butter, Sweet, Tea Powder, Yougurt)->550
+Set(Tea Powder, Yougurt, Coffee Powder, Panner)->543
+Set(Sugar, Tea Powder, Lassi, Bread)->537
+Set(Sugar, Sweet, Lassi, Coffee Powder)->596
+Set(Butter, Sweet, Yougurt, Lassi)->594
+Set(Sugar, Sweet, Yougurt, Milk)->573
+Set(Sugar, Sweet, Tea Powder, Milk)->593
+Set(Yougurt, Lassi, Bread, Panner)->545
+Set(Sugar, Ghee, Yougurt, Milk)->569
+Set(Butter, Sweet, Lassi, Coffee Powder)->577
+Set(Sugar, Tea Powder, Ghee, Coffee Powder)->570
+Set(Sugar, Butter, Tea Powder, Milk)->564
+Set(Butter, Sweet, Yougurt, Coffee Powder)->584
+Set(Butter, Tea Powder, Cheese, Panner)->520
+Set(Butter, Sweet, Tea Powder, Ghee)->537
+Set(Butter, Ghee, Lassi, Milk)->575
+Set(Sweet, Yougurt, Coffee Powder, Bread)->572
+Set(Ghee, Lassi, Cheese, Bread)->573
+Set(Sugar, Yougurt, Milk, Panner)->563
+Set(Sugar, Lassi, Coffee Powder, Panner)->595
+Set(Sugar, Butter, Tea Powder, Coffee Powder)->569
+Set(Butter, Sweet, Ghee, Bread)->538
+Set(Lassi, Coffee Powder, Bread, Panner)->609
+Set(Sugar, Yougurt, Lassi, Cheese)->560
+Set(Tea Powder, Ghee, Coffee Powder, Panner)->537
+Set(Tea Powder, Ghee, Yougurt, Coffee Powder)->566
+Set(Coffee Powder, Cheese, Bread, Panner)->586
+Set(Sweet, Lassi, Bread, Panner)->613
+Set(Butter, Tea Powder, Ghee, Yougurt)->554
+Set(Sweet, Ghee, Coffee Powder, Cheese)->527
+Set(Sugar, Cheese, Bread, Milk)->579
+Set(Yougurt, Lassi, Coffee Powder, Bread)->551
+Set(Butter, Sweet, Tea Powder, Bread)->534
+Set(Sweet, Ghee, Bread, Milk)->577
+Set(Butter, Yougurt, Lassi, Milk)->571
+Set(Butter, Tea Powder, Lassi, Coffee Powder)->540
+Set(Tea Powder, Lassi, Coffee Powder, Bread)->552
+Set(Butter, Sweet, Bread, Panner)->570
+Set(Sugar, Tea Powder, Milk, Panner)->555
+Set(Sweet, Yougurt, Bread, Panner)->569
+Set(Butter, Coffee Powder, Bread, Panner)->538
+Set(Sugar, Butter, Milk, Panner)->569
+Set(Butter, Tea Powder, Yougurt, Coffee Powder)->573
+Set(Sweet, Yougurt, Coffee Powder, Cheese)->551
+Set(Sweet, Lassi, Cheese, Panner)->600
+Set(Sugar, Tea Powder, Cheese, Bread)->533
+Set(Sweet, Yougurt, Lassi, Panner)->588
+Set(Butter, Tea Powder, Yougurt, Lassi)->522
+Set(Sugar, Butter, Yougurt, Cheese)->560
+Set(Sugar, Sweet, Tea Powder, Bread)->550
+Set(Butter, Ghee, Bread, Panner)->568
+Set(Butter, Yougurt, Lassi, Panner)->561
+Set(Sugar, Tea Powder, Ghee, Bread)->546
+Set(Butter, Sweet, Lassi, Bread)->562
+Set(Sugar, Butter, Cheese, Bread)->548
+Set(Yougurt, Coffee Powder, Cheese, Bread)->577
+Set(Sugar, Butter, Ghee, Coffee Powder)->586
+Set(Yougurt, Coffee Powder, Bread, Panner)->575
+Set(Sweet, Tea Powder, Cheese, Bread)->537
+Set(Sugar, Lassi, Coffee Powder, Cheese)->544
+Set(Butter, Lassi, Coffee Powder, Milk)->577
+Set(Ghee, Cheese, Bread, Milk)->565
+Set(Yougurt, Coffee Powder, Cheese, Panner)->566
+Set(Sweet, Ghee, Milk, Panner)->549
+Set(Sugar, Sweet, Yougurt, Panner)->557
+Set(Sugar, Tea Powder, Cheese, Panner)->537
+Set(Butter, Tea Powder, Bread, Milk)->530
+Set(Sweet, Lassi, Coffee Powder, Bread)->597
+Set(Sugar, Butter, Sweet, Ghee)->583
+Set(Sweet, Ghee, Yougurt, Bread)->524
+Set(Butter, Sweet, Tea Powder, Cheese)->539
+Set(Sugar, Butter, Bread, Panner)->560
+Set(Sugar, Butter, Sweet, Panner)->589
+Set(Tea Powder, Ghee, Cheese, Milk)->517
+Set(Sugar, Sweet, Yougurt, Cheese)->552
+Set(Tea Powder, Yougurt, Milk, Panner)->526
+Set(Butter, Tea Powder, Lassi, Cheese)->490
+Set(Tea Powder, Yougurt, Bread, Panner)->555
+Set(Sugar, Ghee, Yougurt, Cheese)->554
+Set(Sugar, Tea Powder, Yougurt, Panner)->562
+Set(Sugar, Butter, Bread, Milk)->586
+Set(Sweet, Lassi, Coffee Powder, Cheese)->571
+Set(Tea Powder, Lassi, Cheese, Panner)->534
+Set(Sugar, Butter, Yougurt, Coffee Powder)->608
+Set(Sweet, Tea Powder, Ghee, Panner)->531
+Set(Sugar, Coffee Powder, Cheese, Milk)->575
+Set(Tea Powder, Ghee, Yougurt, Panner)->536
+Set(Butter, Bread, Milk, Panner)->552
+Set(Ghee, Yougurt, Cheese, Bread)->571
+Set(Butter, Tea Powder, Cheese, Bread)->522
+Set(Ghee, Lassi, Milk, Panner)->587
+Set(Sugar, Ghee, Lassi, Cheese)->544
+Set(Tea Powder, Yougurt, Coffee Powder, Bread)->583
+Set(Sugar, Sweet, Cheese, Bread)->534
+Set(Sugar, Butter, Tea Powder, Yougurt)->575
+Set(Butter, Ghee, Yougurt, Cheese)->547
+Set(Sugar, Sweet, Yougurt, Bread)->545
+Set(Butter, Yougurt, Lassi, Cheese)->544
+Set(Sugar, Sweet, Coffee Powder, Milk)->571
+Set(Sugar, Ghee, Cheese, Bread)->545
+Set(Sugar, Coffee Powder, Bread, Panner)->584
+Set(Ghee, Coffee Powder, Cheese, Milk)->567
+Set(Sugar, Ghee, Bread, Milk)->564
+Set(Sugar, Ghee, Lassi, Coffee Powder)->574
+Set(Tea Powder, Yougurt, Cheese, Panner)->546
+Set(Lassi, Cheese, Bread, Milk)->561
+Set(Sweet, Yougurt, Cheese, Panner)->593
+Set(Sweet, Tea Powder, Yougurt, Coffee Powder)->554
+Set(Butter, Tea Powder, Ghee, Panner)->569
+Set(Sugar, Ghee, Cheese, Panner)->544
+Set(Butter, Tea Powder, Coffee Powder, Panner)->509
+Set(Butter, Tea Powder, Cheese, Milk)->496
+Set(Butter, Ghee, Cheese, Bread)->528
+Set(Butter, Coffee Powder, Milk, Panner)->523
+Set(Sugar, Sweet, Tea Powder, Panner)->549
+Set(Butter, Sweet, Coffee Powder, Milk)->558
+Set(Tea Powder, Yougurt, Lassi, Milk)->534
+Set(Sugar, Ghee, Lassi, Panner)->587
+Set(Butter, Sweet, Yougurt, Bread)->552
+Set(Sweet, Lassi, Milk, Panner)->619
+Set(Ghee, Cheese, Milk, Panner)->548
+Set(Sugar, Cheese, Milk, Panner)->566
+Set(Ghee, Yougurt, Coffee Powder, Panner)->576
+Set(Sweet, Tea Powder, Ghee, Coffee Powder)->533
+Set(Sweet, Yougurt, Bread, Milk)->562
+Set(Ghee, Yougurt, Milk, Panner)->554
+Set(Sugar, Ghee, Lassi, Bread)->574
+Set(Sugar, Tea Powder, Yougurt, Cheese)->550
+Set(Sugar, Tea Powder, Ghee, Yougurt)->548
+Set(Sugar, Butter, Ghee, Lassi)->587
+Set(Butter, Sweet, Ghee, Milk)->554
+Set(Sugar, Butter, Lassi, Cheese)->549
+Set(Butter, Yougurt, Bread, Panner)->567
+Set(Sugar, Tea Powder, Cheese, Milk)->544
+Set(Sugar, Tea Powder, Yougurt, Coffee Powder)->579
+Set(Tea Powder, Lassi, Coffee Powder, Cheese)->520
+Set(Sugar, Sweet, Ghee, Yougurt)->542
+Set(Tea Powder, Ghee, Lassi, Panner)->582
+Set(Butter, Ghee, Bread, Milk)->557
+Set(Yougurt, Lassi, Coffee Powder, Milk)->585
+Set(Sugar, Coffee Powder, Cheese, Panner)->554
+Set(Cheese, Bread, Milk, Panner)->586
+Set(Tea Powder, Coffee Powder, Cheese, Milk)->512
+Set(Butter, Tea Powder, Coffee Powder, Milk)->538
+Set(Tea Powder, Ghee, Lassi, Cheese)->508
+Set(Butter, Yougurt, Coffee Powder, Bread)->563
+Set(Sugar, Butter, Sweet, Cheese)->557
+Set(Butter, Sweet, Tea Powder, Panner)->566
+Set(Sweet, Yougurt, Milk, Panner)->544
+Set(Sweet, Tea Powder, Ghee, Yougurt)->501
+Set(Sweet, Yougurt, Lassi, Coffee Powder)->580
+Set(Yougurt, Lassi, Cheese, Milk)->555
+Set(Sugar, Butter, Ghee, Cheese)->526
+Set(Sugar, Butter, Yougurt, Panner)->584
+Set(Sugar, Yougurt, Coffee Powder, Panner)->574
+Set(Butter, Lassi, Cheese, Milk)->548
+Set(Ghee, Yougurt, Bread, Panner)->569
+Set(Lassi, Bread, Milk, Panner)->593
+Set(Tea Powder, Yougurt, Cheese, Milk)->528
+Set(Sugar, Sweet, Lassi, Milk)->592
+Set(Tea Powder, Lassi, Cheese, Milk)->506
+Set(Sugar, Yougurt, Cheese, Milk)->566
+Set(Tea Powder, Lassi, Bread, Milk)->547
+Set(Sugar, Butter, Tea Powder, Panner)->532
+Set(Ghee, Yougurt, Lassi, Milk)->558
+Set(Butter, Tea Powder, Coffee Powder, Cheese)->516
+Set(Tea Powder, Yougurt, Lassi, Coffee Powder)->543
+Set(Sugar, Butter, Lassi, Bread)->567
+Set(Sugar, Sweet, Ghee, Cheese)->514
+Set(Yougurt, Lassi, Milk, Panner)->576
+Set(Sweet, Ghee, Yougurt, Coffee Powder)->552
+Set(Tea Powder, Ghee, Cheese, Panner)->509
+Set(Sugar, Bread, Milk, Panner)->584
+Set(Butter, Coffee Powder, Cheese, Bread)->543
+Set(Sugar, Butter, Sweet, Coffee Powder)->596
+Set(Tea Powder, Yougurt, Lassi, Panner)->542
+Set(Sweet, Tea Powder, Ghee, Milk)->550
+Set(Tea Powder, Ghee, Cheese, Bread)->523
+Set(Butter, Tea Powder, Yougurt, Panner)->555
+Set(Tea Powder, Ghee, Yougurt, Lassi)->527
+Set(Sweet, Tea Powder, Lassi, Panner)->624
+Set(Tea Powder, Ghee, Bread, Panner)->557
+Set(Sweet, Yougurt, Lassi, Cheese)->586
+Set(Sugar, Ghee, Coffee Powder, Bread)->567
+Set(Sugar, Ghee, Milk, Panner)->560
+Set(Ghee, Lassi, Cheese, Milk)->558
+Set(Sweet, Ghee, Cheese, Panner)->548
+Set(Sweet, Ghee, Yougurt, Milk)->538
+Set(Sweet, Yougurt, Coffee Powder, Panner)->577
+Set(Tea Powder, Ghee, Bread, Milk)->537
+Set(Sugar, Coffee Powder, Cheese, Bread)->564
+Set(Butter, Lassi, Cheese, Panner)->561
+Set(Sugar, Sweet, Ghee, Milk)->557
+Set(Butter, Sweet, Ghee, Cheese)->504
+Set(Sugar, Butter, Ghee, Panner)->587
+Set(Ghee, Yougurt, Cheese, Panner)->576
+Set(Sweet, Cheese, Bread, Panner)->577
+Set(Sweet, Tea Powder, Ghee, Bread)->536
+Set(Butter, Ghee, Cheese, Panner)->546
+Set(Butter, Sweet, Ghee, Lassi)->580
+Set(Sugar, Sweet, Cheese, Panner)->547
+Set(Sweet, Cheese, Bread, Milk)->557
+Set(Sweet, Coffee Powder, Cheese, Milk)->540
+Set(Yougurt, Bread, Milk, Panner)->572
+Set(Butter, Yougurt, Bread, Milk)->573
+Set(Butter, Yougurt, Coffee Powder, Milk)->587
+Set(Sugar, Coffee Powder, Bread, Milk)->579
+Set(Sugar, Sweet, Coffee Powder, Panner)->547
+Set(Butter, Sweet, Lassi, Panner)->609
+Set(Sugar, Butter, Lassi, Coffee Powder)->569
+Set(Butter, Yougurt, Cheese, Panner)->575
+Set(Butter, Tea Powder, Lassi, Bread)->521
+Set(Sugar, Sweet, Bread, Milk)->572
+Set(Tea Powder, Yougurt, Coffee Powder, Milk)->570
+Set(Butter, Sweet, Yougurt, Panner)->591
+Set(Ghee, Lassi, Bread, Milk)->582
+Set(Sweet, Ghee, Yougurt, Lassi)->549
+Set(Sweet, Ghee, Lassi, Cheese)->553
+Set(Sweet, Ghee, Yougurt, Panner)->542
+Set(Sweet, Tea Powder, Coffee Powder, Milk)->559
+Set(Butter, Sweet, Yougurt, Milk)->569
+Set(Ghee, Coffee Powder, Bread, Panner)->586
+Set(Tea Powder, Lassi, Cheese, Bread)->520
+Set(Sweet, Tea Powder, Cheese, Milk)->517
+Set(Sugar, Ghee, Bread, Panner)->586
+Set(Sugar, Butter, Tea Powder, Cheese)->523
+Set(Sweet, Tea Powder, Yougurt, Milk)->544
+Set(Sugar, Sweet, Coffee Powder, Bread)->560
+Set(Sugar, Coffee Powder, Milk, Panner)->575
+Set(Tea Powder, Yougurt, Lassi, Cheese)->529
+Set(Sugar, Tea Powder, Yougurt, Milk)->574
+Set(Sugar, Sweet, Ghee, Panner)->541
+Set(Sugar, Lassi, Bread, Milk)->574
+Set(Ghee, Yougurt, Cheese, Milk)->556
+Set(Sugar, Lassi, Bread, Panner)->584
+Set(Yougurt, Cheese, Milk, Panner)->584
+Set(Sugar, Yougurt, Cheese, Panner)->566
+Set(Butter, Tea Powder, Lassi, Milk)->536
+Set(Sugar, Butter, Cheese, Panner)->560
+Set(Tea Powder, Ghee, Lassi, Bread)->567
+Set(Sugar, Butter, Lassi, Milk)->596
+Set(Tea Powder, Ghee, Yougurt, Milk)->540
+Set(Sugar, Tea Powder, Bread, Panner)->549
+Set(Sugar, Sweet, Coffee Powder, Cheese)->527
+Set(Sugar, Sweet, Tea Powder, Coffee Powder)->570
+Set(Yougurt, Coffee Powder, Cheese, Milk)->586
+Set(Butter, Tea Powder, Yougurt, Milk)->532
+Set(Ghee, Yougurt, Coffee Powder, Milk)->597
+Set(Butter, Yougurt, Milk, Panner)->563
+Set(Sugar, Butter, Lassi, Panner)->594
+Set(Tea Powder, Coffee Powder, Cheese, Bread)->530
+Set(Butter, Lassi, Milk, Panner)->567
+Set(Butter, Sweet, Yougurt, Cheese)->573
+Set(Sweet, Coffee Powder, Bread, Panner)->583
+Set(Sugar, Butter, Yougurt, Bread)->577
+Set(Yougurt, Lassi, Coffee Powder, Panner)->580
+Set(Sugar, Sweet, Ghee, Lassi)->571
+Set(Sweet, Tea Powder, Yougurt, Cheese)->547
+Set(Sugar, Tea Powder, Bread, Milk)->571
+Set(Butter, Lassi, Coffee Powder, Bread)->559
+Set(Sugar, Ghee, Yougurt, Bread)->552
+Set(Sugar, Butter, Sweet, Yougurt)->602
+Set(Sugar, Butter, Cheese, Milk)->566
+Set(Sweet, Tea Powder, Lassi, Cheese)->545
+Set(Butter, Sweet, Milk, Panner)->561
+Set(Butter, Lassi, Coffee Powder, Panner)->565
+Set(Yougurt, Cheese, Bread, Panner)->578
+Set(Butter, Lassi, Bread, Panner)->558
+Set(Sugar, Lassi, Cheese, Milk)->552
+Set(Tea Powder, Coffee Powder, Milk, Panner)->505
+Set(Sugar, Tea Powder, Ghee, Cheese)->513
+Set(Tea Powder, Lassi, Milk, Panner)->557
+Set(Sweet, Tea Powder, Ghee, Cheese)->501
+Set(Butter, Sweet, Ghee, Panner)->563
+Set(Butter, Ghee, Yougurt, Bread)->551
+Set(Butter, Yougurt, Cheese, Milk)->543
+Set(Butter, Sweet, Cheese, Bread)->536
+Set(Butter, Sweet, Coffee Powder, Bread)->542
+Set(Sweet, Tea Powder, Yougurt, Panner)->534
+Set(Yougurt, Lassi, Cheese, Panner)->583
+Set(Tea Powder, Cheese, Bread, Panner)->546
+Set(Sweet, Ghee, Cheese, Milk)->535
+Set(Sugar, Butter, Tea Powder, Bread)->541
+Set(Sweet, Ghee, Yougurt, Cheese)->546
+Set(Yougurt, Lassi, Bread, Milk)->556
+Set(Sugar, Cheese, Bread, Panner)->573
+Set(Coffee Powder, Cheese, Milk, Panner)->547
+Set(Sweet, Bread, Milk, Panner)->592
+Set(Butter, Yougurt, Lassi, Coffee Powder)->579
+Set(Butter, Sweet, Ghee, Coffee Powder)->543
+Set(Sweet, Tea Powder, Lassi, Bread)->579
+Set(Tea Powder, Ghee, Yougurt, Bread)->540
+Set(Tea Powder, Yougurt, Bread, Milk)->566
+Set(Sweet, Tea Powder, Lassi, Coffee Powder)->587
+Set(Butter, Sweet, Lassi, Cheese)->581
+Set(Butter, Sweet, Cheese, Milk)->538
+Set(Sugar, Ghee, Cheese, Milk)->551
+Set(Sweet, Ghee, Bread, Panner)->574
+Set(Butter, Tea Powder, Ghee, Bread)->551
+Set(Coffee Powder, Cheese, Bread, Milk)->580
+Set(Sweet, Ghee, Lassi, Bread)->603
+Set(Sugar, Butter, Ghee, Bread)->564
+Set(Butter, Sweet, Tea Powder, Milk)->554
+Set(Sugar, Butter, Coffee Powder, Milk)->597
+Set(Butter, Yougurt, Lassi, Bread)->534
+Set(Butter, Ghee, Coffee Powder, Panner)->579
+Set(Sweet, Tea Powder, Cheese, Panner)->543
+Set(Sugar, Yougurt, Lassi, Bread)->542
+Set(Sweet, Lassi, Coffee Powder, Panner)->608
+Set(Sweet, Coffee Powder, Cheese, Bread)->568
+Set(Sugar, Sweet, Milk, Panner)->572
+Set(Lassi, Cheese, Bread, Panner)->580
+Set(Butter, Ghee, Milk, Panner)->552
+Set(Sweet, Coffee Powder, Bread, Milk)->568
+Set(Sugar, Tea Powder, Ghee, Panner)->551
+Set(Sweet, Ghee, Lassi, Panner)->600
+Set(Sugar, Ghee, Lassi, Milk)->589
+Set(Sugar, Sweet, Lassi, Bread)->593
+Set(Lassi, Coffee Powder, Bread, Milk)->574
+Set(Sugar, Lassi, Coffee Powder, Milk)->590
+Set(Yougurt, Lassi, Coffee Powder, Cheese)->564
+Set(Sugar, Tea Powder, Coffee Powder, Cheese)->526
+Set(Butter, Ghee, Yougurt, Lassi)->559
+Set(Ghee, Lassi, Coffee Powder, Milk)->590
+Set(Sugar, Sweet, Tea Powder, Lassi)->594
+Set(Lassi, Cheese, Milk, Panner)->564
+Set(Sugar, Tea Powder, Coffee Powder, Milk)->584
+Set(Sugar, Sweet, Lassi, Panner)->605
+Set(Butter, Ghee, Yougurt, Coffee Powder)->597
+Set(Butter, Sweet, Lassi, Milk)->607
+Set(Sugar, Tea Powder, Coffee Powder, Bread)->574
+Set(Ghee, Cheese, Bread, Panner)->573
+Set(Butter, Tea Powder, Ghee, Lassi)->555
+Set(Tea Powder, Bread, Milk, Panner)->559
+Set(Sugar, Tea Powder, Yougurt, Bread)->564
+Set(Sugar, Butter, Tea Powder, Lassi)->546
+Set(Butter, Lassi, Bread, Milk)->565
+Set(Sweet, Tea Powder, Coffee Powder, Panner)->546
+Set(Sugar, Yougurt, Coffee Powder, Cheese)->562
+Set(Sugar, Ghee, Coffee Powder, Cheese)->524
+Set(Sugar, Sweet, Lassi, Cheese)->558
+Set(Butter, Ghee, Cheese, Milk)->534
+Set(Sweet, Ghee, Coffee Powder, Bread)->579
+Set(Butter, Tea Powder, Yougurt, Bread)->566
+Set(Tea Powder, Cheese, Milk, Panner)->502
+Set(Sweet, Tea Powder, Coffee Powder, Bread)->547
+Set(Ghee, Yougurt, Lassi, Coffee Powder)->584
+Set(Sugar, Yougurt, Coffee Powder, Milk)->601
+Set(Sugar, Sweet, Bread, Panner)->562
+Set(Sugar, Tea Powder, Coffee Powder, Panner)->551
+Set(Butter, Sweet, Ghee, Yougurt)->551
+Set(Ghee, Coffee Powder, Milk, Panner)->546
+Set(Butter, Ghee, Coffee Powder, Bread)->540
+Set(Butter, Tea Powder, Ghee, Milk)->550
+Set(Sweet, Ghee, Coffee Powder, Panner)->555
+Set(Sweet, Coffee Powder, Cheese, Panner)->551
+Set(Sugar, Butter, Coffee Powder, Panner)->571
+Set(Sugar, Lassi, Milk, Panner)->590
+Set(Sugar, Tea Powder, Ghee, Milk)->571
+Set(Butter, Sweet, Coffee Powder, Cheese)->536
+Set(Tea Powder, Cheese, Bread, Milk)->517
+Set(Butter, Sweet, Bread, Milk)->575
+Set(Ghee, Lassi, Coffee Powder, Panner)->597
+Set(Sweet, Tea Powder, Ghee, Lassi)->580
+Set(Tea Powder, Yougurt, Lassi, Bread)->536
+Set(Butter, Cheese, Bread, Milk)->553
+Set(Sugar, Lassi, Coffee Powder, Bread)->567
+Set(Ghee, Lassi, Cheese, Panner)->572
+Set(Sweet, Tea Powder, Yougurt, Bread)->555
+Set(Tea Powder, Ghee, Lassi, Coffee Powder)->569
+Set(Sugar, Sweet, Cheese, Milk)->559
+Set(Ghee, Yougurt, Lassi, Bread)->555
+Set(Butter, Ghee, Coffee Powder, Milk)->551
+Set(Sugar, Butter, Tea Powder, Ghee)->555
+Set(Tea Powder, Yougurt, Coffee Powder, Cheese)->555
+Set(Sugar, Yougurt, Lassi, Panner)->570
+Set(Tea Powder, Coffee Powder, Cheese, Panner)->509
+Set(Butter, Ghee, Yougurt, Milk)->551
+Set(Sugar, Sweet, Ghee, Coffee Powder)->551
+Set(Sweet, Ghee, Lassi, Milk)->584
+Set(Butter, Ghee, Lassi, Coffee Powder)->591
+Set(Sugar, Lassi, Cheese, Panner)->564
+Set(Butter, Coffee Powder, Bread, Milk)->554
+Set(Sugar, Sweet, Yougurt, Coffee Powder)->567
+Set(Tea Powder, Ghee, Coffee Powder, Milk)->552
+Set(Tea Powder, Ghee, Milk, Panner)->528
+Set(Butter, Ghee, Coffee Powder, Cheese)->535
+Set(Tea Powder, Ghee, Coffee Powder, Cheese)->513
+Set(Tea Powder, Ghee, Lassi, Milk)->572
+Set(Butter, Cheese, Bread, Panner)->571
+Set(Butter, Tea Powder, Bread, Panner)->532
+Set(Butter, Sweet, Cheese, Panner)->589
+Set(Tea Powder, Coffee Powder, Bread, Panner)->557
+Set(Tea Powder, Lassi, Bread, Panner)->566
+Set(Tea Powder, Ghee, Coffee Powder, Bread)->562
+Set(Yougurt, Cheese, Bread, Milk)->578
+Set(Sugar, Tea Powder, Lassi, Milk)->587
+Set(Ghee, Yougurt, Lassi, Panner)->572
+Set(Sweet, Tea Powder, Bread, Panner)->565
+Set(Butter, Tea Powder, Lassi, Panner)->535
+Set(Ghee, Yougurt, Lassi, Cheese)->564
+Set(Sweet, Tea Powder, Lassi, Milk)->583
+Set(Butter, Ghee, Lassi, Panner)->591
+Set(Sugar, Butter, Coffee Powder, Bread)->570
+Set(Butter, Yougurt, Cheese, Bread)->565
+Set(Butter, Tea Powder, Ghee, Cheese)->514
+Set(Butter, Coffee Powder, Cheese, Panner)->546
+Set(Sugar, Sweet, Tea Powder, Ghee)->541
+Set(Sugar, Sweet, Yougurt, Lassi)->581
+Set(Sugar, Lassi, Cheese, Bread)->554
+Set(Butter, Ghee, Lassi, Cheese)->542
+Set(Sweet, Lassi, Cheese, Bread)->578
+Set(Sweet, Lassi, Coffee Powder, Milk)->582
+Set(Coffee Powder, Bread, Milk, Panner)->576
+Set(Sweet, Cheese, Milk, Panner)->551
+Set(Sweet, Ghee, Coffee Powder, Milk)->552
+Set(Sugar, Yougurt, Cheese, Bread)->557
+Set(Butter, Lassi, Coffee Powder, Cheese)->551
+Set(Sugar, Butter, Coffee Powder, Cheese)->546
+HashSet(Sugar, Sweet, Tea Powder, Panner, Cheese)->248
+HashSet(Butter, Ghee, Panner, Lassi, Coffee Powder)->287
+HashSet(Tea Powder, Lassi, Coffee Powder, Milk, Panner)->246
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Milk)->237
+HashSet(Sweet, Ghee, Yougurt, Milk, Lassi)->261
+HashSet(Butter, Tea Powder, Ghee, Lassi, Bread)->256
+HashSet(Sugar, Panner, Lassi, Cheese, Bread)->282
+HashSet(Sweet, Yougurt, Coffee Powder, Milk, Panner)->262
+HashSet(Sugar, Butter, Ghee, Yougurt, Coffee Powder)->289
+HashSet(Butter, Sweet, Lassi, Coffee Powder, Bread)->257
+HashSet(Butter, Sweet, Tea Powder, Ghee, Milk)->255
+HashSet(Sugar, Butter, Tea Powder, Panner, Lassi)->247
+HashSet(Sugar, Yougurt, Milk, Lassi, Cheese)->263
+HashSet(Sugar, Sweet, Panner, Cheese, Bread)->258
+HashSet(Butter, Ghee, Yougurt, Panner, Cheese)->276
+HashSet(Sugar, Butter, Tea Powder, Ghee, Cheese)->238
+HashSet(Sweet, Ghee, Lassi, Coffee Powder, Cheese)->249
+HashSet(Butter, Sweet, Milk, Lassi, Coffee Powder)->280
+HashSet(Butter, Tea Powder, Bread, Milk, Panner)->240
+HashSet(Sweet, Milk, Lassi, Coffee Powder, Bread)->273
+HashSet(Sweet, Tea Powder, Yougurt, Coffee Powder, Cheese)->249
+HashSet(Sugar, Sweet, Coffee Powder, Milk, Panner)->257
+HashSet(Butter, Sweet, Tea Powder, Milk, Cheese)->234
+HashSet(Tea Powder, Ghee, Milk, Cheese, Bread)->239
+HashSet(Sweet, Tea Powder, Milk, Lassi, Cheese)->245
+HashSet(Sugar, Butter, Coffee Powder, Milk, Panner)->267
+HashSet(Tea Powder, Ghee, Yougurt, Lassi, Coffee Powder)->259
+HashSet(Sweet, Ghee, Panner, Coffee Powder, Cheese)->256
+HashSet(Tea Powder, Ghee, Milk, Coffee Powder, Bread)->258
+HashSet(Sweet, Tea Powder, Milk, Coffee Powder, Cheese)->236
+HashSet(Yougurt, Coffee Powder, Cheese, Milk, Panner)->274
+HashSet(Butter, Cheese, Bread, Milk, Panner)->262
+HashSet(Sugar, Ghee, Panner, Lassi, Cheese)->273
+HashSet(Sweet, Ghee, Cheese, Milk, Panner)->257
+HashSet(Sugar, Butter, Sweet, Tea Powder, Cheese)->255
+HashSet(Sweet, Ghee, Lassi, Coffee Powder, Bread)->289
+HashSet(Sugar, Butter, Yougurt, Milk, Bread)->274
+HashSet(Butter, Milk, Lassi, Coffee Powder, Bread)->273
+HashSet(Butter, Sweet, Ghee, Coffee Powder, Bread)->241
+HashSet(Sugar, Butter, Sweet, Yougurt, Panner)->280
+HashSet(Sugar, Sweet, Tea Powder, Panner, Coffee Powder)->266
+HashSet(Butter, Sweet, Panner, Lassi, Coffee Powder)->266
+HashSet(Sugar, Sweet, Tea Powder, Cheese, Bread)->236
+HashSet(Ghee, Yougurt, Bread, Milk, Panner)->268
+HashSet(Butter, Sweet, Ghee, Yougurt, Milk)->253
+HashSet(Sugar, Butter, Tea Powder, Panner, Coffee Powder)->249
+HashSet(Sugar, Ghee, Milk, Lassi, Cheese)->265
+HashSet(Sugar, Butter, Ghee, Panner, Coffee Powder)->275
+HashSet(Sweet, Tea Powder, Ghee, Lassi, Coffee Powder)->273
+HashSet(Butter, Ghee, Milk, Coffee Powder, Cheese)->253
+HashSet(Sugar, Butter, Ghee, Panner, Lassi)->283
+HashSet(Sugar, Butter, Yougurt, Panner, Lassi)->280
+HashSet(Butter, Sweet, Ghee, Panner, Bread)->251
+HashSet(Sugar, Sweet, Tea Powder, Milk, Lassi)->288
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Coffee Powder)->263
+HashSet(Sugar, Tea Powder, Milk, Coffee Powder, Cheese)->255
+HashSet(Sweet, Tea Powder, Ghee, Panner, Cheese)->231
+HashSet(Sugar, Ghee, Yougurt, Milk, Lassi)->278
+HashSet(Sugar, Butter, Sweet, Panner, Cheese)->265
+HashSet(Sugar, Tea Powder, Yougurt, Lassi, Bread)->242
+HashSet(Sugar, Butter, Yougurt, Lassi, Bread)->264
+HashSet(Ghee, Yougurt, Panner, Coffee Powder, Cheese)->278
+HashSet(Sugar, Butter, Milk, Cheese, Bread)->267
+HashSet(Tea Powder, Yougurt, Lassi, Milk, Panner)->253
+HashSet(Sugar, Ghee, Panner, Coffee Powder, Cheese)->245
+HashSet(Butter, Ghee, Yougurt, Coffee Powder, Bread)->261
+HashSet(Butter, Ghee, Yougurt, Milk, Cheese)->252
+HashSet(Sugar, Ghee, Milk, Cheese, Bread)->262
+HashSet(Sugar, Butter, Tea Powder, Ghee, Bread)->257
+HashSet(Sugar, Tea Powder, Ghee, Cheese, Bread)->246
+HashSet(Butter, Sweet, Panner, Lassi, Cheese)->290
+HashSet(Sugar, Butter, Tea Powder, Ghee, Lassi)->266
+HashSet(Tea Powder, Yougurt, Milk, Coffee Powder, Bread)->277
+HashSet(Sugar, Butter, Yougurt, Milk, Cheese)->259
+HashSet(Butter, Yougurt, Milk, Lassi, Cheese)->249
+HashSet(Sugar, Ghee, Yougurt, Milk, Bread)->264
+HashSet(Tea Powder, Yougurt, Bread, Milk, Panner)->261
+HashSet(Butter, Tea Powder, Yougurt, Coffee Powder, Cheese)->260
+HashSet(Butter, Sweet, Bread, Milk, Panner)->263
+HashSet(Sugar, Sweet, Ghee, Yougurt, Panner)->245
+HashSet(Butter, Panner, Lassi, Cheese, Bread)->255
+HashSet(Butter, Sweet, Yougurt, Panner, Coffee Powder)->279
+HashSet(Butter, Panner, Lassi, Coffee Powder, Bread)->273
+HashSet(Butter, Sweet, Yougurt, Milk, Coffee Powder)->286
+HashSet(Butter, Sweet, Tea Powder, Milk, Panner)->248
+HashSet(Sweet, Yougurt, Panner, Lassi, Coffee Powder)->295
+HashSet(Ghee, Yougurt, Lassi, Cheese, Bread)->274
+HashSet(Sweet, Lassi, Cheese, Milk, Panner)->279
+HashSet(Sweet, Panner, Lassi, Coffee Powder, Bread)->300
+HashSet(Sugar, Tea Powder, Yougurt, Milk, Cheese)->261
+HashSet(Sweet, Tea Powder, Ghee, Coffee Powder, Cheese)->220
+HashSet(Sweet, Yougurt, Coffee Powder, Cheese, Bread)->259
+HashSet(Yougurt, Panner, Lassi, Coffee Powder, Bread)->273
+HashSet(Tea Powder, Coffee Powder, Cheese, Milk, Panner)->217
+HashSet(Tea Powder, Yougurt, Milk, Cheese, Bread)->254
+HashSet(Sweet, Yougurt, Lassi, Coffee Powder, Cheese)->262
+HashSet(Sugar, Yougurt, Milk, Lassi, Bread)->260
+HashSet(Sugar, Sweet, Yougurt, Milk, Lassi)->271
+HashSet(Butter, Yougurt, Coffee Powder, Milk, Panner)->265
+HashSet(Tea Powder, Ghee, Lassi, Coffee Powder, Cheese)->239
+HashSet(Sweet, Ghee, Panner, Cheese, Bread)->257
+HashSet(Butter, Sweet, Yougurt, Coffee Powder, Cheese)->269
+HashSet(Sugar, Panner, Coffee Powder, Cheese, Bread)->278
+HashSet(Sugar, Sweet, Ghee, Yougurt, Cheese)->250
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Coffee Powder)->286
+HashSet(Sugar, Butter, Panner, Coffee Powder, Bread)->266
+HashSet(Sugar, Tea Powder, Milk, Coffee Powder, Bread)->278
+HashSet(Ghee, Yougurt, Milk, Lassi, Cheese)->254
+HashSet(Tea Powder, Yougurt, Panner, Lassi, Coffee Powder)->262
+HashSet(Sugar, Yougurt, Milk, Coffee Powder, Bread)->275
+HashSet(Sweet, Tea Powder, Yougurt, Coffee Powder, Bread)->263
+HashSet(Yougurt, Lassi, Cheese, Milk, Panner)->280
+HashSet(Sweet, Lassi, Coffee Powder, Milk, Panner)->289
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Cheese)->257
+HashSet(Sweet, Ghee, Yougurt, Panner, Lassi)->271
+HashSet(Tea Powder, Ghee, Cheese, Milk, Panner)->230
+HashSet(Butter, Sweet, Yougurt, Milk, Bread)->262
+HashSet(Ghee, Yougurt, Panner, Lassi, Cheese)->278
+HashSet(Sugar, Ghee, Yougurt, Milk, Cheese)->266
+HashSet(Sugar, Butter, Tea Powder, Panner, Bread)->238
+HashSet(Sugar, Tea Powder, Yougurt, Cheese, Bread)->261
+HashSet(Yougurt, Lassi, Coffee Powder, Milk, Panner)->282
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Bread)->250
+HashSet(Butter, Tea Powder, Yougurt, Cheese, Bread)->260
+HashSet(Sugar, Ghee, Yougurt, Panner, Bread)->269
+HashSet(Sugar, Tea Powder, Lassi, Coffee Powder, Bread)->263
+HashSet(Sugar, Sweet, Ghee, Coffee Powder, Cheese)->225
+HashSet(Butter, Tea Powder, Ghee, Panner, Cheese)->241
+HashSet(Sugar, Sweet, Tea Powder, Lassi, Bread)->268
+HashSet(Sugar, Sweet, Ghee, Milk, Bread)->261
+HashSet(Lassi, Coffee Powder, Bread, Milk, Panner)->282
+HashSet(Sweet, Ghee, Panner, Lassi, Coffee Powder)->286
+HashSet(Sweet, Tea Powder, Milk, Lassi, Bread)->272
+HashSet(Sweet, Tea Powder, Ghee, Lassi, Bread)->284
+HashSet(Butter, Ghee, Cheese, Milk, Panner)->250
+HashSet(Butter, Tea Powder, Ghee, Milk, Cheese)->243
+HashSet(Ghee, Yougurt, Coffee Powder, Cheese, Bread)->285
+HashSet(Sugar, Tea Powder, Yougurt, Panner, Coffee Powder)->270
+HashSet(Sweet, Yougurt, Milk, Coffee Powder, Bread)->269
+HashSet(Ghee, Panner, Lassi, Coffee Powder, Cheese)->280
+HashSet(Sugar, Sweet, Tea Powder, Panner, Bread)->254
+HashSet(Sugar, Tea Powder, Ghee, Coffee Powder, Bread)->278
+HashSet(Sweet, Tea Powder, Panner, Coffee Powder, Cheese)->243
+HashSet(Sugar, Tea Powder, Panner, Coffee Powder, Bread)->272
+HashSet(Sugar, Tea Powder, Milk, Cheese, Bread)->252
+HashSet(Sweet, Coffee Powder, Cheese, Milk, Panner)->244
+HashSet(Sugar, Butter, Ghee, Milk, Bread)->266
+HashSet(Ghee, Yougurt, Panner, Lassi, Bread)->264
+HashSet(Butter, Ghee, Milk, Cheese, Bread)->259
+HashSet(Sweet, Panner, Coffee Powder, Cheese, Bread)->269
+HashSet(Tea Powder, Yougurt, Panner, Coffee Powder, Bread)->272
+HashSet(Sweet, Lassi, Coffee Powder, Cheese, Bread)->274
+HashSet(Butter, Tea Powder, Milk, Lassi, Bread)->243
+HashSet(Sweet, Ghee, Yougurt, Lassi, Cheese)->263
+HashSet(Sugar, Tea Powder, Yougurt, Coffee Powder, Cheese)->256
+HashSet(Sweet, Yougurt, Milk, Lassi, Coffee Powder)->281
+HashSet(Sugar, Tea Powder, Ghee, Panner, Lassi)->273
+HashSet(Butter, Tea Powder, Ghee, Milk, Coffee Powder)->262
+HashSet(Sugar, Butter, Ghee, Coffee Powder, Bread)->267
+HashSet(Ghee, Yougurt, Panner, Cheese, Bread)->273
+HashSet(Sugar, Butter, Panner, Lassi, Coffee Powder)->280
+HashSet(Sugar, Sweet, Panner, Coffee Powder, Cheese)->248
+HashSet(Tea Powder, Ghee, Lassi, Coffee Powder, Bread)->279
+HashSet(Tea Powder, Milk, Lassi, Coffee Powder, Cheese)->231
+HashSet(Sweet, Coffee Powder, Bread, Milk, Panner)->273
+HashSet(Butter, Sweet, Ghee, Yougurt, Bread)->231
+HashSet(Sugar, Butter, Sweet, Milk, Panner)->279
+HashSet(Sugar, Butter, Sweet, Tea Powder, Lassi)->286
+HashSet(Sweet, Ghee, Milk, Cheese, Bread)->260
+HashSet(Butter, Sweet, Milk, Lassi, Cheese)->264
+HashSet(Butter, Tea Powder, Panner, Cheese, Bread)->248
+HashSet(Sugar, Butter, Sweet, Tea Powder, Panner)->264
+HashSet(Sugar, Yougurt, Lassi, Milk, Panner)->273
+HashSet(Butter, Tea Powder, Lassi, Cheese, Bread)->219
+HashSet(Ghee, Yougurt, Milk, Coffee Powder, Bread)->272
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Panner)->241
+HashSet(Sugar, Butter, Ghee, Milk, Panner)->274
+HashSet(Butter, Tea Powder, Yougurt, Panner, Lassi)->254
+HashSet(Tea Powder, Yougurt, Panner, Cheese, Bread)->255
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Panner)->280
+HashSet(Sugar, Butter, Ghee, Lassi, Coffee Powder)->273
+HashSet(Sweet, Ghee, Yougurt, Coffee Powder, Bread)->260
+HashSet(Butter, Tea Powder, Milk, Cheese, Bread)->231
+HashSet(Butter, Tea Powder, Milk, Coffee Powder, Bread)->247
+HashSet(Sweet, Ghee, Bread, Milk, Panner)->271
+HashSet(Sugar, Ghee, Yougurt, Cheese, Bread)->268
+HashSet(Sugar, Butter, Ghee, Yougurt, Milk)->275
+HashSet(Sweet, Milk, Lassi, Cheese, Bread)->263
+HashSet(Sugar, Sweet, Yougurt, Milk, Coffee Powder)->274
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt)->232
+HashSet(Sugar, Yougurt, Coffee Powder, Cheese, Bread)->261
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt)->235
+HashSet(Sweet, Tea Powder, Lassi, Milk, Panner)->296
+HashSet(Yougurt, Coffee Powder, Bread, Milk, Panner)->276
+HashSet(Sweet, Tea Powder, Cheese, Milk, Panner)->236
+HashSet(Butter, Sweet, Ghee, Milk, Cheese)->231
+HashSet(Sugar, Sweet, Yougurt, Milk, Bread)->267
+HashSet(Sweet, Yougurt, Milk, Coffee Powder, Cheese)->254
+HashSet(Tea Powder, Coffee Powder, Bread, Milk, Panner)->254
+HashSet(Tea Powder, Ghee, Yougurt, Panner, Lassi)->260
+HashSet(Sweet, Cheese, Bread, Milk, Panner)->273
+HashSet(Sugar, Ghee, Coffee Powder, Cheese, Bread)->255
+HashSet(Sweet, Yougurt, Lassi, Cheese, Bread)->267
+HashSet(Butter, Tea Powder, Ghee, Coffee Powder, Bread)->261
+HashSet(Tea Powder, Ghee, Panner, Cheese, Bread)->240
+HashSet(Butter, Sweet, Tea Powder, Panner, Cheese)->265
+HashSet(Butter, Ghee, Milk, Lassi, Coffee Powder)->274
+HashSet(Butter, Sweet, Tea Powder, Coffee Powder, Bread)->243
+HashSet(Sugar, Butter, Lassi, Coffee Powder, Bread)->271
+HashSet(Sugar, Butter, Sweet, Tea Powder, Milk)->280
+HashSet(Sugar, Butter, Sweet, Cheese, Bread)->243
+HashSet(Sugar, Panner, Lassi, Coffee Powder, Cheese)->268
+HashSet(Tea Powder, Ghee, Milk, Lassi, Cheese)->237
+HashSet(Butter, Tea Powder, Yougurt, Panner, Coffee Powder)->256
+HashSet(Butter, Tea Powder, Yougurt, Panner, Bread)->267
+HashSet(Sugar, Butter, Ghee, Panner, Cheese)->247
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Panner)->257
+HashSet(Sugar, Butter, Sweet, Yougurt, Bread)->267
+HashSet(Butter, Sweet, Milk, Coffee Powder, Bread)->263
+HashSet(Sweet, Tea Powder, Yougurt, Lassi, Cheese)->256
+HashSet(Sugar, Ghee, Milk, Lassi, Bread)->284
+HashSet(Sugar, Butter, Tea Powder, Milk, Coffee Powder)->277
+HashSet(Tea Powder, Ghee, Yougurt, Milk, Panner)->247
+HashSet(Tea Powder, Ghee, Yougurt, Coffee Powder, Cheese)->261
+HashSet(Ghee, Panner, Lassi, Cheese, Bread)->275
+HashSet(Sugar, Sweet, Yougurt, Coffee Powder, Cheese)->249
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt)->269
+HashSet(Tea Powder, Ghee, Coffee Powder, Milk, Panner)->238
+HashSet(Tea Powder, Ghee, Yougurt, Panner, Coffee Powder)->259
+HashSet(Butter, Sweet, Tea Powder, Ghee, Lassi)->267
+HashSet(Butter, Tea Powder, Yougurt, Milk, Lassi)->247
+HashSet(Tea Powder, Ghee, Yougurt, Panner, Cheese)->242
+HashSet(Sugar, Tea Powder, Ghee, Panner, Bread)->269
+HashSet(Sugar, Butter, Panner, Lassi, Cheese)->274
+HashSet(Sweet, Tea Powder, Yougurt, Cheese, Bread)->252
+HashSet(Butter, Tea Powder, Ghee, Milk, Panner)->254
+HashSet(Sugar, Lassi, Bread, Milk, Panner)->282
+HashSet(Butter, Sweet, Tea Powder, Lassi, Bread)->252
+HashSet(Butter, Ghee, Panner, Lassi, Bread)->266
+HashSet(Butter, Tea Powder, Yougurt, Lassi, Coffee Powder)->253
+HashSet(Butter, Ghee, Yougurt, Lassi, Coffee Powder)->288
+HashSet(Sugar, Sweet, Yougurt, Cheese, Bread)->243
+HashSet(Butter, Sweet, Ghee, Panner, Lassi)->278
+HashSet(Coffee Powder, Cheese, Bread, Milk, Panner)->277
+HashSet(Sweet, Tea Powder, Lassi, Coffee Powder, Bread)->273
+HashSet(Sugar, Sweet, Tea Powder, Coffee Powder, Cheese)->245
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Cheese)->231
+HashSet(Sugar, Yougurt, Panner, Coffee Powder, Bread)->268
+HashSet(Tea Powder, Yougurt, Panner, Lassi, Cheese)->262
+HashSet(Sweet, Tea Powder, Bread, Milk, Panner)->273
+HashSet(Butter, Sweet, Milk, Coffee Powder, Cheese)->245
+HashSet(Butter, Panner, Lassi, Coffee Powder, Cheese)->271
+HashSet(Sugar, Tea Powder, Yougurt, Panner, Bread)->265
+HashSet(Sweet, Tea Powder, Panner, Cheese, Bread)->259
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Lassi)->249
+HashSet(Sugar, Ghee, Yougurt, Coffee Powder, Bread)->269
+HashSet(Sugar, Sweet, Tea Powder, Milk, Panner)->272
+HashSet(Butter, Coffee Powder, Cheese, Milk, Panner)->250
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Lassi)->253
+HashSet(Sugar, Tea Powder, Milk, Lassi, Coffee Powder)->285
+HashSet(Tea Powder, Panner, Coffee Powder, Cheese, Bread)->252
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Milk)->273
+HashSet(Butter, Sweet, Ghee, Panner, Coffee Powder)->251
+HashSet(Sugar, Butter, Tea Powder, Ghee, Coffee Powder)->274
+HashSet(Sugar, Yougurt, Cheese, Milk, Panner)->270
+HashSet(Sugar, Butter, Sweet, Tea Powder, Coffee Powder)->289
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt)->270
+HashSet(Sugar, Butter, Milk, Lassi, Cheese)->269
+HashSet(Ghee, Cheese, Bread, Milk, Panner)->266
+HashSet(Tea Powder, Ghee, Yougurt, Cheese, Bread)->249
+HashSet(Ghee, Yougurt, Panner, Lassi, Coffee Powder)->289
+HashSet(Sugar, Sweet, Bread, Milk, Panner)->271
+HashSet(Ghee, Yougurt, Panner, Coffee Powder, Bread)->272
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Panner)->265
+HashSet(Ghee, Lassi, Coffee Powder, Cheese, Bread)->291
+HashSet(Tea Powder, Ghee, Yougurt, Coffee Powder, Bread)->272
+HashSet(Sugar, Sweet, Yougurt, Panner, Lassi)->279
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Coffee Powder)->234
+HashSet(Sweet, Tea Powder, Ghee, Milk, Coffee Powder)->252
+HashSet(Sugar, Ghee, Yougurt, Lassi, Cheese)->271
+HashSet(Sugar, Butter, Tea Powder, Coffee Powder, Cheese)->237
+HashSet(Sweet, Tea Powder, Coffee Powder, Milk, Panner)->257
+HashSet(Tea Powder, Panner, Lassi, Cheese, Bread)->254
+HashSet(Sugar, Sweet, Panner, Lassi, Bread)->295
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Coffee Powder)->263
+HashSet(Sugar, Sweet, Lassi, Coffee Powder, Cheese)->253
+HashSet(Sweet, Tea Powder, Yougurt, Panner, Lassi)->268
+HashSet(Sugar, Sweet, Lassi, Coffee Powder, Bread)->274
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Lassi)->252
+HashSet(Sugar, Sweet, Ghee, Panner, Lassi)->272
+HashSet(Sugar, Butter, Ghee, Milk, Cheese)->257
+HashSet(Sweet, Yougurt, Lassi, Milk, Panner)->280
+HashSet(Ghee, Yougurt, Milk, Lassi, Coffee Powder)->289
+HashSet(Sugar, Butter, Panner, Coffee Powder, Cheese)->260
+HashSet(Butter, Tea Powder, Ghee, Panner, Bread)->266
+HashSet(Yougurt, Panner, Lassi, Cheese, Bread)->279
+HashSet(Sugar, Sweet, Ghee, Milk, Panner)->251
+HashSet(Sweet, Ghee, Yougurt, Milk, Cheese)->252
+HashSet(Butter, Sweet, Yougurt, Panner, Cheese)->288
+HashSet(Tea Powder, Yougurt, Coffee Powder, Cheese, Bread)->266
+HashSet(Tea Powder, Ghee, Yougurt, Milk, Bread)->252
+HashSet(Sweet, Yougurt, Milk, Cheese, Bread)->264
+HashSet(Sugar, Sweet, Yougurt, Milk, Panner)->260
+HashSet(Tea Powder, Ghee, Yougurt, Milk, Lassi)->255
+HashSet(Butter, Ghee, Yougurt, Panner, Lassi)->279
+HashSet(Butter, Yougurt, Lassi, Cheese, Bread)->242
+HashSet(Ghee, Milk, Lassi, Coffee Powder, Bread)->279
+HashSet(Sweet, Ghee, Milk, Lassi, Bread)->288
+HashSet(Tea Powder, Panner, Lassi, Coffee Powder, Bread)->280
+HashSet(Sugar, Butter, Lassi, Milk, Panner)->282
+HashSet(Sweet, Tea Powder, Yougurt, Panner, Cheese)->260
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Coffee Powder)->263
+HashSet(Sweet, Ghee, Coffee Powder, Milk, Panner)->246
+HashSet(Sugar, Tea Powder, Yougurt, Coffee Powder, Bread)->279
+HashSet(Sugar, Ghee, Coffee Powder, Milk, Panner)->251
+HashSet(Butter, Tea Powder, Ghee, Milk, Lassi)->271
+HashSet(Sugar, Sweet, Tea Powder, Lassi, Cheese)->255
+HashSet(Butter, Sweet, Tea Powder, Ghee, Panner)->250
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Lassi)->242
+HashSet(Butter, Ghee, Milk, Lassi, Cheese)->259
+HashSet(Sugar, Butter, Sweet, Ghee, Panner)->265
+HashSet(Sugar, Sweet, Milk, Coffee Powder, Bread)->268
+HashSet(Sweet, Tea Powder, Panner, Lassi, Cheese)->277
+HashSet(Butter, Sweet, Tea Powder, Milk, Lassi)->273
+HashSet(Tea Powder, Yougurt, Milk, Lassi, Coffee Powder)->255
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Panner)->223
+HashSet(Sugar, Ghee, Yougurt, Panner, Lassi)->279
+HashSet(Sweet, Yougurt, Panner, Cheese, Bread)->279
+HashSet(Sugar, Tea Powder, Yougurt, Panner, Cheese)->259
+HashSet(Yougurt, Milk, Lassi, Cheese, Bread)->270
+HashSet(Sugar, Butter, Yougurt, Lassi, Coffee Powder)->279
+HashSet(Sugar, Tea Powder, Panner, Lassi, Cheese)->245
+HashSet(Sugar, Tea Powder, Yougurt, Milk, Panner)->257
+HashSet(Sugar, Tea Powder, Ghee, Milk, Panner)->259
+HashSet(Sugar, Sweet, Yougurt, Panner, Coffee Powder)->263
+HashSet(Butter, Tea Powder, Lassi, Coffee Powder, Cheese)->235
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Bread)->272
+HashSet(Butter, Sweet, Tea Powder, Panner, Lassi)->285
+HashSet(Butter, Sweet, Yougurt, Milk, Panner)->265
+HashSet(Sugar, Sweet, Yougurt, Panner, Bread)->266
+HashSet(Butter, Tea Powder, Ghee, Lassi, Coffee Powder)->262
+HashSet(Sugar, Sweet, Tea Powder, Panner, Lassi)->291
+HashSet(Sugar, Tea Powder, Ghee, Milk, Cheese)->249
+HashSet(Butter, Sweet, Lassi, Milk, Panner)->294
+HashSet(Sugar, Cheese, Bread, Milk, Panner)->278
+HashSet(Sugar, Butter, Sweet, Panner, Lassi)->304
+HashSet(Tea Powder, Milk, Lassi, Coffee Powder, Bread)->255
+HashSet(Sugar, Sweet, Yougurt, Lassi, Bread)->268
+HashSet(Sweet, Ghee, Milk, Coffee Powder, Bread)->265
+HashSet(Butter, Ghee, Lassi, Coffee Powder, Bread)->265
+HashSet(Sugar, Butter, Tea Powder, Coffee Powder, Bread)->273
+HashSet(Sweet, Ghee, Lassi, Cheese, Bread)->269
+HashSet(Butter, Tea Powder, Ghee, Panner, Coffee Powder)->272
+HashSet(Sweet, Yougurt, Panner, Lassi, Cheese)->299
+HashSet(Ghee, Panner, Lassi, Coffee Powder, Bread)->302
+HashSet(Butter, Ghee, Milk, Coffee Powder, Bread)->244
+HashSet(Tea Powder, Ghee, Lassi, Milk, Panner)->276
+HashSet(Butter, Ghee, Yougurt, Cheese, Bread)->258
+HashSet(Butter, Ghee, Panner, Cheese, Bread)->254
+HashSet(Sugar, Butter, Yougurt, Panner, Cheese)->266
+HashSet(Sugar, Yougurt, Lassi, Coffee Powder, Cheese)->259
+HashSet(Sweet, Tea Powder, Panner, Coffee Powder, Bread)->259
+HashSet(Sugar, Sweet, Ghee, Milk, Lassi)->269
+HashSet(Sugar, Ghee, Lassi, Cheese, Bread)->262
+HashSet(Sugar, Butter, Yougurt, Milk, Coffee Powder)->295
+HashSet(Butter, Sweet, Panner, Coffee Powder, Cheese)->257
+HashSet(Sugar, Tea Powder, Ghee, Lassi, Bread)->267
+HashSet(Sugar, Coffee Powder, Cheese, Milk, Panner)->276
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Milk)->272
+HashSet(Butter, Yougurt, Panner, Coffee Powder, Cheese)->263
+HashSet(Sweet, Tea Powder, Ghee, Milk, Panner)->247
+HashSet(Sugar, Butter, Sweet, Milk, Bread)->283
+HashSet(Tea Powder, Ghee, Bread, Milk, Panner)->256
+HashSet(Butter, Ghee, Lassi, Cheese, Bread)->242
+HashSet(Butter, Sweet, Ghee, Yougurt, Coffee Powder)->261
+HashSet(Butter, Yougurt, Coffee Powder, Cheese, Bread)->253
+HashSet(Butter, Ghee, Bread, Milk, Panner)->260
+HashSet(Butter, Tea Powder, Yougurt, Milk, Panner)->244
+HashSet(Butter, Yougurt, Lassi, Coffee Powder, Cheese)->259
+HashSet(Sugar, Milk, Lassi, Cheese, Bread)->262
+HashSet(Sugar, Butter, Sweet, Lassi, Bread)->287
+HashSet(Sugar, Sweet, Lassi, Milk, Panner)->295
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Lassi)->265
+HashSet(Sweet, Panner, Lassi, Cheese, Bread)->281
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Bread)->261
+HashSet(Butter, Yougurt, Milk, Coffee Powder, Cheese)->270
+HashSet(Tea Powder, Ghee, Milk, Lassi, Bread)->267
+HashSet(Butter, Tea Powder, Ghee, Milk, Bread)->256
+HashSet(Ghee, Milk, Coffee Powder, Cheese, Bread)->274
+HashSet(Sweet, Tea Powder, Ghee, Cheese, Bread)->232
+HashSet(Butter, Ghee, Yougurt, Milk, Bread)->256
+HashSet(Butter, Ghee, Yougurt, Lassi, Cheese)->249
+HashSet(Sweet, Tea Powder, Panner, Lassi, Coffee Powder)->300
+HashSet(Butter, Tea Powder, Ghee, Coffee Powder, Cheese)->246
+HashSet(Butter, Ghee, Milk, Lassi, Bread)->271
+HashSet(Butter, Sweet, Milk, Lassi, Bread)->278
+HashSet(Butter, Ghee, Coffee Powder, Milk, Panner)->250
+HashSet(Sugar, Butter, Sweet, Yougurt, Cheese)->257
+HashSet(Sweet, Ghee, Milk, Coffee Powder, Cheese)->248
+HashSet(Butter, Sweet, Yougurt, Lassi, Coffee Powder)->282
+HashSet(Sugar, Lassi, Cheese, Milk, Panner)->261
+HashSet(Tea Powder, Ghee, Panner, Coffee Powder, Cheese)->235
+HashSet(Tea Powder, Milk, Lassi, Cheese, Bread)->231
+HashSet(Sugar, Butter, Sweet, Ghee, Coffee Powder)->270
+HashSet(Sugar, Tea Powder, Ghee, Milk, Bread)->257
+HashSet(Sugar, Butter, Ghee, Lassi, Cheese)->250
+HashSet(Butter, Sweet, Yougurt, Cheese, Bread)->246
+HashSet(Butter, Sweet, Tea Powder, Milk, Coffee Powder)->266
+HashSet(Butter, Sweet, Lassi, Cheese, Bread)->241
+HashSet(Sugar, Ghee, Yougurt, Panner, Cheese)->270
+HashSet(Butter, Sweet, Panner, Coffee Powder, Bread)->248
+HashSet(Butter, Ghee, Panner, Coffee Powder, Cheese)->255
+HashSet(Butter, Sweet, Yougurt, Panner, Lassi)->282
+HashSet(Tea Powder, Yougurt, Cheese, Milk, Panner)->245
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Milk)->246
+HashSet(Butter, Tea Powder, Coffee Powder, Milk, Panner)->220
+HashSet(Butter, Tea Powder, Milk, Lassi, Coffee Powder)->260
+HashSet(Sugar, Butter, Tea Powder, Milk, Bread)->260
+HashSet(Sugar, Butter, Tea Powder, Panner, Cheese)->248
+HashSet(Butter, Ghee, Yougurt, Milk, Lassi)->259
+HashSet(Sugar, Sweet, Milk, Cheese, Bread)->264
+HashSet(Sugar, Butter, Panner, Lassi, Bread)->278
+HashSet(Butter, Yougurt, Bread, Milk, Panner)->263
+HashSet(Sweet, Milk, Coffee Powder, Cheese, Bread)->265
+HashSet(Sugar, Butter, Sweet, Milk, Coffee Powder)->291
+HashSet(Butter, Yougurt, Milk, Coffee Powder, Bread)->277
+HashSet(Tea Powder, Milk, Coffee Powder, Cheese, Bread)->237
+HashSet(Sugar, Yougurt, Coffee Powder, Milk, Panner)->273
+HashSet(Sugar, Sweet, Ghee, Yougurt, Milk)->258
+HashSet(Butter, Tea Powder, Panner, Lassi, Bread)->250
+HashSet(Butter, Sweet, Ghee, Panner, Cheese)->244
+HashSet(Sugar, Butter, Cheese, Milk, Panner)->255
+HashSet(Sugar, Sweet, Ghee, Panner, Bread)->271
+HashSet(Sugar, Sweet, Yougurt, Coffee Powder, Bread)->263
+HashSet(Sugar, Butter, Ghee, Yougurt, Bread)->265
+HashSet(Sugar, Sweet, Ghee, Panner, Cheese)->239
+HashSet(Sugar, Ghee, Bread, Milk, Panner)->276
+HashSet(Sweet, Tea Powder, Yougurt, Milk, Lassi)->255
+HashSet(Sugar, Tea Powder, Yougurt, Lassi, Cheese)->246
+HashSet(Yougurt, Lassi, Bread, Milk, Panner)->263
+HashSet(Sugar, Sweet, Tea Powder, Milk, Cheese)->264
+HashSet(Butter, Milk, Lassi, Cheese, Bread)->255
+HashSet(Butter, Yougurt, Lassi, Milk, Panner)->272
+HashSet(Sugar, Butter, Sweet, Milk, Lassi)->300
+HashSet(Sweet, Tea Powder, Yougurt, Lassi, Coffee Powder)->261
+HashSet(Sugar, Butter, Tea Powder, Lassi, Coffee Powder)->266
+HashSet(Sugar, Butter, Sweet, Milk, Cheese)->262
+HashSet(Butter, Yougurt, Panner, Lassi, Cheese)->265
+HashSet(Sugar, Tea Powder, Ghee, Panner, Coffee Powder)->265
+HashSet(Sweet, Yougurt, Panner, Coffee Powder, Cheese)->273
+HashSet(Yougurt, Milk, Lassi, Coffee Powder, Bread)->270
+HashSet(Sweet, Lassi, Bread, Milk, Panner)->300
+HashSet(Sweet, Tea Powder, Ghee, Lassi, Cheese)->242
+HashSet(Sweet, Ghee, Panner, Coffee Powder, Bread)->277
+HashSet(Tea Powder, Cheese, Bread, Milk, Panner)->253
+HashSet(Sugar, Tea Powder, Yougurt, Milk, Bread)->275
+HashSet(Tea Powder, Yougurt, Panner, Lassi, Bread)->247
+HashSet(Butter, Yougurt, Panner, Cheese, Bread)->271
+HashSet(Sweet, Ghee, Panner, Lassi, Cheese)->276
+HashSet(Sugar, Butter, Tea Powder, Ghee, Milk)->272
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Panner)->246
+HashSet(Ghee, Yougurt, Lassi, Coffee Powder, Cheese)->279
+HashSet(Butter, Sweet, Ghee, Yougurt, Panner)->273
+HashSet(Sugar, Sweet, Panner, Lassi, Coffee Powder)->292
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Cheese)->251
+HashSet(Sweet, Tea Powder, Ghee, Panner, Lassi)->293
+HashSet(Butter, Sweet, Ghee, Yougurt, Cheese)->248
+HashSet(Sugar, Ghee, Yougurt, Coffee Powder, Cheese)->259
+HashSet(Tea Powder, Yougurt, Panner, Coffee Powder, Cheese)->251
+HashSet(Sugar, Yougurt, Panner, Lassi, Cheese)->271
+HashSet(Butter, Sweet, Tea Powder, Lassi, Cheese)->253
+HashSet(Sugar, Yougurt, Milk, Cheese, Bread)->275
+HashSet(Sugar, Tea Powder, Bread, Milk, Panner)->267
+HashSet(Sugar, Ghee, Yougurt, Lassi, Bread)->261
+HashSet(Butter, Sweet, Tea Powder, Panner, Coffee Powder)->246
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Cheese)->248
+HashSet(Sweet, Yougurt, Cheese, Milk, Panner)->277
+HashSet(Tea Powder, Ghee, Panner, Coffee Powder, Bread)->257
+HashSet(Butter, Sweet, Yougurt, Lassi, Cheese)->273
+HashSet(Sugar, Sweet, Panner, Coffee Powder, Bread)->268
+HashSet(Tea Powder, Ghee, Coffee Powder, Cheese, Bread)->251
+HashSet(Sugar, Sweet, Ghee, Milk, Cheese)->241
+HashSet(Sweet, Ghee, Milk, Lassi, Coffee Powder)->272
+HashSet(Ghee, Coffee Powder, Cheese, Milk, Panner)->266
+HashSet(Sweet, Ghee, Yougurt, Milk, Panner)->245
+HashSet(Sugar, Sweet, Lassi, Cheese, Bread)->263
+HashSet(Sweet, Ghee, Panner, Lassi, Bread)->293
+HashSet(Butter, Lassi, Coffee Powder, Cheese, Bread)->262
+HashSet(Sugar, Sweet, Yougurt, Milk, Cheese)->266
+HashSet(Butter, Yougurt, Panner, Coffee Powder, Bread)->264
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee)->257
+HashSet(Sweet, Yougurt, Milk, Lassi, Cheese)->267
+HashSet(Sugar, Tea Powder, Ghee, Coffee Powder, Cheese)->228
+HashSet(Butter, Sweet, Tea Powder, Cheese, Bread)->230
+HashSet(Sweet, Tea Powder, Milk, Lassi, Coffee Powder)->266
+HashSet(Sugar, Butter, Sweet, Yougurt, Milk)->280
+HashSet(Sugar, Butter, Sweet, Ghee, Bread)->260
+HashSet(Sugar, Tea Powder, Panner, Cheese, Bread)->259
+HashSet(Sugar, Sweet, Tea Powder, Coffee Powder, Bread)->263
+HashSet(Tea Powder, Yougurt, Lassi, Coffee Powder, Cheese)->246
+HashSet(Sugar, Butter, Ghee, Yougurt, Panner)->285
+HashSet(Sweet, Ghee, Yougurt, Milk, Bread)->259
+HashSet(Butter, Ghee, Yougurt, Milk, Coffee Powder)->278
+HashSet(Sugar, Tea Powder, Ghee, Milk, Coffee Powder)->270
+HashSet(Sweet, Ghee, Yougurt, Panner, Bread)->257
+HashSet(Sugar, Butter, Ghee, Milk, Coffee Powder)->272
+HashSet(Sugar, Ghee, Milk, Coffee Powder, Cheese)->252
+HashSet(Sugar, Sweet, Milk, Lassi, Coffee Powder)->280
+HashSet(Sugar, Yougurt, Milk, Lassi, Coffee Powder)->276
+HashSet(Sugar, Butter, Ghee, Panner, Bread)->273
+HashSet(Butter, Ghee, Panner, Coffee Powder, Bread)->256
+HashSet(Ghee, Yougurt, Cheese, Milk, Panner)->269
+HashSet(Yougurt, Panner, Lassi, Coffee Powder, Cheese)->276
+HashSet(Sugar, Ghee, Lassi, Coffee Powder, Bread)->280
+HashSet(Sugar, Sweet, Ghee, Milk, Coffee Powder)->258
+HashSet(Butter, Tea Powder, Yougurt, Milk, Cheese)->233
+HashSet(Sweet, Ghee, Yougurt, Coffee Powder, Cheese)->253
+HashSet(Sugar, Panner, Lassi, Coffee Powder, Bread)->295
+HashSet(Sweet, Tea Powder, Ghee, Coffee Powder, Bread)->245
+HashSet(Butter, Sweet, Tea Powder, Coffee Powder, Cheese)->248
+HashSet(Sugar, Ghee, Panner, Cheese, Bread)->269
+HashSet(Sweet, Tea Powder, Yougurt, Milk, Coffee Powder)->268
+HashSet(Butter, Yougurt, Panner, Lassi, Coffee Powder)->274
+HashSet(Sugar, Butter, Tea Powder, Lassi, Bread)->243
+HashSet(Ghee, Milk, Lassi, Coffee Powder, Cheese)->272
+HashSet(Sugar, Sweet, Coffee Powder, Cheese, Bread)->246
+HashSet(Butter, Sweet, Tea Powder, Ghee, Coffee Powder)->242
+HashSet(Butter, Yougurt, Milk, Lassi, Coffee Powder)->285
+HashSet(Sweet, Yougurt, Bread, Milk, Panner)->269
+HashSet(Sugar, Tea Powder, Lassi, Cheese, Bread)->235
+HashSet(Sugar, Butter, Sweet, Ghee, Milk)->275
+HashSet(Butter, Tea Powder, Milk, Lassi, Cheese)->225
+HashSet(Yougurt, Panner, Coffee Powder, Cheese, Bread)->269
+HashSet(Butter, Tea Powder, Lassi, Milk, Panner)->245
+HashSet(Butter, Sweet, Ghee, Coffee Powder, Cheese)->214
+HashSet(Sugar, Butter, Tea Powder, Milk, Cheese)->247
+HashSet(Sugar, Sweet, Ghee, Lassi, Cheese)->243
+HashSet(Sugar, Butter, Ghee, Yougurt, Cheese)->254
+HashSet(Tea Powder, Ghee, Yougurt, Lassi, Bread)->256
+HashSet(Sugar, Butter, Yougurt, Cheese, Bread)->263
+HashSet(Tea Powder, Lassi, Cheese, Milk, Panner)->231
+HashSet(Sugar, Sweet, Milk, Lassi, Bread)->280
+HashSet(Tea Powder, Ghee, Panner, Lassi, Coffee Powder)->272
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Lassi)->252
+HashSet(Butter, Tea Powder, Milk, Coffee Powder, Cheese)->236
+HashSet(Sugar, Tea Powder, Ghee, Lassi, Cheese)->241
+HashSet(Butter, Tea Powder, Panner, Coffee Powder, Bread)->239
+HashSet(Butter, Ghee, Coffee Powder, Cheese, Bread)->245
+HashSet(Butter, Sweet, Ghee, Cheese, Bread)->220
+HashSet(Sugar, Sweet, Ghee, Yougurt, Bread)->244
+HashSet(Tea Powder, Yougurt, Milk, Lassi, Bread)->252
+HashSet(Sugar, Ghee, Cheese, Milk, Panner)->249
+HashSet(Sugar, Sweet, Tea Powder, Milk, Bread)->266
+HashSet(Butter, Milk, Coffee Powder, Cheese, Bread)->263
+HashSet(Butter, Tea Powder, Coffee Powder, Cheese, Bread)->236
+HashSet(Sugar, Tea Powder, Cheese, Milk, Panner)->249
+HashSet(Sweet, Tea Powder, Ghee, Panner, Bread)->249
+HashSet(Sweet, Milk, Lassi, Coffee Powder, Cheese)->265
+HashSet(Sweet, Tea Powder, Ghee, Milk, Lassi)->282
+HashSet(Butter, Sweet, Lassi, Coffee Powder, Cheese)->257
+HashSet(Butter, Sweet, Yougurt, Lassi, Bread)->251
+HashSet(Sugar, Tea Powder, Coffee Powder, Cheese, Bread)->252
+HashSet(Sugar, Butter, Milk, Lassi, Coffee Powder)->293
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Bread)->266
+HashSet(Sugar, Sweet, Milk, Lassi, Cheese)->261
+HashSet(Ghee, Yougurt, Milk, Lassi, Bread)->264
+HashSet(Sweet, Ghee, Yougurt, Cheese, Bread)->247
+HashSet(Sugar, Yougurt, Panner, Lassi, Bread)->259
+HashSet(Sugar, Sweet, Panner, Lassi, Cheese)->272
+HashSet(Sugar, Tea Powder, Ghee, Panner, Cheese)->239
+HashSet(Sugar, Butter, Panner, Cheese, Bread)->261
+HashSet(Butter, Sweet, Ghee, Lassi, Cheese)->238
+HashSet(Sugar, Butter, Sweet, Panner, Coffee Powder)->263
+HashSet(Sugar, Sweet, Ghee, Coffee Powder, Bread)->264
+HashSet(Sugar, Sweet, Ghee, Yougurt, Coffee Powder)->255
+HashSet(Sugar, Ghee, Lassi, Coffee Powder, Cheese)->250
+HashSet(Sugar, Sweet, Ghee, Lassi, Bread)->276
+HashSet(Butter, Sweet, Tea Powder, Ghee, Bread)->239
+HashSet(Butter, Sweet, Tea Powder, Lassi, Coffee Powder)->259
+HashSet(Sugar, Yougurt, Milk, Coffee Powder, Cheese)->287
+HashSet(Sweet, Tea Powder, Lassi, Coffee Powder, Cheese)->254
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Cheese)->253
+HashSet(Butter, Sweet, Ghee, Milk, Coffee Powder)->247
+HashSet(Butter, Yougurt, Cheese, Milk, Panner)->266
+HashSet(Sugar, Butter, Milk, Coffee Powder, Bread)->283
+HashSet(Sugar, Ghee, Yougurt, Milk, Panner)->268
+HashSet(Sweet, Tea Powder, Yougurt, Milk, Panner)->236
+HashSet(Butter, Ghee, Lassi, Coffee Powder, Cheese)->260
+HashSet(Ghee, Panner, Coffee Powder, Cheese, Bread)->283
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Bread)->253
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Cheese)->258
+HashSet(Butter, Ghee, Yougurt, Milk, Panner)->277
+HashSet(Butter, Sweet, Ghee, Lassi, Bread)->257
+HashSet(Butter, Sweet, Yougurt, Panner, Bread)->274
+HashSet(Butter, Sweet, Milk, Cheese, Bread)->250
+HashSet(Butter, Sweet, Ghee, Lassi, Coffee Powder)->265
+HashSet(Sweet, Yougurt, Panner, Lassi, Bread)->270
+HashSet(Milk, Lassi, Coffee Powder, Cheese, Bread)->277
+HashSet(Butter, Ghee, Yougurt, Panner, Bread)->269
+HashSet(Sugar, Ghee, Yougurt, Milk, Coffee Powder)->281
+HashSet(Sugar, Sweet, Yougurt, Lassi, Coffee Powder)->275
+HashSet(Butter, Yougurt, Milk, Cheese, Bread)->267
+HashSet(Butter, Yougurt, Lassi, Coffee Powder, Bread)->261
+HashSet(Sweet, Ghee, Milk, Lassi, Cheese)->254
+HashSet(Sugar, Sweet, Ghee, Lassi, Coffee Powder)->270
+HashSet(Sugar, Yougurt, Panner, Cheese, Bread)->263
+HashSet(Tea Powder, Ghee, Panner, Lassi, Cheese)->246
+HashSet(Butter, Ghee, Yougurt, Coffee Powder, Cheese)->267
+HashSet(Sugar, Ghee, Panner, Lassi, Bread)->295
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Coffee Powder)->283
+HashSet(Sugar, Butter, Yougurt, Lassi, Cheese)->261
+HashSet(Butter, Tea Powder, Yougurt, Milk, Bread)->260
+HashSet(Butter, Tea Powder, Ghee, Panner, Lassi)->281
+HashSet(Butter, Sweet, Tea Powder, Ghee, Cheese)->219
+HashSet(Tea Powder, Ghee, Yougurt, Milk, Coffee Powder)->271
+HashSet(Sugar, Ghee, Panner, Coffee Powder, Bread)->280
+HashSet(Butter, Tea Powder, Lassi, Coffee Powder, Bread)->251
+HashSet(Sugar, Butter, Sweet, Coffee Powder, Bread)->275
+HashSet(Butter, Tea Powder, Ghee, Lassi, Cheese)->231
+HashSet(Sweet, Ghee, Lassi, Milk, Panner)->288
+HashSet(Sugar, Tea Powder, Panner, Lassi, Bread)->259
+HashSet(Sweet, Yougurt, Panner, Coffee Powder, Bread)->286
+HashSet(Sugar, Butter, Ghee, Coffee Powder, Cheese)->234
+HashSet(Sugar, Ghee, Yougurt, Lassi, Coffee Powder)->267
+HashSet(Sugar, Tea Powder, Ghee, Lassi, Coffee Powder)->277
+HashSet(Tea Powder, Lassi, Bread, Milk, Panner)->271
+HashSet(Tea Powder, Ghee, Yougurt, Milk, Cheese)->247
+HashSet(Sugar, Tea Powder, Coffee Powder, Milk, Panner)->263
+HashSet(Ghee, Yougurt, Lassi, Milk, Panner)->269
+HashSet(Sugar, Tea Powder, Ghee, Milk, Lassi)->290
+HashSet(Sugar, Butter, Sweet, Ghee, Cheese)->222
+HashSet(Sugar, Butter, Tea Powder, Cheese, Bread)->243
+HashSet(Sugar, Butter, Sweet, Lassi, Coffee Powder)->290
+HashSet(Sugar, Butter, Coffee Powder, Cheese, Bread)->257
+HashSet(Tea Powder, Ghee, Milk, Coffee Powder, Cheese)->238
+HashSet(Butter, Tea Powder, Yougurt, Coffee Powder, Bread)->272
+HashSet(Sweet, Tea Powder, Ghee, Milk, Bread)->257
+HashSet(Sugar, Butter, Ghee, Lassi, Bread)->275
+HashSet(Sweet, Tea Powder, Ghee, Panner, Coffee Powder)->243
+HashSet(Ghee, Yougurt, Milk, Coffee Powder, Cheese)->289
+HashSet(Sugar, Butter, Lassi, Cheese, Bread)->256
+HashSet(Sugar, Tea Powder, Lassi, Milk, Panner)->274
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Panner)->257
+HashSet(Sugar, Sweet, Milk, Coffee Powder, Cheese)->261
+HashSet(Butter, Sweet, Yougurt, Milk, Lassi)->280
+HashSet(Butter, Tea Powder, Yougurt, Milk, Coffee Powder)->269
+HashSet(Sugar, Butter, Yougurt, Coffee Powder, Cheese)->265
+HashSet(Tea Powder, Ghee, Yougurt, Panner, Bread)->254
+HashSet(Sugar, Butter, Ghee, Milk, Lassi)->288
+HashSet(Sugar, Tea Powder, Yougurt, Milk, Lassi)->263
+HashSet(Lassi, Coffee Powder, Cheese, Milk, Panner)->268
+HashSet(Sugar, Sweet, Tea Powder, Milk, Coffee Powder)->290
+HashSet(Sweet, Tea Powder, Milk, Cheese, Bread)->238
+HashSet(Butter, Tea Powder, Panner, Lassi, Cheese)->232
+HashSet(Sugar, Butter, Bread, Milk, Panner)->256
+HashSet(Sweet, Yougurt, Milk, Lassi, Bread)->264
+HashSet(Sugar, Ghee, Milk, Lassi, Coffee Powder)->281
+HashSet(Sugar, Yougurt, Lassi, Coffee Powder, Bread)->241
+HashSet(Sugar, Butter, Tea Powder, Milk, Lassi)->273
+HashSet(Tea Powder, Yougurt, Milk, Coffee Powder, Cheese)->256
+HashSet(Sugar, Butter, Lassi, Coffee Powder, Cheese)->249
+HashSet(Butter, Sweet, Panner, Lassi, Bread)->270
+HashSet(Sugar, Butter, Sweet, Tea Powder, Bread)->264
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Milk)->249
+HashSet(Ghee, Lassi, Bread, Milk, Panner)->288
+HashSet(Sweet, Tea Powder, Panner, Lassi, Bread)->296
+HashSet(Ghee, Lassi, Coffee Powder, Milk, Panner)->281
+HashSet(Sugar, Tea Powder, Panner, Lassi, Coffee Powder)->276
+HashSet(Butter, Lassi, Bread, Milk, Panner)->269
+HashSet(Sugar, Butter, Sweet, Coffee Powder, Cheese)->254
+HashSet(Sugar, Ghee, Panner, Lassi, Coffee Powder)->274
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Milk)->261
+HashSet(Sweet, Tea Powder, Yougurt, Panner, Bread)->262
+HashSet(Sweet, Tea Powder, Ghee, Milk, Cheese)->229
+HashSet(Butter, Sweet, Tea Powder, Panner, Bread)->254
+HashSet(Yougurt, Milk, Coffee Powder, Cheese, Bread)->282
+HashSet(Ghee, Yougurt, Milk, Cheese, Bread)->272
+HashSet(Sugar, Tea Powder, Panner, Coffee Powder, Cheese)->248
+HashSet(Tea Powder, Ghee, Yougurt, Lassi, Cheese)->233
+HashSet(Butter, Ghee, Panner, Lassi, Cheese)->262
+HashSet(Butter, Sweet, Coffee Powder, Cheese, Bread)->233
+HashSet(Sweet, Ghee, Yougurt, Milk, Coffee Powder)->266
+HashSet(Sweet, Tea Powder, Yougurt, Lassi, Bread)->256
+HashSet(Sugar, Milk, Lassi, Coffee Powder, Cheese)->265
+HashSet(Butter, Panner, Coffee Powder, Cheese, Bread)->258
+HashSet(Butter, Sweet, Ghee, Milk, Panner)->253
+HashSet(Butter, Coffee Powder, Bread, Milk, Panner)->247
+HashSet(Tea Powder, Ghee, Lassi, Cheese, Bread)->241
+HashSet(Butter, Tea Powder, Yougurt, Lassi, Bread)->238
+HashSet(Sugar, Butter, Yougurt, Panner, Bread)->265
+HashSet(Butter, Milk, Lassi, Coffee Powder, Cheese)->268
+HashSet(Sugar, Sweet, Tea Powder, Lassi, Coffee Powder)->291
+HashSet(Sweet, Tea Powder, Yougurt, Panner, Coffee Powder)->251
+HashSet(Ghee, Milk, Lassi, Cheese, Bread)->272
+HashSet(Sugar, Milk, Lassi, Coffee Powder, Bread)->273
+HashSet(Sugar, Sweet, Ghee, Panner, Coffee Powder)->243
+HashSet(Sugar, Sweet, Yougurt, Lassi, Cheese)->264
+HashSet(Tea Powder, Ghee, Milk, Lassi, Coffee Powder)->269
+HashSet(Sugar, Lassi, Coffee Powder, Cheese, Bread)->261
+HashSet(Sugar, Butter, Tea Powder, Milk, Panner)->233
+HashSet(Sugar, Butter, Yougurt, Milk, Lassi)->282
+HashSet(Sugar, Yougurt, Panner, Coffee Powder, Cheese)->266
+HashSet(Tea Powder, Yougurt, Lassi, Coffee Powder, Bread)->249
+HashSet(Butter, Lassi, Cheese, Milk, Panner)->261
+HashSet(Sugar, Butter, Sweet, Yougurt, Lassi)->295
+HashSet(Sweet, Tea Powder, Yougurt, Milk, Cheese)->242
+HashSet(Butter, Ghee, Yougurt, Panner, Coffee Powder)->293
+HashSet(Sugar, Sweet, Ghee, Cheese, Bread)->246
+HashSet(Sweet, Ghee, Yougurt, Panner, Coffee Powder)->268
+HashSet(Butter, Sweet, Ghee, Yougurt, Lassi)->266
+HashSet(Sugar, Tea Powder, Yougurt, Lassi, Coffee Powder)->262
+HashSet(Sugar, Sweet, Ghee, Yougurt, Lassi)->264
+HashSet(Sweet, Tea Powder, Coffee Powder, Cheese, Bread)->233
+HashSet(Tea Powder, Yougurt, Lassi, Cheese, Bread)->256
+HashSet(Sweet, Tea Powder, Lassi, Cheese, Bread)->248
+HashSet(Sugar, Tea Powder, Milk, Lassi, Bread)->262
+HashSet(Butter, Sweet, Tea Powder, Milk, Bread)->246
+HashSet(Tea Powder, Yougurt, Milk, Lassi, Cheese)->227
+HashSet(Ghee, Coffee Powder, Bread, Milk, Panner)->265
+HashSet(Sugar, Butter, Ghee, Cheese, Bread)->244
+HashSet(Sugar, Butter, Ghee, Yougurt, Lassi)->282
+HashSet(Sugar, Ghee, Lassi, Milk, Panner)->280
+HashSet(Tea Powder, Ghee, Panner, Lassi, Bread)->281
+HashSet(Sugar, Coffee Powder, Bread, Milk, Panner)->284
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Cheese)->230
+HashSet(Sweet, Ghee, Yougurt, Lassi, Coffee Powder)->270
+HashSet(Butter, Sweet, Ghee, Milk, Bread)->265
+HashSet(Butter, Sweet, Ghee, Milk, Lassi)->279
+HashSet(Sugar, Butter, Yougurt, Panner, Coffee Powder)->289
+HashSet(Sugar, Butter, Tea Powder, Ghee, Panner)->258
+HashSet(Sugar, Butter, Yougurt, Coffee Powder, Bread)->276
+HashSet(Tea Powder, Panner, Lassi, Coffee Powder, Cheese)->247
+HashSet(Sugar, Tea Powder, Yougurt, Milk, Coffee Powder)->282
+HashSet(Butter, Ghee, Lassi, Milk, Panner)->269
+HashSet(Sugar, Ghee, Yougurt, Panner, Coffee Powder)->264
+HashSet(Sugar, Butter, Milk, Lassi, Bread)->278
+HashSet(Butter, Ghee, Yougurt, Lassi, Bread)->245
+HashSet(Tea Powder, Lassi, Coffee Powder, Cheese, Bread)->242
+HashSet(Sugar, Tea Powder, Yougurt, Panner, Lassi)->253
+HashSet(Sweet, Ghee, Yougurt, Lassi, Bread)->254
+HashSet(Sugar, Milk, Coffee Powder, Cheese, Bread)->284
+HashSet(Butter, Tea Powder, Cheese, Milk, Panner)->220
+HashSet(Sugar, Tea Powder, Lassi, Coffee Powder, Cheese)->245
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt)->259
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Bread)->222
+HashSet(Sweet, Yougurt, Lassi, Coffee Powder, Bread)->268
+HashSet(Sweet, Tea Powder, Yougurt, Milk, Bread)->267
+HashSet(Sugar, Butter, Yougurt, Milk, Panner)->270
+HashSet(Ghee, Yougurt, Coffee Powder, Milk, Panner)->266
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Lassi)->253
+HashSet(Yougurt, Milk, Lassi, Coffee Powder, Cheese)->272
+HashSet(Butter, Sweet, Yougurt, Milk, Cheese)->246
+HashSet(Butter, Yougurt, Panner, Lassi, Bread)->240
+HashSet(Butter, Sweet, Yougurt, Coffee Powder, Bread)->257
+HashSet(Sugar, Yougurt, Bread, Milk, Panner)->266
+HashSet(Sweet, Panner, Lassi, Coffee Powder, Cheese)->273
+HashSet(Sugar, Yougurt, Panner, Lassi, Coffee Powder)->290
+HashSet(Butter, Sweet, Cheese, Milk, Panner)->252
+HashSet(Sugar, Tea Powder, Milk, Lassi, Cheese)->247
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Bread)->257
+HashSet(Sugar, Butter, Sweet, Yougurt, Coffee Powder)->298
+HashSet(Butter, Tea Powder, Yougurt, Lassi, Cheese)->224
+HashSet(Butter, Lassi, Coffee Powder, Milk, Panner)->264
+HashSet(Sugar, Ghee, Milk, Coffee Powder, Bread)->261
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Coffee Powder)->251
+HashSet(Sugar, Butter, Sweet, Ghee, Lassi)->281
+HashSet(Yougurt, Lassi, Coffee Powder, Cheese, Bread)->268
+HashSet(Panner, Lassi, Coffee Powder, Cheese, Bread)->292
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Milk)->257
+HashSet(Sugar, Sweet, Yougurt, Panner, Cheese)->270
+HashSet(Tea Powder, Yougurt, Coffee Powder, Milk, Panner)->247
+HashSet(Sweet, Ghee, Coffee Powder, Cheese, Bread)->267
+HashSet(Sugar, Lassi, Coffee Powder, Milk, Panner)->289
+HashSet(Sugar, Yougurt, Lassi, Cheese, Bread)->268
+HashSet(Sugar, Butter, Sweet, Panner, Bread)->268
+HashSet(Butter, Tea Powder, Yougurt, Panner, Cheese)->254
+HashSet(Butter, Tea Powder, Panner, Coffee Powder, Cheese)->232
+HashSet(Ghee, Lassi, Cheese, Milk, Panner)->271
+HashSet(Butter, Yougurt, Milk, Lassi, Bread)->262
+HashSet(Butter, Sweet, Coffee Powder, Milk, Panner)->247
+HashSet(Sugar, Sweet, Cheese, Milk, Panner)->263
+HashSet(Butter, Sweet, Panner, Cheese, Bread)->257
+HashSet(Sugar, Butter, Sweet, Lassi, Cheese)->278
+HashSet(Yougurt, Cheese, Bread, Milk, Panner)->285
+HashSet(Butter, Tea Powder, Ghee, Cheese, Bread)->253
+HashSet(Ghee, Yougurt, Lassi, Coffee Powder, Bread)->269
+HashSet(Sugar, Butter, Tea Powder, Lassi, Cheese)->231
+HashSet(Sweet, Tea Powder, Milk, Coffee Powder, Bread)->256
+HashSet(Butter, Tea Powder, Panner, Lassi, Coffee Powder)->243
+HashSet(Lassi, Cheese, Bread, Milk, Panner)->275
+HashSet(Sugar, Butter, Milk, Coffee Powder, Cheese)->277
+HashSet(Sweet, Ghee, Yougurt, Panner, Cheese)->277
+HashSet(Ghee, Yougurt, Lassi, Cheese, Milk, Panner)->123
+HashSet(Sweet, Ghee, Milk, Lassi, Coffee Powder, Bread)->129
+HashSet(Sugar, Tea Powder, Ghee, Lassi, Coffee Powder, Bread)->136
+HashSet(Butter, Sweet, Tea Powder, Ghee, Coffee Powder, Cheese)->92
+HashSet(Sugar, Ghee, Yougurt, Panner, Coffee Powder, Cheese)->120
+HashSet(Butter, Ghee, Yougurt, Milk, Cheese, Bread)->121
+HashSet(Butter, Sweet, Ghee, Lassi, Cheese, Bread)->94
+HashSet(Butter, Sweet, Lassi, Coffee Powder, Cheese, Bread)->105
+HashSet(Butter, Sweet, Tea Powder, Milk, Lassi, Cheese)->108
+HashSet(Sugar, Tea Powder, Ghee, Coffee Powder, Milk, Panner)->117
+HashSet(Sugar, Tea Powder, Lassi, Coffee Powder, Cheese, Bread)->103
+HashSet(Sweet, Tea Powder, Yougurt, Milk, Lassi, Coffee Powder)->116
+HashSet(Sugar, Sweet, Ghee, Panner, Lassi, Bread)->141
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Lassi)->106
+HashSet(Tea Powder, Ghee, Yougurt, Panner, Coffee Powder, Bread)->118
+HashSet(Sugar, Butter, Sweet, Milk, Coffee Powder, Bread)->133
+HashSet(Butter, Sweet, Yougurt, Milk, Cheese, Bread)->107
+HashSet(Sugar, Sweet, Tea Powder, Milk, Coffee Powder, Bread)->128
+HashSet(Sweet, Tea Powder, Cheese, Bread, Milk, Panner)->118
+HashSet(Sugar, Tea Powder, Milk, Lassi, Cheese, Bread)->101
+HashSet(Sugar, Butter, Ghee, Panner, Lassi, Bread)->134
+HashSet(Sugar, Butter, Sweet, Tea Powder, Coffee Powder, Bread)->132
+HashSet(Butter, Sweet, Ghee, Coffee Powder, Milk, Panner)->103
+HashSet(Butter, Tea Powder, Panner, Coffee Powder, Cheese, Bread)->111
+HashSet(Tea Powder, Ghee, Yougurt, Panner, Lassi, Cheese)->111
+HashSet(Sugar, Butter, Lassi, Cheese, Milk, Panner)->123
+HashSet(Tea Powder, Ghee, Yougurt, Lassi, Coffee Powder, Cheese)->113
+HashSet(Sugar, Tea Powder, Ghee, Milk, Coffee Powder, Cheese)->102
+HashSet(Sugar, Ghee, Milk, Lassi, Cheese, Bread)->129
+HashSet(Sugar, Butter, Ghee, Yougurt, Lassi, Coffee Powder)->132
+HashSet(Sugar, Butter, Sweet, Yougurt, Milk, Lassi)->133
+HashSet(Sugar, Sweet, Ghee, Milk, Coffee Powder, Cheese)->102
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Cheese, Bread)->116
+HashSet(Sugar, Butter, Sweet, Milk, Coffee Powder, Cheese)->125
+HashSet(Sugar, Butter, Tea Powder, Ghee, Panner, Cheese)->105
+HashSet(Butter, Ghee, Panner, Lassi, Coffee Powder, Bread)->131
+HashSet(Sugar, Sweet, Tea Powder, Panner, Lassi, Coffee Powder)->147
+HashSet(Sugar, Butter, Sweet, Ghee, Panner, Cheese)->99
+HashSet(Sugar, Sweet, Ghee, Milk, Coffee Powder, Bread)->118
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Coffee Powder, Bread)->116
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Cheese)->104
+HashSet(Butter, Sweet, Ghee, Milk, Lassi, Cheese)->103
+HashSet(Sweet, Ghee, Yougurt, Panner, Lassi, Coffee Powder)->136
+HashSet(Butter, Sweet, Tea Powder, Ghee, Lassi, Coffee Powder)->113
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Panner, Lassi)->124
+HashSet(Tea Powder, Ghee, Coffee Powder, Bread, Milk, Panner)->115
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Lassi, Cheese)->103
+HashSet(Sugar, Sweet, Ghee, Yougurt, Panner, Lassi)->123
+HashSet(Sugar, Sweet, Yougurt, Milk, Lassi, Bread)->123
+HashSet(Butter, Tea Powder, Milk, Lassi, Coffee Powder, Bread)->115
+HashSet(Sugar, Ghee, Coffee Powder, Cheese, Milk, Panner)->114
+HashSet(Sugar, Butter, Sweet, Bread, Milk, Panner)->119
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Cheese)->112
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Coffee Powder, Cheese)->103
+HashSet(Tea Powder, Yougurt, Milk, Lassi, Cheese, Bread)->110
+HashSet(Butter, Sweet, Tea Powder, Ghee, Cheese, Bread)->93
+HashSet(Butter, Yougurt, Lassi, Bread, Milk, Panner)->114
+HashSet(Sugar, Sweet, Yougurt, Milk, Lassi, Coffee Powder)->126
+HashSet(Sweet, Tea Powder, Lassi, Coffee Powder, Milk, Panner)->134
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Bread)->103
+HashSet(Ghee, Milk, Lassi, Coffee Powder, Cheese, Bread)->134
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Milk, Cheese)->107
+HashSet(Sugar, Butter, Ghee, Cheese, Milk, Panner)->110
+HashSet(Sweet, Tea Powder, Yougurt, Bread, Milk, Panner)->118
+HashSet(Butter, Sweet, Ghee, Panner, Coffee Powder, Cheese)->104
+HashSet(Sweet, Tea Powder, Lassi, Cheese, Milk, Panner)->113
+HashSet(Yougurt, Lassi, Cheese, Bread, Milk, Panner)->134
+HashSet(Sugar, Ghee, Cheese, Bread, Milk, Panner)->119
+HashSet(Butter, Sweet, Yougurt, Coffee Powder, Milk, Panner)->124
+HashSet(Butter, Tea Powder, Cheese, Bread, Milk, Panner)->104
+HashSet(Butter, Ghee, Yougurt, Panner, Coffee Powder, Bread)->123
+HashSet(Butter, Sweet, Tea Powder, Panner, Cheese, Bread)->110
+HashSet(Sugar, Butter, Yougurt, Cheese, Milk, Panner)->118
+HashSet(Butter, Sweet, Ghee, Yougurt, Milk, Coffee Powder)->125
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Panner)->105
+HashSet(Tea Powder, Yougurt, Milk, Lassi, Coffee Powder, Bread)->114
+HashSet(Tea Powder, Yougurt, Panner, Lassi, Coffee Powder, Cheese)->121
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Panner, Bread)->118
+HashSet(Sweet, Yougurt, Panner, Lassi, Cheese, Bread)->137
+HashSet(Butter, Sweet, Ghee, Yougurt, Lassi, Bread)->103
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Coffee Powder, Cheese)->110
+HashSet(Sugar, Sweet, Ghee, Coffee Powder, Cheese, Bread)->105
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Panner, Lassi)->131
+HashSet(Sugar, Tea Powder, Panner, Lassi, Coffee Powder, Bread)->132
+HashSet(Sweet, Panner, Lassi, Coffee Powder, Cheese, Bread)->133
+HashSet(Sweet, Yougurt, Lassi, Coffee Powder, Milk, Panner)->142
+HashSet(Sugar, Butter, Sweet, Yougurt, Lassi, Coffee Powder)->137
+HashSet(Butter, Yougurt, Panner, Coffee Powder, Cheese, Bread)->117
+HashSet(Butter, Sweet, Ghee, Yougurt, Milk, Bread)->109
+HashSet(Sweet, Tea Powder, Yougurt, Milk, Lassi, Cheese)->106
+HashSet(Sugar, Butter, Ghee, Yougurt, Coffee Powder, Bread)->130
+HashSet(Sugar, Butter, Ghee, Coffee Powder, Cheese, Bread)->109
+HashSet(Butter, Ghee, Yougurt, Milk, Lassi, Cheese)->110
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Coffee Powder)->136
+HashSet(Butter, Tea Powder, Lassi, Bread, Milk, Panner)->112
+HashSet(Sweet, Yougurt, Milk, Lassi, Coffee Powder, Cheese)->118
+HashSet(Butter, Ghee, Yougurt, Milk, Coffee Powder, Bread)->121
+HashSet(Yougurt, Coffee Powder, Cheese, Bread, Milk, Panner)->128
+HashSet(Butter, Tea Powder, Ghee, Milk, Coffee Powder, Cheese)->113
+HashSet(Tea Powder, Milk, Lassi, Coffee Powder, Cheese, Bread)->102
+HashSet(Sweet, Tea Powder, Yougurt, Cheese, Milk, Panner)->109
+HashSet(Sugar, Butter, Tea Powder, Ghee, Lassi, Bread)->118
+HashSet(Sugar, Butter, Sweet, Tea Powder, Milk, Panner)->116
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Coffee Powder, Cheese)->114
+HashSet(Sugar, Ghee, Yougurt, Cheese, Milk, Panner)->120
+HashSet(Butter, Yougurt, Lassi, Coffee Powder, Cheese, Bread)->114
+HashSet(Sweet, Yougurt, Panner, Lassi, Coffee Powder, Cheese)->133
+HashSet(Sugar, Butter, Tea Powder, Lassi, Coffee Powder, Bread)->121
+HashSet(Sugar, Sweet, Ghee, Yougurt, Coffee Powder, Bread)->118
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Panner, Cheese)->115
+HashSet(Tea Powder, Yougurt, Lassi, Coffee Powder, Cheese, Bread)->111
+HashSet(Sugar, Sweet, Ghee, Milk, Lassi, Cheese)->108
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Cheese, Bread)->107
+HashSet(Butter, Yougurt, Panner, Lassi, Cheese, Bread)->109
+HashSet(Butter, Tea Powder, Coffee Powder, Cheese, Milk, Panner)->94
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Panner, Bread)->129
+HashSet(Sugar, Butter, Sweet, Ghee, Milk, Coffee Powder)->125
+HashSet(Tea Powder, Ghee, Yougurt, Milk, Lassi, Cheese)->96
+HashSet(Butter, Tea Powder, Ghee, Lassi, Coffee Powder, Bread)->119
+HashSet(Sweet, Tea Powder, Ghee, Milk, Lassi, Bread)->136
+HashSet(Sugar, Butter, Tea Powder, Ghee, Milk, Lassi)->138
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Milk, Bread)->110
+HashSet(Sugar, Sweet, Ghee, Bread, Milk, Panner)->122
+HashSet(Butter, Sweet, Tea Powder, Coffee Powder, Cheese, Bread)->91
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Lassi, Bread)->109
+HashSet(Butter, Tea Powder, Yougurt, Lassi, Cheese, Bread)->99
+HashSet(Sugar, Tea Powder, Yougurt, Lassi, Cheese, Bread)->114
+HashSet(Sweet, Tea Powder, Yougurt, Milk, Coffee Powder, Bread)->126
+HashSet(Sugar, Sweet, Milk, Lassi, Cheese, Bread)->118
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Panner, Cheese)->108
+HashSet(Sugar, Butter, Sweet, Ghee, Panner, Lassi)->129
+HashSet(Sweet, Tea Powder, Ghee, Lassi, Milk, Panner)->137
+HashSet(Butter, Tea Powder, Ghee, Panner, Lassi, Cheese)->110
+HashSet(Tea Powder, Ghee, Yougurt, Coffee Powder, Cheese, Bread)->124
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Panner, Cheese)->118
+HashSet(Ghee, Yougurt, Cheese, Bread, Milk, Panner)->125
+HashSet(Butter, Yougurt, Milk, Coffee Powder, Cheese, Bread)->127
+HashSet(Butter, Tea Powder, Yougurt, Coffee Powder, Cheese, Bread)->115
+HashSet(Sugar, Tea Powder, Coffee Powder, Cheese, Milk, Panner)->118
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Milk, Cheese)->114
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Milk, Cheese)->125
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Coffee Powder, Bread)->118
+HashSet(Sugar, Ghee, Yougurt, Milk, Lassi, Bread)->129
+HashSet(Sugar, Butter, Tea Powder, Milk, Lassi, Cheese)->112
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Milk, Panner)->119
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Panner, Bread)->123
+HashSet(Butter, Tea Powder, Panner, Lassi, Cheese, Bread)->101
+HashSet(Sweet, Yougurt, Coffee Powder, Bread, Milk, Panner)->129
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Lassi, Coffee Powder)->114
+HashSet(Sugar, Butter, Sweet, Lassi, Coffee Powder, Cheese)->118
+HashSet(Sugar, Sweet, Ghee, Yougurt, Coffee Powder, Cheese)->106
+HashSet(Butter, Ghee, Yougurt, Coffee Powder, Cheese, Bread)->119
+HashSet(Sugar, Butter, Ghee, Milk, Lassi, Bread)->135
+HashSet(Sugar, Butter, Sweet, Ghee, Milk, Cheese)->103
+HashSet(Sweet, Tea Powder, Yougurt, Panner, Lassi, Bread)->122
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Milk, Cheese)->103
+HashSet(Sugar, Ghee, Yougurt, Panner, Lassi, Bread)->129
+HashSet(Butter, Ghee, Lassi, Cheese, Milk, Panner)->123
+HashSet(Butter, Sweet, Ghee, Bread, Milk, Panner)->115
+HashSet(Sugar, Butter, Sweet, Ghee, Cheese, Bread)->92
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Coffee Powder)->104
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Coffee Powder, Cheese)->96
+HashSet(Butter, Sweet, Tea Powder, Coffee Powder, Milk, Panner)->109
+HashSet(Tea Powder, Ghee, Yougurt, Panner, Lassi, Coffee Powder)->126
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Coffee Powder, Bread)->132
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Panner, Cheese)->97
+HashSet(Sugar, Yougurt, Lassi, Bread, Milk, Panner)->123
+HashSet(Sugar, Sweet, Ghee, Lassi, Coffee Powder, Bread)->126
+HashSet(Butter, Tea Powder, Lassi, Coffee Powder, Milk, Panner)->105
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Milk, Bread)->124
+HashSet(Sugar, Ghee, Milk, Lassi, Coffee Powder, Cheese)->121
+HashSet(Tea Powder, Yougurt, Panner, Lassi, Coffee Powder, Bread)->120
+HashSet(Butter, Lassi, Coffee Powder, Bread, Milk, Panner)->126
+HashSet(Sugar, Butter, Sweet, Tea Powder, Coffee Powder, Cheese)->119
+HashSet(Sweet, Tea Powder, Ghee, Milk, Cheese, Bread)->101
+HashSet(Butter, Sweet, Tea Powder, Ghee, Milk, Lassi)->134
+HashSet(Sugar, Sweet, Lassi, Coffee Powder, Cheese, Bread)->111
+HashSet(Butter, Sweet, Tea Powder, Cheese, Milk, Panner)->100
+HashSet(Butter, Sweet, Tea Powder, Panner, Lassi, Coffee Powder)->116
+HashSet(Sugar, Butter, Lassi, Coffee Powder, Cheese, Bread)->122
+HashSet(Tea Powder, Ghee, Yougurt, Milk, Cheese, Bread)->109
+HashSet(Sugar, Butter, Milk, Lassi, Coffee Powder, Bread)->134
+HashSet(Butter, Sweet, Tea Powder, Lassi, Milk, Panner)->128
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Panner)->114
+HashSet(Sugar, Butter, Sweet, Yougurt, Milk, Cheese)->108
+HashSet(Sugar, Butter, Sweet, Tea Powder, Panner, Coffee Powder)->124
+HashSet(Butter, Sweet, Ghee, Lassi, Coffee Powder, Bread)->111
+HashSet(Sugar, Butter, Lassi, Coffee Powder, Milk, Panner)->138
+HashSet(Butter, Ghee, Yougurt, Cheese, Milk, Panner)->127
+HashSet(Sugar, Butter, Panner, Lassi, Coffee Powder, Bread)->137
+HashSet(Butter, Sweet, Ghee, Milk, Cheese, Bread)->108
+HashSet(Sugar, Tea Powder, Lassi, Coffee Powder, Milk, Panner)->132
+HashSet(Sugar, Butter, Sweet, Cheese, Milk, Panner)->118
+HashSet(Butter, Milk, Lassi, Coffee Powder, Cheese, Bread)->129
+HashSet(Sweet, Coffee Powder, Cheese, Bread, Milk, Panner)->117
+HashSet(Sugar, Sweet, Ghee, Panner, Cheese, Bread)->118
+HashSet(Butter, Tea Powder, Ghee, Panner, Coffee Powder, Cheese)->116
+HashSet(Butter, Sweet, Yougurt, Lassi, Coffee Powder, Cheese)->118
+HashSet(Butter, Ghee, Yougurt, Lassi, Cheese, Bread)->103
+HashSet(Sugar, Butter, Sweet, Panner, Lassi, Coffee Powder)->130
+HashSet(Sugar, Sweet, Milk, Lassi, Coffee Powder, Cheese)->119
+HashSet(Butter, Ghee, Coffee Powder, Bread, Milk, Panner)->111
+HashSet(Sugar, Butter, Sweet, Tea Powder, Milk, Cheese)->117
+HashSet(Sweet, Tea Powder, Ghee, Lassi, Coffee Powder, Cheese)->104
+HashSet(Tea Powder, Ghee, Lassi, Coffee Powder, Cheese, Bread)->117
+HashSet(Sweet, Ghee, Yougurt, Panner, Cheese, Bread)->122
+HashSet(Sweet, Tea Powder, Yougurt, Panner, Lassi, Cheese)->131
+HashSet(Ghee, Yougurt, Panner, Lassi, Coffee Powder, Bread)->131
+HashSet(Butter, Sweet, Ghee, Panner, Cheese, Bread)->93
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Coffee Powder, Bread)->133
+HashSet(Butter, Sweet, Ghee, Panner, Lassi, Cheese)->116
+HashSet(Sugar, Ghee, Yougurt, Lassi, Coffee Powder, Cheese)->124
+HashSet(Butter, Sweet, Milk, Lassi, Cheese, Bread)->111
+HashSet(Butter, Sweet, Tea Powder, Milk, Lassi, Coffee Powder)->121
+HashSet(Tea Powder, Ghee, Yougurt, Milk, Lassi, Bread)->113
+HashSet(Sugar, Sweet, Ghee, Milk, Lassi, Coffee Powder)->123
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Lassi, Bread)->108
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Coffee Powder, Cheese)->128
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Coffee Powder)->120
+HashSet(Sugar, Tea Powder, Ghee, Bread, Milk, Panner)->122
+HashSet(Sugar, Butter, Ghee, Coffee Powder, Milk, Panner)->120
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Milk, Lassi)->115
+HashSet(Tea Powder, Yougurt, Lassi, Coffee Powder, Milk, Panner)->115
+HashSet(Sugar, Sweet, Ghee, Panner, Lassi, Coffee Powder)->121
+HashSet(Sugar, Sweet, Yougurt, Bread, Milk, Panner)->126
+HashSet(Butter, Ghee, Milk, Lassi, Coffee Powder, Bread)->123
+HashSet(Sugar, Butter, Sweet, Ghee, Milk, Panner)->120
+HashSet(Sugar, Butter, Tea Powder, Milk, Coffee Powder, Bread)->128
+HashSet(Tea Powder, Ghee, Milk, Lassi, Cheese, Bread)->105
+HashSet(Sugar, Butter, Sweet, Panner, Lassi, Cheese)->138
+HashSet(Sugar, Sweet, Panner, Lassi, Coffee Powder, Bread)->137
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Panner, Coffee Powder)->116
+HashSet(Sweet, Ghee, Yougurt, Panner, Lassi, Bread)->122
+HashSet(Butter, Tea Powder, Panner, Lassi, Coffee Powder, Bread)->119
+HashSet(Sugar, Tea Powder, Panner, Coffee Powder, Cheese, Bread)->121
+HashSet(Sugar, Ghee, Yougurt, Coffee Powder, Milk, Panner)->121
+HashSet(Sweet, Tea Powder, Yougurt, Milk, Lassi, Bread)->117
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Milk, Lassi)->114
+HashSet(Butter, Sweet, Ghee, Yougurt, Lassi, Coffee Powder)->126
+HashSet(Sugar, Butter, Sweet, Tea Powder, Lassi, Coffee Powder)->137
+HashSet(Butter, Sweet, Tea Powder, Ghee, Milk, Coffee Powder)->115
+HashSet(Sugar, Butter, Sweet, Lassi, Milk, Panner)->146
+HashSet(Sugar, Sweet, Yougurt, Milk, Coffee Powder, Bread)->124
+HashSet(Sugar, Butter, Sweet, Lassi, Coffee Powder, Bread)->127
+HashSet(Sugar, Sweet, Lassi, Bread, Milk, Panner)->138
+HashSet(Butter, Ghee, Yougurt, Panner, Lassi, Coffee Powder)->142
+HashSet(Butter, Sweet, Ghee, Panner, Lassi, Coffee Powder)->120
+HashSet(Sweet, Ghee, Panner, Coffee Powder, Cheese, Bread)->124
+HashSet(Butter, Sweet, Tea Powder, Ghee, Panner, Lassi)->130
+HashSet(Sugar, Tea Powder, Yougurt, Milk, Coffee Powder, Bread)->135
+HashSet(Sugar, Butter, Ghee, Milk, Coffee Powder, Cheese)->117
+HashSet(Sugar, Sweet, Yougurt, Lassi, Coffee Powder, Cheese)->114
+HashSet(Butter, Sweet, Panner, Coffee Powder, Cheese, Bread)->105
+HashSet(Yougurt, Panner, Lassi, Coffee Powder, Cheese, Bread)->133
+HashSet(Butter, Sweet, Tea Powder, Bread, Milk, Panner)->106
+HashSet(Butter, Sweet, Ghee, Yougurt, Cheese, Bread)->96
+HashSet(Sugar, Butter, Yougurt, Panner, Coffee Powder, Bread)->125
+HashSet(Sugar, Butter, Sweet, Tea Powder, Cheese, Bread)->103
+HashSet(Sweet, Tea Powder, Ghee, Milk, Coffee Powder, Bread)->115
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Panner, Bread)->122
+HashSet(Sweet, Ghee, Coffee Powder, Cheese, Milk, Panner)->115
+HashSet(Tea Powder, Ghee, Yougurt, Cheese, Milk, Panner)->106
+HashSet(Sugar, Tea Powder, Yougurt, Panner, Lassi, Cheese)->113
+HashSet(Sugar, Butter, Sweet, Ghee, Coffee Powder, Bread)->117
+HashSet(Sweet, Yougurt, Panner, Coffee Powder, Cheese, Bread)->129
+HashSet(Sugar, Butter, Sweet, Tea Powder, Lassi, Bread)->122
+HashSet(Sugar, Sweet, Milk, Lassi, Coffee Powder, Bread)->122
+HashSet(Sugar, Ghee, Yougurt, Panner, Cheese, Bread)->128
+HashSet(Yougurt, Lassi, Coffee Powder, Bread, Milk, Panner)->128
+HashSet(Sugar, Butter, Tea Powder, Lassi, Milk, Panner)->111
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Bread)->124
+HashSet(Sugar, Ghee, Lassi, Coffee Powder, Cheese, Bread)->126
+HashSet(Sweet, Tea Powder, Yougurt, Milk, Coffee Powder, Cheese)->112
+HashSet(Sugar, Yougurt, Milk, Lassi, Coffee Powder, Cheese)->127
+HashSet(Sugar, Butter, Tea Powder, Ghee, Milk, Coffee Powder)->125
+HashSet(Butter, Sweet, Lassi, Cheese, Milk, Panner)->127
+HashSet(Sugar, Tea Powder, Yougurt, Panner, Lassi, Coffee Powder)->126
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Coffee Powder, Cheese)->110
+HashSet(Sugar, Butter, Yougurt, Milk, Lassi, Coffee Powder)->139
+HashSet(Sweet, Ghee, Panner, Lassi, Coffee Powder, Cheese)->122
+HashSet(Butter, Tea Powder, Ghee, Milk, Lassi, Bread)->118
+HashSet(Butter, Tea Powder, Milk, Lassi, Cheese, Bread)->96
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Milk, Panner)->109
+HashSet(Butter, Yougurt, Milk, Lassi, Coffee Powder, Cheese)->125
+HashSet(Sugar, Butter, Tea Powder, Lassi, Coffee Powder, Cheese)->102
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Panner)->108
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Milk, Bread)->113
+HashSet(Sugar, Panner, Lassi, Coffee Powder, Cheese, Bread)->136
+HashSet(Sugar, Butter, Ghee, Milk, Cheese, Bread)->120
+HashSet(Sweet, Tea Powder, Yougurt, Panner, Cheese, Bread)->117
+HashSet(Sugar, Ghee, Milk, Coffee Powder, Cheese, Bread)->117
+HashSet(Sugar, Butter, Ghee, Lassi, Cheese, Bread)->116
+HashSet(Sugar, Butter, Sweet, Tea Powder, Milk, Coffee Powder)->148
+HashSet(Sugar, Butter, Sweet, Yougurt, Panner, Coffee Powder)->132
+HashSet(Sweet, Tea Powder, Milk, Coffee Powder, Cheese, Bread)->97
+HashSet(Sweet, Tea Powder, Panner, Lassi, Coffee Powder, Cheese)->126
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Milk, Cheese)->119
+HashSet(Sugar, Butter, Ghee, Yougurt, Milk, Coffee Powder)->134
+HashSet(Sweet, Tea Powder, Yougurt, Lassi, Coffee Powder, Cheese)->111
+HashSet(Butter, Sweet, Milk, Lassi, Coffee Powder, Cheese)->120
+HashSet(Sugar, Butter, Tea Powder, Ghee, Milk, Cheese)->118
+HashSet(Butter, Sweet, Tea Powder, Milk, Lassi, Bread)->112
+HashSet(Butter, Sweet, Ghee, Yougurt, Coffee Powder, Bread)->103
+HashSet(Sugar, Sweet, Yougurt, Milk, Cheese, Bread)->123
+HashSet(Tea Powder, Yougurt, Milk, Coffee Powder, Cheese, Bread)->119
+HashSet(Sugar, Butter, Yougurt, Panner, Lassi, Bread)->120
+HashSet(Sweet, Ghee, Yougurt, Milk, Cheese, Bread)->120
+HashSet(Sugar, Butter, Sweet, Ghee, Milk, Bread)->123
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Coffee Powder)->104
+HashSet(Butter, Ghee, Lassi, Bread, Milk, Panner)->124
+HashSet(Sweet, Ghee, Milk, Lassi, Cheese, Bread)->121
+HashSet(Sugar, Butter, Sweet, Tea Powder, Panner, Cheese)->118
+HashSet(Sugar, Butter, Sweet, Panner, Lassi, Bread)->139
+HashSet(Butter, Yougurt, Milk, Lassi, Coffee Powder, Bread)->128
+HashSet(Butter, Tea Powder, Yougurt, Panner, Coffee Powder, Bread)->124
+HashSet(Sugar, Butter, Sweet, Ghee, Panner, Bread)->120
+HashSet(Sugar, Sweet, Panner, Coffee Powder, Cheese, Bread)->117
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Lassi, Cheese)->110
+HashSet(Lassi, Coffee Powder, Cheese, Bread, Milk, Panner)->132
+HashSet(Butter, Sweet, Tea Powder, Panner, Lassi, Bread)->122
+HashSet(Sugar, Butter, Sweet, Yougurt, Lassi, Bread)->128
+HashSet(Sugar, Butter, Tea Powder, Milk, Coffee Powder, Cheese)->116
+HashSet(Sugar, Tea Powder, Yougurt, Milk, Cheese, Bread)->121
+HashSet(Sweet, Tea Powder, Ghee, Coffee Powder, Cheese, Bread)->96
+HashSet(Tea Powder, Ghee, Milk, Coffee Powder, Cheese, Bread)->108
+HashSet(Sugar, Butter, Yougurt, Coffee Powder, Milk, Panner)->130
+HashSet(Butter, Yougurt, Panner, Lassi, Coffee Powder, Bread)->120
+HashSet(Sugar, Tea Powder, Ghee, Milk, Cheese, Bread)->109
+HashSet(Sugar, Butter, Ghee, Yougurt, Cheese, Bread)->123
+HashSet(Sugar, Butter, Yougurt, Bread, Milk, Panner)->116
+HashSet(Tea Powder, Yougurt, Coffee Powder, Cheese, Milk, Panner)->108
+HashSet(Sugar, Sweet, Tea Powder, Panner, Coffee Powder, Cheese)->114
+HashSet(Sugar, Butter, Tea Powder, Coffee Powder, Cheese, Bread)->107
+HashSet(Sugar, Milk, Lassi, Coffee Powder, Cheese, Bread)->124
+HashSet(Butter, Sweet, Yougurt, Panner, Lassi, Cheese)->136
+HashSet(Sugar, Tea Powder, Yougurt, Coffee Powder, Milk, Panner)->123
+HashSet(Butter, Tea Powder, Yougurt, Panner, Cheese, Bread)->115
+HashSet(Sweet, Tea Powder, Panner, Lassi, Cheese, Bread)->127
+HashSet(Butter, Sweet, Yougurt, Milk, Coffee Powder, Bread)->125
+HashSet(Sweet, Ghee, Yougurt, Panner, Coffee Powder, Bread)->128
+HashSet(Butter, Sweet, Tea Powder, Ghee, Lassi, Cheese)->98
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Milk, Lassi)->126
+HashSet(Butter, Tea Powder, Ghee, Panner, Coffee Powder, Bread)->118
+HashSet(Butter, Ghee, Yougurt, Panner, Lassi, Cheese)->122
+HashSet(Sugar, Butter, Tea Powder, Milk, Lassi, Coffee Powder)->139
+HashSet(Butter, Sweet, Ghee, Yougurt, Milk, Panner)->122
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Cheese)->102
+HashSet(Yougurt, Milk, Lassi, Coffee Powder, Cheese, Bread)->132
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Panner, Cheese)->109
+HashSet(Butter, Sweet, Ghee, Milk, Coffee Powder, Bread)->108
+HashSet(Sugar, Butter, Tea Powder, Panner, Coffee Powder, Cheese)->111
+HashSet(Sugar, Butter, Tea Powder, Lassi, Cheese, Bread)->100
+HashSet(Tea Powder, Ghee, Yougurt, Panner, Cheese, Bread)->103
+HashSet(Sugar, Butter, Sweet, Yougurt, Panner, Bread)->127
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Panner)->123
+HashSet(Butter, Ghee, Yougurt, Coffee Powder, Milk, Panner)->131
+HashSet(Sweet, Tea Powder, Milk, Lassi, Coffee Powder, Bread)->117
+HashSet(Butter, Sweet, Yougurt, Lassi, Coffee Powder, Bread)->115
+HashSet(Sugar, Butter, Ghee, Milk, Lassi, Cheese)->125
+HashSet(Sugar, Butter, Sweet, Ghee, Lassi, Coffee Powder)->126
+HashSet(Tea Powder, Ghee, Coffee Powder, Cheese, Milk, Panner)->104
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Cheese)->114
+HashSet(Sugar, Butter, Yougurt, Milk, Coffee Powder, Cheese)->134
+HashSet(Butter, Sweet, Ghee, Coffee Powder, Cheese, Bread)->88
+HashSet(Sugar, Sweet, Yougurt, Panner, Lassi, Cheese)->129
+HashSet(Sugar, Tea Powder, Panner, Lassi, Coffee Powder, Cheese)->114
+HashSet(Sweet, Yougurt, Cheese, Bread, Milk, Panner)->135
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Panner, Coffee Powder)->112
+HashSet(Butter, Ghee, Yougurt, Lassi, Coffee Powder, Cheese)->125
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Lassi)->101
+HashSet(Butter, Ghee, Yougurt, Milk, Lassi, Bread)->115
+HashSet(Sugar, Sweet, Yougurt, Coffee Powder, Cheese, Bread)->107
+HashSet(Butter, Tea Powder, Yougurt, Milk, Coffee Powder, Bread)->126
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Coffee Powder, Cheese)->123
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Lassi, Coffee Powder)->113
+HashSet(Sweet, Tea Powder, Ghee, Panner, Coffee Powder, Cheese)->102
+HashSet(Sugar, Butter, Sweet, Milk, Lassi, Coffee Powder)->140
+HashSet(Sugar, Butter, Yougurt, Lassi, Cheese, Bread)->117
+HashSet(Sugar, Butter, Sweet, Panner, Cheese, Bread)->109
+HashSet(Butter, Tea Powder, Ghee, Milk, Coffee Powder, Bread)->117
+HashSet(Butter, Tea Powder, Yougurt, Milk, Cheese, Bread)->111
+HashSet(Sweet, Tea Powder, Yougurt, Coffee Powder, Cheese, Bread)->105
+HashSet(Tea Powder, Yougurt, Lassi, Cheese, Milk, Panner)->110
+HashSet(Butter, Ghee, Yougurt, Bread, Milk, Panner)->120
+HashSet(Sweet, Tea Powder, Yougurt, Panner, Coffee Powder, Cheese)->115
+HashSet(Sweet, Ghee, Panner, Lassi, Cheese, Bread)->121
+HashSet(Tea Powder, Yougurt, Milk, Lassi, Coffee Powder, Cheese)->105
+HashSet(Butter, Ghee, Cheese, Bread, Milk, Panner)->117
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Milk)->120
+HashSet(Sweet, Tea Powder, Ghee, Bread, Milk, Panner)->116
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Lassi)->122
+HashSet(Sugar, Sweet, Tea Powder, Panner, Lassi, Cheese)->118
+HashSet(Sugar, Butter, Ghee, Panner, Cheese, Bread)->119
+HashSet(Sugar, Yougurt, Milk, Lassi, Coffee Powder, Bread)->118
+HashSet(Sugar, Butter, Sweet, Panner, Coffee Powder, Bread)->116
+HashSet(Sweet, Tea Powder, Milk, Lassi, Cheese, Bread)->104
+HashSet(Butter, Tea Powder, Yougurt, Milk, Lassi, Bread)->107
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Coffee Powder, Bread)->101
+HashSet(Sugar, Tea Powder, Ghee, Panner, Cheese, Bread)->116
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Lassi, Bread)->111
+HashSet(Butter, Tea Powder, Yougurt, Panner, Lassi, Cheese)->109
+HashSet(Butter, Sweet, Tea Powder, Lassi, Coffee Powder, Bread)->115
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Milk, Coffee Powder)->127
+HashSet(Sugar, Yougurt, Cheese, Bread, Milk, Panner)->129
+HashSet(Sweet, Ghee, Yougurt, Milk, Coffee Powder, Cheese)->117
+HashSet(Butter, Tea Powder, Ghee, Panner, Lassi, Bread)->126
+HashSet(Butter, Ghee, Lassi, Coffee Powder, Milk, Panner)->125
+HashSet(Sugar, Tea Powder, Yougurt, Panner, Coffee Powder, Cheese)->117
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Cheese, Bread)->97
+HashSet(Tea Powder, Ghee, Milk, Lassi, Coffee Powder, Bread)->127
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Coffee Powder, Bread)->138
+HashSet(Sugar, Butter, Tea Powder, Bread, Milk, Panner)->101
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Bread)->104
+HashSet(Sweet, Tea Powder, Coffee Powder, Bread, Milk, Panner)->119
+HashSet(Butter, Sweet, Yougurt, Lassi, Milk, Panner)->128
+HashSet(Butter, Tea Powder, Ghee, Coffee Powder, Milk, Panner)->114
+HashSet(Sweet, Tea Powder, Ghee, Milk, Coffee Powder, Cheese)->98
+HashSet(Butter, Tea Powder, Ghee, Panner, Cheese, Bread)->113
+HashSet(Sugar, Ghee, Yougurt, Lassi, Cheese, Bread)->133
+HashSet(Ghee, Yougurt, Milk, Lassi, Coffee Powder, Bread)->132
+HashSet(Sugar, Butter, Sweet, Yougurt, Milk, Panner)->125
+HashSet(Sugar, Ghee, Yougurt, Milk, Cheese, Bread)->131
+HashSet(Ghee, Coffee Powder, Cheese, Bread, Milk, Panner)->131
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Coffee Powder)->128
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Cheese, Bread)->121
+HashSet(Sugar, Tea Powder, Yougurt, Lassi, Milk, Panner)->118
+HashSet(Sugar, Butter, Sweet, Ghee, Panner, Coffee Powder)->111
+HashSet(Butter, Tea Powder, Yougurt, Lassi, Milk, Panner)->115
+HashSet(Ghee, Yougurt, Milk, Coffee Powder, Cheese, Bread)->132
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Milk, Coffee Powder)->125
+HashSet(Butter, Ghee, Yougurt, Lassi, Milk, Panner)->125
+HashSet(Butter, Tea Powder, Yougurt, Cheese, Milk, Panner)->107
+HashSet(Tea Powder, Ghee, Yougurt, Lassi, Cheese, Bread)->112
+HashSet(Sugar, Butter, Coffee Powder, Cheese, Milk, Panner)->125
+HashSet(Sugar, Butter, Coffee Powder, Bread, Milk, Panner)->119
+HashSet(Sugar, Butter, Sweet, Lassi, Cheese, Bread)->119
+HashSet(Butter, Sweet, Ghee, Cheese, Milk, Panner)->109
+HashSet(Sugar, Butter, Ghee, Panner, Coffee Powder, Bread)->126
+HashSet(Sugar, Sweet, Yougurt, Panner, Coffee Powder, Cheese)->117
+HashSet(Tea Powder, Ghee, Panner, Coffee Powder, Cheese, Bread)->108
+HashSet(Sweet, Tea Powder, Lassi, Coffee Powder, Cheese, Bread)->105
+HashSet(Sweet, Ghee, Coffee Powder, Bread, Milk, Panner)->118
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Milk, Coffee Powder)->131
+HashSet(Sugar, Butter, Sweet, Panner, Coffee Powder, Cheese)->116
+HashSet(Butter, Ghee, Panner, Coffee Powder, Cheese, Bread)->116
+HashSet(Sweet, Yougurt, Lassi, Coffee Powder, Cheese, Bread)->119
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Lassi, Cheese)->100
+HashSet(Butter, Tea Powder, Yougurt, Coffee Powder, Milk, Panner)->114
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Panner, Lassi)->116
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Milk, Panner)->100
+HashSet(Butter, Sweet, Ghee, Panner, Lassi, Bread)->114
+HashSet(Sugar, Butter, Ghee, Yougurt, Milk, Panner)->137
+HashSet(Butter, Sweet, Tea Powder, Ghee, Panner, Coffee Powder)->108
+HashSet(Sugar, Sweet, Tea Powder, Lassi, Coffee Powder, Bread)->125
+HashSet(Sugar, Butter, Yougurt, Lassi, Coffee Powder, Bread)->120
+HashSet(Sugar, Butter, Yougurt, Coffee Powder, Cheese, Bread)->115
+HashSet(Sugar, Tea Powder, Cheese, Bread, Milk, Panner)->119
+HashSet(Butter, Tea Powder, Ghee, Cheese, Milk, Panner)->106
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Milk, Panner)->109
+HashSet(Butter, Ghee, Milk, Lassi, Coffee Powder, Cheese)->126
+HashSet(Sweet, Ghee, Lassi, Coffee Powder, Milk, Panner)->131
+HashSet(Sugar, Sweet, Tea Powder, Panner, Coffee Powder, Bread)->122
+HashSet(Tea Powder, Lassi, Cheese, Bread, Milk, Panner)->110
+HashSet(Sugar, Butter, Sweet, Yougurt, Milk, Bread)->122
+HashSet(Sugar, Ghee, Lassi, Cheese, Milk, Panner)->122
+HashSet(Butter, Sweet, Yougurt, Panner, Lassi, Bread)->117
+HashSet(Sugar, Sweet, Ghee, Milk, Lassi, Bread)->129
+HashSet(Sugar, Sweet, Tea Powder, Coffee Powder, Cheese, Bread)->99
+HashSet(Sugar, Ghee, Panner, Lassi, Coffee Powder, Bread)->146
+HashSet(Butter, Sweet, Ghee, Yougurt, Milk, Cheese)->110
+HashSet(Sugar, Butter, Sweet, Tea Powder, Milk, Lassi)->137
+HashSet(Butter, Tea Powder, Ghee, Lassi, Coffee Powder, Cheese)->106
+HashSet(Butter, Sweet, Panner, Lassi, Coffee Powder, Bread)->119
+HashSet(Sugar, Tea Powder, Ghee, Lassi, Coffee Powder, Cheese)->106
+HashSet(Sugar, Sweet, Ghee, Coffee Powder, Milk, Panner)->103
+HashSet(Sugar, Sweet, Ghee, Yougurt, Panner, Bread)->121
+HashSet(Sugar, Butter, Sweet, Yougurt, Coffee Powder, Cheese)->123
+HashSet(Sugar, Butter, Yougurt, Milk, Cheese, Bread)->123
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Cheese)->93
+HashSet(Sweet, Lassi, Cheese, Bread, Milk, Panner)->126
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Cheese, Bread)->105
+HashSet(Sugar, Tea Powder, Ghee, Lassi, Milk, Panner)->134
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Lassi)->118
+HashSet(Sugar, Butter, Milk, Coffee Powder, Cheese, Bread)->135
+HashSet(Butter, Sweet, Yougurt, Cheese, Milk, Panner)->122
+HashSet(Butter, Sweet, Ghee, Yougurt, Panner, Bread)->110
+HashSet(Sugar, Yougurt, Panner, Lassi, Coffee Powder, Bread)->126
+HashSet(Sugar, Butter, Sweet, Yougurt, Lassi, Cheese)->125
+HashSet(Sugar, Sweet, Milk, Coffee Powder, Cheese, Bread)->120
+HashSet(Sugar, Butter, Ghee, Milk, Coffee Powder, Bread)->120
+HashSet(Butter, Sweet, Tea Powder, Ghee, Milk, Panner)->109
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Milk, Panner)->122
+HashSet(Sugar, Butter, Sweet, Yougurt, Cheese, Bread)->102
+HashSet(Butter, Sweet, Panner, Lassi, Coffee Powder, Cheese)->120
+HashSet(Sweet, Ghee, Lassi, Cheese, Milk, Panner)->129
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Milk, Bread)->110
+HashSet(Sugar, Tea Powder, Yougurt, Panner, Lassi, Bread)->110
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Milk)->120
+HashSet(Butter, Sweet, Ghee, Panner, Coffee Powder, Bread)->105
+HashSet(Sugar, Sweet, Ghee, Yougurt, Panner, Coffee Powder)->110
+HashSet(Tea Powder, Ghee, Yougurt, Panner, Coffee Powder, Cheese)->115
+HashSet(Butter, Tea Powder, Milk, Lassi, Coffee Powder, Cheese)->112
+HashSet(Sugar, Sweet, Tea Powder, Lassi, Milk, Panner)->142
+HashSet(Sugar, Butter, Ghee, Yougurt, Panner, Coffee Powder)->140
+HashSet(Sugar, Tea Powder, Yougurt, Lassi, Coffee Powder, Cheese)->112
+HashSet(Sugar, Sweet, Panner, Lassi, Coffee Powder, Cheese)->117
+HashSet(Tea Powder, Ghee, Panner, Lassi, Coffee Powder, Bread)->132
+HashSet(Tea Powder, Ghee, Yougurt, Panner, Lassi, Bread)->118
+HashSet(Sugar, Sweet, Ghee, Lassi, Coffee Powder, Cheese)->97
+HashSet(Butter, Sweet, Tea Powder, Ghee, Milk, Cheese)->99
+HashSet(Sugar, Butter, Tea Powder, Ghee, Panner, Lassi)->121
+HashSet(Sugar, Ghee, Coffee Powder, Bread, Milk, Panner)->127
+HashSet(Sweet, Yougurt, Milk, Coffee Powder, Cheese, Bread)->121
+HashSet(Sweet, Lassi, Coffee Powder, Bread, Milk, Panner)->136
+HashSet(Sugar, Butter, Tea Powder, Ghee, Lassi, Cheese)->109
+HashSet(Sugar, Butter, Lassi, Bread, Milk, Panner)->128
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Panner, Lassi)->119
+HashSet(Sugar, Butter, Yougurt, Milk, Lassi, Bread)->124
+HashSet(Sugar, Tea Powder, Ghee, Milk, Lassi, Coffee Powder)->134
+HashSet(Sugar, Lassi, Coffee Powder, Bread, Milk, Panner)->139
+HashSet(Sugar, Ghee, Panner, Lassi, Cheese, Bread)->136
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Milk, Panner)->92
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Milk, Bread)->122
+HashSet(Sugar, Tea Powder, Ghee, Milk, Lassi, Bread)->128
+HashSet(Sugar, Butter, Sweet, Milk, Cheese, Bread)->116
+HashSet(Sugar, Yougurt, Panner, Coffee Powder, Cheese, Bread)->119
+HashSet(Sweet, Tea Powder, Ghee, Panner, Lassi, Coffee Powder)->133
+HashSet(Sweet, Yougurt, Coffee Powder, Cheese, Milk, Panner)->120
+HashSet(Butter, Sweet, Yougurt, Panner, Cheese, Bread)->123
+HashSet(Sugar, Yougurt, Lassi, Coffee Powder, Milk, Panner)->139
+HashSet(Sugar, Butter, Yougurt, Panner, Lassi, Coffee Powder)->140
+HashSet(Sweet, Tea Powder, Ghee, Lassi, Coffee Powder, Bread)->133
+HashSet(Butter, Tea Powder, Ghee, Milk, Lassi, Coffee Powder)->123
+HashSet(Butter, Ghee, Milk, Coffee Powder, Cheese, Bread)->115
+HashSet(Butter, Sweet, Yougurt, Milk, Coffee Powder, Cheese)->119
+HashSet(Sugar, Yougurt, Panner, Lassi, Cheese, Bread)->132
+HashSet(Butter, Yougurt, Coffee Powder, Cheese, Milk, Panner)->125
+HashSet(Sugar, Butter, Yougurt, Milk, Coffee Powder, Bread)->133
+HashSet(Sugar, Ghee, Lassi, Bread, Milk, Panner)->140
+HashSet(Sugar, Butter, Tea Powder, Panner, Lassi, Bread)->106
+HashSet(Sweet, Tea Powder, Ghee, Coffee Powder, Milk, Panner)->110
+HashSet(Sweet, Yougurt, Lassi, Cheese, Milk, Panner)->140
+HashSet(Butter, Ghee, Panner, Lassi, Cheese, Bread)->110
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Lassi)->114
+HashSet(Sugar, Sweet, Yougurt, Panner, Lassi, Bread)->130
+HashSet(Sugar, Sweet, Yougurt, Milk, Coffee Powder, Cheese)->120
+HashSet(Butter, Sweet, Ghee, Yougurt, Coffee Powder, Cheese)->114
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Coffee Powder)->128
+HashSet(Butter, Tea Powder, Yougurt, Panner, Lassi, Bread)->109
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Lassi, Coffee Powder)->120
+HashSet(Butter, Sweet, Yougurt, Coffee Powder, Cheese, Bread)->103
+HashSet(Butter, Ghee, Yougurt, Milk, Lassi, Coffee Powder)->137
+HashSet(Sweet, Tea Powder, Ghee, Cheese, Milk, Panner)->104
+HashSet(Butter, Tea Powder, Yougurt, Panner, Coffee Powder, Cheese)->115
+HashSet(Butter, Sweet, Tea Powder, Panner, Coffee Powder, Bread)->104
+HashSet(Sugar, Yougurt, Coffee Powder, Bread, Milk, Panner)->132
+HashSet(Sugar, Sweet, Tea Powder, Panner, Cheese, Bread)->108
+HashSet(Ghee, Yougurt, Coffee Powder, Cheese, Milk, Panner)->136
+HashSet(Sugar, Butter, Tea Powder, Ghee, Milk, Panner)->115
+HashSet(Tea Powder, Ghee, Milk, Lassi, Coffee Powder, Cheese)->103
+HashSet(Sugar, Butter, Ghee, Yougurt, Milk, Lassi)->131
+HashSet(Butter, Tea Powder, Yougurt, Milk, Coffee Powder, Cheese)->119
+HashSet(Ghee, Yougurt, Panner, Lassi, Coffee Powder, Cheese)->137
+HashSet(Sugar, Butter, Panner, Coffee Powder, Cheese, Bread)->122
+HashSet(Sweet, Tea Powder, Ghee, Milk, Lassi, Cheese)->107
+HashSet(Butter, Sweet, Yougurt, Bread, Milk, Panner)->120
+HashSet(Butter, Lassi, Coffee Powder, Cheese, Milk, Panner)->131
+HashSet(Sugar, Butter, Tea Powder, Ghee, Milk, Bread)->118
+HashSet(Butter, Tea Powder, Yougurt, Bread, Milk, Panner)->118
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Lassi)->130
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Milk, Panner)->108
+HashSet(Sugar, Butter, Tea Powder, Panner, Lassi, Cheese)->107
+HashSet(Sugar, Butter, Sweet, Ghee, Coffee Powder, Cheese)->86
+HashSet(Sugar, Butter, Ghee, Lassi, Coffee Powder, Bread)->132
+HashSet(Yougurt, Lassi, Coffee Powder, Cheese, Milk, Panner)->133
+HashSet(Sweet, Tea Powder, Ghee, Lassi, Cheese, Bread)->111
+HashSet(Sugar, Butter, Tea Powder, Ghee, Coffee Powder, Bread)->127
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Milk, Coffee Powder)->132
+HashSet(Butter, Sweet, Ghee, Lassi, Milk, Panner)->127
+HashSet(Butter, Sweet, Ghee, Milk, Lassi, Bread)->130
+HashSet(Tea Powder, Ghee, Panner, Lassi, Cheese, Bread)->110
+HashSet(Sweet, Ghee, Panner, Lassi, Coffee Powder, Bread)->140
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Panner, Cheese)->117
+HashSet(Sweet, Tea Powder, Ghee, Panner, Coffee Powder, Bread)->108
+HashSet(Sugar, Butter, Ghee, Yougurt, Panner, Bread)->124
+HashSet(Butter, Tea Powder, Panner, Lassi, Coffee Powder, Cheese)->106
+HashSet(Butter, Ghee, Coffee Powder, Cheese, Milk, Panner)->123
+HashSet(Sugar, Butter, Ghee, Yougurt, Lassi, Bread)->124
+HashSet(Sugar, Sweet, Yougurt, Panner, Coffee Powder, Bread)->128
+HashSet(Butter, Sweet, Tea Powder, Lassi, Cheese, Bread)->95
+HashSet(Tea Powder, Ghee, Yougurt, Lassi, Milk, Panner)->118
+HashSet(Butter, Yougurt, Panner, Lassi, Coffee Powder, Cheese)->120
+HashSet(Ghee, Yougurt, Panner, Lassi, Cheese, Bread)->126
+HashSet(Sugar, Sweet, Ghee, Yougurt, Panner, Cheese)->118
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Milk, Lassi)->117
+HashSet(Butter, Tea Powder, Coffee Powder, Bread, Milk, Panner)->102
+HashSet(Sweet, Tea Powder, Panner, Lassi, Coffee Powder, Bread)->143
+HashSet(Sugar, Tea Powder, Lassi, Cheese, Milk, Panner)->105
+HashSet(Butter, Sweet, Tea Powder, Milk, Coffee Powder, Bread)->110
+HashSet(Sugar, Butter, Sweet, Yougurt, Coffee Powder, Bread)->130
+HashSet(Sweet, Ghee, Yougurt, Panner, Coffee Powder, Cheese)->131
+HashSet(Sweet, Ghee, Yougurt, Milk, Lassi, Coffee Powder)->128
+HashSet(Sugar, Sweet, Tea Powder, Bread, Milk, Panner)->119
+HashSet(Butter, Tea Powder, Milk, Coffee Powder, Cheese, Bread)->102
+HashSet(Sweet, Ghee, Milk, Lassi, Coffee Powder, Cheese)->109
+HashSet(Sugar, Butter, Ghee, Panner, Coffee Powder, Cheese)->109
+HashSet(Sugar, Lassi, Coffee Powder, Cheese, Milk, Panner)->128
+HashSet(Sugar, Tea Powder, Yougurt, Panner, Coffee Powder, Bread)->132
+HashSet(Butter, Tea Powder, Ghee, Coffee Powder, Cheese, Bread)->112
+HashSet(Tea Powder, Yougurt, Cheese, Bread, Milk, Panner)->113
+HashSet(Sweet, Tea Powder, Yougurt, Milk, Cheese, Bread)->111
+HashSet(Sugar, Sweet, Ghee, Yougurt, Cheese, Bread)->111
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Panner, Bread)->118
+HashSet(Sugar, Sweet, Ghee, Yougurt, Milk, Cheese)->117
+HashSet(Butter, Panner, Lassi, Coffee Powder, Cheese, Bread)->131
+HashSet(Butter, Sweet, Milk, Lassi, Coffee Powder, Bread)->125
+HashSet(Sugar, Ghee, Panner, Lassi, Coffee Powder, Cheese)->120
+HashSet(Sugar, Tea Powder, Ghee, Milk, Lassi, Cheese)->117
+HashSet(Butter, Sweet, Tea Powder, Lassi, Coffee Powder, Cheese)->112
+HashSet(Butter, Sweet, Yougurt, Lassi, Cheese, Bread)->104
+HashSet(Sweet, Ghee, Yougurt, Coffee Powder, Milk, Panner)->113
+HashSet(Sweet, Tea Powder, Lassi, Bread, Milk, Panner)->139
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Lassi, Cheese)->109
+HashSet(Sugar, Butter, Ghee, Bread, Milk, Panner)->120
+HashSet(Sugar, Ghee, Yougurt, Bread, Milk, Panner)->132
+HashSet(Sugar, Tea Powder, Ghee, Panner, Coffee Powder, Bread)->131
+HashSet(Sweet, Tea Powder, Yougurt, Lassi, Milk, Panner)->115
+HashSet(Ghee, Yougurt, Lassi, Coffee Powder, Milk, Panner)->136
+HashSet(Sugar, Sweet, Ghee, Lassi, Milk, Panner)->124
+HashSet(Butter, Yougurt, Lassi, Cheese, Milk, Panner)->123
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Bread)->122
+HashSet(Sugar, Ghee, Lassi, Coffee Powder, Milk, Panner)->132
+HashSet(Sugar, Sweet, Yougurt, Coffee Powder, Milk, Panner)->114
+HashSet(Sugar, Butter, Ghee, Yougurt, Panner, Cheese)->122
+HashSet(Sweet, Tea Powder, Yougurt, Lassi, Coffee Powder, Bread)->118
+HashSet(Sugar, Tea Powder, Ghee, Panner, Lassi, Coffee Powder)->127
+HashSet(Sugar, Butter, Tea Powder, Milk, Lassi, Bread)->113
+HashSet(Butter, Sweet, Yougurt, Panner, Coffee Powder, Bread)->127
+HashSet(Sugar, Tea Powder, Coffee Powder, Bread, Milk, Panner)->131
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Milk, Coffee Powder)->110
+HashSet(Sugar, Sweet, Cheese, Bread, Milk, Panner)->121
+HashSet(Sugar, Butter, Tea Powder, Panner, Lassi, Coffee Powder)->113
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Panner, Bread)->117
+HashSet(Butter, Tea Powder, Ghee, Milk, Lassi, Cheese)->109
+HashSet(Butter, Tea Powder, Yougurt, Lassi, Coffee Powder, Cheese)->106
+HashSet(Butter, Tea Powder, Yougurt, Milk, Lassi, Coffee Powder)->121
+HashSet(Sugar, Tea Powder, Milk, Lassi, Coffee Powder, Cheese)->112
+HashSet(Butter, Yougurt, Cheese, Bread, Milk, Panner)->123
+HashSet(Sugar, Butter, Sweet, Ghee, Lassi, Cheese)->100
+HashSet(Sugar, Tea Powder, Yougurt, Milk, Lassi, Cheese)->109
+HashSet(Sugar, Sweet, Ghee, Panner, Lassi, Cheese)->116
+HashSet(Tea Powder, Ghee, Yougurt, Milk, Coffee Powder, Bread)->127
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Cheese, Bread)->119
+HashSet(Butter, Sweet, Ghee, Lassi, Coffee Powder, Cheese)->94
+HashSet(Butter, Ghee, Lassi, Coffee Powder, Cheese, Bread)->121
+HashSet(Sugar, Tea Powder, Panner, Lassi, Cheese, Bread)->119
+HashSet(Sugar, Sweet, Tea Powder, Coffee Powder, Milk, Panner)->133
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Bread)->112
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Lassi, Cheese)->110
+HashSet(Butter, Sweet, Tea Powder, Panner, Lassi, Cheese)->126
+HashSet(Sweet, Yougurt, Milk, Lassi, Cheese, Bread)->120
+HashSet(Butter, Yougurt, Lassi, Coffee Powder, Milk, Panner)->130
+HashSet(Sugar, Ghee, Yougurt, Panner, Coffee Powder, Bread)->125
+HashSet(Sugar, Butter, Yougurt, Panner, Lassi, Cheese)->121
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Milk, Bread)->108
+HashSet(Sugar, Tea Powder, Yougurt, Panner, Cheese, Bread)->117
+HashSet(Tea Powder, Yougurt, Lassi, Bread, Milk, Panner)->111
+HashSet(Ghee, Yougurt, Panner, Coffee Powder, Cheese, Bread)->132
+HashSet(Sugar, Butter, Sweet, Ghee, Lassi, Bread)->123
+HashSet(Sugar, Yougurt, Lassi, Coffee Powder, Cheese, Bread)->114
+HashSet(Ghee, Panner, Lassi, Coffee Powder, Cheese, Bread)->143
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Milk, Coffee Powder)->126
+HashSet(Ghee, Yougurt, Milk, Lassi, Coffee Powder, Cheese)->134
+HashSet(Sugar, Tea Powder, Ghee, Panner, Lassi, Cheese)->112
+HashSet(Sugar, Butter, Tea Powder, Ghee, Lassi, Coffee Powder)->125
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Lassi, Bread)->125
+HashSet(Butter, Sweet, Yougurt, Panner, Lassi, Coffee Powder)->130
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Milk, Lassi)->128
+HashSet(Sugar, Lassi, Cheese, Bread, Milk, Panner)->125
+HashSet(Sugar, Sweet, Ghee, Panner, Coffee Powder, Bread)->127
+HashSet(Butter, Sweet, Cheese, Bread, Milk, Panner)->109
+HashSet(Sugar, Butter, Ghee, Yougurt, Lassi, Cheese)->122
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Milk)->101
+HashSet(Butter, Tea Powder, Yougurt, Milk, Lassi, Cheese)->95
+HashSet(Sugar, Butter, Sweet, Milk, Lassi, Bread)->134
+HashSet(Sweet, Ghee, Yougurt, Bread, Milk, Panner)->118
+HashSet(Sugar, Tea Powder, Yougurt, Cheese, Milk, Panner)->114
+HashSet(Sweet, Ghee, Yougurt, Lassi, Milk, Panner)->121
+HashSet(Sugar, Sweet, Coffee Powder, Bread, Milk, Panner)->123
+HashSet(Sugar, Tea Powder, Milk, Coffee Powder, Cheese, Bread)->115
+HashSet(Ghee, Yougurt, Lassi, Coffee Powder, Cheese, Bread)->136
+HashSet(Sweet, Tea Powder, Yougurt, Panner, Lassi, Coffee Powder)->134
+HashSet(Sugar, Butter, Tea Powder, Panner, Cheese, Bread)->111
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Lassi, Bread)->112
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Milk, Lassi)->117
+HashSet(Sugar, Butter, Sweet, Ghee, Milk, Lassi)->130
+HashSet(Tea Powder, Ghee, Yougurt, Milk, Lassi, Coffee Powder)->124
+HashSet(Sugar, Yougurt, Milk, Coffee Powder, Cheese, Bread)->138
+HashSet(Butter, Yougurt, Coffee Powder, Bread, Milk, Panner)->117
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Panner)->123
+HashSet(Sugar, Ghee, Yougurt, Panner, Lassi, Coffee Powder)->130
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Lassi, Coffee Powder)->121
+HashSet(Butter, Sweet, Tea Powder, Milk, Cheese, Bread)->94
+HashSet(Sugar, Butter, Yougurt, Milk, Lassi, Cheese)->120
+HashSet(Tea Powder, Ghee, Lassi, Coffee Powder, Milk, Panner)->119
+HashSet(Butter, Sweet, Coffee Powder, Bread, Milk, Panner)->107
+HashSet(Sugar, Ghee, Yougurt, Milk, Lassi, Cheese)->124
+HashSet(Sugar, Ghee, Yougurt, Milk, Lassi, Coffee Powder)->134
+HashSet(Sugar, Tea Powder, Ghee, Panner, Lassi, Bread)->134
+HashSet(Butter, Sweet, Yougurt, Milk, Lassi, Coffee Powder)->137
+HashSet(Sugar, Butter, Sweet, Coffee Powder, Milk, Panner)->118
+HashSet(Ghee, Lassi, Coffee Powder, Bread, Milk, Panner)->140
+HashSet(Sugar, Butter, Sweet, Milk, Lassi, Cheese)->126
+HashSet(Butter, Tea Powder, Ghee, Panner, Lassi, Coffee Powder)->126
+HashSet(Sugar, Tea Powder, Ghee, Panner, Coffee Powder, Cheese)->102
+HashSet(Sugar, Yougurt, Coffee Powder, Cheese, Milk, Panner)->135
+HashSet(Sugar, Yougurt, Milk, Lassi, Cheese, Bread)->127
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Panner, Coffee Powder)->138
+HashSet(Sweet, Tea Powder, Panner, Coffee Powder, Cheese, Bread)->109
+HashSet(Sugar, Sweet, Tea Powder, Milk, Lassi, Cheese)->118
+HashSet(Sugar, Sweet, Ghee, Yougurt, Lassi, Coffee Powder)->117
+HashSet(Butter, Ghee, Yougurt, Lassi, Coffee Powder, Bread)->119
+HashSet(Sweet, Ghee, Yougurt, Milk, Lassi, Cheese)->115
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Panner, Coffee Powder)->113
+HashSet(Sugar, Tea Powder, Lassi, Bread, Milk, Panner)->120
+HashSet(Sugar, Butter, Ghee, Yougurt, Milk, Cheese)->117
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Panner, Lassi)->109
+HashSet(Butter, Sweet, Milk, Coffee Powder, Cheese, Bread)->112
+HashSet(Sugar, Tea Powder, Yougurt, Milk, Coffee Powder, Cheese)->124
+HashSet(Butter, Sweet, Tea Powder, Ghee, Milk, Bread)->113
+HashSet(Tea Powder, Yougurt, Panner, Coffee Powder, Cheese, Bread)->119
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Yougurt)->104
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Milk)->123
+HashSet(Tea Powder, Ghee, Yougurt, Coffee Powder, Milk, Panner)->115
+HashSet(Butter, Sweet, Lassi, Bread, Milk, Panner)->125
+HashSet(Sweet, Lassi, Coffee Powder, Cheese, Milk, Panner)->122
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Milk, Cheese)->103
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Panner, Lassi)->116
+HashSet(Sugar, Butter, Ghee, Milk, Lassi, Coffee Powder)->132
+HashSet(Sugar, Sweet, Coffee Powder, Cheese, Milk, Panner)->114
+HashSet(Butter, Lassi, Cheese, Bread, Milk, Panner)->121
+HashSet(Sugar, Butter, Sweet, Tea Powder, Milk, Bread)->114
+HashSet(Sugar, Sweet, Yougurt, Panner, Cheese, Bread)->123
+HashSet(Butter, Tea Powder, Lassi, Coffee Powder, Cheese, Bread)->107
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Lassi, Coffee Powder)->120
+HashSet(Sugar, Sweet, Yougurt, Lassi, Cheese, Bread)->119
+HashSet(Sweet, Ghee, Lassi, Coffee Powder, Cheese, Bread)->127
+HashSet(Sugar, Ghee, Yougurt, Milk, Coffee Powder, Bread)->125
+HashSet(Sweet, Milk, Lassi, Coffee Powder, Cheese, Bread)->122
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Panner, Coffee Powder)->122
+HashSet(Tea Powder, Coffee Powder, Cheese, Bread, Milk, Panner)->105
+HashSet(Sugar, Sweet, Yougurt, Milk, Lassi, Cheese)->122
+HashSet(Sugar, Sweet, Ghee, Yougurt, Lassi, Cheese)->121
+HashSet(Sugar, Sweet, Yougurt, Lassi, Coffee Powder, Bread)->115
+HashSet(Sugar, Ghee, Yougurt, Coffee Powder, Cheese, Bread)->126
+HashSet(Sweet, Ghee, Yougurt, Milk, Coffee Powder, Bread)->120
+HashSet(Sugar, Butter, Yougurt, Lassi, Milk, Panner)->133
+HashSet(Sugar, Butter, Sweet, Tea Powder, Lassi, Cheese)->121
+HashSet(Sugar, Sweet, Ghee, Panner, Coffee Powder, Cheese)->98
+HashSet(Sugar, Butter, Panner, Lassi, Cheese, Bread)->128
+HashSet(Sweet, Ghee, Yougurt, Lassi, Coffee Powder, Cheese)->115
+HashSet(Butter, Sweet, Tea Powder, Panner, Coffee Powder, Cheese)->111
+HashSet(Butter, Ghee, Yougurt, Milk, Coffee Powder, Cheese)->132
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Panner, Bread)->100
+HashSet(Sugar, Ghee, Yougurt, Lassi, Coffee Powder, Bread)->118
+HashSet(Tea Powder, Lassi, Coffee Powder, Bread, Milk, Panner)->123
+HashSet(Sugar, Butter, Yougurt, Lassi, Coffee Powder, Cheese)->119
+HashSet(Ghee, Yougurt, Lassi, Bread, Milk, Panner)->121
+HashSet(Sugar, Tea Powder, Ghee, Cheese, Milk, Panner)->104
+HashSet(Sugar, Sweet, Panner, Lassi, Cheese, Bread)->130
+HashSet(Butter, Tea Powder, Ghee, Bread, Milk, Panner)->119
+HashSet(Sugar, Coffee Powder, Cheese, Bread, Milk, Panner)->140
+HashSet(Sugar, Butter, Ghee, Lassi, Coffee Powder, Cheese)->104
+HashSet(Sugar, Sweet, Ghee, Yougurt, Lassi, Bread)->116
+HashSet(Sugar, Butter, Sweet, Tea Powder, Panner, Bread)->109
+HashSet(Butter, Ghee, Panner, Lassi, Coffee Powder, Cheese)->127
+HashSet(Sugar, Tea Powder, Yougurt, Milk, Lassi, Coffee Powder)->124
+HashSet(Sugar, Butter, Ghee, Panner, Lassi, Cheese)->123
+HashSet(Sugar, Butter, Tea Powder, Cheese, Milk, Panner)->103
+HashSet(Butter, Ghee, Yougurt, Panner, Cheese, Bread)->120
+HashSet(Butter, Sweet, Ghee, Yougurt, Panner, Lassi)->128
+HashSet(Sweet, Ghee, Yougurt, Lassi, Coffee Powder, Bread)->120
+HashSet(Tea Powder, Ghee, Panner, Lassi, Coffee Powder, Cheese)->113
+HashSet(Tea Powder, Panner, Lassi, Coffee Powder, Cheese, Bread)->120
+HashSet(Butter, Sweet, Ghee, Yougurt, Lassi, Cheese)->110
+HashSet(Sugar, Tea Powder, Ghee, Lassi, Cheese, Bread)->113
+HashSet(Sugar, Sweet, Yougurt, Panner, Lassi, Coffee Powder)->140
+HashSet(Sugar, Tea Powder, Yougurt, Coffee Powder, Cheese, Bread)->121
+HashSet(Sugar, Tea Powder, Ghee, Milk, Coffee Powder, Bread)->128
+HashSet(Sugar, Sweet, Tea Powder, Milk, Lassi, Bread)->124
+HashSet(Sweet, Tea Powder, Ghee, Panner, Lassi, Bread)->139
+HashSet(Tea Powder, Ghee, Lassi, Bread, Milk, Panner)->128
+HashSet(Sugar, Sweet, Ghee, Yougurt, Milk, Bread)->119
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Lassi, Cheese)->108
+HashSet(Sugar, Ghee, Panner, Coffee Powder, Cheese, Bread)->126
+HashSet(Butter, Sweet, Tea Powder, Ghee, Lassi, Bread)->117
+HashSet(Sugar, Sweet, Lassi, Cheese, Milk, Panner)->120
+HashSet(Butter, Sweet, Yougurt, Milk, Lassi, Bread)->119
+HashSet(Sugar, Sweet, Tea Powder, Lassi, Cheese, Bread)->105
+HashSet(Sugar, Butter, Sweet, Yougurt, Panner, Lassi)->139
+HashSet(Sweet, Ghee, Yougurt, Milk, Lassi, Bread)->119
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Lassi, Cheese)->97
+HashSet(Sugar, Sweet, Ghee, Yougurt, Milk, Coffee Powder)->123
+HashSet(Sugar, Butter, Ghee, Yougurt, Panner, Lassi)->137
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Cheese, Bread)->107
+HashSet(Sugar, Sweet, Lassi, Coffee Powder, Milk, Panner)->138
+HashSet(Sugar, Butter, Sweet, Tea Powder, Panner, Lassi)->133
+HashSet(Sweet, Ghee, Yougurt, Cheese, Milk, Panner)->126
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Lassi, Coffee Powder)->114
+HashSet(Butter, Sweet, Coffee Powder, Cheese, Milk, Panner)->108
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Milk)->120
+HashSet(Sugar, Sweet, Yougurt, Lassi, Milk, Panner)->130
+HashSet(Butter, Sweet, Ghee, Yougurt, Panner, Cheese)->127
+HashSet(Butter, Sweet, Lassi, Coffee Powder, Milk, Panner)->125
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Cheese)->110
+HashSet(Sugar, Butter, Ghee, Panner, Lassi, Coffee Powder)->127
+HashSet(Sweet, Tea Powder, Ghee, Panner, Cheese, Bread)->99
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Lassi, Coffee Powder)->124
+HashSet(Sweet, Tea Powder, Ghee, Panner, Lassi, Cheese)->124
+HashSet(Sugar, Sweet, Tea Powder, Milk, Cheese, Bread)->106
+HashSet(Sweet, Ghee, Milk, Coffee Powder, Cheese, Bread)->121
+HashSet(Sugar, Sweet, Tea Powder, Cheese, Milk, Panner)->117
+HashSet(Tea Powder, Ghee, Yougurt, Milk, Coffee Powder, Cheese)->125
+HashSet(Sugar, Butter, Tea Powder, Ghee, Cheese, Bread)->116
+HashSet(Sugar, Ghee, Yougurt, Panner, Lassi, Cheese)->135
+HashSet(Sugar, Butter, Sweet, Yougurt, Milk, Coffee Powder)->140
+HashSet(Butter, Sweet, Ghee, Milk, Coffee Powder, Cheese)->97
+HashSet(Ghee, Yougurt, Coffee Powder, Bread, Milk, Panner)->123
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Milk, Cheese)->105
+HashSet(Butter, Sweet, Panner, Lassi, Cheese, Bread)->114
+HashSet(Sugar, Butter, Tea Powder, Ghee, Panner, Coffee Powder)->127
+HashSet(Sugar, Sweet, Ghee, Yougurt, Milk, Panner)->110
+HashSet(Sugar, Butter, Tea Powder, Panner, Coffee Powder, Bread)->116
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Panner, Coffee Powder)->126
+HashSet(Butter, Sweet, Ghee, Milk, Lassi, Coffee Powder)->120
+HashSet(Sweet, Tea Powder, Milk, Lassi, Coffee Powder, Cheese)->107
+HashSet(Sugar, Ghee, Yougurt, Milk, Coffee Powder, Cheese)->135
+HashSet(Sugar, Butter, Panner, Lassi, Coffee Powder, Cheese)->126
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Coffee Powder, Bread)->117
+HashSet(Sugar, Tea Powder, Milk, Lassi, Coffee Powder, Bread)->122
+HashSet(Sugar, Yougurt, Panner, Lassi, Coffee Powder, Cheese)->127
+HashSet(Sugar, Sweet, Ghee, Lassi, Cheese, Bread)->114
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Panner, Cheese)->119
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Lassi, Bread)->116
+HashSet(Sugar, Butter, Sweet, Coffee Powder, Cheese, Bread)->106
+HashSet(Butter, Coffee Powder, Cheese, Bread, Milk, Panner)->117
+HashSet(Tea Powder, Yougurt, Coffee Powder, Bread, Milk, Panner)->126
+HashSet(Sugar, Yougurt, Lassi, Cheese, Milk, Panner)->122
+HashSet(Butter, Sweet, Tea Powder, Milk, Coffee Powder, Cheese)->110
+HashSet(Sugar, Tea Powder, Yougurt, Milk, Lassi, Bread)->110
+HashSet(Sugar, Butter, Tea Powder, Ghee, Panner, Bread)->120
+HashSet(Sugar, Butter, Ghee, Yougurt, Coffee Powder, Cheese)->118
+HashSet(Sugar, Butter, Tea Powder, Milk, Cheese, Bread)->108
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Panner, Coffee Powder)->103
+HashSet(Butter, Tea Powder, Ghee, Lassi, Milk, Panner)->127
+HashSet(Sugar, Butter, Milk, Lassi, Coffee Powder, Cheese)->130
+HashSet(Sweet, Tea Powder, Yougurt, Lassi, Cheese, Bread)->114
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Panner)->94
+HashSet(Sugar, Ghee, Yougurt, Lassi, Milk, Panner)->131
+HashSet(Sweet, Ghee, Yougurt, Panner, Lassi, Cheese)->137
+HashSet(Butter, Tea Powder, Lassi, Cheese, Milk, Panner)->99
+HashSet(Sugar, Butter, Yougurt, Panner, Coffee Powder, Cheese)->123
+HashSet(Butter, Tea Powder, Yougurt, Lassi, Coffee Powder, Bread)->110
+HashSet(Butter, Sweet, Ghee, Yougurt, Panner, Coffee Powder)->127
+HashSet(Tea Powder, Ghee, Cheese, Bread, Milk, Panner)->105
+HashSet(Sweet, Tea Powder, Yougurt, Panner, Coffee Powder, Bread)->122
+HashSet(Sweet, Yougurt, Lassi, Bread, Milk, Panner)->122
+HashSet(Sugar, Sweet, Tea Powder, Panner, Lassi, Bread)->131
+HashSet(Sugar, Sweet, Tea Powder, Milk, Coffee Powder, Cheese)->123
+HashSet(Sugar, Butter, Milk, Lassi, Cheese, Bread)->122
+HashSet(Tea Powder, Ghee, Lassi, Cheese, Milk, Panner)->107
+HashSet(Ghee, Yougurt, Milk, Lassi, Cheese, Bread)->126
+HashSet(Butter, Ghee, Yougurt, Panner, Coffee Powder, Cheese)->128
+HashSet(Sweet, Ghee, Yougurt, Coffee Powder, Cheese, Bread)->117
+HashSet(Tea Powder, Lassi, Coffee Powder, Cheese, Milk, Panner)->96
+HashSet(Butter, Sweet, Ghee, Yougurt, Milk, Lassi)->121
+HashSet(Sugar, Butter, Sweet, Yougurt, Panner, Cheese)->124
+HashSet(Butter, Tea Powder, Ghee, Lassi, Cheese, Bread)->103
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Panner, Lassi)->114
+HashSet(Sugar, Butter, Yougurt, Panner, Cheese, Bread)->119
+HashSet(Ghee, Lassi, Cheese, Bread, Milk, Panner)->125
+HashSet(Butter, Sweet, Yougurt, Milk, Lassi, Cheese)->110
+HashSet(Sugar, Butter, Tea Powder, Ghee, Coffee Powder, Cheese)->99
+HashSet(Sugar, Sweet, Ghee, Milk, Cheese, Bread)->113
+HashSet(Sweet, Yougurt, Milk, Lassi, Coffee Powder, Bread)->124
+HashSet(Butter, Sweet, Yougurt, Panner, Coffee Powder, Cheese)->130
+HashSet(Butter, Tea Powder, Yougurt, Panner, Lassi, Coffee Powder)->116
+HashSet(Sugar, Sweet, Tea Powder, Lassi, Coffee Powder, Cheese)->119
+HashSet(Sugar, Ghee, Milk, Lassi, Coffee Powder, Bread)->137
+HashSet(Sugar, Tea Powder, Yougurt, Lassi, Coffee Powder, Bread)->106
+HashSet(Sweet, Ghee, Cheese, Bread, Milk, Panner)->118
+HashSet(Butter, Sweet, Tea Powder, Ghee, Panner, Bread)->104
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Milk, Lassi)->118
+HashSet(Butter, Yougurt, Milk, Lassi, Cheese, Bread)->116
+HashSet(Sugar, Tea Powder, Ghee, Coffee Powder, Cheese, Bread)->109
+HashSet(Sugar, Sweet, Tea Powder, Milk, Lassi, Coffee Powder)->137
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Bread)->95
+HashSet(Sugar, Sweet, Ghee, Cheese, Milk, Panner)->107
+HashSet(Tea Powder, Ghee, Yougurt, Lassi, Coffee Powder, Bread)->124
+HashSet(Sweet, Ghee, Lassi, Bread, Milk, Panner)->139
+HashSet(Butter, Tea Powder, Ghee, Milk, Cheese, Bread)->117
+HashSet(Sugar, Butter, Ghee, Lassi, Milk, Panner)->131
+HashSet(Tea Powder, Yougurt, Panner, Lassi, Cheese, Bread)->119
+HashSet(Butter, Sweet, Tea Powder, Ghee, Coffee Powder, Bread)->102
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Milk, Coffee Powder)->120
+HashSet(Butter, Ghee, Milk, Lassi, Cheese, Bread)->124
+HashSet(Butter, Ghee, Yougurt, Panner, Lassi, Bread)->105
+HashSet(Butter, Sweet, Tea Powder, Ghee, Panner, Cheese)->102
+HashSet(Sweet, Tea Powder, Coffee Powder, Cheese, Milk, Panner)->96
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Milk)->113
+HashSet(Sugar, Butter, Cheese, Bread, Milk, Panner)->114
+HashSet(Sweet, Tea Powder, Yougurt, Coffee Powder, Milk, Panner)->111
+HashSet(Tea Powder, Ghee, Yougurt, Bread, Milk, Panner)->111
+HashSet(Sugar, Butter, Ghee, Yougurt, Milk, Bread)->119
+HashSet(Ghee, Lassi, Coffee Powder, Cheese, Milk, Panner)->134
+HashSet(Sugar, Sweet, Yougurt, Cheese, Milk, Panner)->129
+HashSet(Sweet, Yougurt, Panner, Lassi, Coffee Powder, Bread)->140
+HashSet(Sweet, Tea Powder, Ghee, Milk, Lassi, Coffee Powder)->124
+HashSet(Sugar, Tea Powder, Yougurt, Bread, Milk, Panner)->120
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Lassi, Bread)->106
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Milk, Bread)->122
+HashSet(Sugar, Butter, Tea Powder, Coffee Powder, Milk, Panner)->107
+HashSet(Sweet, Ghee, Yougurt, Lassi, Cheese, Bread)->117
+HashSet(Sugar, Sweet, Ghee, Yougurt, Milk, Lassi)->120
+HashSet(Tea Powder, Ghee, Yougurt, Panner, Lassi, Cheese, Bread)->45
+HashSet(Butter, Sweet, Ghee, Lassi, Coffee Powder, Cheese, Bread)->36
+HashSet(Butter, Tea Powder, Ghee, Milk, Lassi, Coffee Powder, Bread)->53
+HashSet(Butter, Yougurt, Milk, Lassi, Coffee Powder, Cheese, Bread)->59
+HashSet(Sugar, Butter, Tea Powder, Ghee, Lassi, Coffee Powder, Bread)->59
+HashSet(Butter, Sweet, Ghee, Yougurt, Panner, Coffee Powder, Cheese)->58
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Coffee Powder, Milk, Panner)->50
+HashSet(Sweet, Tea Powder, Panner, Lassi, Coffee Powder, Cheese, Bread)->56
+HashSet(Butter, Yougurt, Coffee Powder, Cheese, Bread, Milk, Panner)->51
+HashSet(Butter, Ghee, Yougurt, Lassi, Coffee Powder, Milk, Panner)->63
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Panner, Cheese)->37
+HashSet(Tea Powder, Ghee, Lassi, Cheese, Bread, Milk, Panner)->44
+HashSet(Tea Powder, Yougurt, Lassi, Coffee Powder, Bread, Milk, Panner)->50
+HashSet(Sugar, Sweet, Ghee, Coffee Powder, Bread, Milk, Panner)->51
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Milk, Cheese)->43
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Panner, Lassi)->41
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Cheese, Bread)->46
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Coffee Powder, Cheese)->43
+HashSet(Sweet, Tea Powder, Yougurt, Panner, Coffee Powder, Cheese, Bread)->49
+HashSet(Sugar, Tea Powder, Yougurt, Lassi, Bread, Milk, Panner)->44
+HashSet(Sugar, Butter, Yougurt, Cheese, Bread, Milk, Panner)->51
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Milk, Lassi, Coffee Powder)->56
+HashSet(Sugar, Ghee, Yougurt, Coffee Powder, Bread, Milk, Panner)->59
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Milk, Lassi)->54
+HashSet(Sugar, Sweet, Yougurt, Coffee Powder, Bread, Milk, Panner)->58
+HashSet(Sugar, Butter, Ghee, Coffee Powder, Bread, Milk, Panner)->53
+HashSet(Tea Powder, Ghee, Coffee Powder, Cheese, Bread, Milk, Panner)->45
+HashSet(Sugar, Butter, Tea Powder, Ghee, Panner, Lassi, Coffee Powder)->54
+HashSet(Butter, Sweet, Tea Powder, Milk, Lassi, Coffee Powder, Cheese)->50
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Cheese, Milk, Panner)->43
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Panner, Lassi, Cheese)->47
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Cheese, Milk, Panner)->52
+HashSet(Ghee, Yougurt, Lassi, Coffee Powder, Cheese, Milk, Panner)->66
+HashSet(Sugar, Butter, Sweet, Panner, Lassi, Cheese, Bread)->58
+HashSet(Sugar, Butter, Sweet, Ghee, Milk, Coffee Powder, Cheese)->40
+HashSet(Sugar, Butter, Sweet, Milk, Coffee Powder, Cheese, Bread)->54
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Lassi, Cheese)->44
+HashSet(Butter, Sweet, Ghee, Lassi, Bread, Milk, Panner)->53
+HashSet(Ghee, Lassi, Coffee Powder, Cheese, Bread, Milk, Panner)->64
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Coffee Powder, Milk, Panner)->39
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Coffee Powder, Cheese, Bread)->40
+HashSet(Sweet, Ghee, Yougurt, Panner, Lassi, Cheese, Bread)->55
+HashSet(Butter, Sweet, Ghee, Yougurt, Milk, Cheese, Bread)->45
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Milk, Coffee Powder, Cheese)->54
+HashSet(Sugar, Butter, Sweet, Yougurt, Lassi, Coffee Powder, Bread)->54
+HashSet(Sugar, Butter, Sweet, Lassi, Bread, Milk, Panner)->60
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Milk, Lassi)->54
+HashSet(Butter, Tea Powder, Lassi, Coffee Powder, Bread, Milk, Panner)->51
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Panner, Cheese)->48
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Panner, Lassi, Coffee Powder)->61
+HashSet(Butter, Yougurt, Lassi, Coffee Powder, Cheese, Milk, Panner)->61
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Coffee Powder, Cheese, Bread)->39
+HashSet(Sweet, Tea Powder, Ghee, Milk, Coffee Powder, Cheese, Bread)->39
+HashSet(Butter, Sweet, Ghee, Yougurt, Panner, Lassi, Coffee Powder)->60
+HashSet(Butter, Sweet, Ghee, Yougurt, Panner, Lassi, Bread)->43
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Panner, Coffee Powder, Bread)->60
+HashSet(Butter, Sweet, Yougurt, Panner, Lassi, Coffee Powder, Bread)->57
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Lassi, Coffee Powder)->52
+HashSet(Butter, Ghee, Yougurt, Coffee Powder, Cheese, Milk, Panner)->66
+HashSet(Butter, Tea Powder, Ghee, Milk, Lassi, Coffee Powder, Cheese)->50
+HashSet(Butter, Tea Powder, Yougurt, Milk, Coffee Powder, Cheese, Bread)->53
+HashSet(Sugar, Butter, Sweet, Tea Powder, Cheese, Milk, Panner)->48
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Lassi, Coffee Powder, Cheese)->45
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Yougurt, Coffee Powder)->49
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Milk, Lassi, Bread)->45
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Lassi, Cheese, Bread)->39
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Lassi, Milk, Panner)->57
+HashSet(Sugar, Yougurt, Lassi, Coffee Powder, Bread, Milk, Panner)->63
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Coffee Powder, Bread)->50
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Cheese, Milk, Panner)->44
+HashSet(Sugar, Sweet, Tea Powder, Cheese, Bread, Milk, Panner)->48
+HashSet(Butter, Sweet, Tea Powder, Ghee, Bread, Milk, Panner)->46
+HashSet(Sugar, Sweet, Ghee, Yougurt, Coffee Powder, Milk, Panner)->43
+HashSet(Butter, Tea Powder, Coffee Powder, Cheese, Bread, Milk, Panner)->43
+HashSet(Sweet, Ghee, Yougurt, Panner, Coffee Powder, Cheese, Bread)->59
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Coffee Powder, Cheese, Bread)->40
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Milk, Coffee Powder, Bread)->62
+HashSet(Sugar, Sweet, Ghee, Coffee Powder, Cheese, Milk, Panner)->41
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Milk, Coffee Powder)->56
+HashSet(Butter, Tea Powder, Ghee, Lassi, Coffee Powder, Milk, Panner)->52
+HashSet(Sugar, Butter, Sweet, Ghee, Milk, Lassi, Coffee Powder)->56
+HashSet(Butter, Sweet, Ghee, Yougurt, Lassi, Coffee Powder, Bread)->43
+HashSet(Sweet, Ghee, Yougurt, Milk, Lassi, Coffee Powder, Cheese)->49
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Coffee Powder, Cheese)->53
+HashSet(Butter, Sweet, Ghee, Yougurt, Coffee Powder, Milk, Panner)->55
+HashSet(Sugar, Tea Powder, Lassi, Coffee Powder, Cheese, Milk, Panner)->50
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Lassi, Coffee Powder, Cheese)->43
+HashSet(Tea Powder, Ghee, Yougurt, Cheese, Bread, Milk, Panner)->40
+HashSet(Sugar, Butter, Yougurt, Milk, Lassi, Coffee Powder, Cheese)->61
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Milk, Coffee Powder)->50
+HashSet(Sugar, Butter, Ghee, Lassi, Cheese, Milk, Panner)->56
+HashSet(Sugar, Sweet, Ghee, Lassi, Coffee Powder, Milk, Panner)->53
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Milk, Bread)->46
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Milk, Lassi, Coffee Powder)->60
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Lassi, Bread)->50
+HashSet(Butter, Sweet, Ghee, Milk, Lassi, Cheese, Bread)->45
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Panner, Lassi, Coffee Powder)->52
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Panner, Lassi, Bread)->53
+HashSet(Butter, Sweet, Tea Powder, Ghee, Cheese, Milk, Panner)->43
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Yougurt, Lassi)->42
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Milk, Coffee Powder, Bread)->62
+HashSet(Tea Powder, Ghee, Yougurt, Lassi, Bread, Milk, Panner)->46
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Milk, Cheese)->44
+HashSet(Butter, Sweet, Tea Powder, Ghee, Panner, Lassi, Bread)->53
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Yougurt, Cheese)->41
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Milk, Cheese, Bread)->43
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Panner, Lassi, Bread)->42
+HashSet(Sugar, Butter, Ghee, Milk, Lassi, Cheese, Bread)->63
+HashSet(Sugar, Butter, Tea Powder, Ghee, Panner, Cheese, Bread)->54
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Panner, Coffee Powder)->63
+HashSet(Butter, Sweet, Tea Powder, Coffee Powder, Bread, Milk, Panner)->39
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Bread, Milk, Panner)->52
+HashSet(Sugar, Sweet, Tea Powder, Coffee Powder, Bread, Milk, Panner)->59
+HashSet(Butter, Sweet, Ghee, Yougurt, Lassi, Milk, Panner)->53
+HashSet(Sugar, Butter, Tea Powder, Ghee, Bread, Milk, Panner)->51
+HashSet(Sugar, Tea Powder, Ghee, Milk, Coffee Powder, Cheese, Bread)->44
+HashSet(Sugar, Butter, Ghee, Yougurt, Lassi, Coffee Powder, Bread)->60
+HashSet(Butter, Yougurt, Lassi, Coffee Powder, Bread, Milk, Panner)->52
+HashSet(Sugar, Sweet, Ghee, Yougurt, Coffee Powder, Cheese, Bread)->47
+HashSet(Sugar, Sweet, Tea Powder, Panner, Lassi, Coffee Powder, Bread)->65
+HashSet(Tea Powder, Yougurt, Milk, Lassi, Coffee Powder, Cheese, Bread)->46
+HashSet(Sweet, Tea Powder, Lassi, Coffee Powder, Bread, Milk, Panner)->62
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Lassi, Cheese)->39
+HashSet(Yougurt, Lassi, Coffee Powder, Cheese, Bread, Milk, Panner)->62
+HashSet(Sugar, Butter, Ghee, Yougurt, Milk, Coffee Powder, Bread)->58
+HashSet(Sugar, Butter, Sweet, Ghee, Lassi, Coffee Powder, Bread)->52
+HashSet(Sweet, Ghee, Yougurt, Panner, Lassi, Coffee Powder, Bread)->60
+HashSet(Butter, Tea Powder, Ghee, Milk, Lassi, Cheese, Bread)->47
+HashSet(Sugar, Butter, Sweet, Yougurt, Coffee Powder, Milk, Panner)->53
+HashSet(Sugar, Ghee, Yougurt, Panner, Lassi, Coffee Powder, Bread)->58
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Milk, Cheese, Bread)->49
+HashSet(Butter, Sweet, Tea Powder, Cheese, Bread, Milk, Panner)->40
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Panner, Lassi, Coffee Powder)->51
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Milk, Lassi, Bread)->43
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Milk, Lassi, Coffee Powder)->54
+HashSet(Sugar, Butter, Tea Powder, Ghee, Panner, Lassi, Cheese)->48
+HashSet(Sweet, Tea Powder, Ghee, Lassi, Coffee Powder, Cheese, Bread)->46
+HashSet(Sweet, Tea Powder, Yougurt, Lassi, Coffee Powder, Cheese, Bread)->42
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Coffee Powder, Milk, Panner)->52
+HashSet(Sugar, Sweet, Ghee, Lassi, Cheese, Milk, Panner)->48
+HashSet(Sugar, Tea Powder, Lassi, Coffee Powder, Bread, Milk, Panner)->59
+HashSet(Butter, Tea Powder, Ghee, Lassi, Cheese, Milk, Panner)->51
+HashSet(Sugar, Butter, Yougurt, Panner, Coffee Powder, Cheese, Bread)->47
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Lassi, Coffee Powder, Bread)->53
+HashSet(Sweet, Ghee, Yougurt, Panner, Lassi, Coffee Powder, Cheese)->61
+HashSet(Sugar, Sweet, Tea Powder, Coffee Powder, Cheese, Milk, Panner)->53
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Milk, Coffee Powder, Bread)->57
+HashSet(Sweet, Ghee, Yougurt, Milk, Lassi, Coffee Powder, Bread)->55
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Panner, Lassi, Cheese)->48
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Milk, Lassi, Cheese)->50
+HashSet(Butter, Sweet, Ghee, Yougurt, Lassi, Coffee Powder, Cheese)->45
+HashSet(Sugar, Butter, Panner, Lassi, Coffee Powder, Cheese, Bread)->64
+HashSet(Butter, Sweet, Ghee, Panner, Lassi, Coffee Powder, Cheese)->45
+HashSet(Sweet, Tea Powder, Milk, Lassi, Coffee Powder, Cheese, Bread)->35
+HashSet(Sugar, Sweet, Ghee, Yougurt, Milk, Coffee Powder, Bread)->54
+HashSet(Sugar, Butter, Sweet, Lassi, Coffee Powder, Cheese, Bread)->48
+HashSet(Sweet, Tea Powder, Yougurt, Lassi, Cheese, Milk, Panner)->49
+HashSet(Sugar, Butter, Tea Powder, Ghee, Panner, Coffee Powder, Bread)->59
+HashSet(Butter, Ghee, Panner, Lassi, Coffee Powder, Cheese, Bread)->59
+HashSet(Sugar, Tea Powder, Ghee, Coffee Powder, Cheese, Milk, Panner)->46
+HashSet(Sugar, Butter, Sweet, Ghee, Coffee Powder, Cheese, Bread)->31
+HashSet(Sugar, Sweet, Ghee, Yougurt, Milk, Coffee Powder, Cheese)->52
+HashSet(Sugar, Butter, Yougurt, Milk, Lassi, Cheese, Bread)->55
+HashSet(Butter, Tea Powder, Ghee, Panner, Lassi, Coffee Powder, Cheese)->51
+HashSet(Sugar, Butter, Yougurt, Coffee Powder, Cheese, Milk, Panner)->61
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Coffee Powder, Milk, Panner)->48
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Milk, Coffee Powder, Bread)->55
+HashSet(Sugar, Butter, Yougurt, Lassi, Coffee Powder, Milk, Panner)->68
+HashSet(Sugar, Butter, Sweet, Tea Powder, Lassi, Cheese, Bread)->44
+HashSet(Sugar, Tea Powder, Ghee, Panner, Lassi, Coffee Powder, Cheese)->47
+HashSet(Sugar, Sweet, Ghee, Panner, Coffee Powder, Cheese, Bread)->51
+HashSet(Sugar, Sweet, Tea Powder, Lassi, Coffee Powder, Milk, Panner)->72
+HashSet(Ghee, Yougurt, Lassi, Coffee Powder, Bread, Milk, Panner)->61
+HashSet(Sugar, Sweet, Ghee, Lassi, Coffee Powder, Cheese, Bread)->43
+HashSet(Butter, Tea Powder, Ghee, Milk, Coffee Powder, Cheese, Bread)->50
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Lassi, Milk, Panner)->48
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Milk, Bread)->49
+HashSet(Sweet, Tea Powder, Yougurt, Lassi, Bread, Milk, Panner)->48
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Lassi, Cheese)->48
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Milk, Lassi, Bread)->57
+HashSet(Sugar, Tea Powder, Ghee, Milk, Lassi, Coffee Powder, Bread)->64
+HashSet(Sugar, Ghee, Lassi, Coffee Powder, Bread, Milk, Panner)->73
+HashSet(Butter, Tea Powder, Yougurt, Panner, Coffee Powder, Cheese, Bread)->53
+HashSet(Sweet, Tea Powder, Ghee, Lassi, Bread, Milk, Panner)->64
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Panner, Coffee Powder, Cheese)->53
+HashSet(Sugar, Butter, Sweet, Tea Powder, Milk, Lassi, Bread)->50
+HashSet(Butter, Sweet, Ghee, Panner, Lassi, Coffee Powder, Bread)->47
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Panner, Bread)->50
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Milk, Lassi, Coffee Powder)->51
+HashSet(Sugar, Butter, Sweet, Tea Powder, Milk, Lassi, Cheese)->54
+HashSet(Butter, Sweet, Yougurt, Coffee Powder, Bread, Milk, Panner)->52
+HashSet(Sweet, Ghee, Lassi, Coffee Powder, Bread, Milk, Panner)->61
+HashSet(Sugar, Butter, Sweet, Yougurt, Milk, Lassi, Cheese)->49
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Bread, Milk, Panner)->50
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Panner, Lassi, Cheese)->50
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Panner, Coffee Powder, Bread)->41
+HashSet(Butter, Sweet, Yougurt, Panner, Lassi, Cheese, Bread)->51
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Panner, Coffee Powder, Bread)->55
+HashSet(Sugar, Sweet, Yougurt, Cheese, Bread, Milk, Panner)->61
+HashSet(Sugar, Ghee, Milk, Lassi, Coffee Powder, Cheese, Bread)->61
+HashSet(Sugar, Butter, Tea Powder, Panner, Coffee Powder, Cheese, Bread)->54
+HashSet(Sugar, Ghee, Yougurt, Lassi, Bread, Milk, Panner)->64
+HashSet(Tea Powder, Ghee, Yougurt, Milk, Lassi, Cheese, Bread)->43
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Lassi, Coffee Powder, Cheese)->45
+HashSet(Sugar, Butter, Ghee, Yougurt, Coffee Powder, Cheese, Bread)->56
+HashSet(Butter, Tea Powder, Milk, Lassi, Coffee Powder, Cheese, Bread)->48
+HashSet(Sugar, Butter, Yougurt, Lassi, Coffee Powder, Cheese, Bread)->50
+HashSet(Butter, Ghee, Yougurt, Milk, Lassi, Coffee Powder, Bread)->59
+HashSet(Butter, Ghee, Lassi, Cheese, Bread, Milk, Panner)->55
+HashSet(Sugar, Butter, Ghee, Lassi, Coffee Powder, Cheese, Bread)->56
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Lassi, Milk, Panner)->46
+HashSet(Butter, Tea Powder, Yougurt, Coffee Powder, Cheese, Milk, Panner)->52
+HashSet(Butter, Tea Powder, Yougurt, Panner, Lassi, Coffee Powder, Cheese)->47
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Milk, Panner)->55
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Panner, Bread)->58
+HashSet(Butter, Sweet, Coffee Powder, Cheese, Bread, Milk, Panner)->40
+HashSet(Sugar, Butter, Tea Powder, Ghee, Lassi, Coffee Powder, Cheese)->41
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Lassi, Coffee Powder, Cheese)->47
+HashSet(Sweet, Tea Powder, Yougurt, Panner, Lassi, Coffee Powder, Cheese)->60
+HashSet(Butter, Sweet, Ghee, Yougurt, Coffee Powder, Cheese, Bread)->38
+HashSet(Sugar, Tea Powder, Ghee, Milk, Lassi, Cheese, Bread)->50
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Coffee Powder, Bread)->46
+HashSet(Butter, Tea Powder, Ghee, Panner, Coffee Powder, Cheese, Bread)->52
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Lassi, Bread)->45
+HashSet(Sweet, Ghee, Coffee Powder, Cheese, Bread, Milk, Panner)->52
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Lassi, Coffee Powder, Bread)->51
+HashSet(Butter, Tea Powder, Ghee, Lassi, Coffee Powder, Cheese, Bread)->48
+HashSet(Butter, Sweet, Tea Powder, Ghee, Milk, Coffee Powder, Cheese)->41
+HashSet(Sugar, Butter, Sweet, Yougurt, Milk, Cheese, Bread)->44
+HashSet(Tea Powder, Ghee, Yougurt, Milk, Lassi, Coffee Powder, Bread)->56
+HashSet(Butter, Ghee, Yougurt, Lassi, Cheese, Milk, Panner)->55
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Milk, Coffee Powder, Cheese)->55
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Cheese, Milk, Panner)->42
+HashSet(Butter, Ghee, Yougurt, Panner, Lassi, Coffee Powder, Bread)->55
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Panner, Cheese, Bread)->49
+HashSet(Sugar, Sweet, Ghee, Milk, Lassi, Coffee Powder, Cheese)->41
+HashSet(Sugar, Butter, Sweet, Coffee Powder, Cheese, Milk, Panner)->51
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Coffee Powder, Cheese, Bread)->57
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Panner, Bread)->49
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Cheese, Bread)->35
+HashSet(Butter, Sweet, Tea Powder, Milk, Lassi, Coffee Powder, Bread)->48
+HashSet(Butter, Tea Powder, Yougurt, Lassi, Coffee Powder, Cheese, Bread)->42
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Milk, Coffee Powder)->59
+HashSet(Sugar, Sweet, Ghee, Panner, Lassi, Coffee Powder, Bread)->63
+HashSet(Butter, Sweet, Tea Powder, Panner, Lassi, Cheese, Bread)->47
+HashSet(Sugar, Butter, Sweet, Cheese, Bread, Milk, Panner)->44
+HashSet(Sugar, Ghee, Yougurt, Panner, Coffee Powder, Cheese, Bread)->58
+HashSet(Sugar, Butter, Yougurt, Lassi, Bread, Milk, Panner)->56
+HashSet(Sugar, Butter, Sweet, Yougurt, Panner, Coffee Powder, Bread)->57
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Panner, Cheese, Bread)->43
+HashSet(Sugar, Sweet, Ghee, Yougurt, Lassi, Cheese, Bread)->54
+HashSet(Sugar, Butter, Sweet, Ghee, Panner, Cheese, Bread)->39
+HashSet(Sugar, Butter, Ghee, Yougurt, Panner, Coffee Powder, Bread)->59
+HashSet(Sweet, Tea Powder, Ghee, Panner, Lassi, Coffee Powder, Bread)->62
+HashSet(Sugar, Tea Powder, Yougurt, Milk, Coffee Powder, Cheese, Bread)->56
+HashSet(Sugar, Butter, Sweet, Panner, Lassi, Coffee Powder, Cheese)->53
+HashSet(Sugar, Butter, Ghee, Panner, Lassi, Coffee Powder, Cheese)->51
+HashSet(Sugar, Butter, Sweet, Panner, Coffee Powder, Cheese, Bread)->43
+HashSet(Sugar, Butter, Ghee, Yougurt, Panner, Cheese, Bread)->56
+HashSet(Butter, Sweet, Panner, Lassi, Coffee Powder, Cheese, Bread)->48
+HashSet(Sugar, Butter, Tea Powder, Milk, Coffee Powder, Cheese, Bread)->49
+HashSet(Tea Powder, Ghee, Yougurt, Panner, Lassi, Coffee Powder, Bread)->54
+HashSet(Sugar, Butter, Sweet, Tea Powder, Panner, Coffee Powder, Cheese)->54
+HashSet(Sugar, Sweet, Ghee, Yougurt, Panner, Coffee Powder, Cheese)->48
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Milk, Lassi, Coffee Powder)->57
+HashSet(Sugar, Butter, Tea Powder, Ghee, Milk, Lassi, Cheese)->56
+HashSet(Sweet, Ghee, Milk, Lassi, Coffee Powder, Cheese, Bread)->53
+HashSet(Sugar, Butter, Sweet, Tea Powder, Lassi, Milk, Panner)->60
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Milk, Lassi, Cheese)->39
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Panner, Cheese)->47
+HashSet(Sugar, Butter, Sweet, Ghee, Milk, Lassi, Cheese)->42
+HashSet(Sugar, Butter, Sweet, Yougurt, Milk, Coffee Powder, Bread)->59
+HashSet(Tea Powder, Ghee, Milk, Lassi, Coffee Powder, Cheese, Bread)->45
+HashSet(Sugar, Butter, Sweet, Ghee, Panner, Coffee Powder, Cheese)->36
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Milk, Panner)->41
+HashSet(Sugar, Butter, Ghee, Yougurt, Cheese, Milk, Panner)->54
+HashSet(Sugar, Butter, Sweet, Ghee, Lassi, Milk, Panner)->57
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Lassi, Milk, Panner)->50
+HashSet(Sugar, Butter, Tea Powder, Ghee, Milk, Coffee Powder, Bread)->58
+HashSet(Sugar, Butter, Sweet, Ghee, Milk, Cheese, Bread)->45
+HashSet(Ghee, Yougurt, Coffee Powder, Cheese, Bread, Milk, Panner)->61
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Cheese, Bread)->43
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Lassi, Coffee Powder, Cheese)->41
+HashSet(Sugar, Butter, Sweet, Yougurt, Milk, Coffee Powder, Cheese)->54
+HashSet(Sugar, Butter, Sweet, Yougurt, Lassi, Coffee Powder, Cheese)->53
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Panner, Lassi, Bread)->51
+HashSet(Sugar, Butter, Yougurt, Panner, Lassi, Coffee Powder, Bread)->60
+HashSet(Sugar, Butter, Sweet, Ghee, Cheese, Milk, Panner)->44
+HashSet(Butter, Sweet, Ghee, Yougurt, Milk, Coffee Powder, Cheese)->53
+HashSet(Sugar, Butter, Yougurt, Milk, Coffee Powder, Cheese, Bread)->64
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Milk, Lassi)->51
+HashSet(Sugar, Sweet, Yougurt, Panner, Coffee Powder, Cheese, Bread)->50
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Lassi, Bread)->48
+HashSet(Sweet, Tea Powder, Yougurt, Panner, Lassi, Coffee Powder, Bread)->61
+HashSet(Sugar, Tea Powder, Ghee, Lassi, Bread, Milk, Panner)->60
+HashSet(Tea Powder, Ghee, Yougurt, Milk, Coffee Powder, Cheese, Bread)->52
+HashSet(Sugar, Ghee, Yougurt, Panner, Lassi, Coffee Powder, Cheese)->58
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Bread, Milk, Panner)->49
+HashSet(Sugar, Butter, Tea Powder, Ghee, Panner, Lassi, Bread)->56
+HashSet(Sugar, Sweet, Lassi, Coffee Powder, Bread, Milk, Panner)->60
+HashSet(Sugar, Butter, Lassi, Coffee Powder, Cheese, Milk, Panner)->64
+HashSet(Sugar, Tea Powder, Ghee, Panner, Coffee Powder, Cheese, Bread)->47
+HashSet(Ghee, Yougurt, Milk, Lassi, Coffee Powder, Cheese, Bread)->64
+HashSet(Butter, Sweet, Ghee, Yougurt, Milk, Coffee Powder, Bread)->48
+HashSet(Sugar, Butter, Tea Powder, Ghee, Coffee Powder, Milk, Panner)->51
+HashSet(Sweet, Yougurt, Panner, Lassi, Coffee Powder, Cheese, Bread)->64
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Panner, Coffee Powder, Cheese)->59
+HashSet(Sugar, Butter, Sweet, Tea Powder, Lassi, Coffee Powder, Cheese)->52
+HashSet(Sugar, Butter, Ghee, Yougurt, Panner, Lassi, Bread)->55
+HashSet(Sugar, Butter, Sweet, Coffee Powder, Bread, Milk, Panner)->45
+HashSet(Butter, Sweet, Ghee, Yougurt, Bread, Milk, Panner)->49
+HashSet(Butter, Sweet, Tea Powder, Milk, Lassi, Cheese, Bread)->36
+HashSet(Sugar, Butter, Sweet, Tea Powder, Milk, Coffee Powder, Cheese)->61
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Panner, Lassi)->53
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Panner, Coffee Powder, Cheese)->50
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Milk, Lassi)->62
+HashSet(Sweet, Ghee, Yougurt, Milk, Lassi, Cheese, Bread)->53
+HashSet(Sugar, Butter, Sweet, Milk, Lassi, Coffee Powder, Bread)->58
+HashSet(Butter, Ghee, Milk, Lassi, Coffee Powder, Cheese, Bread)->60
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Cheese, Bread)->59
+HashSet(Sugar, Sweet, Yougurt, Milk, Lassi, Coffee Powder, Cheese)->52
+HashSet(Sugar, Butter, Sweet, Milk, Lassi, Cheese, Bread)->52
+HashSet(Tea Powder, Ghee, Yougurt, Lassi, Coffee Powder, Milk, Panner)->54
+HashSet(Tea Powder, Ghee, Yougurt, Milk, Lassi, Coffee Powder, Cheese)->49
+HashSet(Butter, Sweet, Yougurt, Milk, Lassi, Cheese, Bread)->42
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Bread, Milk, Panner)->47
+HashSet(Tea Powder, Ghee, Panner, Lassi, Coffee Powder, Cheese, Bread)->51
+HashSet(Sugar, Butter, Tea Powder, Milk, Lassi, Coffee Powder, Cheese)->55
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Milk, Lassi, Cheese)->41
+HashSet(Sugar, Butter, Sweet, Tea Powder, Coffee Powder, Milk, Panner)->58
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Coffee Powder, Cheese, Bread)->48
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Milk, Bread)->37
+HashSet(Sweet, Ghee, Yougurt, Lassi, Coffee Powder, Milk, Panner)->59
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Milk, Coffee Powder, Cheese)->41
+HashSet(Sugar, Tea Powder, Yougurt, Panner, Lassi, Cheese, Bread)->55
+HashSet(Butter, Ghee, Yougurt, Panner, Coffee Powder, Cheese, Bread)->53
+HashSet(Butter, Sweet, Tea Powder, Milk, Coffee Powder, Cheese, Bread)->35
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Coffee Powder, Bread)->40
+HashSet(Sweet, Tea Powder, Yougurt, Coffee Powder, Cheese, Milk, Panner)->45
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Panner, Lassi, Bread)->64
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Coffee Powder, Cheese, Bread)->54
+HashSet(Butter, Ghee, Lassi, Coffee Powder, Bread, Milk, Panner)->60
+HashSet(Sugar, Sweet, Ghee, Milk, Lassi, Coffee Powder, Bread)->56
+HashSet(Sugar, Tea Powder, Yougurt, Lassi, Coffee Powder, Cheese, Bread)->44
+HashSet(Butter, Sweet, Yougurt, Lassi, Bread, Milk, Panner)->48
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Panner, Lassi, Cheese)->44
+HashSet(Butter, Tea Powder, Yougurt, Coffee Powder, Bread, Milk, Panner)->55
+HashSet(Sugar, Sweet, Yougurt, Lassi, Coffee Powder, Cheese, Bread)->46
+HashSet(Sugar, Butter, Sweet, Yougurt, Lassi, Cheese, Bread)->48
+HashSet(Sugar, Butter, Tea Powder, Ghee, Milk, Lassi, Bread)->56
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Lassi, Cheese, Bread)->42
+HashSet(Sweet, Tea Powder, Ghee, Panner, Lassi, Coffee Powder, Cheese)->54
+HashSet(Sugar, Sweet, Ghee, Lassi, Bread, Milk, Panner)->63
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Yougurt, Milk)->46
+HashSet(Sugar, Butter, Ghee, Yougurt, Milk, Lassi, Cheese)->52
+HashSet(Butter, Tea Powder, Ghee, Lassi, Bread, Milk, Panner)->55
+HashSet(Sugar, Butter, Sweet, Tea Powder, Panner, Lassi, Bread)->53
+HashSet(Sugar, Butter, Sweet, Tea Powder, Milk, Lassi, Coffee Powder)->70
+HashSet(Sugar, Butter, Sweet, Milk, Lassi, Coffee Powder, Cheese)->58
+HashSet(Sugar, Sweet, Ghee, Yougurt, Panner, Lassi, Coffee Powder)->54
+HashSet(Sugar, Butter, Tea Powder, Lassi, Coffee Powder, Milk, Panner)->53
+HashSet(Tea Powder, Ghee, Lassi, Coffee Powder, Bread, Milk, Panner)->58
+HashSet(Sugar, Tea Powder, Ghee, Cheese, Bread, Milk, Panner)->46
+HashSet(Sugar, Sweet, Ghee, Milk, Lassi, Cheese, Bread)->50
+HashSet(Sugar, Sweet, Ghee, Panner, Lassi, Cheese, Bread)->55
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Milk, Coffee Powder)->48
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Cheese, Milk, Panner)->51
+HashSet(Sugar, Sweet, Ghee, Yougurt, Lassi, Milk, Panner)->51
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Cheese, Milk, Panner)->42
+HashSet(Butter, Sweet, Milk, Lassi, Coffee Powder, Cheese, Bread)->50
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Panner, Cheese, Bread)->49
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Yougurt, Panner)->40
+HashSet(Butter, Sweet, Tea Powder, Ghee, Lassi, Coffee Powder, Cheese)->35
+HashSet(Sugar, Tea Powder, Milk, Lassi, Coffee Powder, Cheese, Bread)->38
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Cheese, Bread)->37
+HashSet(Butter, Sweet, Tea Powder, Ghee, Panner, Lassi, Cheese)->50
+HashSet(Sugar, Butter, Sweet, Tea Powder, Panner, Lassi, Cheese)->57
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Milk, Lassi, Coffee Powder)->52
+HashSet(Butter, Sweet, Yougurt, Milk, Lassi, Coffee Powder, Bread)->56
+HashSet(Butter, Ghee, Yougurt, Lassi, Coffee Powder, Cheese, Bread)->50
+HashSet(Sugar, Butter, Tea Powder, Panner, Lassi, Cheese, Bread)->47
+HashSet(Tea Powder, Yougurt, Lassi, Cheese, Bread, Milk, Panner)->49
+HashSet(Sugar, Butter, Sweet, Yougurt, Milk, Lassi, Bread)->54
+HashSet(Sugar, Sweet, Ghee, Yougurt, Milk, Cheese, Bread)->57
+HashSet(Butter, Tea Powder, Lassi, Coffee Powder, Cheese, Milk, Panner)->46
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Panner, Coffee Powder, Bread)->61
+HashSet(Sugar, Butter, Sweet, Ghee, Bread, Milk, Panner)->52
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Panner, Bread)->45
+HashSet(Sweet, Ghee, Yougurt, Cheese, Bread, Milk, Panner)->57
+HashSet(Sugar, Sweet, Panner, Lassi, Coffee Powder, Cheese, Bread)->53
+HashSet(Butter, Tea Powder, Yougurt, Lassi, Coffee Powder, Milk, Panner)->52
+HashSet(Sweet, Yougurt, Lassi, Coffee Powder, Bread, Milk, Panner)->62
+HashSet(Butter, Sweet, Tea Powder, Panner, Lassi, Coffee Powder, Cheese)->50
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Lassi, Milk, Panner)->56
+HashSet(Sweet, Ghee, Yougurt, Lassi, Coffee Powder, Cheese, Bread)->51
+HashSet(Sweet, Tea Powder, Lassi, Cheese, Bread, Milk, Panner)->50
+HashSet(Sweet, Tea Powder, Yougurt, Milk, Lassi, Cheese, Bread)->46
+HashSet(Sugar, Butter, Yougurt, Panner, Lassi, Cheese, Bread)->52
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Panner, Lassi, Cheese)->53
+HashSet(Sugar, Butter, Tea Powder, Milk, Lassi, Coffee Powder, Bread)->56
+HashSet(Sugar, Butter, Sweet, Ghee, Lassi, Coffee Powder, Cheese)->31
+HashSet(Sugar, Sweet, Lassi, Cheese, Bread, Milk, Panner)->52
+HashSet(Sugar, Butter, Tea Powder, Panner, Lassi, Coffee Powder, Cheese)->46
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Panner, Cheese)->49
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Milk, Coffee Powder)->60
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Panner, Coffee Powder)->54
+HashSet(Butter, Sweet, Tea Powder, Lassi, Coffee Powder, Cheese, Bread)->38
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Lassi, Coffee Powder)->56
+HashSet(Sugar, Butter, Sweet, Tea Powder, Milk, Cheese, Bread)->39
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Milk, Lassi, Bread)->42
+HashSet(Sugar, Butter, Ghee, Yougurt, Lassi, Cheese, Bread)->55
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Panner, Coffee Powder)->47
+HashSet(Butter, Sweet, Ghee, Panner, Lassi, Cheese, Bread)->35
+HashSet(Sugar, Sweet, Tea Powder, Panner, Lassi, Cheese, Bread)->50
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Panner, Lassi, Coffee Powder)->63
+HashSet(Sugar, Tea Powder, Ghee, Lassi, Coffee Powder, Milk, Panner)->62
+HashSet(Sugar, Yougurt, Coffee Powder, Cheese, Bread, Milk, Panner)->64
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Coffee Powder, Cheese)->46
+HashSet(Sugar, Lassi, Coffee Powder, Cheese, Bread, Milk, Panner)->61
+HashSet(Sugar, Sweet, Yougurt, Milk, Coffee Powder, Cheese, Bread)->55
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Coffee Powder, Milk, Panner)->52
+HashSet(Sugar, Butter, Ghee, Yougurt, Coffee Powder, Milk, Panner)->64
+HashSet(Sugar, Sweet, Ghee, Yougurt, Milk, Lassi, Bread)->54
+HashSet(Butter, Sweet, Ghee, Cheese, Bread, Milk, Panner)->44
+HashSet(Sugar, Butter, Tea Powder, Milk, Lassi, Cheese, Bread)->42
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Panner, Coffee Powder, Cheese)->50
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Lassi, Cheese)->46
+HashSet(Sweet, Tea Powder, Ghee, Panner, Coffee Powder, Cheese, Bread)->39
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Panner, Coffee Powder)->49
+HashSet(Sugar, Tea Powder, Ghee, Panner, Lassi, Cheese, Bread)->57
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Lassi, Coffee Powder)->57
+HashSet(Sugar, Tea Powder, Yougurt, Cheese, Bread, Milk, Panner)->47
+HashSet(Sugar, Butter, Coffee Powder, Cheese, Bread, Milk, Panner)->58
+HashSet(Sugar, Butter, Sweet, Panner, Lassi, Coffee Powder, Bread)->57
+HashSet(Sugar, Butter, Tea Powder, Ghee, Coffee Powder, Cheese, Bread)->46
+HashSet(Sugar, Tea Powder, Yougurt, Coffee Powder, Cheese, Milk, Panner)->57
+HashSet(Butter, Sweet, Yougurt, Panner, Coffee Powder, Cheese, Bread)->51
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Milk, Cheese)->47
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Panner, Coffee Powder)->56
+HashSet(Sugar, Tea Powder, Yougurt, Coffee Powder, Bread, Milk, Panner)->64
+HashSet(Sugar, Sweet, Yougurt, Milk, Lassi, Coffee Powder, Bread)->52
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Bread, Milk, Panner)->43
+HashSet(Butter, Sweet, Tea Powder, Ghee, Milk, Lassi, Cheese)->43
+HashSet(Butter, Yougurt, Lassi, Cheese, Bread, Milk, Panner)->52
+HashSet(Sugar, Ghee, Yougurt, Milk, Lassi, Coffee Powder, Bread)->62
+HashSet(Sweet, Tea Powder, Lassi, Coffee Powder, Cheese, Milk, Panner)->45
+HashSet(Butter, Sweet, Ghee, Yougurt, Milk, Lassi, Bread)->50
+HashSet(Sweet, Tea Powder, Ghee, Milk, Lassi, Cheese, Bread)->47
+HashSet(Sweet, Tea Powder, Yougurt, Cheese, Bread, Milk, Panner)->51
+HashSet(Sweet, Yougurt, Milk, Lassi, Coffee Powder, Cheese, Bread)->54
+HashSet(Tea Powder, Ghee, Yougurt, Panner, Lassi, Coffee Powder, Cheese)->56
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Milk, Cheese)->50
+HashSet(Sugar, Tea Powder, Yougurt, Lassi, Cheese, Milk, Panner)->45
+HashSet(Sugar, Butter, Tea Powder, Ghee, Cheese, Milk, Panner)->45
+HashSet(Sugar, Tea Powder, Ghee, Milk, Lassi, Coffee Powder, Cheese)->46
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Milk, Cheese, Bread)->50
+HashSet(Sugar, Sweet, Tea Powder, Milk, Lassi, Coffee Powder, Cheese)->55
+HashSet(Butter, Sweet, Tea Powder, Ghee, Milk, Cheese, Bread)->42
+HashSet(Butter, Sweet, Ghee, Coffee Powder, Bread, Milk, Panner)->40
+HashSet(Sweet, Ghee, Yougurt, Milk, Coffee Powder, Cheese, Bread)->53
+HashSet(Sugar, Butter, Sweet, Yougurt, Milk, Lassi, Coffee Powder)->62
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Milk, Cheese, Bread)->52
+HashSet(Butter, Ghee, Yougurt, Milk, Lassi, Cheese, Bread)->51
+HashSet(Sugar, Butter, Ghee, Yougurt, Milk, Lassi, Coffee Powder)->64
+HashSet(Butter, Sweet, Tea Powder, Ghee, Panner, Coffee Powder, Bread)->40
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Panner, Lassi, Cheese)->55
+HashSet(Butter, Tea Powder, Ghee, Coffee Powder, Cheese, Milk, Panner)->53
+HashSet(Sugar, Butter, Ghee, Yougurt, Lassi, Milk, Panner)->65
+HashSet(Sugar, Butter, Sweet, Tea Powder, Panner, Cheese, Bread)->43
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Panner, Coffee Powder, Cheese)->40
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Milk, Bread)->51
+HashSet(Sugar, Butter, Tea Powder, Ghee, Lassi, Milk, Panner)->57
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Milk, Coffee Powder, Cheese)->53
+HashSet(Sugar, Sweet, Ghee, Yougurt, Lassi, Coffee Powder, Cheese)->45
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Panner, Cheese, Bread)->48
+HashSet(Butter, Sweet, Ghee, Milk, Lassi, Coffee Powder, Bread)->51
+HashSet(Sugar, Sweet, Ghee, Yougurt, Milk, Lassi, Cheese)->52
+HashSet(Butter, Sweet, Tea Powder, Ghee, Panner, Lassi, Coffee Powder)->50
+HashSet(Sugar, Ghee, Yougurt, Lassi, Coffee Powder, Cheese, Bread)->60
+HashSet(Butter, Tea Powder, Yougurt, Lassi, Bread, Milk, Panner)->46
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Panner, Lassi)->60
+HashSet(Sugar, Sweet, Lassi, Coffee Powder, Cheese, Milk, Panner)->51
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Lassi, Cheese, Bread)->56
+HashSet(Sweet, Tea Powder, Ghee, Cheese, Bread, Milk, Panner)->44
+HashSet(Sugar, Butter, Ghee, Panner, Lassi, Coffee Powder, Bread)->66
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Lassi, Coffee Powder)->42
+HashSet(Butter, Sweet, Ghee, Yougurt, Panner, Lassi, Cheese)->56
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Coffee Powder, Milk, Panner)->51
+HashSet(Butter, Sweet, Tea Powder, Ghee, Panner, Coffee Powder, Cheese)->43
+HashSet(Sugar, Ghee, Yougurt, Coffee Powder, Cheese, Milk, Panner)->62
+HashSet(Sugar, Yougurt, Lassi, Coffee Powder, Cheese, Milk, Panner)->61
+HashSet(Sugar, Ghee, Yougurt, Milk, Lassi, Cheese, Bread)->68
+HashSet(Butter, Tea Powder, Yougurt, Lassi, Cheese, Milk, Panner)->47
+HashSet(Sugar, Sweet, Yougurt, Coffee Powder, Cheese, Milk, Panner)->52
+HashSet(Sugar, Butter, Yougurt, Panner, Lassi, Coffee Powder, Cheese)->53
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Lassi, Cheese)->38
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Milk, Coffee Powder, Bread)->59
+HashSet(Tea Powder, Ghee, Yougurt, Panner, Coffee Powder, Cheese, Bread)->49
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Milk, Coffee Powder, Cheese)->55
+HashSet(Sugar, Butter, Tea Powder, Coffee Powder, Bread, Milk, Panner)->48
+HashSet(Sugar, Butter, Ghee, Lassi, Bread, Milk, Panner)->62
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Coffee Powder, Bread)->62
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Panner, Lassi, Bread)->51
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Milk, Coffee Powder, Bread)->54
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Coffee Powder, Cheese)->47
+HashSet(Butter, Sweet, Tea Powder, Coffee Powder, Cheese, Milk, Panner)->38
+HashSet(Sweet, Ghee, Lassi, Cheese, Bread, Milk, Panner)->52
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Lassi, Cheese)->46
+HashSet(Sweet, Yougurt, Lassi, Cheese, Bread, Milk, Panner)->62
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Lassi, Coffee Powder, Bread)->45
+HashSet(Sugar, Sweet, Tea Powder, Panner, Coffee Powder, Cheese, Bread)->45
+HashSet(Sugar, Butter, Tea Powder, Ghee, Lassi, Cheese, Bread)->50
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Milk, Coffee Powder, Cheese)->61
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Lassi, Bread)->43
+HashSet(Butter, Tea Powder, Yougurt, Cheese, Bread, Milk, Panner)->47
+HashSet(Sugar, Yougurt, Panner, Lassi, Coffee Powder, Cheese, Bread)->57
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Panner, Coffee Powder)->43
+HashSet(Sugar, Butter, Tea Powder, Lassi, Bread, Milk, Panner)->42
+HashSet(Sugar, Ghee, Yougurt, Lassi, Coffee Powder, Milk, Panner)->63
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Lassi, Milk, Panner)->46
+HashSet(Butter, Ghee, Yougurt, Panner, Lassi, Coffee Powder, Cheese)->57
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Yougurt, Bread)->42
+HashSet(Butter, Ghee, Yougurt, Milk, Coffee Powder, Cheese, Bread)->56
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Lassi, Coffee Powder, Cheese)->50
+HashSet(Sugar, Ghee, Yougurt, Panner, Lassi, Cheese, Bread)->66
+HashSet(Butter, Sweet, Ghee, Lassi, Coffee Powder, Milk, Panner)->49
+HashSet(Tea Powder, Lassi, Coffee Powder, Cheese, Bread, Milk, Panner)->43
+HashSet(Sugar, Butter, Tea Powder, Panner, Lassi, Coffee Powder, Bread)->53
+HashSet(Butter, Sweet, Tea Powder, Ghee, Lassi, Coffee Powder, Bread)->50
+HashSet(Butter, Sweet, Lassi, Coffee Powder, Cheese, Milk, Panner)->56
+HashSet(Butter, Sweet, Yougurt, Panner, Lassi, Coffee Powder, Cheese)->54
+HashSet(Sugar, Butter, Ghee, Yougurt, Milk, Coffee Powder, Cheese)->62
+HashSet(Sugar, Butter, Lassi, Cheese, Bread, Milk, Panner)->56
+HashSet(Sugar, Butter, Sweet, Tea Powder, Milk, Coffee Powder, Bread)->60
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Panner, Lassi)->51
+HashSet(Sugar, Butter, Sweet, Ghee, Lassi, Cheese, Bread)->38
+HashSet(Butter, Sweet, Tea Powder, Ghee, Milk, Lassi, Coffee Powder)->55
+HashSet(Sweet, Ghee, Yougurt, Lassi, Bread, Milk, Panner)->52
+HashSet(Sweet, Tea Powder, Coffee Powder, Cheese, Bread, Milk, Panner)->39
+HashSet(Butter, Sweet, Tea Powder, Ghee, Lassi, Cheese, Bread)->37
+HashSet(Sugar, Tea Powder, Coffee Powder, Cheese, Bread, Milk, Panner)->56
+HashSet(Butter, Sweet, Yougurt, Lassi, Coffee Powder, Cheese, Bread)->41
+HashSet(Sugar, Ghee, Yougurt, Cheese, Bread, Milk, Panner)->59
+HashSet(Sugar, Sweet, Yougurt, Lassi, Coffee Powder, Milk, Panner)->64
+HashSet(Sweet, Ghee, Lassi, Coffee Powder, Cheese, Milk, Panner)->54
+HashSet(Tea Powder, Yougurt, Lassi, Coffee Powder, Cheese, Milk, Panner)->47
+HashSet(Sugar, Tea Powder, Ghee, Panner, Lassi, Coffee Powder, Bread)->66
+HashSet(Butter, Sweet, Ghee, Yougurt, Milk, Lassi, Cheese)->43
+HashSet(Sweet, Ghee, Yougurt, Coffee Powder, Cheese, Milk, Panner)->57
+HashSet(Sugar, Butter, Sweet, Tea Powder, Lassi, Coffee Powder, Bread)->58
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Panner, Lassi, Coffee Powder)->51
+HashSet(Sugar, Sweet, Ghee, Yougurt, Lassi, Coffee Powder, Bread)->46
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Milk, Lassi, Cheese)->45
+HashSet(Sugar, Butter, Sweet, Ghee, Panner, Lassi, Coffee Powder)->52
+HashSet(Butter, Sweet, Ghee, Yougurt, Panner, Cheese, Bread)->42
+HashSet(Sugar, Butter, Sweet, Ghee, Milk, Lassi, Bread)->58
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Milk, Cheese, Bread)->40
+HashSet(Sugar, Sweet, Coffee Powder, Cheese, Bread, Milk, Panner)->52
+HashSet(Sugar, Sweet, Yougurt, Panner, Lassi, Cheese, Bread)->62
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Milk, Bread)->49
+HashSet(Sugar, Sweet, Yougurt, Panner, Lassi, Coffee Powder, Cheese)->53
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Milk, Lassi)->53
+HashSet(Butter, Tea Powder, Panner, Lassi, Coffee Powder, Cheese, Bread)->52
+HashSet(Sugar, Sweet, Ghee, Yougurt, Panner, Lassi, Cheese)->57
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Milk, Coffee Powder, Cheese)->45
+HashSet(Butter, Sweet, Ghee, Yougurt, Milk, Lassi, Coffee Powder)->60
+HashSet(Sugar, Sweet, Yougurt, Panner, Lassi, Coffee Powder, Bread)->61
+HashSet(Sugar, Butter, Tea Powder, Ghee, Panner, Coffee Powder, Cheese)->48
+HashSet(Sweet, Tea Powder, Yougurt, Lassi, Coffee Powder, Milk, Panner)->55
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Milk, Panner)->45
+HashSet(Sugar, Butter, Yougurt, Coffee Powder, Bread, Milk, Panner)->53
+HashSet(Butter, Ghee, Yougurt, Coffee Powder, Bread, Milk, Panner)->52
+HashSet(Sugar, Butter, Sweet, Yougurt, Coffee Powder, Cheese, Bread)->41
+HashSet(Sweet, Tea Powder, Yougurt, Milk, Coffee Powder, Cheese, Bread)->46
+HashSet(Sugar, Butter, Sweet, Tea Powder, Bread, Milk, Panner)->39
+HashSet(Sugar, Ghee, Yougurt, Milk, Lassi, Coffee Powder, Cheese)->64
+HashSet(Sweet, Lassi, Coffee Powder, Cheese, Bread, Milk, Panner)->54
+HashSet(Butter, Ghee, Yougurt, Lassi, Bread, Milk, Panner)->45
+HashSet(Sugar, Sweet, Tea Powder, Panner, Lassi, Coffee Powder, Cheese)->55
+HashSet(Butter, Tea Powder, Ghee, Panner, Lassi, Coffee Powder, Bread)->57
+HashSet(Butter, Ghee, Coffee Powder, Cheese, Bread, Milk, Panner)->56
+HashSet(Sugar, Sweet, Yougurt, Milk, Lassi, Cheese, Bread)->54
+HashSet(Sugar, Butter, Sweet, Yougurt, Panner, Lassi, Cheese)->60
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Panner, Cheese, Bread)->50
+HashSet(Sugar, Tea Powder, Lassi, Cheese, Bread, Milk, Panner)->44
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Bread, Milk, Panner)->42
+HashSet(Sugar, Butter, Ghee, Yougurt, Milk, Cheese, Bread)->58
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Panner, Lassi)->47
+HashSet(Sugar, Butter, Sweet, Yougurt, Panner, Lassi, Coffee Powder)->64
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Milk, Cheese, Bread)->39
+HashSet(Sugar, Sweet, Tea Powder, Lassi, Bread, Milk, Panner)->60
+HashSet(Sweet, Ghee, Yougurt, Coffee Powder, Bread, Milk, Panner)->51
+HashSet(Sugar, Tea Powder, Yougurt, Milk, Lassi, Coffee Powder, Bread)->48
+HashSet(Sweet, Tea Powder, Ghee, Milk, Lassi, Coffee Powder, Cheese)->41
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Cheese, Bread)->38
+HashSet(Tea Powder, Ghee, Yougurt, Lassi, Coffee Powder, Cheese, Bread)->54
+HashSet(Tea Powder, Ghee, Yougurt, Coffee Powder, Cheese, Milk, Panner)->53
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Lassi, Coffee Powder, Bread)->54
+HashSet(Butter, Tea Powder, Yougurt, Milk, Lassi, Cheese, Bread)->42
+HashSet(Sugar, Sweet, Tea Powder, Milk, Lassi, Cheese, Bread)->40
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Milk, Cheese, Bread)->49
+HashSet(Sugar, Butter, Sweet, Lassi, Cheese, Milk, Panner)->59
+HashSet(Sugar, Butter, Sweet, Yougurt, Lassi, Milk, Panner)->62
+HashSet(Butter, Yougurt, Panner, Lassi, Coffee Powder, Cheese, Bread)->52
+HashSet(Butter, Ghee, Yougurt, Cheese, Bread, Milk, Panner)->52
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Panner, Cheese, Bread)->48
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Milk, Lassi, Coffee Powder)->56
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Coffee Powder, Cheese)->50
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Lassi, Coffee Powder, Cheese)->47
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Milk, Panner)->36
+HashSet(Butter, Sweet, Yougurt, Lassi, Cheese, Milk, Panner)->57
+HashSet(Sugar, Sweet, Ghee, Yougurt, Bread, Milk, Panner)->57
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Coffee Powder, Bread)->67
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Panner, Cheese)->43
+HashSet(Sugar, Butter, Ghee, Yougurt, Panner, Coffee Powder, Cheese)->55
+HashSet(Sugar, Butter, Ghee, Lassi, Coffee Powder, Milk, Panner)->60
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Milk, Lassi, Cheese)->42
+HashSet(Sugar, Sweet, Ghee, Yougurt, Cheese, Milk, Panner)->52
+HashSet(Sugar, Tea Powder, Ghee, Coffee Powder, Bread, Milk, Panner)->61
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Panner, Lassi)->51
+HashSet(Sweet, Yougurt, Lassi, Coffee Powder, Cheese, Milk, Panner)->60
+HashSet(Butter, Sweet, Ghee, Yougurt, Lassi, Cheese, Bread)->34
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Milk, Coffee Powder)->66
+HashSet(Sugar, Tea Powder, Yougurt, Panner, Lassi, Coffee Powder, Bread)->52
+HashSet(Sugar, Sweet, Yougurt, Lassi, Bread, Milk, Panner)->58
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Lassi, Coffee Powder)->44
+HashSet(Sugar, Tea Powder, Yougurt, Milk, Lassi, Cheese, Bread)->46
+HashSet(Sweet, Tea Powder, Ghee, Milk, Lassi, Coffee Powder, Bread)->60
+HashSet(Sugar, Butter, Ghee, Panner, Coffee Powder, Cheese, Bread)->55
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Milk, Lassi, Bread)->48
+HashSet(Sugar, Butter, Sweet, Ghee, Panner, Coffee Powder, Bread)->46
+HashSet(Butter, Ghee, Lassi, Coffee Powder, Cheese, Milk, Panner)->66
+HashSet(Butter, Sweet, Tea Powder, Lassi, Coffee Powder, Milk, Panner)->49
+HashSet(Sugar, Butter, Sweet, Yougurt, Bread, Milk, Panner)->54
+HashSet(Tea Powder, Ghee, Lassi, Coffee Powder, Cheese, Milk, Panner)->46
+HashSet(Sweet, Tea Powder, Yougurt, Coffee Powder, Bread, Milk, Panner)->53
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Lassi, Cheese, Bread)->43
+HashSet(Butter, Tea Powder, Yougurt, Milk, Lassi, Coffee Powder, Cheese)->50
+HashSet(Ghee, Yougurt, Panner, Lassi, Coffee Powder, Cheese, Bread)->64
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Cheese, Milk, Panner)->40
+HashSet(Sugar, Butter, Ghee, Yougurt, Milk, Lassi, Bread)->59
+HashSet(Sugar, Tea Powder, Ghee, Lassi, Cheese, Milk, Panner)->48
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Panner, Lassi, Coffee Powder)->58
+HashSet(Butter, Sweet, Tea Powder, Ghee, Coffee Powder, Milk, Panner)->46
+HashSet(Sugar, Butter, Sweet, Ghee, Milk, Coffee Powder, Bread)->52
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Lassi, Cheese, Bread)->47
+HashSet(Butter, Sweet, Lassi, Cheese, Bread, Milk, Panner)->45
+HashSet(Butter, Sweet, Ghee, Milk, Lassi, Coffee Powder, Cheese)->41
+HashSet(Butter, Tea Powder, Yougurt, Milk, Lassi, Coffee Powder, Bread)->49
+HashSet(Butter, Sweet, Tea Powder, Panner, Coffee Powder, Cheese, Bread)->40
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Lassi, Coffee Powder, Bread)->47
+HashSet(Sugar, Butter, Tea Powder, Lassi, Coffee Powder, Cheese, Bread)->43
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Milk, Lassi, Cheese)->44
+HashSet(Sugar, Ghee, Yougurt, Milk, Coffee Powder, Cheese, Bread)->63
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Lassi, Bread)->49
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Coffee Powder, Cheese, Bread)->37
+HashSet(Sugar, Butter, Lassi, Coffee Powder, Bread, Milk, Panner)->66
+HashSet(Sugar, Ghee, Coffee Powder, Cheese, Bread, Milk, Panner)->57
+HashSet(Sugar, Butter, Sweet, Yougurt, Panner, Coffee Powder, Cheese)->56
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Milk, Lassi, Bread)->51
+HashSet(Sugar, Tea Powder, Ghee, Lassi, Coffee Powder, Cheese, Bread)->50
+HashSet(Butter, Sweet, Yougurt, Milk, Lassi, Coffee Powder, Cheese)->51
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Panner, Coffee Powder, Bread)->55
+HashSet(Butter, Tea Powder, Ghee, Cheese, Bread, Milk, Panner)->49
+HashSet(Sugar, Butter, Tea Powder, Ghee, Milk, Cheese, Bread)->54
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Bread, Milk, Panner)->54
+HashSet(Sugar, Sweet, Milk, Lassi, Coffee Powder, Cheese, Bread)->47
+HashSet(Butter, Tea Powder, Yougurt, Panner, Lassi, Cheese, Bread)->42
+HashSet(Sugar, Ghee, Yougurt, Lassi, Cheese, Milk, Panner)->54
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Coffee Powder, Bread)->52
+HashSet(Sugar, Sweet, Ghee, Yougurt, Panner, Coffee Powder, Bread)->56
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Milk, Cheese)->45
+HashSet(Sugar, Butter, Ghee, Milk, Lassi, Coffee Powder, Bread)->65
+HashSet(Sugar, Sweet, Ghee, Yougurt, Panner, Lassi, Bread)->60
+HashSet(Butter, Sweet, Lassi, Coffee Powder, Bread, Milk, Panner)->50
+HashSet(Sugar, Butter, Ghee, Milk, Lassi, Coffee Powder, Cheese)->56
+HashSet(Sugar, Yougurt, Lassi, Cheese, Bread, Milk, Panner)->59
+HashSet(Sugar, Butter, Milk, Lassi, Coffee Powder, Cheese, Bread)->63
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Milk, Coffee Powder, Bread)->48
+HashSet(Sugar, Butter, Tea Powder, Ghee, Milk, Coffee Powder, Cheese)->49
+HashSet(Sweet, Tea Powder, Ghee, Lassi, Coffee Powder, Milk, Panner)->60
+HashSet(Sugar, Butter, Tea Powder, Lassi, Cheese, Milk, Panner)->44
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Panner, Lassi, Bread)->55
+HashSet(Butter, Sweet, Ghee, Coffee Powder, Cheese, Milk, Panner)->47
+HashSet(Sugar, Butter, Sweet, Yougurt, Panner, Cheese, Bread)->50
+HashSet(Butter, Sweet, Tea Powder, Ghee, Lassi, Milk, Panner)->59
+HashSet(Sweet, Tea Powder, Ghee, Lassi, Cheese, Milk, Panner)->53
+HashSet(Butter, Sweet, Yougurt, Lassi, Coffee Powder, Milk, Panner)->61
+HashSet(Sugar, Sweet, Tea Powder, Lassi, Coffee Powder, Cheese, Bread)->39
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Panner, Lassi, Coffee Powder)->57
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Coffee Powder, Cheese)->35
+HashSet(Sugar, Butter, Tea Powder, Cheese, Bread, Milk, Panner)->43
+HashSet(Sugar, Butter, Yougurt, Lassi, Cheese, Milk, Panner)->53
+HashSet(Sugar, Tea Powder, Yougurt, Lassi, Coffee Powder, Milk, Panner)->58
+HashSet(Tea Powder, Ghee, Yougurt, Coffee Powder, Bread, Milk, Panner)->52
+HashSet(Sugar, Butter, Sweet, Yougurt, Cheese, Milk, Panner)->53
+HashSet(Sugar, Sweet, Ghee, Yougurt, Milk, Lassi, Coffee Powder)->53
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Panner, Coffee Powder, Bread)->59
+HashSet(Sugar, Sweet, Tea Powder, Yougurt, Panner, Lassi, Bread)->49
+HashSet(Sweet, Tea Powder, Ghee, Panner, Lassi, Cheese, Bread)->51
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Lassi, Coffee Powder)->54
+HashSet(Sugar, Tea Powder, Yougurt, Panner, Lassi, Coffee Powder, Cheese)->54
+HashSet(Sugar, Tea Powder, Yougurt, Milk, Lassi, Coffee Powder, Cheese)->49
+HashSet(Butter, Tea Powder, Yougurt, Panner, Lassi, Coffee Powder, Bread)->52
+HashSet(Sugar, Sweet, Tea Powder, Milk, Lassi, Coffee Powder, Bread)->54
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Panner, Coffee Powder, Cheese)->52
+HashSet(Sweet, Tea Powder, Yougurt, Milk, Lassi, Coffee Powder, Bread)->50
+HashSet(Sugar, Ghee, Panner, Lassi, Coffee Powder, Cheese, Bread)->66
+HashSet(Sugar, Butter, Sweet, Tea Powder, Panner, Coffee Powder, Bread)->51
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Lassi, Coffee Powder, Bread)->59
+HashSet(Sugar, Butter, Tea Powder, Ghee, Milk, Lassi, Coffee Powder)->64
+HashSet(Butter, Sweet, Tea Powder, Lassi, Bread, Milk, Panner)->48
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Milk, Cheese)->51
+HashSet(Sugar, Butter, Sweet, Lassi, Coffee Powder, Milk, Panner)->61
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Milk, Panner)->54
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Milk, Lassi, Bread)->51
+HashSet(Tea Powder, Ghee, Yougurt, Lassi, Cheese, Milk, Panner)->41
+HashSet(Sweet, Yougurt, Coffee Powder, Cheese, Bread, Milk, Panner)->56
+HashSet(Sugar, Butter, Sweet, Tea Powder, Coffee Powder, Cheese, Bread)->42
+HashSet(Butter, Sweet, Ghee, Panner, Coffee Powder, Cheese, Bread)->37
+HashSet(Butter, Sweet, Tea Powder, Ghee, Milk, Coffee Powder, Bread)->47
+HashSet(Butter, Sweet, Yougurt, Milk, Coffee Powder, Cheese, Bread)->48
+HashSet(Sugar, Tea Powder, Yougurt, Panner, Coffee Powder, Cheese, Bread)->54
+HashSet(Sugar, Ghee, Lassi, Cheese, Bread, Milk, Panner)->58
+HashSet(Sugar, Butter, Tea Powder, Coffee Powder, Cheese, Milk, Panner)->49
+HashSet(Sweet, Tea Powder, Yougurt, Panner, Lassi, Cheese, Bread)->57
+HashSet(Sugar, Sweet, Yougurt, Lassi, Cheese, Milk, Panner)->59
+HashSet(Sugar, Tea Powder, Panner, Lassi, Coffee Powder, Cheese, Bread)->53
+HashSet(Sugar, Sweet, Tea Powder, Milk, Coffee Powder, Cheese, Bread)->43
+HashSet(Butter, Sweet, Ghee, Yougurt, Cheese, Milk, Panner)->58
+HashSet(Sugar, Butter, Ghee, Milk, Coffee Powder, Cheese, Bread)->56
+HashSet(Sugar, Butter, Sweet, Ghee, Yougurt, Panner, Bread)->50
+HashSet(Tea Powder, Yougurt, Panner, Lassi, Coffee Powder, Cheese, Bread)->53
+HashSet(Sweet, Ghee, Panner, Lassi, Coffee Powder, Cheese, Bread)->56
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Yougurt, Milk, Lassi)->50
+HashSet(Sugar, Butter, Sweet, Ghee, Panner, Lassi, Cheese)->49
+HashSet(Sweet, Tea Powder, Ghee, Coffee Powder, Cheese, Milk, Panner)->43
+HashSet(Butter, Sweet, Tea Powder, Yougurt, Panner, Coffee Powder, Bread)->53
+HashSet(Sugar, Yougurt, Milk, Lassi, Coffee Powder, Cheese, Bread)->58
+HashSet(Sugar, Butter, Sweet, Tea Powder, Panner, Lassi, Coffee Powder)->58
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Lassi, Milk, Panner)->57
+HashSet(Sugar, Butter, Ghee, Yougurt, Lassi, Coffee Powder, Cheese)->55
+HashSet(Butter, Tea Powder, Ghee, Coffee Powder, Bread, Milk, Panner)->55
+HashSet(Butter, Ghee, Yougurt, Panner, Lassi, Cheese, Bread)->38
+HashSet(Butter, Sweet, Ghee, Milk, Coffee Powder, Cheese, Bread)->41
+HashSet(Butter, Sweet, Tea Powder, Lassi, Cheese, Milk, Panner)->48
+HashSet(Butter, Ghee, Yougurt, Milk, Lassi, Coffee Powder, Cheese)->62
+HashSet(Ghee, Yougurt, Lassi, Cheese, Bread, Milk, Panner)->54
+HashSet(Sweet, Tea Powder, Ghee, Yougurt, Lassi, Cheese, Bread)->47
+HashSet(Butter, Sweet, Ghee, Lassi, Cheese, Milk, Panner)->50
+HashSet(Sugar, Sweet, Ghee, Panner, Lassi, Coffee Powder, Cheese)->40
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Milk, Panner)->41
+HashSet(Sugar, Butter, Sweet, Tea Powder, Yougurt, Milk, Bread)->47
+HashSet(Sugar, Butter, Yougurt, Milk, Lassi, Coffee Powder, Bread)->58
+HashSet(Sugar, Butter, Ghee, Cheese, Bread, Milk, Panner)->51
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Panner, Coffee Powder, Cheese)->45
+HashSet(Sugar, Sweet, Tea Powder, Lassi, Cheese, Milk, Panner)->50
+HashSet(Butter, Sweet, Tea Powder, Ghee, Panner, Cheese, Bread)->36
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Coffee Powder, Milk, Panner)->59
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Panner, Lassi, Cheese)->39
+HashSet(Sugar, Butter, Ghee, Panner, Lassi, Cheese, Bread)->58
+HashSet(Butter, Sweet, Ghee, Yougurt, Panner, Coffee Powder, Bread)->48
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Lassi, Cheese, Bread)->40
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Panner, Cheese)->48
+HashSet(Butter, Tea Powder, Lassi, Cheese, Bread, Milk, Panner)->43
+HashSet(Butter, Lassi, Coffee Powder, Cheese, Bread, Milk, Panner)->60
+HashSet(Butter, Sweet, Yougurt, Coffee Powder, Cheese, Milk, Panner)->55
+HashSet(Sugar, Butter, Ghee, Yougurt, Bread, Milk, Panner)->56
+HashSet(Butter, Sweet, Tea Powder, Panner, Lassi, Coffee Powder, Bread)->53
+HashSet(Sugar, Butter, Sweet, Ghee, Coffee Powder, Milk, Panner)->43
+HashSet(Sugar, Butter, Sweet, Ghee, Panner, Lassi, Bread)->58
+HashSet(Sugar, Butter, Sweet, Yougurt, Panner, Lassi, Bread)->64
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Panner, Cheese, Bread)->46
+HashSet(Sugar, Tea Powder, Ghee, Yougurt, Milk, Lassi, Cheese)->47
+HashSet(Sweet, Ghee, Yougurt, Lassi, Cheese, Milk, Panner)->62
+HashSet(Sugar, Sweet, Ghee, Milk, Coffee Powder, Cheese, Bread)->43
+HashSet(Sugar, Butter, Sweet, Tea Powder, Ghee, Lassi, Bread)->52
+HashSet(Butter, Sweet, Tea Powder, Ghee, Milk, Lassi, Bread)->58
+HashSet(Tea Powder, Yougurt, Coffee Powder, Cheese, Bread, Milk, Panner)->48
+HashSet(Sugar, Ghee, Lassi, Coffee Powder, Cheese, Milk, Panner)->58
+HashSet(Sugar, Butter, Ghee, Coffee Powder, Cheese, Milk, Panner)->53
+HashSet(Sweet, Tea Powder, Yougurt, Milk, Lassi, Coffee Powder, Cheese)->43
+HashSet(Sugar, Butter, Ghee, Yougurt, Panner, Lassi, Coffee Powder)->64
+HashSet(Sugar, Butter, Ghee, Yougurt, Panner, Lassi, Cheese)->56
+HashSet(Sweet, Tea Powder, Ghee, Coffee Powder, Bread, Milk, Panner)->50
+HashSet(Butter, Tea Powder, Ghee, Panner, Lassi, Cheese, Bread)->46
+HashSet(Butter, Sweet, Tea Powder, Ghee, Yougurt, Panner, Bread)->43
+HashSet(Sugar, Butter, Tea Powder, Yougurt, Lassi, Coffee Powder, Bread)->49
+HashSet(Sugar, Sweet, Ghee, Yougurt, Panner, Cheese, Bread)->57
+HashSet(Butter, Sweet, Yougurt, Cheese, Bread, Milk, Panner)->50
+HashSet(Sugar, Sweet, Ghee, Cheese, Bread, Milk, Panner)->48
+HashSet(Sugar, Butter, Ghee, Yougurt, Milk, Coffee Powder, Cheese, Bread)->30
+HashSet(Sugar, Ghee, Yougurt, Lassi, Coffee Powder, Cheese, Milk, Panner)->30
+HashSet(Sugar, Butter, Ghee, Yougurt, Milk, Lassi, Cheese, Bread)->30
+HashSet(Sugar, Butter, Lassi, Coffee Powder, Cheese, Bread, Milk, Panner)->32
+HashSet(Sugar, Ghee, Yougurt, Milk, Lassi, Coffee Powder, Cheese, Bread)->34
+HashSet(Sugar, Butter, Ghee, Yougurt, Coffee Powder, Cheese, Milk, Panner)->31
+HashSet(Sugar, Butter, Ghee, Yougurt, Milk, Lassi, Coffee Powder, Bread)->32
+HashSet(Sugar, Ghee, Lassi, Coffee Powder, Cheese, Bread, Milk, Panner)->30
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Milk, Coffee Powder, Bread)->30
+HashSet(Sugar, Butter, Ghee, Milk, Lassi, Coffee Powder, Cheese, Bread)->33
+HashSet(Sugar, Ghee, Yougurt, Coffee Powder, Cheese, Bread, Milk, Panner)->30
+HashSet(Sugar, Sweet, Tea Powder, Lassi, Coffee Powder, Bread, Milk, Panner)->30
+HashSet(Sugar, Butter, Ghee, Lassi, Coffee Powder, Bread, Milk, Panner)->35
+HashSet(Sugar, Butter, Tea Powder, Ghee, Milk, Lassi, Coffee Powder, Bread)->30
+HashSet(Sugar, Tea Powder, Ghee, Lassi, Coffee Powder, Bread, Milk, Panner)->32
+HashSet(Butter, Ghee, Lassi, Coffee Powder, Cheese, Bread, Milk, Panner)->31
+HashSet(Sugar, Butter, Ghee, Yougurt, Milk, Lassi, Coffee Powder, Cheese)->30
+HashSet(Sugar, Butter, Tea Powder, Ghee, Yougurt, Panner, Coffee Powder, Bread)->32
+HashSet(Butter, Tea Powder, Ghee, Yougurt, Coffee Powder, Cheese, Milk, Panner)->30
+HashSet(Sugar, Butter, Ghee, Yougurt, Lassi, Coffee Powder, Milk, Panner)->32
+HashSet(Butter, Ghee, Yougurt, Lassi, Coffee Powder, Cheese, Milk, Panner)->31
+HashSet(Sugar, Ghee, Yougurt, Lassi, Coffee Powder, Bread, Milk, Panner)->33
+HashSet(Sugar, Butter, Ghee, Panner, Lassi, Coffee Powder, Cheese, Bread)->30
+HashSet(Sugar, Butter, Yougurt, Lassi, Coffee Powder, Bread, Milk, Panner)->30
+HashSet(Sugar, Sweet, Tea Powder, Ghee, Panner, Lassi, Coffee Powder, Bread)->30
