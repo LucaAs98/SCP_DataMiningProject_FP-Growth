@@ -14,10 +14,13 @@ object AlgoritmoEclat extends App {
   }
 
   //Funzione per prendere il dataset dal file
-  def prendiDataset(): List[String] = {
+  def prendiDataset(): List[Set[String]] = {
     val filePath = "src/main/resources/dataset/datasetKaggleAlimenti.txt"
     val file = new File(filePath)
-    Source.fromFile(file).getLines().toList //Contenuto di tutto il file come lista
+    val source = Source.fromFile(file)
+    val dataset = source.getLines().map(x => x.split(",").toSet).toList //Contenuto di tutto il file come lista
+    source.close()
+    dataset
   }
 
   //Parametro di Eclat
@@ -25,6 +28,8 @@ object AlgoritmoEclat extends App {
 
   //Contenuto File in Lista
   val scalaFileContentsList = prendiDataset()
+
+  //Creiamo gli ID per ogni transazione dato che non sono presenti nel dataset
   val transazioniFile = scalaFileContentsList.zipWithIndex.map({
     case (k, v) => (v, k)
   })
@@ -32,75 +37,78 @@ object AlgoritmoEclat extends App {
   //Utile per il calcolo del supporto
   val numTransazioni = scalaFileContentsList.size
 
+
   /* Funzione creata per calcolare il tempo dell'esecuzione, restituisce il risultato che otteniamo dalla computazione in
      modo tale da salvarlo su file. */
-  def avvia(): Map[List[String], List[Int]] = {
+  def avvia(): Map[Set[String], Set[Int]] = {
 
     //Lista degli alimenti presenti nel dataset (colonne) senza ripetizioni. //List("Pane", "Burro",....)
-    val listaAlimentiDS = scalaFileContentsList.mkString("").replaceAll("\n", ",").split(",").toList.distinct
+    val listaAlimentiDS = scalaFileContentsList.foldLeft(Set[String]())(_ ++ _)
+
 
     /* Il primo passo consiste nell'assegnare ad ogni alimento singolo l'ID delle transazioni in cui si trova.
-    * Nel nostro caso l'ID è l'indice in cui la transazione si trova nel dataset. //(alimento, transazione), (alimento, transazione)...*/
-    val primoPasso = for {
-      transazione <- transazioniFile //Scorro le transazioni
-      alimento <- listaAlimentiDS //Scorro i singoli alimenti
-      if (transazione._2.split(",").toList.contains(alimento)) //Se l'alimento è contenuto nella transazione lo aggiungiamo
-    } yield (alimento, transazione._1)
+    * Nel nostro caso l'ID è l'indice in cui la transazione si trova nel dataset. //(alimento, lista transazioni), (alimento, lista transazioni)...*/
+    val primoPasso = listaAlimentiDS.map(alimento => (alimento, transazioniFile.filter(_._2.contains(alimento)).map(_._1)))
 
-    /* Raggruppiamo per alimento in modo tale da avere per ciascuno di essi la lista delle transazioni in cui è contenuto. 
-    * Inoltre eliminiamo gli alimenti che non rispettano il minimo supporto. */
-    val transazioniElementiSingoli = primoPasso.groupBy(_._1).map({
-      case (k, v) => (List(k), v.map(_._2))
-    }) filter (_._2.size >= minSupport)
-
-    /* Piccola ottimizzazione. Prendiamo gli alimenti singoli, sarà utile per non doverlo calcolare ogni volta 
-    *  all'interno di "intersezione" */
-    val alimentiSingoli = transazioniElementiSingoli.keys
+    /* Piccola ottimizzazione. Prendiamo gli alimenti singoli, sarà utile per non doverlo calcolare ogni volta
+    * all'interno di "intersezione". Filtriamoli per minSupport e trasformiamo la chiave e la lista delle transaszioni in set.
+    * Ci servirà per la ricorsione. */
+    val alimentiSingoliTransazioni = primoPasso.filter(_._2.size >= minSupport).map({ case (k, v) => Set(k) -> v.toSet })
 
     /* Funzione nella quale avviene tutto il processo dell'Eclat. Dati gli alimenti singoli e le transazioni associate ad essi
-    * calcoliamo anche le transazioni per le coppie, le triple ecc.. Queste tuple sono calolate in base a quelle che 
-    * abbiamo già trovato. Esempio: se come alimenti singoli ne abbiamo solo 3, le coppie saranno formate solo da combinazioni di 
+    * calcoliamo anche le transazioni per le coppie, le triple ecc.. Queste tuple sono calolate in base a quelle che
+    * abbiamo già trovato. Esempio: se come alimenti singoli ne abbiamo solo 3, le coppie saranno formate solo da combinazioni di
     * quei 3. Così via per le tuple di dimensione maggiore. */
-    def avviaIntersezione(transazioniElementiSingoli: Map[List[String], List[Int]]): Map[List[String], List[Int]] = {
-      @tailrec
-      def intersezione(livelloCombinazione: Int, transazioniTrovate: Map[List[String], List[Int]]): Map[List[String], List[Int]] = {
+    def avviaIntersezione(transazioniElementiSingoli: Set[(Set[String], Set[Int])]): Map[Set[String], Set[Int]] = {
 
-        /* Tuple già trovate di dimensione maggiore. Utile per calcolare le tuple di dimensione + 1 rispetto ad esse.
-        * Infatti quest'ultime saranno calcolate grazie a tupleDimensMaggiore combinate con alimentiSingoli. */
+      @tailrec
+      def intersezione(livelloCombinazione: Int, transazioniTrovate: Map[Set[String], Set[Int]]): Map[Set[String], Set[Int]] = {
+
+        /* Tuple già trovate di dimensione maggiore. Utili per trovare con quali alimenti dobbiamo creare le tuple di dimensione
+        * "livelloCombinazione, dunque del passo che stiamo eseguendo. */
         val tupleDimensMaggiore = transazioniTrovate.filter(_._1.size == livelloCombinazione - 1)
 
-        //Calcoliamo le transazioni per le tuple di dimensione maggiore rispetto a quelle già trovate //List((tupla, transazioni),....
-        val tupleSuccessive = for {
-          alimentoSingolo <- alimentiSingoli //Per ogni alimento singolo
-          tuplaMassima <- tupleDimensMaggiore.keys //Per ogni tupla massima già trovata
-          if (!tuplaMassima.contains(alimentoSingolo.head)) //Se l'elemento singolo non è si trova nella tuplaMassima
+        //Prendiamo singolarmente gli alimenti che possiamo comporre per controllare nuove intersezioni
+        val alimentiDaCombinare = tupleDimensMaggiore.foldLeft(Set[String]())((acc, elementoSingolo) => (elementoSingolo._1 ++ acc))
 
-          //Facciamo l'intersezione tra i due per ottenere le transazioni dove appaiono entrambi
-          risultato = transazioniElementiSingoli(alimentoSingolo) intersect tupleDimensMaggiore(tuplaMassima)
-          if (risultato.size >= minSupport) //Se le transazioni in comune sono maggiori del minSupporto le aggiungiamo
-        } yield ((tuplaMassima appended (alimentoSingolo.head)), risultato)
+        //Creiamo le possibili combinazioni tra essi
+        val possibiliCombinazioni = alimentiDaCombinare.subsets(livelloCombinazione).toSet
 
-        //Le riordiniamo in ordine alfabetico in modo tale da rimuovere le combinazioni duplicate //(Pane, Burro), (Burro, Pane)
-        val tupleSuccessiveOrdinate = tupleSuccessive.map({
-          case (k: List[String], v) => (k.sortBy(x => x), v)
-        })
+        /* Creiamo la mappa con chiave una possibile combinazione di dimensione livelloCombinazione e come valore tutti
+         * i subset di dimensione livelloCombinazione - 1 rispetto alla tupla. */
+        val tuplePossibiliMap = possibiliCombinazioni.map(tupla => tupla -> tupla.subsets(livelloCombinazione - 1).toSet)
 
-        //Uniamo le transazioni che abbiamo trovato finora con quelle nuove
-        val transazioniUnite = transazioniTrovate.toSeq ++ tupleSuccessiveOrdinate.toSeq
+        /* Filtriamo i subset di (dimensione - 1) già presenti nelle transazioni che abbiamo trovato finora in modo tale da
+         * eliminare già quelli non possibili */
+        val tuplePossibiliCandidate = tuplePossibiliMap.filter(_._2.forall(transazioniTrovate.contains))
 
-        /* Se dobbiamo controllare l'esistenza di altre combinazioni facciamo la chiamata ricorsiva a questa stessa funzione.
-         * Altrimenti restituiamo il risultato. */
-        if (livelloCombinazione < listaAlimentiDS.size)
-          intersezione(livelloCombinazione + 1, transazioniUnite.toMap)
-        else transazioniUnite.toMap
+        /* Creiamo le nuove tuple di dimensione livelloCombinazione da appendere a quelle già trovate.
+        * Prendiamo le candidate e, per ognuna di esse creiamo la mappa composta da tupla (di dimensione livelloCombinazione)
+        * e le transazioni derivate dalle intersezioni di tutte le sottotuple da cui è composta. // tupla -> transazioni associate.
+        * Usiamo un accumulatore che inizializziamo con le transazioni della prima sotto-tupla e calcoliamo le intersezioni
+        * con le sotto-tuple successive che compongono la tupla grande. Filtriamo infine per il minSupport. */
+        val nuoveTupleTransazioni = tuplePossibiliCandidate.map(x => x._1 -> x._2.foldLeft(transazioniTrovate(x._2.head))((acc, tuple) => acc.intersect(transazioniTrovate(tuple)))).filter(_._2.size >= minSupport)
+
+        //Se non ci sono più nuuove tuple abbiamo finito, altrimenti andiamo a calcolare quelle di dimensione maggiore.
+        if (nuoveTupleTransazioni.nonEmpty) {
+
+          //Uniamo le transazioni che abbiamo trovato finora con quelle nuove
+          val transazioniUnite = transazioniTrovate concat nuoveTupleTransazioni
+
+          /* Se dobbiamo controllare l'esistenza di altre combinazioni facciamo la chiamata ricorsiva a questa stessa funzione.
+           * Altrimenti restituiamo il risultato. */
+          if (livelloCombinazione < listaAlimentiDS.size) {
+            //Chiamata ricorsiva
+            intersezione(livelloCombinazione + 1, transazioniUnite)
+          } else transazioniUnite
+        } else transazioniTrovate
       }
 
-      intersezione(2, transazioniElementiSingoli)
+      intersezione(2, transazioniElementiSingoli.toMap)
     }
 
-    avviaIntersezione(transazioniElementiSingoli)
+    avviaIntersezione(alimentiSingoliTransazioni)
   }
-
 
   //Valutiamo il risultato
   val result = time(avvia())
