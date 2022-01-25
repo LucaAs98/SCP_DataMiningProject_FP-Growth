@@ -28,9 +28,8 @@ object Apriori extends App {
 
   //Filtraggio degli itemset, vengono eliminati se i subset non itemset frequenti, poi vengono eliminati anche filtrati
   // (e dunque eliminati) in base al numero di occorrenze nelle transazioni
-  def prune(map: Map[Set[String], Int], lSetkeys: List[Set[String]]) = {
-    val one = map filter (x => x._1.subsets(x._1.size - 1) forall (y => lSetkeys.contains(y)))
-    one filter (x => x._2 >= min_sup)
+  def prune(candidati: List[Set[String]], lSetkeys: List[Set[String]]) = {
+    candidati filter (x => x.subsets(x.size - 1) forall (y => lSetkeys.contains(y)))
   }
 
   //Parte iterativa dell'algoritmo
@@ -39,25 +38,15 @@ object Apriori extends App {
 
     //Controllo che la mappa passata non sia vuota
     if (map.isEmpty) {
-      println(l.size)
-      println(l.last.head._1.size)
-      println(l.last.toSeq.sortBy(_._2))
       l
     }
     else {
       //Creazione degli itemset candidati (Item singoli + combinazioni)
-      val setsItem = ((map foldLeft (Set[String]())) ((xs, x) => x._1 ++ xs)).toList.combinations(setSize)
-      println("Calcolo combinazioni! effettuato")
-
+      val setsItem = ((map foldLeft (Set[String]())) ((xs, x) => x._1 ++ xs)).toList.combinations(setSize).toList map (x => x.toSet)
       //Eliminazione degli itemset non frequenti con il metodo prune
-      val c = prune((countItemSet(setsItem.toList map (x => x.toSet))), l.last.keys.toList)
-      println("Prune effettuato!!!!!")
-
+      val c = countItemSet(prune(setsItem,l.last.keys.toList)) filter (x => x._2 >= min_sup)
       //Controllo che la mappa relativa creata con gli itemset non sia vuota, se è vuota l'algoritmo è terminato
       if (c.nonEmpty) {
-        println(l.size)
-        println(l.last.head._1.size)
-        println(l.last.toSeq.sortBy(_._2))
         aprioriIter(c, l :+ c, setSize + 1)
       }
       else {

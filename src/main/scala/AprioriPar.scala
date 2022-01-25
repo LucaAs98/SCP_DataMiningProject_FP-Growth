@@ -23,14 +23,14 @@ object AprioriPar extends App {
   }
 
   //Passando la lista dei set degli item creati, conta quante volte c'è l'insieme nelle transazioni
-  def countItemSet(item: List[Set[String]]):Map[Set[String], Int] = {
+  def countItemSet(item: List[Set[String]]): Map[Set[String], Int] = {
     ((item.par map (x => x -> (dataset count (y => x.subsetOf(y))))).seq.toMap)
   }
 
   //Filtraggio degli itemset, vengono eliminati se i subset non itemset frequenti, poi vengono eliminati anche filtrati
   // (e dunque eliminati) in base al numero di occorrenze nelle transazioni
-  def prune(map: Map[Set[String], Int], lSetkeys: List[Set[String]]) = {
-     (map filter (x => x._1.subsets(x._1.size - 1) forall (y => lSetkeys.contains(y)))) filter (x => x._2 >= min_sup)
+  def prune(candidati: List[Set[String]], lSetkeys: List[Set[String]]) = {
+    candidati filter (x => x.subsets(x.size - 1) forall (y => lSetkeys.contains(y)))
   }
 
   //Parte iterativa dell'algoritmo
@@ -39,25 +39,15 @@ object AprioriPar extends App {
 
     //Controllo che la mappa passata non sia vuota
     if (map.isEmpty) {
-      println(l.size)
-      println(l.last.head._1.size)
-      println(l.last.toSeq.sortBy(_._2))
       l
     }
     else {
       //Creazione degli itemset candidati (Item singoli + combinazioni)
-      val setsItem = ((map foldLeft (Set[String]())) ((xs, x) => x._1 ++ xs)).toList.combinations(setSize)
-      println("Calcolo combinazioni! effettuato")
-
+      val setsItem = ((map foldLeft (Set[String]())) ((xs, x) => x._1 ++ xs)).toList.combinations(setSize).toList map (x => x.toSet)
       //Eliminazione degli itemset non frequenti con il metodo prune
-      val c = prune((countItemSet(setsItem.toList map (x => x.toSet))), l.last.keys.toList)
-      println("Prune effettuato!!!!!")
-
+      val c = countItemSet(prune(setsItem, l.last.keys.toList)) filter (x => x._2 >= min_sup)
       //Controllo che la mappa relativa creata con gli itemset non sia vuota, se è vuota l'algoritmo è terminato
       if (c.nonEmpty) {
-        println(l.size)
-        println(l.last.head._1.size)
-        println(l.last.toSeq.sortBy(_._2))
         aprioriIter(c, l :+ c, setSize + 1)
       }
       else {
@@ -71,18 +61,18 @@ object AprioriPar extends App {
 
 
   //Esecuzione effettiva dell'algoritmo
-  def exec() ={
-    val firstStep = time(countItemSet(totalItem).filter(x => x._2 >= min_sup))
-     //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
-    /*val listOfTables = */aprioriIter(firstStep, List(firstStep), 2)
+  def exec() = {
+    val firstStep = countItemSet(totalItem).filter(x => x._2 >= min_sup)
+    //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
+    aprioriIter(firstStep, List(firstStep), 2)
 
   }
 
   def time[R](block: => R) = {
     val t0 = System.nanoTime()
-    val result = block    // call-by-name
+    val result = block // call-by-name
     val t1 = System.nanoTime()
-    println("Elapsed time: " + (t1 - t0)/1000000 + "ms")
+    println("Elapsed time: " + (t1 - t0) / 1000000 + "ms")
     result
   }
 
@@ -90,7 +80,7 @@ object AprioriPar extends App {
   def writeFile(filename: String, s: List[String]): Unit = {
     val file = new File(filename)
     val bw = new BufferedWriter(new FileWriter(file))
-    s foreach(x=> bw.write(x))
+    s foreach (x => bw.write(x))
     bw.close()
   }
 
@@ -134,8 +124,8 @@ object AprioriPar extends App {
 
   val lo = time(exec())
   //stampa della tabella con tutte le occorrenze per tutti gli itemset
-  val pollop = (lo flatMap ( x => (x map ( y=> y._1.toString() + "->" + y._2 + "\n")).toList))
-  writeFile("src/main/resources/results/AprioriParResult.txt",pollop )
+  val pollop = (lo flatMap (x => (x map (y => y._1.toString() + "->" + y._2 + "\n")).toList))
+  writeFile("src/main/resources/results/AprioriParResult.txt", pollop)
 
   //Stampa dei supporti vari
   val pollop2 = ((lo).tail flatMap (x => x.keys.toList)).flatMap(x => calcoloConfidenza(x, lo))
