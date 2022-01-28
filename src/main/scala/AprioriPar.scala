@@ -1,7 +1,8 @@
 import java.io.{BufferedWriter, File, FileWriter}
 
 import scala.annotation.tailrec
-import scala.collection.parallel.CollectionConverters._
+import scala.collection.parallel._
+import scala.io.Source
 
 object AprioriPar extends App {
   //Scelta dataset (Csv e txt identitici)
@@ -14,7 +15,7 @@ object AprioriPar extends App {
   //Metodo per la lettura del dataset
   def datasetFromFile(nfile: String): List[Set[String]] = {
     //Creazione file
-    val source = io.Source.fromFile(nfile)
+    val source = Source.fromFile(nfile)
 
     //Vengono prese le linee del file e separate, creando una list di set di stringhe
     val data = source.getLines().map(x => x.split(",").toSet).toList

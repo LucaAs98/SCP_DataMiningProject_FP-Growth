@@ -30,9 +30,7 @@ object AlgoritmoEclat extends App {
   val scalaFileContentsList = prendiDataset()
 
   //Creiamo gli ID per ogni transazione dato che non sono presenti nel dataset
-  val transazioniFile = scalaFileContentsList.zipWithIndex.map({
-    case (k, v) => (v, k)
-  })
+  val transazioniFile = scalaFileContentsList.zipWithIndex.map({x => (x._2, x._1)})
 
   //Utile per il calcolo del supporto
   val numTransazioni = scalaFileContentsList.size
@@ -93,7 +91,7 @@ object AlgoritmoEclat extends App {
         if (nuoveTupleTransazioni.nonEmpty) {
 
           //Uniamo le transazioni che abbiamo trovato finora con quelle nuove
-          val transazioniUnite = transazioniTrovate concat nuoveTupleTransazioni
+          val transazioniUnite = transazioniTrovate ++ nuoveTupleTransazioni
 
           /* Se dobbiamo controllare l'esistenza di altre combinazioni facciamo la chiamata ricorsiva a questa stessa funzione.
            * Altrimenti restituiamo il risultato. */

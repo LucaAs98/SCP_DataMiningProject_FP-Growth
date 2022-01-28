@@ -1,7 +1,7 @@
 import java.io.{BufferedWriter, File, FileWriter}
 import scala.annotation.tailrec
 import scala.io.Source
-import scala.collection.parallel.CollectionConverters._
+import scala.collection.parallel._
 import scala.collection.parallel.{ParMap, ParSeq}
 
 /** Per commenti più dettagliati vedi file dell'algoritmo classico. * */
@@ -18,7 +18,7 @@ object AlgoritmoEclatParallelo extends App {
 
   //Funzione per prendere il dataset dal file
   def prendiDataset(): List[Set[String]] = {
-    val filePath = "src/main/resources/dataset/datasetKaggleAlimenti.txt"
+    val filePath = "src/main/resources/dataset/datasetKaggleAlimenti10.txt"
     val file = new File(filePath)
     val source = Source.fromFile(file)
     val dataset = source.getLines().map(x => x.split(",").toSet).toList //Contenuto di tutto il file come lista
@@ -86,7 +86,7 @@ object AlgoritmoEclatParallelo extends App {
         if (nuoveTupleTransazioni.nonEmpty) {
 
           //Uniamo le transazioni che abbiamo trovato finora con quelle nuove
-          val transazioniUnite = transazioniTrovate concat nuoveTupleTransazioni
+          val transazioniUnite = transazioniTrovate ++ nuoveTupleTransazioni
 
           /* Se dobbiamo controllare l'esistenza di altre combinazioni facciamo la chiamata ricorsiva a questa stessa funzione.
            * Altrimenti restituiamo il risultato. */
@@ -111,7 +111,7 @@ object AlgoritmoEclatParallelo extends App {
   })
 
   //Scriviamo il risultato nel file
-  val writingFile = new File("src/main/resources/results/EclatResultParallelo.txt")
+  val writingFile = new File("src/main/resources/results/EclatResultParallelo10.txt")
   val bw = new BufferedWriter(new FileWriter(writingFile))
   for (row <- resultOrdered) {
     bw.write(row + "\n")

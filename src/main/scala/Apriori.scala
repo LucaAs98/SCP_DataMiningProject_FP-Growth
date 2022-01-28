@@ -1,5 +1,5 @@
 import java.io.{BufferedWriter, File, FileWriter}
-
+import scala.io.Source
 import scala.annotation.tailrec
 
 object Apriori extends App {
@@ -13,7 +13,7 @@ object Apriori extends App {
   //Metodo per la lettura del dataset
   def datasetFromFile(nfile: String): List[Set[String]] = {
     //Creazione file
-    val source = io.Source.fromFile(nfile)
+    val source = Source.fromFile(nfile)
 
     //Vengono prese le linee del file e separate, creando una list di set di stringhe
     val data = source.getLines().map(x => x.split(",").toSet).toList
