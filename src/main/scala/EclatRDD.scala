@@ -1,39 +1,20 @@
 import org.apache.log4j.{Level, Logger}
-import org.apache.spark.{SparkConf, SparkContext}
-import org.apache.spark.rdd.RDD
-
-import java.io.{BufferedWriter, File, FileWriter}
-import java.util.Scanner
 import scala.annotation.tailrec
-import scala.io.Source
 
 object EclatRDD {
 
   def main(args: Array[String]): Unit = {
     Logger.getRootLogger.setLevel(Level.INFO)
-    val sc = new SparkContext("local[*]", "provaSpark")
-    val lines = sc.textFile("C:\\Spark/datasetKaggleAlimenti30.txt")
+    val sc = Utils.getSparkContext("EclatRDD")
+    val lines = Utils.getRDD("datasetKaggleAlimenti.txt", sc)
     val dataset = lines.map(x => x.split(",").toSet)
     val transazioniFile = dataset.zipWithIndex.map({ x => x._2 -> x._1 })
-
-    //Valuta il tempo di un'espressione
-    def time[R](block: => R) = {
-      val t0 = System.nanoTime()
-      val result = block // call-by-name
-      val t1 = System.nanoTime()
-      println("Tempo di esecuzione: " + (t1 - t0) / 1000000 + "ms")
-      result
-    }
-
-    //Parametro di Eclat
-    val minSupport = 30
-
 
     /* Funzione creata per calcolare il tempo dell'esecuzione, restituisce il risultato che otteniamo dalla computazione in
        modo tale da salvarlo su file. */
     def avvia(): Map[Set[String], Set[Long]] = {
 
-      val listaAlimentiSingoliTransazioni = transazioniFile.flatMap(x => x._2.map(y => y -> x._1)).groupByKey().filter(_._2.size >= minSupport).map(x => Set(x._1) -> x._2.toSet).collect().toSet
+      val listaAlimentiSingoliTransazioni = transazioniFile.flatMap(x => x._2.map(y => y -> x._1)).groupByKey().filter(_._2.size >= Utils.minSupport).map(x => Set(x._1) -> x._2.toSet).collect().toSet
 
       /* Funzione nella quale avviene tutto il processo dell'Eclat. Dati gli alimenti singoli e le transazioni associate ad essi
       * calcoliamo anche le transazioni per le coppie, le triple ecc.. Queste tuple sono calolate in base a quelle che
@@ -62,7 +43,7 @@ object EclatRDD {
           val tuplePossibiliCandidate = tuplePossibiliMap.filter(_._2.forall(transazioniTrovate.contains))
 
           //Facciamo l'intersezione delle transazioni di ogni subset.
-          val nuoveTupleTransazioni = tuplePossibiliCandidate.par.map(x => x._1 -> x._2.foldLeft(transazioniTrovate(x._2.head))((acc, tuple) => acc.intersect(transazioniTrovate(tuple)))).filter(_._2.size >= minSupport)
+          val nuoveTupleTransazioni = tuplePossibiliCandidate.par.map(x => x._1 -> x._2.foldLeft(transazioniTrovate(x._2.head))((acc, tuple) => acc.intersect(transazioniTrovate(tuple)))).filter(_._2.size >= Utils.minSupport)
 
           //Se non abbiamo nuove tuple restituiamo quello che abbiamo trovato finora
           if (nuoveTupleTransazioni.nonEmpty) {
@@ -85,19 +66,12 @@ object EclatRDD {
     }
 
     //Valutiamo il risultato
-    val result = time(avvia())
-    val numTransazioni = transazioniFile.count().toFloat
-    //Riordiniamo il risultato per visualizzarlo meglio sul file
-    val resultOrdered = result.toSeq.sortBy(_._2.size).map({
-      case (k, v) => (k, (v.size, v.size.toFloat / numTransazioni))
-    })
+    val result = Utils.time(avvia())
+    val result2 = result.map(elem => elem._1 -> elem._2.size)
 
-    //Scriviamo il risultato nel file
-    val writingFile = new File("src/main/resources/results/EclatSparkResult30.txt")
-    val bw = new BufferedWriter(new FileWriter(writingFile))
-    for (row <- resultOrdered) {
-      bw.write(row + "\n")
-    }
-    bw.close()
+    val numTransazioni = transazioniFile.count().toFloat
+
+    Utils.scriviSuFileFrequentItemSet(result2, numTransazioni, "EclatRDDResultParallelo.txt")
+    Utils.scriviSuFileSupporto(result2, numTransazioni, "EclatRDDResultSupportParallelo.txt")
   }
 }

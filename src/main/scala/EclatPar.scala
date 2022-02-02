@@ -1,34 +1,10 @@
-import java.io.{BufferedWriter, File, FileWriter}
 import scala.annotation.tailrec
-import scala.io.Source
 
 /** Per commenti più dettagliati vedi file dell'algoritmo classico. * */
 object EclatPar extends App {
 
-  //Valuta il tempo di un'espressione
-  def time[R](block: => R) = {
-    val t0 = System.nanoTime()
-    val result = block // call-by-name
-    val t1 = System.nanoTime()
-    println("Tempo di esecuzione: " + (t1 - t0) / 1000000 + "ms")
-    result
-  }
-
-  //Funzione per prendere il dataset dal file
-  def prendiDataset(): List[Set[String]] = {
-    val filePath = "src/main/resources/dataset/datasetKaggleAlimenti100.txt"
-    val file = new File(filePath)
-    val source = Source.fromFile(file)
-    val dataset = source.getLines().map(x => x.split(",").toSet).toList //Contenuto di tutto il file come lista
-    source.close()
-    dataset
-  }
-
-  //Parametro di Eclat
-  val minSupport = 30
-
   //Contenuto File in Lista
-  val scalaFileContentsList = prendiDataset()
+  val scalaFileContentsList = Utils.prendiDataset("datasetKaggleAlimenti.txt")
   val transazioniFile = scalaFileContentsList.zipWithIndex.map(elem => elem._2 -> elem._1)
 
   //Utile per il calcolo del supporto
@@ -47,7 +23,7 @@ object EclatPar extends App {
     val primoPasso = listaAlimentiDS.map(alimento => (alimento, transazioniFile.filter(_._2.contains(alimento)).map(_._1)))
 
     /* Piccola ottimizzazione. Prendiamo gli alimenti singoli, sarà utile per creare le possibili combinazioni.  */
-    val alimentiSingoliTransazioni = primoPasso.filter(_._2.size >= minSupport).map({ case (k, v) => Set(k) -> v.toSet })
+    val alimentiSingoliTransazioni = primoPasso.filter(_._2.size >= Utils.minSupport).map({ case (k, v) => Set(k) -> v.toSet })
 
     /* Funzione nella quale avviene tutto il processo dell'Eclat. Dati gli alimenti singoli e le transazioni associate ad essi
     * calcoliamo anche le transazioni per le coppie, le triple ecc.. Queste tuple sono calolate in base a quelle che
@@ -76,7 +52,7 @@ object EclatPar extends App {
         val tuplePossibiliCandidate = tuplePossibiliMap.filter(_._2.forall(transazioniTrovate.contains))
 
         //Facciamo l'intersezione delle transazioni di ogni subset.
-        val nuoveTupleTransazioni = tuplePossibiliCandidate.par.map(x => x._1 -> x._2.foldLeft(transazioniTrovate(x._2.head))((acc, tuple) => acc.intersect(transazioniTrovate(tuple)))).filter(_._2.size >= minSupport)
+        val nuoveTupleTransazioni = tuplePossibiliCandidate.par.map(x => x._1 -> x._2.foldLeft(transazioniTrovate(x._2.head))((acc, tuple) => acc.intersect(transazioniTrovate(tuple)))).filter(_._2.size >= Utils.minSupport)
 
         //Se non abbiamo nuove tuple restituiamo quello che abbiamo trovato finora
         if (nuoveTupleTransazioni.nonEmpty) {
@@ -99,18 +75,9 @@ object EclatPar extends App {
   }
 
   //Valutiamo il risultato
-  val result = time(avvia())
+  val result = Utils.time(avvia())
+  val result2 = result.map(elem => elem._1 -> elem._2.size)
 
-  //Riordiniamo il risultato per visualizzarlo meglio sul file
-  val resultOrdered = result.toSeq.sortBy(_._2.size).map({
-    case (k, v) => (k, (v.size, v.size.toFloat / numTransazioni.toFloat))
-  })
-
-  //Scriviamo il risultato nel file
-  val writingFile = new File("src/main/resources/results/EclatResultParallelo100.txt")
-  val bw = new BufferedWriter(new FileWriter(writingFile))
-  for (row <- resultOrdered) {
-    bw.write(row + "\n")
-  }
-  bw.close()
+  Utils.scriviSuFileFrequentItemSet(result2, numTransazioni.toFloat, "EclatResultParallelo.txt")
+  Utils.scriviSuFileSupporto(result2, numTransazioni, "EclatResultSupportParallelo.txt")
 }
