@@ -1,11 +1,9 @@
 import java.io.{BufferedWriter, File, FileWriter}
 import scala.annotation.tailrec
 import scala.io.Source
-import scala.collection.parallel._
-import scala.collection.parallel.{ParMap, ParSeq}
 
 /** Per commenti più dettagliati vedi file dell'algoritmo classico. * */
-object AlgoritmoEclatParallelo extends App {
+object EclatPar extends App {
 
   //Valuta il tempo di un'espressione
   def time[R](block: => R) = {
@@ -18,7 +16,7 @@ object AlgoritmoEclatParallelo extends App {
 
   //Funzione per prendere il dataset dal file
   def prendiDataset(): List[Set[String]] = {
-    val filePath = "src/main/resources/dataset/datasetKaggleAlimenti10.txt"
+    val filePath = "src/main/resources/dataset/datasetKaggleAlimenti100.txt"
     val file = new File(filePath)
     val source = Source.fromFile(file)
     val dataset = source.getLines().map(x => x.split(",").toSet).toList //Contenuto di tutto il file come lista
@@ -31,9 +29,7 @@ object AlgoritmoEclatParallelo extends App {
 
   //Contenuto File in Lista
   val scalaFileContentsList = prendiDataset()
-  val transazioniFile = scalaFileContentsList.zipWithIndex.map({
-    case (k, v) => (v, k)
-  })
+  val transazioniFile = scalaFileContentsList.zipWithIndex.map(elem => elem._2 -> elem._1)
 
   //Utile per il calcolo del supporto
   val numTransazioni = scalaFileContentsList.size
@@ -111,7 +107,7 @@ object AlgoritmoEclatParallelo extends App {
   })
 
   //Scriviamo il risultato nel file
-  val writingFile = new File("src/main/resources/results/EclatResultParallelo10.txt")
+  val writingFile = new File("src/main/resources/results/EclatResultParallelo100.txt")
   val bw = new BufferedWriter(new FileWriter(writingFile))
   for (row <- resultOrdered) {
     bw.write(row + "\n")

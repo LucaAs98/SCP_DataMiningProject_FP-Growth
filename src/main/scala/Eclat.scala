@@ -2,7 +2,7 @@ import java.io.{BufferedWriter, File, FileWriter}
 import scala.annotation.tailrec
 import scala.io.Source
 
-object AlgoritmoEclat extends App {
+object Eclat extends App {
 
   //Valuta il tempo di un'espressione
   def time[R](block: => R) = {
@@ -15,10 +15,10 @@ object AlgoritmoEclat extends App {
 
   //Funzione per prendere il dataset dal file
   def prendiDataset(): List[Set[String]] = {
-    val filePath = "src/main/resources/dataset/datasetKaggleAlimenti.txt"
+    val filePath = "src/main/resources/dataset/datasetGrande.txt"
     val file = new File(filePath)
     val source = Source.fromFile(file)
-    val dataset = source.getLines().map(x => x.split(",").toSet).toList //Contenuto di tutto il file come lista
+    val dataset = source.getLines().map(x => x.split(" ").toSet).toList //Contenuto di tutto il file come lista
     source.close()
     dataset
   }
