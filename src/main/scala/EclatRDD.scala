@@ -71,7 +71,7 @@ object EclatRDD {
 
     val numTransazioni = transazioniFile.count().toFloat
 
-    Utils.scriviSuFileFrequentItemSet(result2, numTransazioni, "EclatRDDResultParallelo.txt")
-    Utils.scriviSuFileSupporto(result2, numTransazioni, "EclatRDDResultSupportParallelo.txt")
+    Utils.scriviSuFileFrequentItemSet(result2, numTransazioni, "EclatRDDResult.txt")
+    Utils.scriviSuFileSupporto(result2, numTransazioni, "EclatRDDResultSupport.txt")
   }
 }
