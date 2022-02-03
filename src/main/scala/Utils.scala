@@ -1,5 +1,4 @@
 import org.apache.spark.rdd.RDD
-import org.apache.spark.scheduler.SparkListener
 import org.apache.spark.{SparkConf, SparkContext}
 
 import java.io.{BufferedWriter, File, FileWriter}
@@ -30,42 +29,42 @@ object Utils {
   }
 
   //Calcolo delle confidenze
-  def calcoloConfidenza(setItems: Set[String], numTransazioni: Float, listOfTables: Map[Set[String], Int]): Seq[String] = {
-    val nTran = numTransazioni //numero di transazioni
-
+  def calcoloConfidenza(singleResult: Set[String], numTransazioni: Float, result: Map[Set[String], Int]): Seq[String] = {
+    
     //Numero occorrenze dell'intero itemset
-    val supportIS = listOfTables.get(setItems) match {
+    val supportIS = result.get(singleResult) match {
       case None => 0
       case Some(int) => int
     }
 
-    //calcolo dei subset del set su cui dobbiamo fare i calcoli
-    val subsets = setItems.subsets(setItems.size - 1).toList
+    //Calcolo dei subset del set su cui dobbiamo fare i calcoli
+    val subsets = singleResult.subsets(singleResult.size - 1).toList
 
     //Calcolo dei subsets del set passato come parametro
-    val supportSubset = (subsets map (x => x -> (listOfTables.get(x) match {
+    val supportSubset = (subsets map (x => x -> (result.get(x) match {
       case None => 0
       case Some(int) => int
     })))
 
     //Viene ricavato il numero delle occorrenze di ogni singolo subset
-    val totalSingleItem = (setItems map (x => Set(x) -> (listOfTables.get(Set(x)) match {
+    val totalSingleItem = (singleResult map (x => Set(x) -> (result.get(Set(x)) match {
       case None => 0
       case Some(int) => int
     }))).toMap
 
     //Creazione delle stringhe
-    val p = supportSubset map (x => "antecedente: " + x._1.toString() +
-      " successivo: " + setItems.--(x._1).toString() + " supporto antecedente: " + x._2.toFloat / nTran + " supporto successivo: "
-      + (totalSingleItem.get(setItems.--(x._1)) match {
+    val allSupportSubsetString = supportSubset map (x => "Antecedente: " + x._1.toString() +
+      " Successivo: " + singleResult.--(x._1).toString() + " Supporto antecedente: " + x._2.toFloat / numTransazioni + " Supporto successivo: "
+      + (totalSingleItem.get(singleResult.--(x._1)) match {
       case None => 0
       case Some(int) => int
-    }).toFloat / nTran + " supporto: " + (supportIS.toFloat / nTran) +
-      " confidence: " + (supportIS.toFloat / x._2))
+    }).toFloat / numTransazioni + " Supporto: " + (supportIS.toFloat / numTransazioni) +
+      " Confidence: " + (supportIS.toFloat / x._2))
 
-    p
+    allSupportSubsetString
   }
 
+  //Formatta il risultato ottenuto dalle computazioni in modo tale da calcolarne i frequentItemSet e lo salva su file
   def scriviSuFileFrequentItemSet(result: Map[Set[String], Int], numTransazioni: Float, nomeFile: String): Unit = {
     //Riordiniamo il risultato per visualizzarlo meglio sul file
     val resultOrdered1 = result.toSeq.sortBy(_._2).map(elem => elem._1 -> (elem._2, elem._2.toFloat / numTransazioni)).toList.map(elem => elem.toString())
@@ -73,12 +72,14 @@ object Utils {
     scrivi(resultOrdered1, nomeFile)
   }
 
+  //Formatta il risultato ottenuto dalle computazioni in modo tale da calcolarne il supporto e lo salva su file
   def scriviSuFileSupporto(result: Map[Set[String], Int], numTransazioni: Float, nomeFile: String): Unit = {
     val result2 = result.filter(x => x._1.size > 1).keys.toList.flatMap(x => calcoloConfidenza(x, numTransazioni, result))
 
     scrivi(result2, nomeFile)
   }
 
+  //Scrittura effettiva su file
   def scrivi(daScrivere: List[String], nomeFile: String): Unit = {
     val writingFile = new File("src/main/resources/results/" + nomeFile)
     val bw = new BufferedWriter(new FileWriter(writingFile))
@@ -88,12 +89,14 @@ object Utils {
     bw.close()
   }
 
+  //Restituisce uno spark context
   def getSparkContext(nomeContext: String): SparkContext = {
     val conf = new SparkConf().setAppName(nomeContext).setMaster("local[*]")
     val sc = new SparkContext(conf)
     sc
   }
 
+  //Restituisce un RDD da file
   def getRDD(nomeFile: String, sc: SparkContext): RDD[String] = {
     val file = "src/main/resources/dataset/" + nomeFile
     sc.textFile(file)
