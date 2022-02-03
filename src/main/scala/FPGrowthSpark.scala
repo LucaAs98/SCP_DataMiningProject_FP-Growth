@@ -4,27 +4,27 @@ import org.apache.spark.sql.SparkSession
 
 import java.io.{BufferedWriter, File, FileWriter}
 
+//Versione FPGrowth spark già implementata
 object FPGrowthSpark extends App {
   Logger.getRootLogger.setLevel(Level.INFO)
-  val spark: SparkSession = SparkSession.builder()
-    .master("local[*]")
-    .appName("provaSpark")
-    .getOrCreate();
+  val sc = Utils.getSparkContext("FPGrowthSpark")
+  val lines = Utils.getRDD("datasetKaggleAlimenti.txt", sc)
+  val dataset = lines.map(x => x.split(","))
 
-  val lines = spark.sparkContext.textFile("C:\\Spark/datasetGrande.txt")
-  val dataset = lines.map(x => x.split(" "))
+  val fpg = new FPGrowth().setMinSupport(0.0025).setNumPartitions(10)
 
-  val fpg = new FPGrowth()
-    .setMinSupport(0.0025)
-    .setNumPartitions(10)
+  def avvia() = {
+    val model = fpg.run(dataset)
 
-  val model = fpg.run(dataset)
+    val freqItemSet = model.freqItemsets.collect().sortBy(x => x.freq)
+    (model, freqItemSet)
+  }
 
-  val freqItemSet = model.freqItemsets.collect().sortBy(x => x.freq)
+  val (model, result) = Utils.time(avvia())
   //Scriviamo il risultato nel file
   val writingFile = new File("src/main/resources/results/FPGrowthFreqItemSetSpark.txt")
   val bw = new BufferedWriter(new FileWriter(writingFile))
-  for (row <- freqItemSet) {
+  for (row <- result) {
     bw.write(row.items.mkString("[", ",", "]" + "\tFrequenza: " + row.freq + "\n"))
   }
   bw.close()
