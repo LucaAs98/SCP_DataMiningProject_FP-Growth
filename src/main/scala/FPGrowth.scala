@@ -3,7 +3,14 @@ import scala.collection.immutable.ListMap
 
 object FPGrowth extends App {
   //Scelta dataset (Csv e txt identitici)
-  val dataset = Utils.prendiDataset("datasetKaggleAlimenti.txt")
+  //val dataset = Utils.prendiDataset("T10I4D100K.txt")
+  val dataset =
+    List(Set("a", "c", "d", "f", "g", "i", "m", "p")
+      , Set("a", "b", "c", "f", "i", "m", "o")
+      , Set("b", "f", "h", "j", "o")
+      , Set("b", "c", "k", "s", "p")
+      , Set("a", "c", "e", "f", "l", "m", "n", "p"))
+
   val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList //Elementi singoli presenti nel dataset
 
   //Passando la lista dei set degli item creati, conta quante volte c'è l'insieme nelle transazioni
@@ -27,7 +34,7 @@ object FPGrowth extends App {
 
   //Aggiungiamo un nodo di una transazione all'albero
   @tailrec
-  def addNodeTransaction(lastNode: Node, transazione: List[String], headerTable: ListMap[String, (Int, List[Node])]): ListMap[String, (Int, List[Node])] = {
+  def addNodeTransaction(lastNode: Node[String], transazione: List[String], headerTable: ListMap[String, (Int, List[Node[String]])]): ListMap[String, (Int, List[Node[String]])] = {
     //Passo base
     if (transazione.nonEmpty) {
       //Aggiungiamo all'ultimo nodo creato il nuovo
@@ -37,7 +44,7 @@ object FPGrowth extends App {
       if (node._2) {
         val old = (headerTable.get(transazione.head) match {
           case Some(value) => value
-          case None => (0, List[Node]()) //Non entra mai, già inizializzata dall'exec
+          case None => (0, List[Node[String]]()) //Non entra mai, già inizializzata dall'exec
         })
 
         //Aggiornamento dell'ht, si aggiorna solo la linked list dei nodi
@@ -55,7 +62,7 @@ object FPGrowth extends App {
     }
   }
 
-  def printTree(tree: Node, str: String): Unit = {
+  def printTree(tree: Node[String], str: String): Unit = {
     if (tree.occurrence != -1) {
       println(str + tree.value + " " + tree.occurrence)
       tree.sons.foreach(printTree(_, str + "\t"))
@@ -66,7 +73,7 @@ object FPGrowth extends App {
   }
   
   @tailrec
-  def creazioneAlbero(tree: Node, transactions: List[List[String]], headerTable: ListMap[String, (Int, List[Node])]): ListMap[String, (Int, List[Node])] = {
+  def creazioneAlbero(tree: Node[String], transactions: List[List[String]], headerTable: ListMap[String, (Int, List[Node[String]])]): ListMap[String, (Int, List[Node[String]])] = {
     if (transactions.nonEmpty) {
       val head = transactions.head //Singola transazione
       val newHeaderTable = addNodeTransaction(tree, head, headerTable) //Ricorsivo su tutta la transazione
@@ -76,7 +83,7 @@ object FPGrowth extends App {
 
   //Risaliamo l'albero per restituire il percorso inerente ad un nodo specifico
   @tailrec
-  def listaPercorsi(nodo: Node, listaPercorsoAcc: List[String]): List[String] = {
+  def listaPercorsi(nodo: Node[String], listaPercorsoAcc: List[String]): List[String] = {
     if (!nodo.padre.isHead)   //Se non è il primo nodo
       listaPercorsi(nodo.padre, nodo.padre.value :: listaPercorsoAcc) //Continuiamo a risalire l'albero col padre
     else
@@ -121,15 +128,15 @@ object FPGrowth extends App {
     val orderDataset = datasetFilter(firstMapSorted.keys.toList)
 
     //Creiamo il nostro albero vuoto
-    val newTree = new Node(null, List())
+    val newTree = new Node[String](null, List())
 
     //Accumulatore per tutta l'headerTable
-    val headerTable = firstMapSorted.map(x => x._1 -> (x._2, List[Node]()))
+    val headerTable = firstMapSorted.map(x => x._1 -> (x._2, List[Node[String]]()))
 
     //Scorriamo tutte le transazioni creando il nostro albero e restituendo l'headerTable finale
     val headerTableFinal = creazioneAlbero(newTree, orderDataset, headerTable)
 
-    //printTree(newTree, "")
+    printTree(newTree, "")
 
     //Ordiniamo i singoli item in modo crescente per occorrenze e modo non alfabetico
     val singleElementsCrescentOrder = ListMap(firstStep.toList.sortWith((elem1, elem2) => !functionOrder(elem1, elem2)): _*)
