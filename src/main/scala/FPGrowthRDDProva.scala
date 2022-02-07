@@ -1,12 +1,14 @@
-import java.{util => ju}
+import Utils.{minSupport, time}
 
+import java.{util => ju}
 import org.apache.spark.{HashPartitioner, Partitioner}
 
 import scala.annotation.tailrec
+import scala.collection.mutable
 
 object FPGrowthRDDProva extends App {
   val sc = Utils.getSparkContext("FpGrowthRDD")
-  val lines = Utils.getRDD("datasetKaggleAlimenti.txt", sc)
+  val lines = Utils.getRDD("datasetKaggleAlimenti10.txt", sc)
   val dataset = lines.map(x => x.split(","))
   val dataset2 = sc.parallelize(
     List(Array("a", "c", "d", "f", "g", "i", "m", "p")
@@ -15,11 +17,10 @@ object FPGrowthRDDProva extends App {
       , Array("b", "c", "k", "s", "p")
       , Array("a", "c", "e", "f", "l", "m", "n", "p")))
 
-
   val numParts = 10
 
   def getSingleItemCount(partitioner: Partitioner): Array[(String, Int)] = {
-    dataset2.flatMap(t => t).map(v => (v, 1))
+    dataset.flatMap(t => t).map(v => (v, 1))
       .reduceByKey(partitioner, _ + _)
       .filter(_._2 >= Utils.minSupport)
       .collect()
@@ -39,14 +40,16 @@ object FPGrowthRDDProva extends App {
   }
 
 
-  def addTrans(nodo: Node[Int], item: Map[String, Int], trans: Array[String]) = {
+
+  /*def addTrans(nodo: Node[Int], item: Map[String, Int], trans: Array[String], condPattBase: Map[Int, List[(List[Int], Int)]]) = {
 
     //Ordiniamo la transazione
     val filtered = trans.flatMap(item.get)
     ju.Arrays.sort(filtered)
     addNodeTransaction(nodo, filtered)
+    addToCondPattBase(nodo)
     nodo
-  }
+  }*/
 
   def printTree(tree: Node[Int], items: Map[Int, String], str: String): Unit = {
     if (tree.occurrence != -1) {
@@ -59,33 +62,48 @@ object FPGrowthRDDProva extends App {
   }
 
 
-  def exec(): Unit = {
+  def addToCondPattBase(transazione: Array[String], item: Map[String, Int]): Array[(Int, List[Int])] = {
+    //Ordiniamo la transazione
+    val filtered = transazione.flatMap(item.get)
+    ju.Arrays.sort(filtered)
+    val nuovaMappa = filtered.map(elem => elem -> filtered.slice(0, filtered.indexOf(elem)).toList)
+    nuovaMappa
+  }
 
+  def exec(): Map[Set[String], Int] = {
     val partitioner = new HashPartitioner(numParts)
 
     //First step
     val singleItemsCount = getSingleItemCount(partitioner)
     val itemToRank = singleItemsCount.map(_._1).zipWithIndex.toMap
 
-    //itemToRank.toList.sortBy(_._2).foreach(println)
-    //Dataset ordinato con albero, o forse solo albero
+    val condPatternBase = dataset.flatMap(trans => addToCondPattBase(trans, itemToRank))
 
-    val caccaNodo = dataset2.aggregate(new Node(-1, List[Node[Int]]()))(((node,trans) => addTrans(node,itemToRank, trans)),
-      ((node1, node2) => node1.merge(node2)))
+    val condPattGrouped = condPatternBase.groupByKey().collect().toMap
+    val condPatternBaseFinal = time(sc.parallelize(condPattGrouped.map(elem => elem._1 -> elem._2.toList.distinct.map(lista => lista -> condPattGrouped(elem._1).count(_ == lista))).toSeq))
 
+    val freqItemSet = condPatternBaseFinal.flatMap(elem => itemSetFromOne(elem._1, elem._2, Map[Set[Int], Int]())).filter(_._2 >= minSupport)
 
-      //transaction => addTrans(new Node[Int](-1, List[Node[Int]]()), itemToRank, transaction))
-   /* addTrans(firstNode, itemToRank, dataset2.first())
-    addTrans(firstNode, itemToRank, dataset2.first())
-    addTrans(firstNode, itemToRank, dataset2.collect().toList(1))
-    addTrans(firstNode, itemToRank, dataset2.collect().toList(4))*/
-    val indexToitem = itemToRank.map(x => x._2 -> x._1)
-
-    printTree(caccaNodo, indexToitem, "")
-
-
+    val indexToItem = itemToRank.map(x => x._2 -> x._1)
+    val result = freqItemSet.collect().map(elem => (elem._1.map(indexToItem) -> elem._2)).toMap
+    result
   }
 
-  Utils.time(exec())
+  @tailrec
+  def itemSetFromOne(item: Int, oneCondPatt: List[(List[Int], Int)], accSubMap: Map[Set[Int], Int]): Map[Set[Int], Int] = {
+    if (oneCondPatt.nonEmpty) {
+      val head = oneCondPatt.head
+      val subMap = head._1.toSet.subsets().map(elem => elem + item -> head._2).filter(_._1.nonEmpty).toMap
+      val subMapFinal = accSubMap ++ subMap.map { case (k, v) => k -> (v + accSubMap.getOrElse(k, 0)) }
+      itemSetFromOne(item, oneCondPatt.tail, subMapFinal)
+    } else {
+      accSubMap
+    }
+  }
 
+  val result = Utils.time(exec())
+  val numTransazioni = dataset.count().toFloat
+
+  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthFreqItemSetRDD10.txt")
+  Utils.scriviSuFileSupporto(result, numTransazioni, "FPGrowthAssRulestRDD10.txt")
 }

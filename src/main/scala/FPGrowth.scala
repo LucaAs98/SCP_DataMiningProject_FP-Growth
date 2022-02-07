@@ -3,13 +3,13 @@ import scala.collection.immutable.ListMap
 
 object FPGrowth extends App {
   //Scelta dataset (Csv e txt identitici)
-  //val dataset = Utils.prendiDataset("T10I4D100K.txt")
-  val dataset =
+  val dataset = Utils.prendiDataset("datasetKaggleAlimenti10.txt")
+  /*val dataset =
     List(Set("a", "c", "d", "f", "g", "i", "m", "p")
       , Set("a", "b", "c", "f", "i", "m", "o")
       , Set("b", "f", "h", "j", "o")
       , Set("b", "c", "k", "s", "p")
-      , Set("a", "c", "e", "f", "l", "m", "n", "p"))
+      , Set("a", "c", "e", "f", "l", "m", "n", "p"))*/
 
   val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList //Elementi singoli presenti nel dataset
 
@@ -136,7 +136,7 @@ object FPGrowth extends App {
     //Scorriamo tutte le transazioni creando il nostro albero e restituendo l'headerTable finale
     val headerTableFinal = creazioneAlbero(newTree, orderDataset, headerTable)
 
-    printTree(newTree, "")
+    //printTree(newTree, "")
 
     //Ordiniamo i singoli item in modo crescente per occorrenze e modo non alfabetico
     val singleElementsCrescentOrder = ListMap(firstStep.toList.sortWith((elem1, elem2) => !functionOrder(elem1, elem2)): _*)
@@ -153,6 +153,6 @@ object FPGrowth extends App {
   val result = Utils.time(exec())
   val numTransazioni = dataset.size.toFloat
 
-  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthResult.txt")
-  Utils.scriviSuFileSupporto(result, numTransazioni, "FPGrowthResultSupport.txt")
+  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthResult10.txt")
+  Utils.scriviSuFileSupporto(result, numTransazioni, "FPGrowthResultSupport10.txt")
 }

@@ -10,11 +10,17 @@ object FPGrowthSpark extends App {
   val sc = Utils.getSparkContext("FPGrowthSpark")
   val lines = Utils.getRDD("datasetKaggleAlimenti.txt", sc)
   val dataset = lines.map(x => x.split(","))
+  val dataset2 = sc.parallelize(
+    List(Array("a", "c", "d", "f", "g", "i", "m", "p")
+      , Array("a", "b", "c", "f", "i", "m", "o")
+      , Array("b", "f", "h", "j", "o")
+      , Array("b", "c", "k", "s", "p")
+      , Array("a", "c", "e", "f", "l", "m", "n", "p")))
 
-  val fpg = new FPGrowth().setMinSupport(0.0025).setNumPartitions(10)
+  val fpg = new FPGrowth().setMinSupport(0.4).setNumPartitions(10)
 
   def avvia() = {
-    val model = fpg.run(dataset)
+    val model = fpg.run(dataset2)
 
     val freqItemSet = model.freqItemsets.collect().sortBy(x => x.freq)
     (model, freqItemSet)
