@@ -1,29 +1,28 @@
 import Utils._
+import org.apache.spark.{HashPartitioner, Partitioner}
 
 import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 
-object FPGrowth extends App {
-  //Scelta dataset (Csv e txt identitici)
-  val dataset = Utils.prendiDataset("datasetKaggleAlimenti100.txt")
-  /*val dataset =
-    List(Set("a", "c", "d", "f", "g", "i", "m", "p")
-      , Set("a", "b", "c", "f", "i", "m", "o")
-      , Set("b", "f", "h", "j", "o")
-      , Set("b", "c", "k", "s", "p")
-      , Set("a", "c", "e", "f", "l", "m", "n", "p"))*/
+object FPGrowthRDD extends App {
+  val sc = Utils.getSparkContext("FPGrowthRDD")
+  val lines = Utils.getRDD("datasetKaggleAlimenti100.txt", sc)
+  val dataset = lines.map(x => x.split(","))
+  val dataset2 = sc.parallelize(
+    List(Array("a", "c", "d", "f", "g", "i", "m", "p")
+      , Array("a", "b", "c", "f", "i", "m", "o")
+      , Array("b", "f", "h", "j", "o")
+      , Array("b", "c", "k", "s", "p")
+      , Array("a", "c", "e", "f", "l", "m", "n", "p")))
 
-  val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList //Elementi singoli presenti nel dataset
+  val numParts = 10
 
-  //Passando la lista dei set degli item creati, conta quante volte c'è l'insieme nelle transazioni
-  def countItemSet(item: List[String]): Map[String, Int] = {
-    (item map (x => x -> (dataset count (y => y.contains(x))))).toMap
-  }
-
-  //
-  def datasetFilter(firstStep: List[String]) = {
-    dataset.map(x => x.toList.filter(elemento => firstStep.contains(elemento)).
-      sortBy(firstStep.indexOf(_)))
+  def getSingleItemCount(partitioner: Partitioner): Array[(String, Int)] = {
+    dataset.flatMap(t => t).map(v => (v, 1))
+      .reduceByKey(partitioner, _ + _)
+      .filter(_._2 >= Utils.minSupport)
+      .collect()
+      .sortBy(x => (-x._2, x._1))
   }
 
   //Ordina gli elementi prima per numero di occorrenze, poi alfabeticamente
@@ -36,7 +35,7 @@ object FPGrowth extends App {
 
   //Aggiungiamo un nodo di una transazione all'albero
   @tailrec
-  def addNodeTransaction(lastNode: Node[String], transazione: List[String], headerTable: ListMap[String, (Int, List[Node[String]])]): ListMap[String, (Int, List[Node[String]])] = {
+  def addNodeTransaction(lastNode: Node[String], transazione: Array[String], headerTable: ListMap[String, (Int, List[Node[String]])]): ListMap[String, (Int, List[Node[String]])] = {
     //Passo base
     if (transazione.nonEmpty) {
       //Aggiungiamo all'ultimo nodo creato il nuovo
@@ -75,11 +74,12 @@ object FPGrowth extends App {
   }
 
   @tailrec
-  def creazioneAlbero(tree: Node[String], transactions: List[List[String]], headerTable: ListMap[String, (Int, List[Node[String]])]): ListMap[String, (Int, List[Node[String]])] = {
+  def creazioneAlbero(tree: Node[String], transactions: Array[Array[String]], headerTable: ListMap[String, (Int, List[Node[String]])], itemToRank: Map[String, Int]): ListMap[String, (Int, List[Node[String]])] = {
     if (transactions.nonEmpty) {
       val head = transactions.head //Singola transazione
-      val newHeaderTable = addNodeTransaction(tree, head, headerTable) //Ricorsivo su tutta la transazione
-      creazioneAlbero(tree, transactions.tail, newHeaderTable) //Una volta aggiunta una transazione continuiamo con le successive
+      val headOrdinata = head.filter(item => itemToRank.contains(item)).sortBy(item => itemToRank(item))
+      val newHeaderTable = addNodeTransaction(tree, headOrdinata, headerTable) //Ricorsivo su tutta la transazione
+      creazioneAlbero(tree, transactions.tail, newHeaderTable, itemToRank) //Una volta aggiunta una transazione continuiamo con le successive
     } else headerTable //Finite tutte le transazioni del dataset restituiamo l'ht
   }
 
@@ -91,33 +91,6 @@ object FPGrowth extends App {
     else
       listaPercorsoAcc //Restituiamo tutto il percorso trovato
   }
-
-  //
-  /*@tailrec
-  def calcoloFrequentItemset(conditionalPatternBase: ListMap[String, List[(List[String], Int)]], singleItemOccurence: ListMap[String, Int], accFrequentItemset: Map[Set[String], Int]): Map[Set[String], Int] = {
-
-    if (conditionalPatternBase.nonEmpty) { //Se ci sono ancora elementi da controllare
-      val head = conditionalPatternBase.head //Prendiamo l'elemento
-      val unioneListe = head._2.flatMap(_._1).distinct //Unione dei percorsi duplicati, ci ricaviamo i singoli nodi attraversati
-      //Contiamo per ogni singolo elemento quante volte viene attraversato nei percorsi di head
-      val countSingleItemPath = unioneListe.map(x => x -> head._2.filter(y => y._1.contains(x)).map(_._2).sum).filter(_._2 >= Utils.minSupport).toMap
-      //Creiamo tutte le possibili combinazioni dei nodi attraversati per arrivare ad head (Quelli da 1 li abbiamo già)
-      val subsets = countSingleItemPath.keySet.subsets().filter(_.size > 1)
-
-      //Controlliamo all'interno dei percorsi di head che quel subset sia esistente e contiamo quante volte è presente
-      val mapCountSubsets = countSingleItemPath.map(x => Set(x._1) -> x._2) ++
-        subsets.map(x => x -> head._2.filter(y => x.subsetOf(y._1.toSet))
-          .map(_._2).sum).filter(_._2 >= Utils.minSupport).toMap
-
-      //Creazione degli itemset frequenti per ogni subset trovato, ma con il count minimo tra quello di head e del subset
-      val frequentItemSet = mapCountSubsets.map(x => x._1 + head._1 -> x._2.min(singleItemOccurence(head._1))) + (Set(head._1) -> (singleItemOccurence(head._1)))
-
-      //Passo ricorsivo su i successivi item
-      calcoloFrequentItemset(conditionalPatternBase.tail, singleItemOccurence, accFrequentItemset ++ frequentItemSet)
-    } else {
-      accFrequentItemset //Finiti gli item restituiamo tutti i frequentItemSet
-    }
-  }*/
 
   @tailrec
   def itemSetFromOne(item: String, oneCondPatt: List[(List[String], Int)], accSubMap: Map[Set[String], Int]): Map[Set[String], Int] = {
@@ -131,15 +104,21 @@ object FPGrowth extends App {
     }
   }
 
+
+  def firstStep(): Array[(String, Int)] = {
+    val partitioner = new HashPartitioner(numParts)
+
+    //First step
+    val singleItemsCount = getSingleItemCount(partitioner)
+    singleItemsCount
+  }
+
   def exec(): Map[Set[String], Int] = {
     //totalItems che rispettano il minSupport
-    val firstStep = time(countItemSet(totalItem).filter(x => x._2 >= minSupport)) //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
-
-    //Ordina gli item dal più frequente al meno 
-    val firstMapSorted = ListMap(firstStep.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2)): _*)
-
-    //Ordiniamo le transazioni del dataset in modo decrescente
-    val orderDataset = datasetFilter(firstMapSorted.keys.toList)
+    val firstStepVar = firstStep()
+    //Ordina gli item dal più frequente al meno
+    val firstMapSorted = ListMap(firstStepVar.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2)): _*)
+    val itemToRank = firstMapSorted.keys.zipWithIndex.toMap
 
     //Creiamo il nostro albero vuoto
     val newTree = new Node[String](null, List())
@@ -148,7 +127,7 @@ object FPGrowth extends App {
     val headerTable = firstMapSorted.map(x => x._1 -> (x._2, List[Node[String]]()))
 
     //Scorriamo tutte le transazioni creando il nostro albero e restituendo l'headerTable finale
-    val headerTableFinal = creazioneAlbero(newTree, orderDataset, headerTable)
+    val headerTableFinal = creazioneAlbero(newTree, dataset.collect(), headerTable, itemToRank)
 
     //printTree(newTree, "")
 
@@ -165,7 +144,7 @@ object FPGrowth extends App {
   }
 
   val result = time(exec())
-  val numTransazioni = dataset.size.toFloat
+  val numTransazioni = dataset.count().toFloat
 
   Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthResult.txt")
   Utils.scriviSuFileSupporto(result, numTransazioni, "FPGrowthResultSupport.txt")

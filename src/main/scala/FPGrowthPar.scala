@@ -1,9 +1,10 @@
 import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
+import Utils._
 
 object FPGrowthPar extends App {
   //Scelta dataset (Csv e txt identitici)
-  val dataset = Utils.prendiDataset("datasetKaggleAlimenti.txt")
+  val dataset = Utils.prendiDataset("datasetKaggleAlimenti100.txt")
   val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList //Elementi singoli presenti nel dataset
 
   //Passando la lista dei set degli item creati, conta quante volte c'è l'insieme nelle transazioni
@@ -83,6 +84,18 @@ object FPGrowthPar extends App {
       listaPercorsoAcc //Restituiamo tutto il percorso trovato
   }
 
+  @tailrec
+  def itemSetFromOne(item: String, oneCondPatt: List[(List[String], Int)], accSubMap: Map[Set[String], Int]): Map[Set[String], Int] = {
+    if (oneCondPatt.nonEmpty) {
+      val head = oneCondPatt.head
+      val subMap = head._1.toSet.subsets().map(elem => elem + item -> head._2).filter(_._1.nonEmpty).toMap
+      val subMapFinal = accSubMap ++ subMap.map { case (k, v) => k -> (v + accSubMap.getOrElse(k, 0)) }
+      itemSetFromOne(item, oneCondPatt.tail, subMapFinal)
+    } else {
+      accSubMap
+    }
+  }
+
   /* Prova di parallelizzazione del conditionalPatternBase, resta più veloce l'altro
       def calcoloFrequentItemset(conditionalPatternBase: (String, List[(List[String], Int)]), singleItemOccurence: ListMap[String, Int]): Map[Set[String], Int] = {
 
@@ -104,7 +117,7 @@ object FPGrowthPar extends App {
       frequentItemSet
   }
   */
-  @tailrec
+  /*@tailrec
   def calcoloFrequentItemset(conditionalPatternBase: ListMap[String, List[(List[String], Int)]], singleItemOccurence: ListMap[String, Int], accFrequentItemset: Map[Set[String], Int]): Map[Set[String], Int] = {
 
     if (conditionalPatternBase.nonEmpty) { //Se ci sono ancora elementi da controllare
@@ -129,7 +142,7 @@ object FPGrowthPar extends App {
       accFrequentItemset //Finiti gli item restituiamo tutti i frequentItemSet
     }
   }
-
+*/
   def exec(): Map[Set[String], Int] = {
     //totalItems che rispettano il minSupport
     val firstStep = countItemSet(totalItem).filter(x => x._2 >= Utils.minSupport) //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
@@ -158,13 +171,13 @@ object FPGrowthPar extends App {
     val conditionalPatternBase = singleElementsCrescentOrder.map(x => x._1 -> headerTableFinal(x._1)._2.map(y => (listaPercorsi(y, List[String]()), y.occurrence)))
 
     //Calcoliamo il nostro risultato finale
-    val frequentItemSet = calcoloFrequentItemset(conditionalPatternBase, singleElementsCrescentOrder, Map[Set[String], Int]())
+    val frequentItemSet = conditionalPatternBase.par.flatMap(elem => itemSetFromOne(elem._1, elem._2, Map[Set[String], Int]())).filter(_._2 >= minSupport)
     //val frequentItemSet = Utils.time(conditionalPatternBase.par.flatMap(elem => calcoloFrequentItemset(elem, singleElementsCrescentOrder)).seq)
 
-    frequentItemSet
+    frequentItemSet.seq
   }
 
-  val result = Utils.time(exec())
+  val result = time(exec())
   val numTransazioni = dataset.size.toFloat
 
   Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthResult.txt")

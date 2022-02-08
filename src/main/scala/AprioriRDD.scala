@@ -4,7 +4,8 @@ import scala.annotation.tailrec
 
 object AprioriRDD extends App {
   val sc = Utils.getSparkContext("AprioriRDD")
-  val dataset = Utils.getRDD("datasetKaggleAlimenti.txt", sc)
+  val dataset = Utils.getRDD("datasetKaggleAlimenti100.txt", sc)
+  val items = dataset.flatMap(x => x.split(","))
 
   def gen(itemSets: RDD[Set[String]], size: Int): List[Set[String]] = {
     (itemSets reduce ((x, y) => x ++ y)).subsets(size).toList
@@ -47,11 +48,14 @@ object AprioriRDD extends App {
     }
   }
 
-  def exec() = {
-    val items = dataset.flatMap(x => x.split(","))
+  def firstStep(): Map[Set[String], Int] = {
     val itemPairs = items.map(x => (Set(x), 1))
     val itemCounts = itemPairs.reduceByKey((v1, v2) => v1 + v2).filter(_._2 >= Utils.minSupport)
-    val k = itemCounts.collect().toMap
+    itemCounts.collect().toMap
+  }
+
+  def exec() = {
+    val k = firstStep()
 
     if (k.isEmpty) {
       k

@@ -6,9 +6,9 @@ import org.apache.spark.{HashPartitioner, Partitioner}
 import scala.annotation.tailrec
 import scala.collection.mutable
 
-object FPGrowthRDDProva extends App {
+object FPGrowthRDDSenzaAlbero extends App {
   val sc = Utils.getSparkContext("FpGrowthRDD")
-  val lines = Utils.getRDD("datasetKaggleAlimenti10.txt", sc)
+  val lines = Utils.getRDD("Market_Basket_Optimisation.csv", sc)
   val dataset = lines.map(x => x.split(","))
   val dataset2 = sc.parallelize(
     List(Array("a", "c", "d", "f", "g", "i", "m", "p")
@@ -20,7 +20,7 @@ object FPGrowthRDDProva extends App {
   val numParts = 10
 
   def getSingleItemCount(partitioner: Partitioner): Array[(String, Int)] = {
-    dataset.flatMap(t => t).map(v => (v, 1))
+    dataset2.flatMap(t => t).map(v => (v, 1))
       .reduceByKey(partitioner, _ + _)
       .filter(_._2 >= Utils.minSupport)
       .collect()
@@ -38,18 +38,6 @@ object FPGrowthRDDProva extends App {
       addNodeTransaction(node._1, transazione.tail)
     }
   }
-
-
-
-  /*def addTrans(nodo: Node[Int], item: Map[String, Int], trans: Array[String], condPattBase: Map[Int, List[(List[Int], Int)]]) = {
-
-    //Ordiniamo la transazione
-    val filtered = trans.flatMap(item.get)
-    ju.Arrays.sort(filtered)
-    addNodeTransaction(nodo, filtered)
-    addToCondPattBase(nodo)
-    nodo
-  }*/
 
   def printTree(tree: Node[Int], items: Map[Int, String], str: String): Unit = {
     if (tree.occurrence != -1) {
@@ -75,12 +63,14 @@ object FPGrowthRDDProva extends App {
 
     //First step
     val singleItemsCount = getSingleItemCount(partitioner)
+    println(singleItemsCount.mkString(","))
     val itemToRank = singleItemsCount.map(_._1).zipWithIndex.toMap
 
-    val condPatternBase = dataset.flatMap(trans => addToCondPattBase(trans, itemToRank))
+    val condPatternBase = dataset2.flatMap(trans => addToCondPattBase(trans, itemToRank))
 
-    val condPattGrouped = condPatternBase.groupByKey().collect().toMap
-    val condPatternBaseFinal = time(sc.parallelize(condPattGrouped.map(elem => elem._1 -> elem._2.toList.distinct.map(lista => lista -> condPattGrouped(elem._1).count(_ == lista))).toSeq))
+    val condPattGrouped = condPatternBase.groupByKey()
+
+    val condPatternBaseFinal = condPattGrouped.map(elem => elem._1 -> elem._2.groupBy(el => el).map(e => (e._1, e._2.size)).toList)
 
     val freqItemSet = condPatternBaseFinal.flatMap(elem => itemSetFromOne(elem._1, elem._2, Map[Set[Int], Int]())).filter(_._2 >= minSupport)
 
@@ -102,8 +92,8 @@ object FPGrowthRDDProva extends App {
   }
 
   val result = Utils.time(exec())
-  val numTransazioni = dataset.count().toFloat
+  val numTransazioni = dataset2.count().toFloat
 
-  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthFreqItemSetRDD10.txt")
-  Utils.scriviSuFileSupporto(result, numTransazioni, "FPGrowthAssRulestRDD10.txt")
+  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthFreqItemSetRDDBasketOptim.txt")
+  Utils.scriviSuFileSupporto(result, numTransazioni, "FPGrowthAssRulestRDDBasketOptim.txt")
 }
