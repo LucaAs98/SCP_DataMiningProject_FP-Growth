@@ -5,13 +5,13 @@ import scala.collection.immutable.ListMap
 
 object FPGrowth extends App {
   //Scelta dataset (Csv e txt identitici)
-  val dataset = Utils.prendiDataset("datasetKaggleAlimenti100.txt")
-  /*val dataset =
-    List(Set("a", "c", "d", "f", "g", "i", "m", "p")
-      , Set("a", "b", "c", "f", "i", "m", "o")
-      , Set("b", "f", "h", "j", "o")
-      , Set("b", "c", "k", "s", "p")
-      , Set("a", "c", "e", "f", "l", "m", "n", "p"))*/
+  val dataset = Utils.prendiDataset("T40I10D100K.txt")
+  /*  val dataset =
+     List(Set("a", "c", "d", "f", "g", "i", "m", "p")
+        , Set("a", "b", "c", "f", "i", "m", "o")
+        , Set("b", "f", "h", "j", "o")
+        , Set("b", "c", "k", "s", "p")
+        , Set("a", "c", "e", "f", "l", "m", "n", "p"))*/
 
   val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList //Elementi singoli presenti nel dataset
 
@@ -123,23 +123,41 @@ object FPGrowth extends App {
   def itemSetFromOne(item: String, oneCondPatt: List[(List[String], Int)], accSubMap: Map[Set[String], Int]): Map[Set[String], Int] = {
     if (oneCondPatt.nonEmpty) {
       val head = oneCondPatt.head
-      val subMap = head._1.toSet.subsets().map(elem => elem + item -> head._2).filter(_._1.nonEmpty).toMap
-      val subMapFinal = accSubMap ++ subMap.map { case (k, v) => k -> (v + accSubMap.getOrElse(k, 0)) }
+      val subMap = time(head._1.toSet.subsets().map(elem => elem + item -> head._2).filter(_._1.nonEmpty).toMap)
+      val subMapFinal = time(accSubMap ++ subMap.map { case (k, v) => k -> (v + accSubMap.getOrElse(k, 0)) })
       itemSetFromOne(item, oneCondPatt.tail, subMapFinal)
     } else {
       accSubMap
     }
   }
 
+  @tailrec
+  def itemSetFromOneRec(cpb: ListMap[String, List[(List[String], Int)]], acc: Map[Set[String], Int] ): Map[Set[String], Int] = {
+    if(cpb.nonEmpty){
+      val elem = cpb.head
+      //println(elem._1)
+      val freqItemset = itemSetFromOne(elem._1, elem._2, Map[Set[String], Int]()).filter(item => item._2 >= minSupport)
+      val newMap = acc ++ freqItemset
+      itemSetFromOneRec(cpb.tail, newMap)
+    }
+    else{
+      acc
+    }
+  }
+
+
   def exec(): Map[Set[String], Int] = {
     //totalItems che rispettano il minSupport
+
+    println(dataset.length)
+
     val firstStep = time(countItemSet(totalItem).filter(x => x._2 >= minSupport)) //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
-
+    //firstStep.foreach(println)
     //Ordina gli item dal più frequente al meno 
-    val firstMapSorted = ListMap(firstStep.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2)): _*)
-
+    val firstMapSorted = time(ListMap(firstStep.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2)): _*))
+    //firstMapSorted.foreach(println)
     //Ordiniamo le transazioni del dataset in modo decrescente
-    val orderDataset = datasetFilter(firstMapSorted.keys.toList)
+    val orderDataset = time(datasetFilter(firstMapSorted.keys.toList))
 
     //Creiamo il nostro albero vuoto
     val newTree = new Node[String](null, List())
@@ -148,18 +166,24 @@ object FPGrowth extends App {
     val headerTable = firstMapSorted.map(x => x._1 -> (x._2, List[Node[String]]()))
 
     //Scorriamo tutte le transazioni creando il nostro albero e restituendo l'headerTable finale
-    val headerTableFinal = creazioneAlbero(newTree, orderDataset, headerTable)
+    val headerTableFinal = time(creazioneAlbero(newTree, orderDataset, headerTable))
 
     //printTree(newTree, "")
 
     //Ordiniamo i singoli item in modo crescente per occorrenze e modo non alfabetico
     val singleElementsCrescentOrder = ListMap(firstMapSorted.toList.reverse: _*)
 
+    println("Conditional")
     //Creazione conditional pattern base, per ogni nodo prendiamo i percorsi in cui quel nodo è presente
-    val conditionalPatternBase = singleElementsCrescentOrder.map(x => x._1 -> headerTableFinal(x._1)._2.map(y => (listaPercorsi(y, List[String]()), y.occurrence)))
+    val conditionalPatternBase = time(singleElementsCrescentOrder.map(x => x._1 -> headerTableFinal(x._1)._2.map(y => (listaPercorsi(y, List[String]()), y.occurrence))))
+
+    //conditionalPatternBase.foreach(println)
 
     //Calcoliamo il nostro risultato finale
-    val frequentItemSet = conditionalPatternBase.flatMap(elem => itemSetFromOne(elem._1, elem._2, Map[Set[String], Int]())).filter(_._2 >= minSupport)
+    //val frequentItemSet = conditionalPatternBase.flatMap(elem => time(itemSetFromOne(elem._1, elem._2, Map[Set[String], Int]()))).filter(_._2 >= minSupport)
+
+    val frequentItemSet = time(itemSetFromOneRec(conditionalPatternBase, Map[Set[String], Int]()))
+
 
     frequentItemSet
   }
