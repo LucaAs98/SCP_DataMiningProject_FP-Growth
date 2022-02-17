@@ -213,75 +213,10 @@ object FPGrowthStar extends App {
     //Scorriamo tutte le transazioni creando il nostro albero e restituendo l'headerTable finale
     val headerTableFinal = creazioneAlbero(newTree, orderDataset, headerTable, matrix)
 
-    printTree(newTree, "")
+    //printTree(newTree, "")
     val allFreqitemset = calcFreqItemset(headerTableFinal.keys.toList, headerTableFinal, matrix,List[(List[String], Int)]())
 
     allFreqitemset.map(x => x._1.toSet -> x._2).toMap
-
-
-    /*
-
-
-        //inizio simulazione!!!!!!!!!!!!!!!!!!!!!!!!
-
-        println(matrix.map(elem => elem._1 -> elem._2.toList).mkString("\n"))
-
-
-        val g = matrix("g").toList
-
-        println(g)
-
-        val gWithItem = g.zipWithIndex.map(x => firstMapSortedWithIndexContrario(x._2) -> x._1)
-        println(gWithItem)
-
-        val gSorted = ListMap(gWithItem.filter(_._2 >= minSupport).sortWith((elem1, elem2) => functionOrder(elem1, elem2)).zipWithIndex
-          .map(x => x._1._1 -> (x._1._2, x._2)): _*)
-        println(gSorted)
-
-        val gLinkedList = headerTableFinal("g")._3
-        println(gLinkedList)
-
-        val firstG = gLinkedList.last
-
-        val percorsoUno = listaPercorsi(firstG, List[String]())
-
-        println(percorsoUno)
-
-
-        //controllo grandezza gSorted (==1)
-        val matrix2 = creaMatrice(gSorted.tail)
-        println(matrix2.map(elem => elem._1 -> elem._2.toList).mkString("\n"))
-        val headerTable2 = gSorted.map(x => x._1 -> (x._2._1, x._2._2, List[Node[String]]()))
-        val newtree2 = new Node[String](null, List())
-
-        val percorsoUnoOrdinato = (percorsoUno.filter(x => gSorted.contains(x)).sortBy(elem => gSorted(elem)._2), firstG.occurrence)
-
-        println(percorsoUnoOrdinato)
-
-        val (newHT, moreBranch) = addNodeTransaction2(newtree2, percorsoUnoOrdinato._1, percorsoUnoOrdinato._2, headerTable2,
-          flag = false, matrix2, List[Int]())
-
-        println(newHT)
-        printTree(newtree2, "")
-        println(matrix2.map(elem => elem._1 -> elem._2.toList).mkString("\n"))
-
-
-        //Seocndo passaggio
-        val secondG = gLinkedList.head
-        val percorsoDue = listaPercorsi(secondG, List[String]())
-        println(percorsoDue)
-
-        val percorsoDueOrdinato = (percorsoDue.filter(x => gSorted.contains(x)).sortBy(elem => gSorted(elem)._2), secondG.occurrence)
-        println(percorsoDueOrdinato)
-
-
-        val (newHT2, moreBranch2) = addNodeTransaction2(newtree2, percorsoDueOrdinato._1, percorsoDueOrdinato._2, newHT,
-          flag = false, matrix2, List[Int]())
-
-        println(newHT2)
-        println(moreBranch2)
-        printTree(newtree2, "")
-        println(matrix2.map(elem => elem._1 -> elem._2.toList).mkString("\n"))*/
 
   }
 
@@ -330,7 +265,7 @@ object FPGrowthStar extends App {
           List((List(item) -> freq))
         }
       } else {
-        val itemsetFreq = calcFreqItemset(headerTableItem.keys.toList, headerTableItem, matrixItem, List[(List[String], Int)]())
+        val itemsetFreq = calcFreqItemset(newHTItem.keys.toList, newHTItem, matrixItem, List[(List[String], Int)]())
         itemsetFreq.map(x => (x._1 :+ item) -> x._2) :+ (List(item) -> freq)
       }
     }
