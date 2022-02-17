@@ -80,7 +80,7 @@ object FPGrowthClassic extends App {
     if (transactions.nonEmpty) {
       //Singola transazione
       val head = transactions.head
-      //Ricorsivo su tutta la transazione
+      //Inserimento della transazione nell'albero
       val newHeaderTable = addNodeTransaction(tree, head, headerTable)
       //Una volta aggiunta una transazione continuiamo con le successive
       creazioneAlbero(tree, transactions.tail, newHeaderTable)
@@ -199,7 +199,7 @@ object FPGrowthClassic extends App {
     val condTreeItem = new Node[String](null, List())
     val (headerTableItemFin, moreBranch) = creazioneAlberoItem(condTreeItem, orderedPath, headerTableItem, flag = false)
 
-    //Se l'albero crato ha un signolo branch
+    //Se l'albero creato ha un signolo branch
     if (!moreBranch) {
       //Se l'ht non è vuota
       if (headerTableItemFin.nonEmpty) {
