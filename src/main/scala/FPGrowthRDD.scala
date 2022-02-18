@@ -6,14 +6,14 @@ import scala.collection.immutable.ListMap
 
 object FPGrowthRDD extends App {
   val sc = Utils.getSparkContext("FPGrowthRDD")
-  val lines = Utils.getRDD("datasetKaggleAlimenti100.txt", sc)
+  val lines = Utils.getRDD("datasetKaggleAlimenti10.txt", sc)
   val dataset = lines.map(x => x.split(","))
-  val dataset2 = sc.parallelize(
+/*  val dataset2 = sc.parallelize(
     List(Array("a", "c", "d", "f", "g", "i", "m", "p")
       , Array("a", "b", "c", "f", "i", "m", "o")
       , Array("b", "f", "h", "j", "o")
       , Array("b", "c", "k", "s", "p")
-      , Array("a", "c", "e", "f", "l", "m", "n", "p")))
+      , Array("a", "c", "e", "f", "l", "m", "n", "p")))*/
 
   val numParts = 10
 
@@ -104,6 +104,19 @@ object FPGrowthRDD extends App {
     }
   }
 
+  @tailrec
+  def itemSetFromOneRec(cpb: ListMap[String, List[(List[String], Int)]], acc: Map[Set[String], Int] ): Map[Set[String], Int] = {
+    if(cpb.nonEmpty){
+      val elem = cpb.head
+      //println(elem._1)
+      val freqItemset = itemSetFromOne(elem._1, elem._2, Map[Set[String], Int]()).filter(item => item._2 >= minSupport)
+      val newMap = acc ++ freqItemset
+      itemSetFromOneRec(cpb.tail, newMap)
+    }
+    else{
+      acc
+    }
+  }
 
   def firstStep(): Array[(String, Int)] = {
     val partitioner = new HashPartitioner(numParts)
@@ -138,7 +151,7 @@ object FPGrowthRDD extends App {
     val conditionalPatternBase = singleElementsCrescentOrder.map(x => x._1 -> headerTableFinal(x._1)._2.map(y => (listaPercorsi(y, List[String]()), y.occurrence)))
 
     //Calcoliamo il nostro risultato finale
-    val frequentItemSet = conditionalPatternBase.flatMap(elem => itemSetFromOne(elem._1, elem._2, Map[Set[String], Int]())).filter(_._2 >= minSupport)
+    val frequentItemSet = itemSetFromOneRec(conditionalPatternBase, Map[Set[String], Int]())
 
     frequentItemSet
   }
