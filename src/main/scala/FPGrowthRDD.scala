@@ -16,7 +16,7 @@ object FPGrowthRDD extends App {
       , Array("b", "c", "k", "s", "p")
       , Array("a", "c", "e", "f", "l", "m", "n", "p")))
 
-  val numParts = 4
+  val numParts = 10
 
   def getSingleItemCount(partitioner: Partitioner): Array[(String, Int)] = {
     dataset.flatMap(t => t).map(v => (v, 1))
@@ -247,14 +247,8 @@ object FPGrowthRDD extends App {
     val firstMapSorted = ListMap(firstStepVar.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2)): _*)
     val itemToRank = firstMapSorted.keys.zipWithIndex.toMap
 
-    firstMapSorted.foreach(println)
-    println("adsads")
-    itemToRank.foreach(println)
-
     val app = dataset.flatMap(transaction =>
       genCondTransactions(transaction, itemToRank, partitioner))
-
-    app.collect().sortBy(_._1).foreach(x => println(x._1 + " " + x._2.mkString(",")))
 
     val app2 = app.groupByKey(partitioner.numPartitions).
       map(x => x._1 -> {
@@ -263,48 +257,10 @@ object FPGrowthRDD extends App {
       }
       )
 
-    val app3 = app2.collect()
-
-    app3.foreach(x => {
-      println("\n" + x._1)
-      //printTree(x._2._1, "")
-      println(x._2)
-    })
-
     val app4 = app2.flatMap(elem => extract(elem._2, x => partitioner.getPartition(x) == elem._1))
 
     app4.map(x => x._1.toSet -> x._2).collect().toMap
 
-    /*app.aggregateByKey(new Node[String](null, List()), partitioner.numPartitions)(
-      (tree, transaction) => tree.add(transaction, 1L),
-      (tree1, tree2) => tree1.merge(tree2))*/
-
-
-    // app.collect().sortBy(_._1).foreach(println)
-
-
-    /*
-        //Creiamo il nostro albero vuoto
-        val newTree = new Node[String](null, List())
-
-        //Accumulatore per tutta l'headerTable
-        val headerTable = firstMapSorted.map(x => x._1 -> (x._2, List[Node[String]]()))
-
-        //Scorriamo tutte le transazioni creando il nostro albero e restituendo l'headerTable finale
-        val headerTableFinal = creazioneAlbero(newTree, dataset.collect(), headerTable, itemToRank)
-
-        //printTree(newTree, "")
-
-        //Ordiniamo i singoli item in modo crescente per occorrenze e modo non alfabetico
-        val singleElementsCrescentOrder = ListMap(firstMapSorted.toList.reverse: _*)
-
-        //Creazione conditional pattern base, per ogni nodo prendiamo i percorsi in cui quel nodo è presente
-        val conditionalPatternBase = singleElementsCrescentOrder.map(x => x._1 -> headerTableFinal(x._1)._2.map(y => (listaPercorsi(y, List[String]()), y.occurrence)))
-
-        //Calcoliamo il nostro risultato finale
-        val frequentItemSet = itemSetFromOneRec(conditionalPatternBase, Map[Set[String], Int]())
-
-        frequentItemSet*/
   }
 
   val result = time(exec())
