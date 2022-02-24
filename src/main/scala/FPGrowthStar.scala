@@ -4,8 +4,8 @@ import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 
 object FPGrowthStar extends App {
-  val dataset = Utils.prendiDataset("datasetKaggleAlimenti.txt")
-  val dataset2 =
+  val dataset = Utils.prendiDataset("T10I4D100K.txt")
+/*  val dataset2 =
     List(Set("a", "c", "d", "f", "g", "i", "m", "p")
       , Set("a", "b", "c", "f", "i", "m", "o")
       , Set("b", "f", "h", "j", "o")
@@ -21,7 +21,7 @@ object FPGrowthStar extends App {
       , Set("a", "b", "c", "e", "f", "p")
       , Set("a", "c", "d")
       , Set("a", "c", "e", "g", "m")
-      , Set("a", "c", "e", "g", "n"))
+      , Set("a", "c", "e", "g", "n"))*/
 
   val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList //Elementi singoli presenti nel dataset
 

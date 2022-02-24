@@ -8,8 +8,8 @@ import scala.collection.mutable
 object FPGrowthRDD extends App {
   val sc = Utils.getSparkContext("FPGrowthRDD")
   val lines = Utils.getRDD("datasetKaggleAlimenti.txt", sc)
-  val dataset = lines.map(x => x.split(","))
-  val dataset3 = sc.parallelize(
+  val dataset3 = lines.map(x => x.split(","))
+  val dataset = sc.parallelize(
     List(Array("a", "c", "d", "f", "g", "i", "m", "p")
       , Array("a", "b", "c", "f", "i", "m", "o")
       , Array("b", "f", "h", "j", "o")
@@ -18,6 +18,7 @@ object FPGrowthRDD extends App {
 
   val numParts = 10
 
+  //Contiamo, filtriamo e sortiamo tutti gli elementi nel dataset
   def getSingleItemCount(partitioner: Partitioner): Array[(String, Int)] = {
     dataset.flatMap(t => t).map(v => (v, 1))
       .reduceByKey(partitioner, _ + _)
@@ -40,23 +41,23 @@ object FPGrowthRDD extends App {
     //Passo base
     if (transazione.nonEmpty) {
       //Aggiungiamo all'ultimo nodo creato il nuovo
-      val node = lastNode.add(transazione.head)
+      val (node, flagNewNode) = lastNode.add(transazione.head)
 
       //Se è stato creato lo aggiungiamo all'headerTable
-      if (node._2) {
+      if (flagNewNode) {
         val old = (headerTable.get(transazione.head) match {
           case Some(value) => value
           case None => List[Node[String]]() //Non entra mai, già inizializzata dall'exec
         })
 
         //Aggiornamento dell'ht, si aggiorna solo la linked list dei nodi
-        val newTable = headerTable + (transazione.head -> (old :+ node._1))
+        val newTable = headerTable + (transazione.head -> (old :+ node))
 
         //Richiamiamo questa funzione su tutti gli elementi della transazione
-        addNodeTransaction(node._1, transazione.tail, newTable)
+        addNodeTransaction(node, transazione.tail, newTable)
       } else {
         //Se il nodo era già presente continuiamo l'aggiunta degli elementi senza aggiornare l'ht
-        addNodeTransaction(node._1, transazione.tail, headerTable)
+        addNodeTransaction(node, transazione.tail, headerTable)
       }
     } else {
       //Quando finisce una singola transazione
@@ -64,6 +65,7 @@ object FPGrowthRDD extends App {
     }
   }
 
+  //Metodo per stampare l'albero
   def printTree(tree: Node[String], str: String): Unit = {
     if (tree.occurrence != -1) {
       println(str + tree.value + " " + tree.occurrence)
@@ -74,6 +76,7 @@ object FPGrowthRDD extends App {
     }
   }
 
+  //Creazione dell'albero
   @tailrec
   def creazioneAlbero(tree: Node[String], transactions: List[Array[String]], headerTable: ListMap[String, List[Node[String]]], itemToRank: Map[String, Int]): ListMap[String, List[Node[String]]] = {
     if (transactions.nonEmpty) {
@@ -92,58 +95,33 @@ object FPGrowthRDD extends App {
       listaPercorsoAcc //Restituiamo tutto il percorso trovato
   }
 
-  @tailrec
-  def itemSetFromOne(item: String, oneCondPatt: List[(List[String], Int)], accSubMap: Map[Set[String], Int]): Map[Set[String], Int] = {
-    if (oneCondPatt.nonEmpty) {
-      val head = oneCondPatt.head
-      val subMap = head._1.toSet.subsets().map(elem => elem + item -> head._2).filter(_._1.nonEmpty).toMap
-      val subMapFinal = accSubMap ++ subMap.map { case (k, v) => k -> (v + accSubMap.getOrElse(k, 0)) }
-      itemSetFromOne(item, oneCondPatt.tail, subMapFinal)
-    } else {
-      accSubMap
-    }
-  }
 
-  @tailrec
-  def itemSetFromOneRec(cpb: ListMap[String, List[(List[String], Int)]], acc: Map[Set[String], Int]): Map[Set[String], Int] = {
-    if (cpb.nonEmpty) {
-      val elem = cpb.head
-      //println(elem._1)
-      val freqItemset = itemSetFromOne(elem._1, elem._2, Map[Set[String], Int]()).filter(item => item._2 >= minSupport)
-      val newMap = acc ++ freqItemset
-      itemSetFromOneRec(cpb.tail, newMap)
-    }
-    else {
-      acc
-    }
-  }
-
-  def firstStep(partitioner: HashPartitioner): Array[(String, Int)] = {
-    //First step
-    val singleItemsCount = getSingleItemCount(partitioner)
-    singleItemsCount
-  }
-
-  private def genCondTransactions(transaction: Array[String],
-                                  itemToRank: Map[String, Int],
-                                  partitioner: Partitioner): mutable.Map[Int, Array[String]] = {
+  //Creiamo le transazioni condizionali in base al gruppo/partizione in cui si trova ogni item
+  def genCondTransactions(transaction: Array[String],
+                          itemToRank: Map[String, Int],
+                          partitioner: Partitioner): mutable.Map[Int, Array[String]] = {
+    //Mappa finale da riempire
     val output = mutable.Map.empty[Int, Array[String]]
-    // Filter the basket by frequent items pattern and sort their ranks.
-    val filtered = transaction.filter(item => itemToRank.contains(item)).sortBy(item => itemToRank(item))
-    val n = filtered.length
+    // Ordiniamo le transazioni in base alla frequenza degli item ed eliminando gli item non frequenti
+    val transFiltered = transaction.filter(item => itemToRank.contains(item)).sortBy(item => itemToRank(item))
+    val n = transFiltered.length
     var i = n - 1
     while (i >= 0) {
-      val item = filtered(i)
+      val item = transFiltered(i)
+      //Prendiamo la partizione alla quale fa parte l'item 
       val part = partitioner.getPartition(item)
+      /* Se la mappa non contiene già un elemento con l'indice della partizione come chiave, andiamo a mettere quella parte
+      * di transazione nella mappa. */
       if (!output.contains(part)) {
-        output(part) = filtered.slice(0, i + 1)
+        output(part) = transFiltered.slice(0, i + 1)
       }
       i -= 1
     }
     output
   }
 
-  def countSummary(list: List[Node[String]]): Int = {
+  //Occorrenze totali di quell'item
+  def countItemNodeFreq(list: List[Node[String]]): Int = {
     list.foldLeft(0)((x, y) => x + y.occurrence)
   }
 
@@ -170,23 +148,23 @@ object FPGrowthRDD extends App {
 
     if (path.nonEmpty) {
       //Aggiungiamo all'ultimo nodo creato il nuovo, passando il suo numero di occorrenze
-      val node = lastNode.add(path.head, countPath)
+      val (node, flagNewNode) = lastNode.add(path.head, countPath)
 
       //Se è stato creato lo aggiungiamo all'headerTable
-      if (node._2) {
+      if (flagNewNode) {
         val old = (headerTable.get(path.head) match {
           case Some(value) => value
           case None => (List[Node[String]]()) //Non entra mai, già inizializzata dall'exec
         })
 
         //Aggiornamento dell'ht, si aggiorna solo la linked list dei nodi
-        val newTable = headerTable + (path.head -> (old :+ node._1))
+        val newTable = headerTable + (path.head -> (old :+ node))
 
         //Richiamiamo questa funzione su tutti gli elementi della transazione
-        addNodePath(node._1, path.tail, countPath, newTable)
+        addNodePath(node, path.tail, countPath, newTable)
       } else {
         //Se il nodo era già presente continuiamo l'aggiunta degli elementi senza aggiornare l'ht
-        addNodePath(node._1, path.tail, countPath, headerTable)
+        addNodePath(node, path.tail, countPath, headerTable)
       }
     } else {
       //Quando abbiamo finito di scorrere tutto il path viene restituita l' ht e il flag relativo alla formazione di nuovi branch
@@ -194,73 +172,65 @@ object FPGrowthRDD extends App {
     }
   }
 
-  //Operazione di conteggio relativa agli elementi del Conditional Pattern Base
-  @tailrec
-  def countItemConPB(liste: List[(List[String], Int)], acc: Map[String, Int]): Map[String, Int] = {
+  //Restituisce tutti gli item singoli all'interno delle liste di path
+  def totalItem(listPaths: List[(List[String], Int)]): List[String] =
+    listPaths.foldLeft(Set[String]())((xs, x) => xs ++ x._1).toList
 
-    //Se non è vuota
-    if (liste.nonEmpty) {
-      //Viene preso il primo elemento
-      val head = liste.head
-      //Per ogni elemento del path vengono assegnate le proprie occorrenze
-      val subMap = head._1.map(x => x -> head._2).toMap
-      //Vengono aggiunti gli elementi all'accumulatore e di conseguenza vengono aggiornati i valori trovati in precedenza
-      val subMapFinal = acc ++ subMap.map { case (k, v) => k -> (v + acc.getOrElse(k, 0)) }
-      //Viene richiamata la funzione prendendo tutti i path tranne il primo
-      countItemConPB(liste.tail, subMapFinal)
-    }
-    else {
-      //Se la lista è vuota viene restituito l'accumulatore
-      acc
-    }
-  }
-
-  def totalItem(listPaths: List[(List[String], Int)]) = (listPaths.foldLeft(Set[String]())((xs, x) => xs ++ x._1)).toList
-
-  /** Extracts all patterns with valid suffix and minimum count. */
-  def extract(headerTable: ListMap[String, List[Node[String]]],
-              validateSuffix: String => Boolean = _ => true): Iterator[(List[String], Int)] = {
-    headerTable.iterator.flatMap { case (item, summary) =>
-      val summaryCount = countSummary(summary)
-      if (validateSuffix(item) && summaryCount >= minSupport) {
-        val lPerc = headerTable(item).map(x => (listaPercorsi(x, List[String]()), x.occurrence))
-        val condTree = new Node[String](null, List())
-
-        //creazione header table
-        val headerTableItem = ListMap(totalItem(lPerc).map(x => x -> List[Node[String]]()): _*)
-        val newHT = creazioneAlberoItem(condTree, lPerc, headerTableItem)
-
-        Iterator.single((item :: Nil, summaryCount)) ++ extract(newHT).
-          map { case (t, c) => (item :: t, c) }
-      } else {
-        Iterator.empty
-      }
+  //Calcoliamo i frequentItemSet
+  def createFreqItemSet(headerTable: ListMap[String, List[Node[String]]],
+                        validateSuffix: String => Boolean = _ => true): Iterator[(List[String], Int)] = {
+    headerTable.iterator.flatMap {
+      case (item, linkedList) =>
+        val itemNodeFreq = countItemNodeFreq(linkedList)
+        /* Controlliamo che quel determinato item sia della partizione che stiamo considerando e quelli sotto il min supp
+        * (Dopo il primo passaggio validateSuffix, sarà sempre true). */
+        if (validateSuffix(item) && itemNodeFreq >= minSupport) {
+          //Prendiamo tutti i percorsi per quel determinato item senza quest'ultimo
+          val lPerc = headerTable(item).map(x => (listaPercorsi(x, List[String]()), x.occurrence))
+          //Continuiamo a calcolare i conditional trees 'interni'
+          val condTree = new Node[String](null, List())
+          //Creiamo la nuova headerTable
+          val headerTableItem = ListMap(totalItem(lPerc).map(x => x -> List[Node[String]]()): _*)
+          //Creiamo l'albero condizionale dell'item e riempiamo la sua HT
+          val HTItem = creazioneAlberoItem(condTree, lPerc, headerTableItem)
+          //Creazione dei freqItemSet
+          Iterator.single((item :: Nil, itemNodeFreq)) ++ createFreqItemSet(HTItem).map {
+            case (t, c) => (item :: t, c)
+          }
+        } else {
+          //Se non fa parte di quel gruppo restituiamo iterator vuoto
+          Iterator.empty
+        }
     }
   }
 
   def exec(): Map[Set[String], Int] = {
-
+    //Creiamo il partitioner
     val partitioner = new HashPartitioner(numParts)
-    //totalItems che rispettano il minSupport
-    val firstStepVar = firstStep(partitioner)
+
+    //Prendiamo tutti gli elementi singoli con il loro count
+    val firstStepVar = getSingleItemCount(partitioner)
+
     //Ordina gli item dal più frequente al meno
-    val firstMapSorted = ListMap(firstStepVar.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2)): _*)
+    val firstMapSorted = ListMap(firstStepVar: _*)
+
+    //Aggiungiamo l'indice agli item per facilitarci l'ordinamento
     val itemToRank = firstMapSorted.keys.zipWithIndex.toMap
 
-    val app = dataset.flatMap(transaction =>
-      genCondTransactions(transaction, itemToRank, partitioner))
+    //Creiamo le transazioni condizionali in base al gruppo/partizione in cui si trova ogni item
+    val condTrans = dataset.flatMap(transaction => genCondTransactions(transaction, itemToRank, partitioner))
 
-    val app2 = app.groupByKey(partitioner.numPartitions).
+    //Raggruppiamo le transazioni per gruppo/partizione e per ognuno di essi creiamo gli alberi condizionali e mappiamo con l'HT
+    val condTreesHT = condTrans.groupByKey(partitioner.numPartitions).
       map(x => x._1 -> {
         val tree = new Node[String](null, List())
-        creazioneAlbero(tree, x._2.toList, firstMapSorted.map(x => x._1 -> (List[Node[String]]())), itemToRank).filter(_._2.nonEmpty)
-      }
-      )
+        creazioneAlbero(tree, x._2.toList, firstMapSorted.map(x => x._1 -> List[Node[String]]()), itemToRank).filter(_._2.nonEmpty)
+      })
 
-    val app4 = app2.flatMap(elem => extract(elem._2, x => partitioner.getPartition(x) == elem._1))
+    //Caloliamo i frequentItemSet
+    val freqItemSet = condTreesHT.flatMap(elem => createFreqItemSet(elem._2, x => partitioner.getPartition(x) == elem._1))
 
-    app4.map(x => x._1.toSet -> x._2).collect().toMap
-
+    freqItemSet.map(x => x._1.toSet -> x._2).collect().toMap
   }
 
   val result = time(exec())

@@ -8,8 +8,8 @@ import java.io.{BufferedWriter, File, FileWriter}
 object FPGrowthSpark extends App {
   Logger.getRootLogger.setLevel(Level.INFO)
   val sc = Utils.getSparkContext("FPGrowthSpark")
-  val lines = Utils.getRDD("datasetKaggleAlimenti100.txt", sc)
-  val dataset = lines.map(x => x.split(","))
+  val lines = Utils.getRDD("datasetGrande.txt", sc)
+  val dataset = lines.map(x => x.split(" "))
   val dataset2 = sc.parallelize(
     List(Array("a", "c", "d", "f", "g", "i", "m", "p")
       , Array("a", "b", "c", "f", "i", "m", "o")
@@ -17,7 +17,16 @@ object FPGrowthSpark extends App {
       , Array("b", "c", "k", "s", "p")
       , Array("a", "c", "e", "f", "l", "m", "n", "p")))
 
-  val fpg = new FPGrowth().setMinSupport(0.0024).setNumPartitions(10)
+
+  //Tempo di esecuzione: 40298ms  1000 min supp 10 partizioni
+  //Tempo di esecuzione: 77407ms  300 min supp 10 partizioni
+  //Tempo di esecuzione: 45649ms  300 min supp 100 partizioni
+  //Tempo di esecuzione: 37570ms  300 min supp 200 partizioni
+  //Tempo di esecuzione: 32443ms  300 min supp 500 partizioni
+  //Tempo di esecuzione: 32273ms  300 min supp 800 partizioni
+
+  //nostro supp/num. trans
+  val fpg = new FPGrowth().setMinSupport(0.003).setNumPartitions(800)
 
   def avvia() = {
     val model = fpg.run(dataset)
@@ -28,7 +37,7 @@ object FPGrowthSpark extends App {
 
   val (model, result) = Utils.time(avvia())
   //Scriviamo il risultato nel file
-  val writingFile = new File("src/main/resources/results/FPGrowthFreqItemSetSpark100.txt")
+  val writingFile = new File("src/main/resources/results/FPGrowthFreqItemSetSpark.txt")
   val bw = new BufferedWriter(new FileWriter(writingFile))
   for (row <- result) {
     bw.write(row.items.mkString("[", ",", "]" + "\tFrequenza: " + row.freq + "\n"))
@@ -39,7 +48,7 @@ object FPGrowthSpark extends App {
   val associationRules = model.generateAssociationRules(minConfidence).collect()
 
   //Scriviamo il risultato nel file
-  val writingFile2 = new File("src/main/resources/results/FPGrowthAssRulestSparkBasket.txt")
+  val writingFile2 = new File("src/main/resources/results/FPGrowthAssRulestSpark.txt")
   val bw2 = new BufferedWriter(new FileWriter(writingFile2))
   for (row <- associationRules) {
     bw2.write("Antecedente " + row.antecedent.mkString("[", ",", "]\t=>" + "\tSuccessivo: " + row.consequent.mkString("[", ",", "]") + "\n"))

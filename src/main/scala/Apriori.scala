@@ -1,8 +1,9 @@
 import scala.annotation.tailrec
+import Utils._
 
 object Apriori extends App {
   //Scelta dataset (Csv e txt identitici)
-  val dataset = Utils.prendiDataset("datasetKaggleAlimenti.txt")
+  val dataset = prendiDataset("datasetKaggleAlimenti100.txt")
 
   //Passando la lista dei set degli item creati, conta quante volte c'è l'insieme nelle transazioni
   def countItemSet(item: List[Set[String]]): Map[Set[String], Int] = {
@@ -24,7 +25,7 @@ object Apriori extends App {
     //Creazione degli itemset candidati (Item singoli + combinazioni)
     val setsItem = lastElemtents.reduce((x, y) => x ++ y).subsets(setSize).toList
     //Eliminazione degli itemset non frequenti con il metodo prune
-    val itemsSetCountFilter = countItemSet(prune(setsItem, lastElemtents.toList)) filter (x => x._2 >= Utils.minSupport)
+    val itemsSetCountFilter = countItemSet(prune(setsItem, lastElemtents.toList)) filter (x => x._2 >= minSupport)
     //Controllo che la mappa relativa creata con gli itemset non sia vuota, se è vuota l'algoritmo è terminato
     if (itemsSetCountFilter.nonEmpty) {
       aprioriIter(mapItems ++ itemsSetCountFilter, setSize + 1)
@@ -40,12 +41,12 @@ object Apriori extends App {
 
   //Esecuzione effettiva dell'algoritmo
   def exec() = {
-    val firstStep = countItemSet(totalItem).filter(x => x._2 >= Utils.minSupport) //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
+    val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport) //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
     aprioriIter(firstStep, 2)
   }
 
-  val result = Utils.time(exec())
+  val result = time(exec())
 
-  Utils.scriviSuFileFrequentItemSet(result, dataset.size.toFloat, "AprioriResult.txt")
-  Utils.scriviSuFileSupporto(result, dataset.size.toFloat, "AprioriConfidenzaResult.txt")
+  scriviSuFileFrequentItemSet(result, dataset.size.toFloat, "AprioriResult.txt")
+  scriviSuFileSupporto(result, dataset.size.toFloat, "AprioriConfidenzaResult.txt")
 }

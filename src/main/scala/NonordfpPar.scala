@@ -3,10 +3,11 @@ import Utils._
 import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 import scala.collection.mutable
+import scala.collection.parallel.{ParIterable, ParMap}
 
-object Nonordfp extends App {
+object NonordfpPar extends App {
 
-  val dataset = Utils.prendiDataset("T10I4D100K.txt")
+  val dataset = Utils.prendiDataset("T10I4D100K.txt").par
 
   val dataset2 =
     List(Set("a", "c", "d", "f", "g", "i", "m", "p")
@@ -30,12 +31,18 @@ object Nonordfp extends App {
       elem1._2 > elem2._2
   }
 
+  //Ordiniamo le transazioni in modo decrescente
+  def datasetFilter(firstStep: List[String]) = {
+    dataset.map(x => x.toList.filter(elemento => firstStep.contains(elemento)).
+      sortBy(firstStep.indexOf(_)))
+  }
+
   /* Creazione di tutto l'albero. */
   @tailrec
-  def creazioneAlbero(tree: Node[String], transactions: List[Set[String]], itemMap: Map[String, (Int, Int)], count: Int, counterDifferentNode: mutable.Map[Int, Int]): Int = {
+  def creazioneAlbero(tree: Node[String], transactions: List[List[String]], itemMap: Map[String, (Int, Int)], count: Int, counterDifferentNode: mutable.Map[Int, Int]): Int = {
     if (transactions.nonEmpty) {
       //Singola transazione togliendo gli elementi che non sonon sopra il min supp e riordinandola per frequenza 
-      val head = transactions.head.filter(itemMap.contains).toList.sortBy(itemMap(_)._1)
+      val head = transactions.head
       //Aggiungiamo i nodi della transazione all'albero, contiamo quanti nodi nuovi abbiamo aggiunto
       val newCount = addNodeTransaction(tree, head, count, itemMap, counterDifferentNode)
       //Una volta aggiunta una transazione continuiamo con le successive
@@ -77,16 +84,6 @@ object Nonordfp extends App {
     else {
       tree.sons.foreach(printTree(_, str))
     }
-  }
-
-  //Creiamo il conditionalPB
-  def createCondPB(arrayTrie: Array[(String, Int, Int)]): Map[String, List[(List[String], Int)]] = {
-    val mapItemPath = arrayTrie.map(elem => elem._1 ->
-      (itCreateConditionalPatternBase(elem._3, arrayTrie, List.empty[String]), elem._2)).groupBy(_._1)
-
-    val mapItemPathMapped = mapItemPath.map(elem => elem._1 -> elem._2.map(_._2).toList)
-
-    mapItemPathMapped
   }
 
   //Creazione di un percorso dato un elemento, simile a listaPercorsi, ma per l'arrayTrie
@@ -132,7 +129,7 @@ object Nonordfp extends App {
 
     if (path.nonEmpty) {
       //Aggiungiamo all'ultimo nodo creato il nuovo, passando il suo numero di occorrenze
-      val (node, flagNewNode) = lastNode.add(path.head, countPath)
+      val node = lastNode.add(path.head, countPath)
       //Viene controllato se sono presenti altri branch
       val moreBranch = {
         if (!flag) lastNode.sons.size > 1
@@ -141,14 +138,14 @@ object Nonordfp extends App {
 
       //Contiamo i nodi distinti
       val newCount = count + {
-        if (flagNewNode) {
-          counterDifferentNode(itemMap(node.value)._1) += 1
+        if (node._2) {
+          counterDifferentNode(itemMap(node._1.value)._1) += 1
           1
         } else 0
       }
 
       //Continuiamo a scorrere il path
-      addNodePath(node, path.tail, countPath, moreBranch, newCount, counterDifferentNode, itemMap)
+      addNodePath(node._1, path.tail, countPath, moreBranch, newCount, counterDifferentNode, itemMap)
     } else {
       //Quando abbiamo finito di scorrere tutto il path viene restituito il flag relativo alla formazione di nuovi branch ed il count dei nodi distinti
       (flag, count)
@@ -180,23 +177,14 @@ object Nonordfp extends App {
   }
 
   //Calcoliamo i frequentItemSet dal conditionalPB
-  @tailrec
-  def createFreqItemSet(condPB: Map[String, List[(List[String], Int)]], firstMapSorted: Map[String, (Int, Int)],
-                        accFreqItemset: List[(List[String], Int)]): List[(List[String], Int)] = {
-    //Scorriamo tutti gli elementi del conditionalPB
-    if (condPB.nonEmpty) {
-      val head = condPB.head
-      //Calcoliamo i frequItem per un singolo elemento del condPB
-      val freqItemSet = createFreqItemSetIt(head._1, head._2, firstMapSorted)
-      //Continuiamo a calcolare i freqItemSet dell'item successsivo nel condPB
-      createFreqItemSet(condPB.tail, firstMapSorted, accFreqItemset ++ freqItemSet)
-    }
-    else
-      accFreqItemset //Restituiamo l'intera lista dei freqItemSet
+  def createFreqItemSet(condPB: ParMap[String, List[(List[String], Int)]],
+                        firstMapSorted: Map[String, (Int, Int)]): ParIterable[(List[String], Int)] = {
+    condPB.map(elem => createFreqItemSetIt(elem._1, elem._2, firstMapSorted)).flatten
   }
 
-  //Calcoliamo i freqItem per un singolo elemento del condPB
-  def createFreqItemSetIt(item: String, headList: List[(List[String], Int)], firstMapSorted: Map[String, (Int, Int)]): List[(List[String], Int)] = {
+  //Calcoliamo i frequItem per un singolo elemento del condPB
+  def createFreqItemSetIt(item: String, headList: List[(List[String], Int)],
+                          firstMapSorted: Map[String, (Int, Int)]): ParIterable[(List[String], Int)] = {
     //Contiamo quante volte esiste un singolo item all'interno di tutti i path nel condPB di un determinato item e rimuoviamo quelli sotto il min supp
     val itemCount = countItemConPB(headList, Map.empty[String, Int]).filter(x => x._2 >= minSupport)
     //Ordiniamo itemCount
@@ -218,10 +206,10 @@ object Nonordfp extends App {
         //Vegono create tutte le possibili combinazioni tra gli item frequenti
         val subItemsFreq = itemsFreq.subsets().filter(_.nonEmpty).toList
         //Vengono ottenuti i frequentItemSet (aggiungendo a questi l'item) per poi aggiungere l'item di partenza alla lista degli item più frequenti
-        subItemsFreq.map(set => calcoloMinimi(set)).map(x => (x._1 :+ item) -> x._2) :+ (List(item) -> firstMapSorted(item)._2)
+        ParIterable(subItemsFreq.map(set => calcoloMinimi(set)).map(x => (x._1 :+ item) -> x._2) :+ (List(item) -> firstMapSorted(item)._2): _*)
       } else {
         //Se l'albero è vuoto aggiungiamo ai freqItemSet l'item di cui stavamo facendo i calcoli
-        List(List(item) -> firstMapSorted(item)._2)
+        ParIterable(List(item) -> firstMapSorted(item)._2)
       }
     } else {
       //Se l'albero creato ha più branch dobbiamo ricalcolare tutto
@@ -230,8 +218,8 @@ object Nonordfp extends App {
       calcStartIndex(startIndex, counterDifferentNode)
       createTrie(arrayTrie, tree, startIndex, firstMapWithIndex, -1)
       val conditionalPatternBase = createCondPB(arrayTrie)
-      val freqItemSet = createFreqItemSet(conditionalPatternBase, firstMapWithIndex, List[(List[String], Int)]())
-      freqItemSet.map(x => (x._1 :+ item) -> x._2) :+ (List(item) -> firstMapSorted(item)._2)
+      val freqItemSet = createFreqItemSet(conditionalPatternBase, firstMapWithIndex)
+      freqItemSet.map(x => (x._1 :+ item) -> x._2) ++ ParIterable(List(item) -> firstMapSorted(item)._2)
     }
   }
 
@@ -292,14 +280,25 @@ object Nonordfp extends App {
     }
   }
 
+  //Creiamo il conditionalPB
+  def createCondPB(arrayTrie: Array[(String, Int, Int)]): ParMap[String, List[(List[String], Int)]] = {
+    val mapItemPath = arrayTrie.par.map(elem => elem._1 ->
+      (itCreateConditionalPatternBase(elem._3, arrayTrie, List.empty[String]), elem._2)).groupBy(_._1)
+
+    val mapItemPathMapped = mapItemPath.map(elem => elem._1 -> elem._2.map(_._2).toList)
+
+    mapItemPathMapped
+  }
 
   def exec() = {
-
     //Calcolo della frequenza dei singoli items
     val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport)
 
     //Ordina gli item dal più frequente al meno
-    val firstMapSorted = firstStep.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2))
+    val firstMapSorted = ListMap(firstStep.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2)): _*)
+
+    //Ordiniamo le transazioni del dataset in modo decrescente
+    val orderDataset = datasetFilter(firstMapSorted.keys.toList).seq.toList
 
     //Per ogni item creiamo l'indice così da facilitarci l'ordinamento più avanti
     // String -> indice, frequenza
@@ -312,7 +311,7 @@ object Nonordfp extends App {
     val counterDifferentNode = mutable.Map(firstMapWithIndex.map(_._2._1 -> 0).toSeq: _*)
 
     //Scorriamo tutte le transazioni creando il nostro albero. Restituiamo il numero di nodi distinti
-    val numeroNodi = creazioneAlbero(tree, dataset, firstMapWithIndex, 0, counterDifferentNode)
+    val numeroNodi = creazioneAlbero(tree, orderDataset, firstMapWithIndex, 0, counterDifferentNode)
 
     /* Inizializzazione dell'array in cui sono contenuti gli indici, che indicano da dove iniziano le celle contigue
     * per ogni item nell'arrayTrie. */
@@ -331,13 +330,13 @@ object Nonordfp extends App {
     val conditionalPatternBase = createCondPB(arrayTrie)
 
     //Calcoliamo i frequentItemSet dal conditionalPB
-    val frequentItemSet = createFreqItemSet(conditionalPatternBase, firstMapWithIndex, List[(List[String], Int)]())
-    frequentItemSet.map(x => x._1.toSet -> x._2).toMap
+    val frequentItemSet = createFreqItemSet(conditionalPatternBase, firstMapWithIndex)
+    frequentItemSet.map(x => x._1.toSet -> x._2).toMap.seq
   }
 
   val result = time(exec())
   val numTransazioni = dataset.size.toFloat
 
-  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "NonOrderFpResult.txt")
-  Utils.scriviSuFileSupporto(result, numTransazioni, "NonOrderFpSupport.txt")
+  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "NonOrderFpParResult.txt")
+  Utils.scriviSuFileSupporto(result, numTransazioni, "NonOrderFpParSupport.txt")
 }

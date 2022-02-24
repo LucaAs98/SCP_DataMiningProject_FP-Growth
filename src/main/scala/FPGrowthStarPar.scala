@@ -343,8 +343,8 @@ object FPGrowthStarPar extends App {
 
 
   val result = time(exec())
- /* val numTransazioni = dataset.size.toFloat
+  val numTransazioni = dataset.size.toFloat
 
-  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthStarResult.txt")
-  Utils.scriviSuFileSupporto(result, numTransazioni, "FPGrowthResultStarSupport.txt")*/
+  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthStarParResult.txt")
+  Utils.scriviSuFileSupporto(result, numTransazioni, "FPGrowthResultStarParSupport.txt")
 }

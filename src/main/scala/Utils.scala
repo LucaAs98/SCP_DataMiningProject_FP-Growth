@@ -7,7 +7,7 @@ import scala.io.Source
 object Utils {
 
   //Parametro di basket mining
-  val minSupport = 30
+  val minSupport = 2
 
   //Valuta il tempo di un'espressione
   def time[R](block: => R): R = {
@@ -23,14 +23,27 @@ object Utils {
     val filePath = "src/main/resources/dataset/" + nomeFile
     val file = new File(filePath)
     val source = Source.fromFile(file)
-    val dataset = source.getLines().map(x => x.split(",").toSet).toList //Contenuto di tutto il file come lista
+    val dataset = source.getLines().map(x => x.split(" ").toSet).toList //Contenuto di tutto il file come lista
     source.close()
     dataset
   }
 
+  //Funzione per prendere il dataset dal file
+  def prendiDatasetInt(nomeFile: String): List[Set[Int]] = {
+    val filePath = "src/main/resources/dataset/" + nomeFile
+    val file = new File(filePath)
+    val source = Source.fromFile(file)
+    val dataset = source.getLines().map(x => x.split(",").toSet).toList //Contenuto di tutto il file come lista
+    source.close()
+
+    val distinctDataset = dataset.flatten.distinct.sortWith(_ < _).zipWithIndex.toMap
+
+    dataset.map(x => x.map(distinctDataset(_)))
+  }
+
   //Calcolo delle confidenze
   def calcoloConfidenza(singleResult: Set[String], numTransazioni: Float, result: Map[Set[String], Int]): Seq[String] = {
-    
+
     //Numero occorrenze dell'intero itemset
     val supportIS = result.get(singleResult) match {
       case None => 0

@@ -6,7 +6,7 @@ import org.apache.spark.{HashPartitioner, Partitioner}
 import scala.annotation.tailrec
 import scala.collection.mutable
 
-object FPGrowthRDDSenzaAlbero extends App {
+object FPGrowthRDDMod extends App {
   val sc = Utils.getSparkContext("FpGrowthRDD")
   val lines = Utils.getRDD("Market_Basket_Optimisation.csv", sc)
   val dataset = lines.map(x => x.split(","))
@@ -94,6 +94,6 @@ object FPGrowthRDDSenzaAlbero extends App {
   val result = Utils.time(exec())
   val numTransazioni = dataset2.count().toFloat
 
-  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthFreqItemSetRDDBasketOptim.txt")
-  Utils.scriviSuFileSupporto(result, numTransazioni, "FPGrowthAssRulestRDDBasketOptim.txt")
+  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthRDDModResult.txt")
+  Utils.scriviSuFileSupporto(result, numTransazioni, "FPGrowthRDDModResultSupport.txt")
 }
