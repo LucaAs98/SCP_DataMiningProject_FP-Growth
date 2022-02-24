@@ -4,26 +4,11 @@ import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 
 object FPGrowthStarPar extends App {
-  val dataset = Utils.prendiDataset("T10I4D100K.txt").par
-/*  val dataset2 =
-    List(Set("a", "c", "d", "f", "g", "i", "m", "p")
-      , Set("a", "b", "c", "f", "i", "m", "o")
-      , Set("b", "f", "h", "j", "o")
-      , Set("b", "c", "k", "s", "p")
-      , Set("a", "c", "e", "f", "l", "m", "n", "p"))
-  val dataset3 =
-    List(Set("a", "b", "c", "e", "f", "o")
-      , Set("a", "c", "g")
-      , Set("e", "i")
-      , Set("a", "c", "d", "e", "g")
-      , Set("a", "c", "e", "g", "l")
-      , Set("e", "j")
-      , Set("a", "b", "c", "e", "f", "p")
-      , Set("a", "c", "d")
-      , Set("a", "c", "e", "g", "m")
-      , Set("a", "c", "e", "g", "n"))*/
+  //Prendiamo il dataset (vedi Utils per dettagli)
+  val dataset = prendiDataset().par
 
-  val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList //Elementi singoli presenti nel dataset
+  //Elementi singoli presenti nel dataset
+  val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList
 
   //Passando la lista dei set degli item creati, conta quante volte c'è l'insieme nelle transazioni
   def countItemSet(item: List[String]): Map[String, Int] = {
@@ -88,17 +73,6 @@ object FPGrowthStarPar extends App {
     } else {
       //Quando finisce una singola transazione restituiamo l'ht
       headerTable
-    }
-  }
-
-  //Stampa l'albero
-  def printTree(tree: Node[String], str: String): Unit = {
-    if (tree.occurrence != -1) {
-      println(str + tree.value + " " + tree.occurrence)
-      tree.sons.foreach(printTree(_, str + "\t"))
-    }
-    else {
-      tree.sons.foreach(printTree(_, str))
     }
   }
 
@@ -240,7 +214,7 @@ object FPGrowthStarPar extends App {
   def calcFreqItemset(listItem: List[String],
                       headerTable: ListMap[String, (Int, Int, List[Node[String]])],
                       matrix: ListMap[String, Array[Int]],
-                      accFreqItemset: List[(List[String], Int)]) : List[(List[String], Int)] = {
+                      accFreqItemset: List[(List[String], Int)]): List[(List[String], Int)] = {
     if (listItem.nonEmpty) {
       //Primo item
       val head = listItem.head
@@ -345,6 +319,6 @@ object FPGrowthStarPar extends App {
   val result = time(exec())
   val numTransazioni = dataset.size.toFloat
 
-  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthStarParResult.txt")
-  Utils.scriviSuFileSupporto(result, numTransazioni, "FPGrowthResultStarParSupport.txt")
+  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthStarParResult.txt")
+  scriviSuFileSupporto(result, numTransazioni, "FPGrowthResultStarParSupport.txt")
 }

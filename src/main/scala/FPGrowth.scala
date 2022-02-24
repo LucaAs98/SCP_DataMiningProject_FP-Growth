@@ -1,19 +1,13 @@
 import Utils._
-
 import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
-//Tempo di esecuzione: 21901ms
-//Tempo di esecuzione: 29173ms
-object FPGrowth extends App {
-  val dataset = Utils.prendiDataset("T10I4D100K.txt")
- /* val dataset2 =
-    List(Set("a", "c", "d", "f", "g", "i", "m", "p")
-      , Set("a", "b", "c", "f", "i", "m", "o")
-      , Set("b", "f", "h", "j", "o")
-      , Set("b", "c", "k", "s", "p")
-      , Set("a", "c", "e", "f", "l", "m", "n", "p"))*/
 
-  val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList //Elementi singoli presenti nel dataset
+object FPGrowth extends App {
+  //Prendiamo il dataset (vedi Utils per dettagli)
+  val dataset = prendiDataset()
+
+  //Elementi singoli presenti nel dataset
+  val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList
 
   //Passando la lista dei set degli item creati, conta quante volte c'è l'insieme nelle transazioni
   def countItemSet(item: List[String]): Map[String, Int] = {
@@ -61,17 +55,6 @@ object FPGrowth extends App {
     } else {
       //Quando finisce una singola transazione restituiamo l'ht
       headerTable
-    }
-  }
-
-  //Stampa l'albero
-  def printTree(tree: Node[String], str: String): Unit = {
-    if (tree.occurrence != -1) {
-      println(str + tree.value + " " + tree.occurrence)
-      tree.sons.foreach(printTree(_, str + "\t"))
-    }
-    else {
-      tree.sons.foreach(printTree(_, str))
     }
   }
 
@@ -259,7 +242,7 @@ object FPGrowth extends App {
     //Scorriamo tutte le transazioni creando il nostro albero e restituendo l'headerTable finale
     val headerTableFinal = creazioneAlbero(newTree, orderDataset, headerTable)
 
-    //printTree(newTree, "")
+    printTree(newTree, "")
 
     //Ordiniamo i singoli item in modo crescente per occorrenze e modo non alfabetico
     val singleElementsCrescentOrder = ListMap(firstMapSorted.toList.reverse: _*)
@@ -278,6 +261,6 @@ object FPGrowth extends App {
   val result = time(exec())
   val numTransazioni = dataset.size.toFloat
 
-  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthResult.txt")
-  Utils.scriviSuFileSupporto(result, numTransazioni, "FPGrowthResultSupport.txt")
+  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthResult.txt")
+  scriviSuFileSupporto(result, numTransazioni, "FPGrowthResultSupport.txt")
 }

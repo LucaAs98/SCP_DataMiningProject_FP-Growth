@@ -2,8 +2,8 @@ import scala.annotation.tailrec
 import Utils._
 
 object Apriori extends App {
-  //Scelta dataset (Csv e txt identitici)
-  val dataset = prendiDataset("datasetKaggleAlimenti100.txt")
+  //Prendiamo il dataset (vedi Utils per dettagli)
+  val dataset = prendiDataset()
 
   //Passando la lista dei set degli item creati, conta quante volte c'è l'insieme nelle transazioni
   def countItemSet(item: List[Set[String]]): Map[Set[String], Int] = {
@@ -35,13 +35,13 @@ object Apriori extends App {
     }
   }
 
-  //Calcolo di tutti i sinogli item
-  //def totalItem = time((((dataset foldLeft (Set[String]())) ((xs, x) => xs ++ x)) map (x => Set(x))).toList)
+  //Calcolo di tutti i singoli item
   val totalItem = (dataset reduce ((xs, x) => xs ++ x) map (x => Set(x))).toList
 
   //Esecuzione effettiva dell'algoritmo
   def exec() = {
-    val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport) //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
+    //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
+    val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport)
     aprioriIter(firstStep, 2)
   }
 

@@ -1,29 +1,13 @@
-import org.apache.log4j.{Level, Logger}
 import org.apache.spark.mllib.fpm.FPGrowth
-import org.apache.spark.sql.SparkSession
-
+import Utils._
 import java.io.{BufferedWriter, File, FileWriter}
 
 //Versione FPGrowth spark già implementata
 object FPGrowthSpark extends App {
-  Logger.getRootLogger.setLevel(Level.INFO)
-  val sc = Utils.getSparkContext("FPGrowthSpark")
-  val lines = Utils.getRDD("datasetGrande.txt", sc)
-  val dataset = lines.map(x => x.split(" "))
-  val dataset2 = sc.parallelize(
-    List(Array("a", "c", "d", "f", "g", "i", "m", "p")
-      , Array("a", "b", "c", "f", "i", "m", "o")
-      , Array("b", "f", "h", "j", "o")
-      , Array("b", "c", "k", "s", "p")
-      , Array("a", "c", "e", "f", "l", "m", "n", "p")))
-
-
-  //Tempo di esecuzione: 40298ms  1000 min supp 10 partizioni
-  //Tempo di esecuzione: 77407ms  300 min supp 10 partizioni
-  //Tempo di esecuzione: 45649ms  300 min supp 100 partizioni
-  //Tempo di esecuzione: 37570ms  300 min supp 200 partizioni
-  //Tempo di esecuzione: 32443ms  300 min supp 500 partizioni
-  //Tempo di esecuzione: 32273ms  300 min supp 800 partizioni
+  val sc = getSparkContext("FPGrowthSpark")
+  //Prendiamo il dataset (vedi Utils per dettagli)
+  val lines = getRDD(sc)
+  val dataset = lines.map(x => x.split(spazioVirgola))
 
   //nostro supp/num. trans
   val fpg = new FPGrowth().setMinSupport(0.003).setNumPartitions(800)
@@ -35,7 +19,7 @@ object FPGrowthSpark extends App {
     (model, freqItemSet)
   }
 
-  val (model, result) = Utils.time(avvia())
+  val (model, result) = time(avvia())
   //Scriviamo il risultato nel file
   val writingFile = new File("src/main/resources/results/FPGrowthFreqItemSetSpark.txt")
   val bw = new BufferedWriter(new FileWriter(writingFile))

@@ -1,0 +1,10 @@
+a,b,c,e,f,o
+a,c,g
+e,i
+a,c,d,e,g
+a,c,e,g,l
+e,j
+a,b,c,e,f,p
+a,c,d
+a,c,e,g,m
+a,c,e,g,n

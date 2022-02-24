@@ -1,11 +1,12 @@
 import org.apache.spark.rdd.RDD
-
+import Utils._
 import scala.annotation.tailrec
 
 object AprioriRDD extends App {
-  val sc = Utils.getSparkContext("AprioriRDD")
-  val dataset = Utils.getRDD("datasetKaggleAlimenti100.txt", sc)
-  val items = dataset.flatMap(x => x.split(","))
+  val sc = getSparkContext("AprioriRDD")
+  //Prendiamo il dataset (vedi Utils per dettagli)
+  val dataset = getRDD(sc)
+  val items = dataset.flatMap(x => x.split(spazioVirgola))
 
   def gen(itemSets: RDD[Set[String]], size: Int): List[Set[String]] = {
     (itemSets reduce ((x, y) => x ++ y)).subsets(size).toList
@@ -29,7 +30,7 @@ object AprioriRDD extends App {
   def countItemSet(itemSets: Array[Set[String]], size: Int) = {
     val ciao = dataset.flatMap(x => listOfPairs(x, itemSets, size))
     val itemPairs = ciao.map(x => (x, 1))
-    val itemCounts = itemPairs.reduceByKey((v1, v2) => v1 + v2).filter(_._2 >= Utils.minSupport)
+    val itemCounts = itemPairs.reduceByKey((v1, v2) => v1 + v2).filter(_._2 >= minSupport)
     itemCounts.collect().toMap
   }
 
@@ -38,7 +39,7 @@ object AprioriRDD extends App {
     val itemsSetPrec = sc.parallelize(mapItem.keys.filter(x => x.size == (dim - 1)).toList) //vedere se cambia qualcosa con persist o meno
     val candidati = gen(itemsSetPrec, dim)
     val itemSets = prune(sc.parallelize(candidati), itemsSetPrec.collect())
-    val itemSetCounts = countItemSet(itemSets, dim).filter(_._2 >= Utils.minSupport)
+    val itemSetCounts = countItemSet(itemSets, dim).filter(_._2 >= minSupport)
 
     if (itemSetCounts.isEmpty) {
       mapItem
@@ -50,7 +51,7 @@ object AprioriRDD extends App {
 
   def firstStep(): Map[Set[String], Int] = {
     val itemPairs = items.map(x => (Set(x), 1))
-    val itemCounts = itemPairs.reduceByKey((v1, v2) => v1 + v2).filter(_._2 >= Utils.minSupport)
+    val itemCounts = itemPairs.reduceByKey((v1, v2) => v1 + v2).filter(_._2 >= minSupport)
     itemCounts.collect().toMap
   }
 
@@ -65,9 +66,9 @@ object AprioriRDD extends App {
     }
   }
 
-  val result = Utils.time(exec())
+  val result = time(exec())
   val numTransazioni = dataset.count().toFloat
 
-  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "AprioriRDDResult.txt")
-  Utils.scriviSuFileSupporto(result, numTransazioni, "AprioriRDDResultSupport.txt")
+  scriviSuFileFrequentItemSet(result, numTransazioni, "AprioriRDDResult.txt")
+  scriviSuFileSupporto(result, numTransazioni, "AprioriRDDResultSupport.txt")
 }

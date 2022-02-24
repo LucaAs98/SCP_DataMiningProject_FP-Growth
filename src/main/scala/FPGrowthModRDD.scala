@@ -1,28 +1,21 @@
-import Utils.{minSupport, time}
-
+import Utils._
 import java.{util => ju}
 import org.apache.spark.{HashPartitioner, Partitioner}
 
 import scala.annotation.tailrec
-import scala.collection.mutable
 
-object FPGrowthRDDMod extends App {
-  val sc = Utils.getSparkContext("FpGrowthRDD")
-  val lines = Utils.getRDD("Market_Basket_Optimisation.csv", sc)
-  val dataset = lines.map(x => x.split(","))
-  val dataset2 = sc.parallelize(
-    List(Array("a", "c", "d", "f", "g", "i", "m", "p")
-      , Array("a", "b", "c", "f", "i", "m", "o")
-      , Array("b", "f", "h", "j", "o")
-      , Array("b", "c", "k", "s", "p")
-      , Array("a", "c", "e", "f", "l", "m", "n", "p")))
+object FPGrowthModRDD extends App {
+  val sc = getSparkContext("FPGrowthModRDD")
+  //Prendiamo il dataset (vedi Utils per dettagli)
+  val lines = getRDD(sc)
+  val dataset = lines.map(x => x.split(spazioVirgola))
 
   val numParts = 10
 
   def getSingleItemCount(partitioner: Partitioner): Array[(String, Int)] = {
-    dataset2.flatMap(t => t).map(v => (v, 1))
+    dataset.flatMap(t => t).map(v => (v, 1))
       .reduceByKey(partitioner, _ + _)
-      .filter(_._2 >= Utils.minSupport)
+      .filter(_._2 >= minSupport)
       .collect()
       .sortBy(x => (-x._2, x._1))
   }
@@ -38,17 +31,6 @@ object FPGrowthRDDMod extends App {
       addNodeTransaction(node._1, transazione.tail)
     }
   }
-
-  def printTree(tree: Node[Int], items: Map[Int, String], str: String): Unit = {
-    if (tree.occurrence != -1) {
-      println(str + items(tree.value) + " " + tree.occurrence)
-      tree.sons.foreach(printTree(_, items, str + "\t"))
-    }
-    else {
-      tree.sons.foreach(printTree(_, items, str))
-    }
-  }
-
 
   def addToCondPattBase(transazione: Array[String], item: Map[String, Int]): Array[(Int, List[Int])] = {
     //Ordiniamo la transazione
@@ -66,7 +48,7 @@ object FPGrowthRDDMod extends App {
     println(singleItemsCount.mkString(","))
     val itemToRank = singleItemsCount.map(_._1).zipWithIndex.toMap
 
-    val condPatternBase = dataset2.flatMap(trans => addToCondPattBase(trans, itemToRank))
+    val condPatternBase = dataset.flatMap(trans => addToCondPattBase(trans, itemToRank))
 
     val condPattGrouped = condPatternBase.groupByKey()
 
@@ -91,9 +73,9 @@ object FPGrowthRDDMod extends App {
     }
   }
 
-  val result = Utils.time(exec())
-  val numTransazioni = dataset2.count().toFloat
+  val result = time(exec())
+  val numTransazioni = dataset.count().toFloat
 
-  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthRDDModResult.txt")
-  Utils.scriviSuFileSupporto(result, numTransazioni, "FPGrowthRDDModResultSupport.txt")
+  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthModRDDResult.txt")
+  scriviSuFileSupporto(result, numTransazioni, "FPGrowthModRDDResultSupport.txt")
 }

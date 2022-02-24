@@ -6,15 +6,10 @@ import scala.collection.immutable.ListMap
 import scala.collection.mutable
 
 object FPGrowthRDD extends App {
-  val sc = Utils.getSparkContext("FPGrowthRDD")
-  val lines = Utils.getRDD("datasetKaggleAlimenti.txt", sc)
-  val dataset3 = lines.map(x => x.split(","))
-  val dataset = sc.parallelize(
-    List(Array("a", "c", "d", "f", "g", "i", "m", "p")
-      , Array("a", "b", "c", "f", "i", "m", "o")
-      , Array("b", "f", "h", "j", "o")
-      , Array("b", "c", "k", "s", "p")
-      , Array("a", "c", "e", "f", "l", "m", "n", "p")))
+  val sc = getSparkContext("FPGrowthRDD")
+  //Prendiamo il dataset (vedi Utils per dettagli)
+  val lines = getRDD(sc)
+  val dataset = lines.map(x => x.split(spazioVirgola))
 
   val numParts = 10
 
@@ -22,7 +17,7 @@ object FPGrowthRDD extends App {
   def getSingleItemCount(partitioner: Partitioner): Array[(String, Int)] = {
     dataset.flatMap(t => t).map(v => (v, 1))
       .reduceByKey(partitioner, _ + _)
-      .filter(_._2 >= Utils.minSupport)
+      .filter(_._2 >= minSupport)
       .collect()
       .sortBy(x => (-x._2, x._1))
   }
@@ -62,17 +57,6 @@ object FPGrowthRDD extends App {
     } else {
       //Quando finisce una singola transazione
       headerTable
-    }
-  }
-
-  //Metodo per stampare l'albero
-  def printTree(tree: Node[String], str: String): Unit = {
-    if (tree.occurrence != -1) {
-      println(str + tree.value + " " + tree.occurrence)
-      tree.sons.foreach(printTree(_, str + "\t"))
-    }
-    else {
-      tree.sons.foreach(printTree(_, str))
     }
   }
 
@@ -236,6 +220,6 @@ object FPGrowthRDD extends App {
   val result = time(exec())
   val numTransazioni = dataset.count().toFloat
 
-  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthRDDResult.txt")
-  Utils.scriviSuFileSupporto(result, numTransazioni, "FPGrowthRDDResultSupport.txt")
+  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthRDDResult.txt")
+  scriviSuFileSupporto(result, numTransazioni, "FPGrowthRDDResultSupport.txt")
 }

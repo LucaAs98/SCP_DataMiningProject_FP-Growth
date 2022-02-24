@@ -2,17 +2,18 @@ import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 import Utils._
 
-object FPGrowthParMod extends App {
-  //Scelta dataset (Csv e txt identitici)
-  val dataset = Utils.prendiDataset("datasetKaggleAlimenti100.txt")
-  val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList //Elementi singoli presenti nel dataset
+object FPGrowthModPar extends App {
+  //Prendiamo il dataset (vedi Utils per dettagli)
+  val dataset = prendiDataset()
+  //Elementi singoli presenti nel dataset
+  val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList
 
   //Passando la lista dei set degli item creati, conta quante volte c'è l'insieme nelle transazioni
   def countItemSet(item: List[String]): Map[String, Int] = {
     (item map (x => x -> (dataset count (y => y.contains(x))))).toMap
   }
 
-  //
+  //Ordiniamo le transazioni in modo decrescente
   def datasetFilter(firstStep: List[String]) = {
     dataset.map(x => x.toList.filter(elemento => firstStep.contains(elemento)).
       sortBy(firstStep.indexOf(_)))
@@ -56,16 +57,6 @@ object FPGrowthParMod extends App {
     }
   }
 
-  def printTree(tree: Node[String], str: String): Unit = {
-    if (tree.occurrence != -1) {
-      println(str + tree.value + " " + tree.occurrence)
-      tree.sons.foreach(printTree(_, str + "\t"))
-    }
-    else {
-      tree.sons.foreach(printTree(_, str))
-    }
-  }
-
   @tailrec
   def creazioneAlbero(tree: Node[String], transactions: List[List[String]], headerTable: ListMap[String, (Int, List[Node[String]])]): ListMap[String, (Int, List[Node[String]])] = {
     if (transactions.nonEmpty) {
@@ -99,7 +90,7 @@ object FPGrowthParMod extends App {
 
   def exec(): Map[Set[String], Int] = {
     //totalItems che rispettano il minSupport
-    val firstStep = countItemSet(totalItem).filter(x => x._2 >= Utils.minSupport) //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
+    val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport) //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
 
     //Ordina gli item dal più frequente al meno 
     val firstMapSorted = ListMap(firstStep.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2)): _*)
@@ -131,6 +122,6 @@ object FPGrowthParMod extends App {
   val result = time(exec())
   val numTransazioni = dataset.size.toFloat
 
-  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthParModResult.txt")
-  Utils.scriviSuFileSupporto(result, numTransazioni, "FPGrowthResultParModSupport.txt")
+  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthParModResult.txt")
+  scriviSuFileSupporto(result, numTransazioni, "FPGrowthResultParModSupport.txt")
 }

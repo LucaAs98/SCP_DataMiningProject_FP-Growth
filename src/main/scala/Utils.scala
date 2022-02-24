@@ -5,17 +5,28 @@ import java.io.{BufferedWriter, File, FileWriter}
 import scala.io.Source
 
 object Utils {
+  val mappaNomiFile: Map[Int, String] = Map[Int, String](
+    0 -> "datasetKaggleAlimenti.txt",
+    1 -> "datasetKaggleAlimenti10.txt",
+    2 -> "datasetKaggleAlimenti100.txt",
+    3 -> "T10I4D100K.txt",
+    4 -> "datasetLettere.txt",
+    5 -> "datasetLettere2.txt")
+
+  val numFileDataset = 4
+  val spazioVirgola = ","
 
   //Parametro di basket mining
   val minSupport = 2
 
-  //Valuta il tempo di un'espressione
-  def time[R](block: => R): R = {
-    val t0 = System.nanoTime()
-    val result = block // call-by-name
-    val t1 = System.nanoTime()
-    println("Tempo di esecuzione: " + (t1 - t0) / 1000000 + "ms")
-    result
+  //Funzione per prendere il dataset dal file
+  def prendiDataset(): List[Set[String]] = {
+    val filePath = "src/main/resources/dataset/" + mappaNomiFile(numFileDataset)
+    val file = new File(filePath)
+    val source = Source.fromFile(file)
+    val dataset = source.getLines().map(x => x.split(spazioVirgola).toSet).toList //Contenuto di tutto il file come lista
+    source.close()
+    dataset
   }
 
   //Funzione per prendere il dataset dal file
@@ -39,6 +50,15 @@ object Utils {
     val distinctDataset = dataset.flatten.distinct.sortWith(_ < _).zipWithIndex.toMap
 
     dataset.map(x => x.map(distinctDataset(_)))
+  }
+
+  //Valuta il tempo di un'espressione
+  def time[R](block: => R): R = {
+    val t0 = System.nanoTime()
+    val result = block // call-by-name
+    val t1 = System.nanoTime()
+    println("Tempo di esecuzione: " + (t1 - t0) / 1000000 + "ms")
+    result
   }
 
   //Calcolo delle confidenze
@@ -110,8 +130,25 @@ object Utils {
   }
 
   //Restituisce un RDD da file
+  def getRDD(sc: SparkContext): RDD[String] = {
+    val file = "src/main/resources/dataset/" + mappaNomiFile(numFileDataset)
+    sc.textFile(file)
+  }
+
+  //Restituisce un RDD da file
   def getRDD(nomeFile: String, sc: SparkContext): RDD[String] = {
     val file = "src/main/resources/dataset/" + nomeFile
     sc.textFile(file)
+  }
+
+  //Metodo per la stampa dell'albero
+  def printTree(tree: Node[String], str: String): Unit = {
+    if (tree.occurrence != -1) {
+      println(str + tree.value + " " + tree.occurrence)
+      tree.sons.foreach(printTree(_, str + "\t"))
+    }
+    else {
+      tree.sons.foreach(printTree(_, str))
+    }
   }
 }

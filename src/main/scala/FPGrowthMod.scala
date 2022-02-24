@@ -4,16 +4,11 @@ import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 
 object FPGrowthMod extends App {
-  //Scelta dataset (Csv e txt identitici)
-  val dataset = Utils.prendiDataset("datasetKaggleAlimenti.txt")
-  /*  val dataset =
-     List(Set("a", "c", "d", "f", "g", "i", "m", "p")
-        , Set("a", "b", "c", "f", "i", "m", "o")
-        , Set("b", "f", "h", "j", "o")
-        , Set("b", "c", "k", "s", "p")
-        , Set("a", "c", "e", "f", "l", "m", "n", "p"))*/
+  //Prendiamo il dataset (vedi Utils per dettagli)
+  val dataset = prendiDataset()
 
-  val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList //Elementi singoli presenti nel dataset
+  //Elementi singoli presenti nel dataset
+  val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList
 
   //Passando la lista dei set degli item creati, conta quante volte c'è l'insieme nelle transazioni
   def countItemSet(item: List[String]): Map[String, Int] = {
@@ -64,16 +59,6 @@ object FPGrowthMod extends App {
     }
   }
 
-  def printTree(tree: Node[String], str: String): Unit = {
-    if (tree.occurrence != -1) {
-      println(str + tree.value + " " + tree.occurrence)
-      tree.sons.foreach(printTree(_, str + "\t"))
-    }
-    else {
-      tree.sons.foreach(printTree(_, str))
-    }
-  }
-
   @tailrec
   def creazioneAlbero(tree: Node[String], transactions: List[List[String]], headerTable: ListMap[String, (Int, List[Node[String]])]): ListMap[String, (Int, List[Node[String]])] = {
     if (transactions.nonEmpty) {
@@ -105,15 +90,15 @@ object FPGrowthMod extends App {
   }
 
   @tailrec
-  def itemSetFromOneRec(cpb: ListMap[String, List[(List[String], Int)]], acc: Map[Set[String], Int] ): Map[Set[String], Int] = {
-    if(cpb.nonEmpty){
+  def itemSetFromOneRec(cpb: ListMap[String, List[(List[String], Int)]], acc: Map[Set[String], Int]): Map[Set[String], Int] = {
+    if (cpb.nonEmpty) {
       val elem = cpb.head
       //println(elem._1)
       val freqItemset = itemSetFromOne(elem._1, elem._2, Map[Set[String], Int]()).filter(item => item._2 >= minSupport)
       val newMap = acc ++ freqItemset
       itemSetFromOneRec(cpb.tail, newMap)
     }
-    else{
+    else {
       acc
     }
   }
@@ -155,6 +140,6 @@ object FPGrowthMod extends App {
   val result = time(exec())
   val numTransazioni = dataset.size.toFloat
 
-  Utils.scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthModResult.txt")
-  Utils.scriviSuFileSupporto(result, numTransazioni, "FPGrowthResultModSupport.txt")
+  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthModResult.txt")
+  scriviSuFileSupporto(result, numTransazioni, "FPGrowthResultModSupport.txt")
 }
