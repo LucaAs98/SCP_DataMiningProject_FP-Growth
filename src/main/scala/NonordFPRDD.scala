@@ -6,12 +6,12 @@ import scala.collection.immutable.ListMap
 import scala.collection.mutable
 
 object NonordFPRDD extends App {
-  val sc = getSparkContext("FPGrowthRDD")
+  val sc = getSparkContext("NonordFPRDD")
   //Prendiamo il dataset (vedi Utils per dettagli)
   val lines = getRDD(sc)
   val dataset = lines.map(x => x.split(spazioVirgola))
 
-  val numParts = 10
+  val numParts = 500
 
   //Contiamo, filtriamo e sortiamo tutti gli elementi nel dataset
   def getSingleItemCount(partitioner: Partitioner): Array[(String, Int)] = {
@@ -210,13 +210,13 @@ object NonordFPRDD extends App {
           val itemCount = countItemConPB(lPerc, Map.empty[String, Int])//.filter(x => x._2 >= minSupport)
 
           //Ordiniamo itemCount
-          val itemMapSorted = ListMap(itemCount.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2)): _*)
+          //val itemMapSorted = ListMap(itemCount.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2)): _*)
 
           //Rimuoviamo dai path che portano all'item tutti gli elementi sotto il min supp e li riordiniamo in base ad itemMapSorted
-          val pathsSorted = condPBSingSort(lPerc, itemMapSorted.keys.toList)
+          //val pathsSorted = condPBSingSort(lPerc, itemMapSorted.keys.toList)
 
           //Aggiungiamo l'indice ad itemMapSorted per facilitarci riordinamenti successivi 
-          val firstMapWithIndexItem = itemMapSorted.zipWithIndex.map(x => x._1._1 -> (x._2, x._1._2))
+          val firstMapWithIndexItem = itemCount.zipWithIndex.map(x => x._1._1 -> (x._2, x._1._2))
 
           val itemToRankItem = firstMapWithIndexItem.map(elem => elem._2._1 -> elem._1)
 
@@ -227,7 +227,7 @@ object NonordFPRDD extends App {
           val condTree = new Node[String](null, List())
 
           //Creiamo l'albero condizionale dell'item e riempiamo counterDifferentNode
-          val numNodiItem = creazioneAlberoItem(condTree, pathsSorted, 0, countDiffNodeItem, firstMapWithIndexItem)
+          val numNodiItem = creazioneAlberoItem(condTree, lPerc, 0, countDiffNodeItem, firstMapWithIndexItem)
 
           //Ricalcoliamo startIndex e l'arrayTrie
           val startIndexItem = new Array[Int](firstMapWithIndexItem.size)
