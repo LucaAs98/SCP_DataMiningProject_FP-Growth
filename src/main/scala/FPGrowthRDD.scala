@@ -170,7 +170,7 @@ object FPGrowthRDD extends App {
         * (Dopo il primo passaggio validateSuffix, sarà sempre true). */
         if (validateSuffix(item) && itemNodeFreq >= minSupport) {
           //Prendiamo tutti i percorsi per quel determinato item senza quest'ultimo
-          val lPerc = headerTable(item).map(x => (listaPercorsi(x, List[String]()), x.occurrence))
+          val lPerc = linkedList.map(x => (listaPercorsi(x, List[String]()), x.occurrence))
           //Continuiamo a calcolare i conditional trees 'interni'
           val condTree = new Node[String](null, List())
           //Creiamo la nuova headerTable

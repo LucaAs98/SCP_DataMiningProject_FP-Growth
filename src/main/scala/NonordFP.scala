@@ -187,7 +187,7 @@ object NonordFP extends App {
     val itemMapSorted = ListMap(itemCount.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2)): _*)
     //Rimuoviamo dai path che portano all'item tutti gli elementi sotto il min supp e li riordiniamo in base ad itemMapSorted
     val pathsSorted = condPBSingSort(headList, itemMapSorted.keys.toList)
-    //Aggiungiamo l'indice ad itemMapSorted per facilitarci riordinamenti successivi 
+    //Aggiungiamo l'indice ad itemMapSorted per facilitarci riordinamenti successivi
     val firstMapWithIndex = itemMapSorted.zipWithIndex.map(x => x._1._1 -> (x._2, x._1._2))
     //Contiamo quanti nodi distinti abbiamo per ogni item, ci servirà nel caso in cui dobbiamo continuare (più branch)
     val counterDifferentNode = mutable.Map(firstMapWithIndex.map(_._2._1 -> 0).toSeq: _*)
@@ -315,6 +315,7 @@ object NonordFP extends App {
     val conditionalPatternBase = createCondPB(arrayTrie)
 
     //Calcoliamo i frequentItemSet dal conditionalPB
+
     val frequentItemSet = createFreqItemSet(conditionalPatternBase, firstMapWithIndex, List[(List[String], Int)]())
     frequentItemSet.map(x => x._1.toSet -> x._2).toMap
   }
@@ -325,3 +326,5 @@ object NonordFP extends App {
   scriviSuFileFrequentItemSet(result, numTransazioni, "NonordFPResult.txt")
   scriviSuFileSupporto(result, numTransazioni, "NonordFPSupport.txt")
 }
+
+
