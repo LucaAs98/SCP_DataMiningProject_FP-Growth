@@ -29,7 +29,7 @@ object FPGrowthStar extends App {
       elem1._2 > elem2._2
   }
 
-  //aggiornamento delle occorrenze all'interno della matrice
+  //Aggiornamento delle occorrenze all'interno della matrice
   def aggiornaMatrice(matrice: ListMap[String, Array[Int]], listaPrecedenti: List[Int], item: String, count: Int): Unit = {
     val array = matrice(item)
     //Dato un item aggiorniamo le occorrenze in base alla lista degli item precedenti
@@ -277,7 +277,7 @@ object FPGrowthStar extends App {
     }
     else {
       // Se la matrice è vuota la lista degli itemSet frequenti è composta solo dal itemSet con la sua frequenza
-      List((List(item) -> freq))
+      List(List(item) -> freq)
     }
 
 
