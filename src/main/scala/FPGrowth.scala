@@ -148,7 +148,6 @@ object FPGrowth extends App {
     listOfPaths.map(elem => elem._1.filter(elementSorted.contains).sortBy(elementSorted.indexOf(_)) -> elem._2)
   }
 
-
   //Operazione di conteggio relativa agli elementi del Conditional Pattern Base
   @tailrec
   def countItemConPB(liste: List[(List[String], Int)], acc: Map[String, Int]): Map[String, Int] = {
@@ -242,8 +241,6 @@ object FPGrowth extends App {
     //Scorriamo tutte le transazioni creando il nostro albero e restituendo l'headerTable finale
     val headerTableFinal = creazioneAlbero(newTree, orderDataset, headerTable)
 
-    printTree(newTree, "")
-
     //Ordiniamo i singoli item in modo crescente per occorrenze e modo non alfabetico
     val singleElementsCrescentOrder = ListMap(firstMapSorted.toList.reverse: _*)
 
@@ -252,10 +249,9 @@ object FPGrowth extends App {
 
     //Vengono calcolati gli itemSet frequenti
     val allFreqitemset = condFPTree(conditionalPatternBase, firstMapSorted, List[(List[String], Int)]())
+
     //Viene restituito il frequentItemSet come una mappa
     allFreqitemset.map(x => x._1.toSet -> x._2).toMap
-
-
   }
 
   val result = time(exec())

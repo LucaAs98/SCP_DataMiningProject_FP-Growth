@@ -13,11 +13,11 @@ object Utils {
     4 -> "datasetLettere.txt",
     5 -> "datasetLettere2.txt")
 
-  val numFileDataset = 4
-  val spazioVirgola = ","
+  val numFileDataset = 3
+  val spazioVirgola = " "
 
   //Parametro di basket mining
-  val minSupport = 2
+  val minSupport = 2000
 
   //Funzione per prendere il dataset dal file
   def prendiDataset(): List[Set[String]] = {
@@ -25,16 +25,6 @@ object Utils {
     val file = new File(filePath)
     val source = Source.fromFile(file)
     val dataset = source.getLines().map(x => x.split(spazioVirgola).toSet).toList //Contenuto di tutto il file come lista
-    source.close()
-    dataset
-  }
-
-  //Funzione per prendere il dataset dal file
-  def prendiDataset(nomeFile: String): List[Set[String]] = {
-    val filePath = "src/main/resources/dataset/" + nomeFile
-    val file = new File(filePath)
-    val source = Source.fromFile(file)
-    val dataset = source.getLines().map(x => x.split(" ").toSet).toList //Contenuto di tutto il file come lista
     source.close()
     dataset
   }

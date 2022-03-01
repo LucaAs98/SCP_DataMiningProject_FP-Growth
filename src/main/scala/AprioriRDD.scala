@@ -8,37 +8,37 @@ object AprioriRDD extends App {
   val dataset = getRDD(sc)
   val items = dataset.flatMap(x => x.split(spazioVirgola))
 
-  def gen(itemSets: RDD[Set[String]], size: Int): List[Set[String]] = {
+  def generazioneCandidati(itemSets: RDD[Set[String]], size: Int): List[Set[String]] = {
     (itemSets reduce ((x, y) => x ++ y)).subsets(size).toList
   }
 
-  def prune(itemCandRDD: RDD[Set[String]], itemsSetPrec: Array[Set[String]]) = {
-    (itemCandRDD filter (x => x.subsets(x.size - 1) forall (y => itemsSetPrec.contains(y)))).collect()
+  def prune(itemCandRDD: List[Set[String]], itemsSetPrec: Array[Set[String]]) = {
+    itemCandRDD.filter(x => x.subsets(x.size - 1).forall(y => itemsSetPrec.contains(y)))
   }
 
-  def listOfPairs(str: String, itemSets: Array[Set[String]], size: Int) = {
-    val items = str.split(",").toSet
+  def listOfTuples(str: String, itemSets: List[Set[String]], size: Int) = {
+    val items = str.split(spazioVirgola).toSet
     if (items.size >= size) {
-      (itemSets.filter(y => y.subsetOf(items)))
+      itemSets.filter(y => y.subsetOf(items))
     }
     else {
-      Array[Set[String]]()
+      List[Set[String]]()
     }
   }
 
-  //dafinire
-  def countItemSet(itemSets: Array[Set[String]], size: Int) = {
-    val ciao = dataset.flatMap(x => listOfPairs(x, itemSets, size))
-    val itemPairs = ciao.map(x => (x, 1))
-    val itemCounts = itemPairs.reduceByKey((v1, v2) => v1 + v2).filter(_._2 >= minSupport)
+  //
+  def countItemSet(itemSets: List[Set[String]], size: Int) = {
+    val listAllCandidates = dataset.flatMap(x => listOfTuples(x, itemSets, size))
+    val itemSetCount = listAllCandidates.map(x => (x, 1))
+    val itemCounts = itemSetCount.reduceByKey((v1, v2) => v1 + v2).filter(_._2 >= minSupport)
     itemCounts.collect().toMap
   }
 
   @tailrec
   def aprioriIter(mapItem: Map[Set[String], Int], dim: Int): Map[Set[String], Int] = {
-    val itemsSetPrec = sc.parallelize(mapItem.keys.filter(x => x.size == (dim - 1)).toList) //vedere se cambia qualcosa con persist o meno
-    val candidati = gen(itemsSetPrec, dim)
-    val itemSets = prune(sc.parallelize(candidati), itemsSetPrec.collect())
+    val itemsSetPrec = sc.parallelize(mapItem.keys.filter(x => x.size == (dim - 1)).toList)
+    val candidati = generazioneCandidati(itemsSetPrec, dim)
+    val itemSets = prune(candidati, itemsSetPrec.collect())
     val itemSetCounts = countItemSet(itemSets, dim).filter(_._2 >= minSupport)
 
     if (itemSetCounts.isEmpty) {
@@ -50,19 +50,19 @@ object AprioriRDD extends App {
   }
 
   def firstStep(): Map[Set[String], Int] = {
-    val itemPairs = items.map(x => (Set(x), 1))
-    val itemCounts = itemPairs.reduceByKey((v1, v2) => v1 + v2).filter(_._2 >= minSupport)
+    val itemSetCount = items.map(x => (Set(x), 1))
+    val itemCounts = itemSetCount.reduceByKey((v1, v2) => v1 + v2).filter(_._2 >= minSupport)
     itemCounts.collect().toMap
   }
 
   def exec() = {
-    val k = firstStep()
+    val itemSingoli = firstStep()
 
-    if (k.isEmpty) {
-      k
+    if (itemSingoli.isEmpty) {
+      itemSingoli
     }
     else {
-      aprioriIter(k, 2)
+      aprioriIter(itemSingoli, 2)
     }
   }
 
