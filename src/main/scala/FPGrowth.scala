@@ -1,4 +1,5 @@
 import Utils._
+
 import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 
@@ -28,59 +29,6 @@ object FPGrowth extends App {
       elem1._2 > elem2._2
   }
 
-  //Aggiungiamo i nodo di una transazione all'albero
-  @tailrec
-  def addNodeTransaction(lastNode: Node[String], transazione: List[String], headerTable: ListMap[String, (Int, List[Node[String]])]): ListMap[String, (Int, List[Node[String]])] = {
-    //Passo base
-    if (transazione.nonEmpty) {
-      //Aggiungiamo all'ultimo nodo creato il nuovo
-      val node = lastNode.add(transazione.head)
-
-      //Se è stato creato lo aggiungiamo all'headerTable
-      if (node._2) {
-        val old = (headerTable.get(transazione.head) match {
-          case Some(value) => value
-          case None => (0, List[Node[String]]()) //Non entra mai, già inizializzata dall'exec
-        })
-
-        //Aggiornamento dell'ht, si aggiorna solo la linked list dei nodi
-        val newTable = headerTable + (transazione.head -> (old._1, old._2 :+ node._1))
-
-        //Richiamiamo questa funzione su tutti gli elementi della transazione
-        addNodeTransaction(node._1, transazione.tail, newTable)
-      } else {
-        //Se il nodo era già presente continuiamo l'aggiunta degli elementi senza aggiornare l'ht
-        addNodeTransaction(node._1, transazione.tail, headerTable)
-      }
-    } else {
-      //Quando finisce una singola transazione restituiamo l'ht
-      headerTable
-    }
-  }
-
-  //Scorrendo tutte le transazioni, viene creato l'albero
-  @tailrec
-  def creazioneAlbero(tree: Node[String], transactions: List[List[String]], headerTable: ListMap[String, (Int, List[Node[String]])]): ListMap[String, (Int, List[Node[String]])] = {
-    if (transactions.nonEmpty) {
-      //Singola transazione
-      val head = transactions.head
-      //Inserimento della transazione nell'albero
-      val newHeaderTable = addNodeTransaction(tree, head, headerTable)
-      //Una volta aggiunta una transazione continuiamo con le successive
-      creazioneAlbero(tree, transactions.tail, newHeaderTable)
-    } else //Finite tutte le transazioni del dataset restituiamo l'ht
-      headerTable
-  }
-
-  //Risaliamo l'albero per restituire il percorso inerente ad un nodo specifico
-  @tailrec
-  def listaPercorsi(nodo: Node[String], listaPercorsoAcc: List[String]): List[String] = {
-    if (!nodo.padre.isHead) //Se non è il primo nodo
-      listaPercorsi(nodo.padre, nodo.padre.value :: listaPercorsoAcc) //Continuiamo a risalire l'albero col padre
-    else
-      listaPercorsoAcc //Restituiamo tutto il percorso trovato
-  }
-
   //Otteniamo il frequentItemSet e le sue occorenze
   def calcoloMinimi(elemento: Set[(String, Int)]) = {
     if (elemento.size > 1) {
@@ -90,59 +38,7 @@ object FPGrowth extends App {
       (List(elemento.head._1), elemento.head._2)
     }
   }
-
-  //Aggiungiamo i nodo di un path all'albero
-  @tailrec
-  def addNodePath(lastNode: Node[String], path: List[String], countPath: Int,
-                  headerTable: ListMap[String, (Int, List[Node[String]])], flag: Boolean):
-  (ListMap[String, (Int, List[Node[String]])], Boolean) = {
-
-    if (path.nonEmpty) {
-      //Aggiungiamo all'ultimo nodo creato il nuovo, passando il suo numero di occorrenze
-      val node = lastNode.add(path.head, countPath)
-      //Viene controllato se sono presenti altri branch
-      val newFlag = {
-        if (!flag) lastNode.sons.size > 1
-        else flag
-      }
-
-      //Se è stato creato lo aggiungiamo all'headerTable
-      if (node._2) {
-        val old = (headerTable.get(path.head) match {
-          case Some(value) => value
-          case None => (0, List[Node[String]]()) //Non entra mai, già inizializzata dall'exec
-        })
-
-        //Aggiornamento dell'ht, si aggiorna solo la linked list dei nodi
-        val newTable = headerTable + (path.head -> (old._1, old._2 :+ node._1))
-
-        //Richiamiamo questa funzione su tutti gli elementi della transazione
-        addNodePath(node._1, path.tail, countPath, newTable, newFlag)
-      } else {
-        //Se il nodo era già presente continuiamo l'aggiunta degli elementi senza aggiornare l'ht
-        addNodePath(node._1, path.tail, countPath, headerTable, newFlag)
-      }
-    } else {
-      //Quando abbiamo finito di scorrere tutto il path viene restituita l' ht e il flag relativo alla formazione di nuovi branch
-      (headerTable, flag)
-    }
-  }
-
-  //Creazione Conditional FPTree per un singolo item
-  @tailrec
-  def creazioneAlberoItem(tree: Node[String], sortedPaths: List[(List[String], Int)],
-                          headerTable: ListMap[String, (Int, List[Node[String]])], flag: Boolean):
-  (ListMap[String, (Int, List[Node[String]])], Boolean) = {
-    if (sortedPaths.nonEmpty) {
-      //Viene preso il primo path
-      val head = sortedPaths.head
-      //Viene inserito il path nel Conditional FPTree
-      val (newHeaderTable, newFlag) = addNodePath(tree, head._1, head._2, headerTable, flag)
-      //Una volta aggiunto un nuovo path continuiamo con i successivi
-      creazioneAlberoItem(tree, sortedPaths.tail, newHeaderTable, newFlag)
-    } else (headerTable, flag) //Esaminati tutti i path restituiamo ht e il flag dei branch
-  }
-
+  
   //Ordiniamo i path per le occorrenze, eliminando gli item sotto il minimo supporto
   def condPBSingSort(listOfPaths: List[(List[String], Int)], elementSorted: List[String]) = {
     listOfPaths.map(elem => elem._1.filter(elementSorted.contains).sortBy(elementSorted.indexOf(_)) -> elem._2)
@@ -170,24 +66,25 @@ object FPGrowth extends App {
   }
 
   //Per ogni singolo elemento viene costituito il conditional FPTree per poi calcolare gli elementi frequenti
-  def freqItemsetCondPB(item: String, headList: List[(List[String], Int)], firstMapSorted: ListMap[String, Int]): List[(List[String], Int)] = {
+  def freqItemsetCondPB(item: String, pathList: List[(List[String], Int)], firstMapSorted: ListMap[String, Int]): List[(List[String], Int)] = {
     //Conteggio elementi relativi Conditional Pattern Base
-    val itemCount = countItemConPB(headList, Map.empty[String, Int]).filter(x => x._2 >= minSupport)
+    val itemCount = countItemConPB(pathList, Map.empty[String, Int]).filter(x => x._2 >= minSupport)
     //Vengono restituiti tutti gli elementi oridinati alfabeticamente e in ordine decrescente per numero di occorrenze
     val itemMapSorted = ListMap(itemCount.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2)): _*)
     //Otteniamo i path ordinati per le occorrenze
-    val orderedPath = condPBSingSort(headList, itemMapSorted.keys.toList)
+    val orderedPath = condPBSingSort(pathList, itemMapSorted.keys.toList)
     //creazione ht e del Conditional FPTree
-    val headerTableItem = itemMapSorted.map(x => x._1 -> (x._2, List[Node[String]]()))
-    val condTreeItem = new Node[String](null, List())
-    val (headerTableItemFin, moreBranch) = creazioneAlberoItem(condTreeItem, orderedPath, headerTableItem, flag = false)
+
+    val condTreeItem = new Tree(itemMapSorted)
+
+    condTreeItem.addPaths(orderedPath)
 
     //Se l'albero creato ha un signolo branch
-    if (!moreBranch) {
+    if (!condTreeItem.moreBranch) {
       //Se l'ht non è vuota
-      if (headerTableItemFin.nonEmpty) {
+      if (condTreeItem.getIfNonEmptyHt) {
         //Vengono restituiti gli elementi frequenti
-        val itemsFreq = headerTableItemFin.map(x => x._1 -> x._2._1).toSet
+        val itemsFreq = condTreeItem.getHt.map(x => x._1 -> x._2._1).toSet
         //Vegono create tutte le possibili combinazioni tra gli item frequenti
         val subItemsFreq = itemsFreq.subsets().filter(_.nonEmpty).toList
         //Vengono ottenuti i frequentItemSet (aggiungendo a questi l'item) per poi aggiungere l'item di partenza alla lista degli item più frequenti
@@ -200,7 +97,7 @@ object FPGrowth extends App {
     } else {
       //Viene ricostruito il conditionalPB per gli item frequenti relativi al item di partenza
       val itemCresOrder = ListMap(itemMapSorted.toList.reverse: _*)
-      val newCondPB = itemCresOrder.map(x => x._1 -> headerTableItemFin(x._1)._2.map(y => (listaPercorsi(y, List[String]()), y.occurrence)))
+      val newCondPB = itemCresOrder.map(x => x._1 -> condTreeItem.getAllPathsFromItem(x._1))
       // calcolo frequentItemSet (aggiungendo a questi l'item) per poi aggiungere l'item di partenza alla lista degli item più frequenti
       val freqItemsetItem = condFPTree(newCondPB, itemMapSorted, List[(List[String], Int)]())
       freqItemsetItem.map(x => (x._1 :+ item) -> x._2) :+ (List(item) -> firstMapSorted(item))
@@ -211,8 +108,8 @@ object FPGrowth extends App {
   def condFPTree(conditionalPatternBase: ListMap[String, List[(List[String], Int)]], firstMapSorted: ListMap[String, Int],
                  accFreqItemset: List[(List[String], Int)]): List[(List[String], Int)] = {
     if (conditionalPatternBase.nonEmpty) {
-      val (item, headList) = conditionalPatternBase.head
-      val freqItemset = freqItemsetCondPB(item, headList, firstMapSorted)
+      val (item, listPaths) = conditionalPatternBase.head
+      val freqItemset = freqItemsetCondPB(item, listPaths, firstMapSorted)
       condFPTree(conditionalPatternBase.tail, firstMapSorted, accFreqItemset ++ freqItemset)
     }
     else {
@@ -231,21 +128,16 @@ object FPGrowth extends App {
 
     //Ordiniamo le transazioni del dataset in modo decrescente
     val orderDataset = datasetFilter(firstMapSorted.keys.toList)
+    
+    val newTree = new Tree(firstMapSorted)
 
-    //Creiamo il nostro albero vuoto
-    val newTree = new Node[String](null, List())
-
-    //Accumulatore per tutta l'headerTable iniziale
-    val headerTable = firstMapSorted.map(x => x._1 -> (x._2, List[Node[String]]()))
-
-    //Scorriamo tutte le transazioni creando il nostro albero e restituendo l'headerTable finale
-    val headerTableFinal = creazioneAlbero(newTree, orderDataset, headerTable)
+    newTree.addTransactions(orderDataset)
 
     //Ordiniamo i singoli item in modo crescente per occorrenze e modo non alfabetico
     val singleElementsCrescentOrder = ListMap(firstMapSorted.toList.reverse: _*)
 
     //Creazione conditional pattern base, per ogni nodo prendiamo i percorsi in cui quel nodo è presente
-    val conditionalPatternBase = singleElementsCrescentOrder.map(x => x._1 -> headerTableFinal(x._1)._2.map(y => (listaPercorsi(y, List[String]()), y.occurrence)))
+    val conditionalPatternBase = singleElementsCrescentOrder.map(x => x._1 -> newTree.getAllPathsFromItem(x._1))
 
     //Vengono calcolati gli itemSet frequenti
     val allFreqitemset = condFPTree(conditionalPatternBase, firstMapSorted, List[(List[String], Int)]())
@@ -257,6 +149,6 @@ object FPGrowth extends App {
   val result = time(exec())
   val numTransazioni = dataset.size.toFloat
 
-  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthResult.txt")
-  scriviSuFileSupporto(result, numTransazioni, "FPGrowthResultSupport.txt")
+  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthNewResult.txt")
+  scriviSuFileSupporto(result, numTransazioni, "FPGrowthNewResultSupport.txt")
 }

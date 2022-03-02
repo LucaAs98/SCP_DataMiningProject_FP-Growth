@@ -5,7 +5,7 @@ import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 import scala.collection.mutable
 
-object FPGrowthRDD extends App {
+object FPGrowthRDDOld extends App {
   val sc = getSparkContext("FPGrowthRDD")
   //Prendiamo il dataset (vedi Utils per dettagli)
   val lines = getRDD(sc)
@@ -83,9 +83,9 @@ object FPGrowthRDD extends App {
   //Creiamo le transazioni condizionali in base al gruppo/partizione in cui si trova ogni item
   def genCondTransactions(transaction: Array[String],
                           itemToRank: Map[String, Int],
-                          partitioner: Partitioner): mutable.Map[Int, List[String]] = {
+                          partitioner: Partitioner): mutable.Map[Int, Array[String]] = {
     //Mappa finale da riempire
-    val output = mutable.Map.empty[Int, List[String]]
+    val output = mutable.Map.empty[Int, Array[String]]
     // Ordiniamo le transazioni in base alla frequenza degli item ed eliminando gli item non frequenti
     val transFiltered = transaction.filter(item => itemToRank.contains(item)).sortBy(item => itemToRank(item))
     val n = transFiltered.length
@@ -97,7 +97,7 @@ object FPGrowthRDD extends App {
       /* Se la mappa non contiene già un elemento con l'indice della partizione come chiave, andiamo a mettere quella parte
       * di transazione nella mappa. */
       if (!output.contains(part)) {
-        output(part) = transFiltered.slice(0, i + 1).toList
+        output(part) = transFiltered.slice(0, i + 1)
       }
       i -= 1
     }
@@ -161,9 +161,10 @@ object FPGrowthRDD extends App {
     listPaths.foldLeft(Set[String]())((xs, x) => xs ++ x._1).toList
 
   //Calcoliamo i frequentItemSet
-  def createFreqItemSet(tree: Tree, validateSuffix: String => Boolean = _ => true): Iterator[(List[String], Int)] = {
-    tree.getHt.iterator.flatMap {
-      case (item, (freq, linkedList)) =>
+  def createFreqItemSet(headerTable: ListMap[String, List[Node[String]]],
+                        validateSuffix: String => Boolean = _ => true): Iterator[(List[String], Int)] = {
+    headerTable.iterator.flatMap {
+      case (item, linkedList) =>
         val itemNodeFreq = countItemNodeFreq(linkedList)
         /* Controlliamo che quel determinato item sia della partizione che stiamo considerando e quelli sotto il min supp
         * (Dopo il primo passaggio validateSuffix, sarà sempre true). */
@@ -171,13 +172,13 @@ object FPGrowthRDD extends App {
           //Prendiamo tutti i percorsi per quel determinato item senza quest'ultimo
           val lPerc = linkedList.map(x => (listaPercorsi(x, List[String]()), x.occurrence))
           //Continuiamo a calcolare i conditional trees 'interni'
-          val itemsInpaths = ListMap(totalItem(lPerc).map(x => x -> 0): _*)
-
-          val condTree = new Tree(itemsInpaths)
-          condTree.addPaths(lPerc)
-
+          val condTree = new Node[String](null, List())
+          //Creiamo la nuova headerTable
+          val headerTableItem = ListMap(totalItem(lPerc).map(x => x -> List[Node[String]]()): _*)
+          //Creiamo l'albero condizionale dell'item e riempiamo la sua HT
+          val HTItem = creazioneAlberoItem(condTree, lPerc, headerTableItem)
           //Creazione dei freqItemSet
-          Iterator.single((item :: Nil, itemNodeFreq)) ++ createFreqItemSet(condTree).map {
+          Iterator.single((item :: Nil, itemNodeFreq)) ++ createFreqItemSet(HTItem).map {
             case (t, c) => (item :: t, c)
           }
         } else {
@@ -204,15 +205,14 @@ object FPGrowthRDD extends App {
     val condTrans = dataset.flatMap(transaction => genCondTransactions(transaction, itemToRank, partitioner))
 
     //Raggruppiamo le transazioni per gruppo/partizione e per ognuno di essi creiamo gli alberi condizionali e mappiamo con l'HT
-    val condTrees = condTrans.groupByKey(partitioner.numPartitions).
+    val condTreesHT = condTrans.groupByKey(partitioner.numPartitions).
       map(x => x._1 -> {
-        val tree = new Tree(firstMapSorted)
-        tree.addTransactions(x._2.toList)
-        tree
+        val tree = new Node[String](null, List())
+        creazioneAlbero(tree, x._2.toList, firstMapSorted.map(x => x._1 -> List[Node[String]]()), itemToRank).filter(_._2.nonEmpty)
       })
 
     //Caloliamo i frequentItemSet
-    val freqItemSet = condTrees.flatMap(elem => createFreqItemSet(elem._2, x => partitioner.getPartition(x) == elem._1))
+    val freqItemSet = condTreesHT.flatMap(elem => createFreqItemSet(elem._2, x => partitioner.getPartition(x) == elem._1))
 
     freqItemSet.map(x => x._1.toSet -> x._2).collect().toMap
   }
@@ -220,6 +220,6 @@ object FPGrowthRDD extends App {
   val result = time(exec())
   val numTransazioni = dataset.count().toFloat
 
-  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthRDDNewResult.txt")
-  scriviSuFileSupporto(result, numTransazioni, "FPGrowthRDDNewResultSupport.txt")
+  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthRDDResult.txt")
+  scriviSuFileSupporto(result, numTransazioni, "FPGrowthRDDResultSupport.txt")
 }
