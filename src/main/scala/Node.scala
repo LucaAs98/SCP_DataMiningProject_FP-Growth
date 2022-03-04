@@ -1,5 +1,3 @@
-import scala.annotation.tailrec
-
 class Node[T](var value: T, var sons: List[Node[T]]) extends Serializable {
   var occurrence: Int = {
     if (value == null || value == -1) -1 else 1
@@ -59,37 +57,9 @@ class Node[T](var value: T, var sons: List[Node[T]]) extends Serializable {
     }
   }
 
-  def merge(other: Node[T]): Node[T] = {
-
-    def mergeVertical(toAdd: Node[T], last: Node[T]): Unit = {
-      val newLastNode = last.add(toAdd.value)
-      mergeHorizontal(toAdd.sons, newLastNode._1)
-    }
-
-    @tailrec
-    def mergeHorizontal(listSons: List[Node[T]], last: Node[T]): Node[T] = {
-      if (listSons.nonEmpty) {
-        val head = listSons.head
-        mergeVertical(head, last)
-        mergeHorizontal(listSons.tail, last)
-      }
-      else
-        last
-    }
-
-    mergeHorizontal(other.sons, this)
-  }
-
   override def toString: String = {
     "Value: " + this.value + " Occorrenze: " + this.occurrence
   }
 
-  /*def getAllValues(acc: List[T]): List[T] = {
-    if (!this.isEmpty) {
-      val newAcc = acc :+ this.sons.head.value
-      this.sons.head.getAllValues(newAcc)
-    } else
-      acc
-  }*/
 }
 

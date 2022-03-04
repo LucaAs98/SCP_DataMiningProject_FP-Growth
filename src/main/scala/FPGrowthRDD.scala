@@ -1,4 +1,5 @@
 import Utils._
+import org.apache.spark.rdd.RDD.rddToPairRDDFunctions
 import org.apache.spark.{HashPartitioner, Partitioner}
 
 import scala.annotation.tailrec
@@ -28,46 +29,6 @@ object FPGrowthRDD extends App {
       elem1._1 < elem2._1
     else
       elem1._2 > elem2._2
-  }
-
-  //Aggiungiamo un nodo di una transazione all'albero
-  @tailrec
-  def addNodeTransaction(lastNode: Node[String], transazione: Array[String], headerTable: ListMap[String, List[Node[String]]]): ListMap[String, List[Node[String]]] = {
-    //Passo base
-    if (transazione.nonEmpty) {
-      //Aggiungiamo all'ultimo nodo creato il nuovo
-      val (node, flagNewNode) = lastNode.add(transazione.head)
-
-      //Se è stato creato lo aggiungiamo all'headerTable
-      if (flagNewNode) {
-        val old = (headerTable.get(transazione.head) match {
-          case Some(value) => value
-          case None => List[Node[String]]() //Non entra mai, già inizializzata dall'exec
-        })
-
-        //Aggiornamento dell'ht, si aggiorna solo la linked list dei nodi
-        val newTable = headerTable + (transazione.head -> (old :+ node))
-
-        //Richiamiamo questa funzione su tutti gli elementi della transazione
-        addNodeTransaction(node, transazione.tail, newTable)
-      } else {
-        //Se il nodo era già presente continuiamo l'aggiunta degli elementi senza aggiornare l'ht
-        addNodeTransaction(node, transazione.tail, headerTable)
-      }
-    } else {
-      //Quando finisce una singola transazione
-      headerTable
-    }
-  }
-
-  //Creazione dell'albero
-  @tailrec
-  def creazioneAlbero(tree: Node[String], transactions: List[Array[String]], headerTable: ListMap[String, List[Node[String]]], itemToRank: Map[String, Int]): ListMap[String, List[Node[String]]] = {
-    if (transactions.nonEmpty) {
-      val head = transactions.head //Singola transazione
-      val newHeaderTable = addNodeTransaction(tree, head, headerTable) //Ricorsivo su tutta la transazione
-      creazioneAlbero(tree, transactions.tail, newHeaderTable, itemToRank) //Una volta aggiunta una transazione continuiamo con le successive
-    } else headerTable //Finite tutte le transazioni del dataset restituiamo l'ht
   }
 
   //Risaliamo l'albero per restituire il percorso inerente ad un nodo specifico
@@ -109,52 +70,6 @@ object FPGrowthRDD extends App {
     list.foldLeft(0)((x, y) => x + y.occurrence)
   }
 
-  //Creazione Conditional FPTree per un singolo item
-  @tailrec
-  def creazioneAlberoItem(tree: Node[String], sortedPaths: List[(List[String], Int)],
-                          headerTable: ListMap[String, List[Node[String]]]):
-  ListMap[String, List[Node[String]]] = {
-    if (sortedPaths.nonEmpty) {
-      //Viene preso il primo path
-      val head = sortedPaths.head
-      //Viene inserito il path nel Conditional FPTree
-      val newHeaderTable = addNodePath(tree, head._1, head._2, headerTable)
-      //Una volta aggiunto un nuovo path continuiamo con i successivi
-      creazioneAlberoItem(tree, sortedPaths.tail, newHeaderTable)
-    } else headerTable //Esaminati tutti i path restituiamo ht e il flag dei branch
-  }
-
-  //Aggiungiamo i nodo di un path all'albero
-  @tailrec
-  def addNodePath(lastNode: Node[String], path: List[String], countPath: Int,
-                  headerTable: ListMap[String, List[Node[String]]]):
-  ListMap[String, List[Node[String]]] = {
-
-    if (path.nonEmpty) {
-      //Aggiungiamo all'ultimo nodo creato il nuovo, passando il suo numero di occorrenze
-      val (node, flagNewNode) = lastNode.add(path.head, countPath)
-
-      //Se è stato creato lo aggiungiamo all'headerTable
-      if (flagNewNode) {
-        val old = (headerTable.get(path.head) match {
-          case Some(value) => value
-          case None => (List[Node[String]]()) //Non entra mai, già inizializzata dall'exec
-        })
-
-        //Aggiornamento dell'ht, si aggiorna solo la linked list dei nodi
-        val newTable = headerTable + (path.head -> (old :+ node))
-
-        //Richiamiamo questa funzione su tutti gli elementi della transazione
-        addNodePath(node, path.tail, countPath, newTable)
-      } else {
-        //Se il nodo era già presente continuiamo l'aggiunta degli elementi senza aggiornare l'ht
-        addNodePath(node, path.tail, countPath, headerTable)
-      }
-    } else {
-      //Quando abbiamo finito di scorrere tutto il path viene restituita l' ht e il flag relativo alla formazione di nuovi branch
-      headerTable
-    }
-  }
 
   //Restituisce tutti gli item singoli all'interno delle liste di path
   def totalItem(listPaths: List[(List[String], Int)]): List[String] =
@@ -201,7 +116,17 @@ object FPGrowthRDD extends App {
     val itemToRank = firstMapSorted.keys.zipWithIndex.toMap
 
     //Creiamo le transazioni condizionali in base al gruppo/partizione in cui si trova ogni item
-    val condTrans = dataset.flatMap(transaction => genCondTransactions(transaction, itemToRank, partitioner))
+    //(Verificare su cloud se il partition by può darci vantaggi o meno)
+    val condTrans = dataset.flatMap(transaction => genCondTransactions(transaction, itemToRank, partitioner))//.partitionBy(partitioner)
+
+      /*val condTrees = condTrans.aggregateByKey(new Tree(firstMapSorted), partitioner)(
+      (tree, transaction) => {
+        tree.addTransactions(List(transaction))
+        tree
+      },
+      (tree1, tree2) => tree1.merge(tree2)
+    )*/
+
 
     //Raggruppiamo le transazioni per gruppo/partizione e per ognuno di essi creiamo gli alberi condizionali e mappiamo con l'HT
     val condTrees = condTrans.groupByKey(partitioner.numPartitions).
@@ -220,6 +145,6 @@ object FPGrowthRDD extends App {
   val result = time(exec())
   val numTransazioni = dataset.count().toFloat
 
-  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthRDDNewResult.txt")
-  scriviSuFileSupporto(result, numTransazioni, "FPGrowthRDDNewResultSupport.txt")
+  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthRDDResult.txt")
+  scriviSuFileSupporto(result, numTransazioni, "FPGrowthRDDResultSupport.txt")
 }

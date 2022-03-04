@@ -92,7 +92,7 @@ object FPGrowthRDDOld extends App {
     var i = n - 1
     while (i >= 0) {
       val item = transFiltered(i)
-      //Prendiamo la partizione alla quale fa parte l'item 
+      //Prendiamo la partizione alla quale fa parte l'item
       val part = partitioner.getPartition(item)
       /* Se la mappa non contiene già un elemento con l'indice della partizione come chiave, andiamo a mettere quella parte
       * di transazione nella mappa. */
