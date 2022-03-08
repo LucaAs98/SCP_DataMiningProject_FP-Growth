@@ -1,6 +1,8 @@
 import org.apache.spark.mllib.fpm.FPGrowth
-import Utils._
+
 import java.io.{BufferedWriter, File, FileWriter}
+import utils.Utils._
+
 
 //Versione FPGrowth spark già implementata
 object FPGrowthSpark extends App {
