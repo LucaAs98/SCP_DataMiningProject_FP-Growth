@@ -81,6 +81,7 @@ object FPGrowthRDD extends App {
   def createFreqItemSet(tree: Tree, validateSuffix: String => Boolean = _ => true): Iterator[(List[String], Int)] = {
     tree.getHt.iterator.flatMap {
       case (item, (freq, linkedList)) =>
+        //Calcoliamo la frequenza di un item in base ai nodi nel ht (diversa dalla frequenza presente nel ht)
         val itemNodeFreq = countItemNodeFreq(linkedList)
         /* Controlliamo che quel determinato item sia della partizione che stiamo considerando e quelli sotto il min supp
         * (Dopo il primo passaggio validateSuffix, sarà sempre true). */
@@ -88,9 +89,9 @@ object FPGrowthRDD extends App {
           //Prendiamo tutti i percorsi per quel determinato item senza quest'ultimo
           val lPerc = linkedList.map(x => (listaPercorsi(x, List[String]()), x.occurrence))
           //Continuiamo a calcolare i conditional trees 'interni'
-          val itemsInpaths = ListMap(totalItem(lPerc).map(x => x -> 0): _*)
-
-          val condTree = new Tree(itemsInpaths)
+          val itemsInPaths = ListMap(totalItem(lPerc).map(x => x -> 0): _*)
+          //Creazione albero condizionali e inserimento dei path in esso
+          val condTree = new Tree(itemsInPaths)
           condTree.addPaths(lPerc)
 
           //Creazione dei freqItemSet
@@ -121,7 +122,7 @@ object FPGrowthRDD extends App {
     //(Verificare su cloud se il partition by può darci vantaggi o meno)
     val condTrans = dataset.flatMap(transaction => genCondTransactions(transaction, itemToRank, partitioner)) //.partitionBy(partitioner)
 
-    /*val condTrees = condTrans.aggregateByKey(new classes.Tree(firstMapSorted), partitioner)(
+    /*val condTrees = condTrans.aggregateByKey(new Tree(firstMapSorted), partitioner)(
       (tree, transaction) => {
         tree.addTransactions(List(transaction))
         tree
@@ -133,6 +134,7 @@ object FPGrowthRDD extends App {
     //Raggruppiamo le transazioni per gruppo/partizione e per ognuno di essi creiamo gli alberi condizionali e mappiamo con l'HT
     val condTrees = condTrans.groupByKey(partitioner.numPartitions).
       map(x => x._1 -> {
+        //Creazione albero e inserimento transazioni del gruppo
         val tree = new Tree(firstMapSorted)
         tree.addTransactions(x._2.toList)
         tree

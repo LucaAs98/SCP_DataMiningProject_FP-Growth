@@ -77,7 +77,9 @@ object FPGrowthPar extends App {
     //Otteniamo i path ordinati per le occorrenze
     val orderedPath = condPBSingSort(headList, itemMapSorted.keys.toList)
 
+    //Creazione  Conditional FPTree
     val condTreeItem = new Tree(itemMapSorted)
+    //Inserimento path nell'albero
     condTreeItem.addPaths(orderedPath)
 
     //Se l'albero creato ha un signolo branch
@@ -105,10 +107,11 @@ object FPGrowthPar extends App {
     }
   }
 
-
+  //Creazione alberi condizionali e vengono restituiti gli Itemset frequenti
   def condFPTree(conditionalPatternBase: ParMap[String, List[(List[String], Int)]],
                  firstMapSorted: ListMap[String, Int]): List[(List[String], Int)] = {
 
+    //Calcolo degli itemset frequenti per ogni item
     val freqItemsets = conditionalPatternBase.map(elem => freqItemsetCondPB(elem._1, elem._2, firstMapSorted))
     freqItemsets.flatten.toList
   }
@@ -125,8 +128,10 @@ object FPGrowthPar extends App {
     //Ordiniamo le transazioni del dataset in modo decrescente
     val orderDataset = datasetFilter(firstMapSorted.keys.toList).seq.toList
 
+    //Creazione albero
     val newTree = new Tree(firstMapSorted)
 
+    //Le transazioni del dataset ordinato vengono riposte in newTree
     newTree.addTransactions(orderDataset)
 
     //Ordiniamo i singoli item in modo crescente per occorrenze e modo non alfabetico

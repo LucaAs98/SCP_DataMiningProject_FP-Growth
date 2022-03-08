@@ -6,10 +6,13 @@ import scala.collection.immutable.ListMap
 
 class Tree(firstMapSorted: ListMap[String, Int]) extends Serializable{
 
+  //Inizializzazione radice
   val root = new Node[String](null, List())
+  //Inizializzazione ht
   var headerTable: ListMap[String, (Int, List[Node[String]])] = firstMapSorted.map(x => x._1 -> (x._2, List[Node[String]]()))
   var moreBranch: Boolean = false
 
+  //Aggiunta transazioni all'albero
   @tailrec
   final def addTransactions(transactions: List[List[String]]): Unit = {
     if (transactions.nonEmpty) {
@@ -28,16 +31,19 @@ class Tree(firstMapSorted: ListMap[String, Int]) extends Serializable{
     //Passo base
     if (transazione.nonEmpty) {
 
+      //Viene preso il primo item della transazione
       val item = transazione.head
 
       //Aggiungiamo all'ultimo nodo creato il nuovo
       val (node, flagNewNode) = lastNode.add(item)
 
+      //Se viene creato un nuovo nodo aggiorniamo l'ht
       if (flagNewNode) {
         val valueItem = headerTable(item)
         headerTable = headerTable + (item -> (valueItem._1, valueItem._2 :+ node))
       }
 
+      //Si passa al nodo successivo
       addNodeTransaction(node, transazione.tail)
     }
   }
@@ -54,25 +60,28 @@ class Tree(firstMapSorted: ListMap[String, Int]) extends Serializable{
     }
   }
 
-  //Aggiungiamo i nodo di un path all'albero
+  //Aggiungiamo il nodo di un path all'albero
   @tailrec
   private def addNodePath(lastNode: Node[String], path: List[String], countPath: Int): Unit = {
 
     if (path.nonEmpty) {
 
+      //Viene preso il primo item della transazione
       val item = path.head
 
       //Aggiungiamo all'ultimo nodo creato il nuovo, passando il suo numero di occorrenze
       val (node, flagNewNode) = lastNode.add(item, countPath)
-      //Viene controllato se sono presenti altri branch
 
+      //Viene controllato se sono presenti altri branch
       if (!moreBranch && lastNode.sons.size > 1) moreBranch = true
 
+      //Se viene creato un nuovo nodo aggiorniamo l'ht
       if (flagNewNode) {
         val valueItem = headerTable(item)
         headerTable = headerTable + (item -> (valueItem._1, valueItem._2 :+ node))
       }
 
+      //Si passa al nodo successivo
       addNodePath(node, path.tail, countPath)
     }
   }
@@ -86,6 +95,7 @@ class Tree(firstMapSorted: ListMap[String, Int]) extends Serializable{
       listaPercorsoAcc //Restituiamo tutto il percorso trovato
   }
 
+  //Dato un item restituisce tutti i path relativi a esso
   def getAllPathsFromItem(item: String): List[(List[String], Int)] = {
     headerTable(item)._2.map(node => (getPathNode(node, List[String]()), node.occurrence))
   }
