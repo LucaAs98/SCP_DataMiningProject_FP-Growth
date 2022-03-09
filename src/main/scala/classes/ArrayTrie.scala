@@ -5,11 +5,12 @@ import scala.collection.parallel.ParMap
 
 class ArrayTrie(trie: Trie) extends Serializable {
 
-
-
   val itemMap: Map[String, (Int, Int)] = trie.getItemMap
+  /* Inizializzazione dell'array in cui sono contenuti gli indici, che indicano da dove iniziano le celle contigue
+    * per ogni item nell'arrayTrie. */
   val startIndex: Array[Int] = calcStartIndex()
-  val arrayTrie: Array[(String, Int, Int)] = createTrie()
+  //Array ce rappresenta il trie
+  val arrayTrie: Array[(String, Int, Int)] = createArrayTrie()
 
   def getArrayTrie: Array[(String, Int, Int)] = {
     arrayTrie
@@ -29,29 +30,31 @@ class ArrayTrie(trie: Trie) extends Serializable {
 
   //Creazione di un percorso dato un elemento, simile a listaPercorsi, ma per l'arrayTrie
   @tailrec
-  final def getPercorso(parent: Int, acc: List[String]): List[String] = {
+  final def getPercorso(parent: Int, accPath: List[String]): List[String] = {
+    //Se il nodo non è figlio diretto della radice
     if (parent != -1) {
-      val last = arrayTrie(parent)
-      getPercorso(last._3, (last._1) :: acc)
+      val last = arrayTrie(parent) //Prendiamo la cella contenente il padre
+      getPercorso(last._3, last._1 :: accPath) //Aggiungiamo il padre all'accumulatore del path
     } else {
-      List.empty[String] ::: acc
+      List.empty[String] ::: accPath
     }
   }
 
   //Calcoliamo startIndex partendo dal conto dei nodi di un certo item
   def calcStartIndex(): Array[Int] = {
-    val app = new Array[Int](itemMap.size)
+    val startIndexApp = new Array[Int](itemMap.size)
     //Riempiamo le celle dello startIndex partendo da quella in posizione 1
-    for (i <- 1 until app.length) {
+    for (i <- 1 until startIndexApp.length) {
       //Prendiamo quanti nodi esistono dell'item precedente e li sommiamo all'indice di partenza di esso
-      app(i) = trie.counterDifferentNode(i - 1) + app(i - 1)
+      startIndexApp(i) = trie.counterDifferentNode(i - 1) + startIndexApp(i - 1)
     }
-    app
+    startIndexApp
   }
 
-  def createTrie(): Array[(String, Int, Int)] = {
+  //Creazione del trie 
+  def createArrayTrie(): Array[(String, Int, Int)] = {
     val aTrie = new Array[(String, Int, Int)](trie.nodeCounter)
-    createTrieRec(aTrie, trie.root, -1)
+    createArrayTrieRec(aTrie, trie.root, -1)
     aTrie
   }
 
@@ -77,14 +80,14 @@ class ArrayTrie(trie: Trie) extends Serializable {
     if (sons.nonEmpty) {
       val firstSon = sons.head //Prendiamo il primo figlio
       //Aggiorniamo l'array anche per ogni figlio dei figli
-      createTrieRec(aTrie, firstSon, parentIndex)
+      createArrayTrieRec(aTrie, firstSon, parentIndex)
       //Aggiorniamo l'array per ogni figlio
       createTrieSons(aTrie, sons.tail, parentIndex)
     }
   }
 
   //Riempiamo l'arrayTrie
-  def createTrieRec(aTrie: Array[(String, Int, Int)], lastNode: NodeTrie, parentIndex: Int): Unit = {
+  def createArrayTrieRec(aTrie: Array[(String, Int, Int)], lastNode: NodeTrie, parentIndex: Int): Unit = {
     //Se non è la radice dell'albero
     if (!lastNode.isHead) {
       //Prendiamo l'indice "di ordinamento" dell'item
@@ -101,31 +104,32 @@ class ArrayTrie(trie: Trie) extends Serializable {
     }
   }
 
-  //Creazione di un percorso dato un elemento, simile a listaPercorsi, ma per l'arrayTrie
+  //Creazione di un percorso dato un nodo
   @tailrec
-  private def itCreateConditionalPatternBase(parent: Int, acc: List[String]): List[String] = {
+  private def itCreateCondPB(parent: Int, accPath: List[String]): List[String] = {
     if (parent != -1) {
       val last = arrayTrie(parent)
-      itCreateConditionalPatternBase(last._3, (last._1) :: acc)
+      itCreateCondPB(last._3, last._1 :: accPath)
     } else {
-      List.empty[String] ::: acc
+      List.empty[String] ::: accPath
     }
   }
 
-  //Creiamo il conditionalPB
+  //Creiamo il conditionalPB per tutti i nodi, scorriamo l'arrayTrie
   def createCondPB(): Map[String, List[(List[String], Int)]] = {
     val mapItemPath = arrayTrie.map(elem => elem._1 ->
-      (itCreateConditionalPatternBase(elem._3, List.empty[String]), elem._2)).groupBy(_._1)
+      (itCreateCondPB(elem._3, List.empty[String]), elem._2)).groupBy(_._1)
+
+    //Formattiamolo a nostro piacimento
     mapItemPath.map(elem => elem._1 -> elem._2.map(_._2).toList)
   }
 
-  //Creiamo il conditionalPB
+  //Creiamo il conditionalPB in parallelo
   def createCondPBPar(): ParMap[String, List[(List[String], Int)]] = {
     val mapItemPath = arrayTrie.par.map(elem => elem._1 ->
-      (itCreateConditionalPatternBase(elem._3, List.empty[String]), elem._2)).groupBy(_._1)
-    val mapItemPathMapped = mapItemPath.map(elem => elem._1 -> elem._2.map(_._2).toList)
-    mapItemPathMapped
+      (itCreateCondPB(elem._3, List.empty[String]), elem._2)).groupBy(_._1)
+
+    //Formattiamolo a nostro piacimento
+    mapItemPath.map(elem => elem._1 -> elem._2.map(_._2).toList)
   }
-
-
 }

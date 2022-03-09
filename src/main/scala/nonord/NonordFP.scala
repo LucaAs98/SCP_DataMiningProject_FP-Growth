@@ -11,11 +11,11 @@ object NonordFP extends App {
   val dataset = prendiDataset()
 
   //Elementi singoli presenti nel dataset
-  val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList
+  val totalItem = dataset.reduce((xs, x) => xs ++ x).toList
 
   //Passando la lista dei set degli item creati, conta quante volte c'è l'insieme nelle transazioni
   def countItemSet(item: List[String]): Map[String, Int] = {
-    (item map (x => x -> (dataset count (y => y.contains(x))))).toMap
+    item.map(x => x -> dataset.count(y => y.contains(x))).toMap
   }
 
   //Ordina gli elementi prima per numero di occorrenze, poi alfabeticamente
@@ -133,21 +133,23 @@ object NonordFP extends App {
     //Ordiniamo le transazioni del dataset in modo decrescente
     val orderDataset = datasetFilter(firstMapWithIndex)
 
+    //Creiamo il trie
     val trie = new Trie(firstMapWithIndex)
+
+    //Aggiungo le transazioni al trie
     trie.addTransactions(orderDataset)
 
-    /* Inizializzazione dell'array in cui sono contenuti gli indici, che indicano da dove iniziano le celle contigue
-    * per ogni item nell'arrayTrie. */
+    //Creazione dell'array che rappresenta il trie
     val arrayTrie = new ArrayTrie(trie)
 
+    //Creazione dei conditionalPatternBase
     val conditionalPatternBase = arrayTrie.createCondPB()
 
+    //Calcoliamo i frequent itemset
     val frequentItemSet = createFreqItemSet(conditionalPatternBase, firstMapWithIndex, List[(List[String], Int)]())
+    //Risultato finale
     frequentItemSet.map(x => x._1.toSet -> x._2).toMap
-
   }
-
-  exec()
 
   val result = time(exec())
   val numTransazioni = dataset.size.toFloat

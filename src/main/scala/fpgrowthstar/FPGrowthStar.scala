@@ -3,24 +3,23 @@ package fpgrowthstar
 import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 import utils.Utils._
-import classes.{TreeStar,Node}
+import classes.{TreeStar, Node}
 
 object FPGrowthStar extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)
   val dataset = prendiDataset()
 
   //Elementi singoli presenti nel dataset
-  val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList
+  val totalItem = dataset.reduce((xs, x) => xs ++ x).toList
 
   //Passando la lista dei set degli item creati, conta quante volte c'è l'insieme nelle transazioni
   def countItemSet(item: List[String]): Map[String, Int] = {
-    (item map (x => x -> (dataset count (y => y.contains(x))))).toMap
+    item.map(x => x -> dataset.count(y => y.contains(x))).toMap
   }
 
   //Ordiniamo le transazioni in modo decrescente
   def datasetFilter(firstStep: List[String]) = {
-    dataset.map(x => x.toList.filter(elemento => firstStep.contains(elemento)).
-      sortBy(firstStep.indexOf(_)))
+    dataset.map(x => x.toList.filter(elemento => firstStep.contains(elemento)).sortBy(firstStep.indexOf(_)))
   }
 
   //Ordina gli elementi prima per numero di occorrenze, poi alfabeticamente
@@ -62,7 +61,7 @@ object FPGrowthStar extends App {
       getListOfPaths(linkedList.tail, itemsStringFreqSorted, accPaths :+ pathOrdered)
     }
     else {
-      //restituzione della lista dei path
+      //Restituzione della lista dei path
       accPaths
     }
   }
@@ -91,6 +90,7 @@ object FPGrowthStar extends App {
   }
 
 
+  //Calcoliamo gli itemset frequenti per un singolo item
   def fpGrowthStarCore(item: String, freq: Int, itemFreqItem: List[Int], indexToItemMap: ListMap[Int, String], linkedList: List[Node[String]]) = {
 
     if (itemFreqItem.nonEmpty) {
@@ -98,8 +98,8 @@ object FPGrowthStar extends App {
       val itemsStringFreq = itemFreqItem.zipWithIndex.map(x => indexToItemMap(x._2) -> x._1)
       val itemsStringFreqSorted = ListMap(itemsStringFreq.filter(_._2 >= minSupport).sortWith((elem1, elem2) => functionOrder(elem1, elem2)).zipWithIndex
         .map(x => x._1._1 -> (x._1._2, x._2)): _*)
-      //Creazione della matrice, ht e dell'albero
 
+      //Creazione della matrice, ht e dell'albero
       val treeItem = new TreeStar(itemsStringFreqSorted)
 
       //Viene restituita la lista dei path relativa all'item
@@ -132,12 +132,9 @@ object FPGrowthStar extends App {
       // Se la matrice è vuota la lista degli itemSet frequenti è composta solo dal itemSet con la sua frequenza
       List(List(item) -> freq)
     }
-
-
   }
 
   def exec() = {
-
     //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
     val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport)
 
@@ -151,15 +148,17 @@ object FPGrowthStar extends App {
     //Item -> (Frequenza, Indice)
     val firstMapSortedWithIndex = firstMapSorted.zipWithIndex.map(x => x._1._1 -> (x._1._2, x._2))
 
+    //Creazione dell'albero
     val newTree = new TreeStar(firstMapSortedWithIndex)
 
+    //Aggiungiamo le transazioni all'albero
     newTree.addTransactions(orderDataset)
 
     //Vengono calcolati gli itemSet frequenti
     val allFreqitemset = calcFreqItemset(newTree.getHt.keys.toList, newTree, List[(List[String], Int)]())
+
     //Viene restituito il frequentItemSet come una mappa
     allFreqitemset.map(x => x._1.toSet -> x._2).toMap
-
   }
 
   val result = time(exec())

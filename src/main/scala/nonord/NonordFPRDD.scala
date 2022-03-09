@@ -118,9 +118,12 @@ object NonordFPRDD extends App {
           //Aggiungiamo l'indice ad itemMapSorted per facilitarci riordinamenti successivi
           val firstMapWithIndexItem = itemCount.zipWithIndex.map(x => x._1._1 -> (x._2, x._1._2))
 
+          //Creiamo i conditional trie
           val condTrie = new Trie(firstMapWithIndexItem)
+          //Aggiungiamo i path ai condTrie
           condTrie.addPaths(lPerc.toList)
 
+          //Creazione arrayTrie condizionali
           val arrayTrieCond = new ArrayTrie(condTrie)
 
           //Creazione dei freqItemSet
@@ -154,14 +157,19 @@ object NonordFPRDD extends App {
     //Transazioni condizionali raggruppate per partizione
     val condTransGrouped = condTrans.groupByKey(partitioner.numPartitions)
 
+    //Creazione arrayTrie per ogni gruppo
     val condArrayStartTrie = condTransGrouped.map(group =>
       group._1 -> {
+        //Per ogni gruppo creiamo il trie
         val trieGroup = new Trie(itemToRank)
+        //Gli aggiungiamo le transazioni
         trieGroup.addTransactions(group._2.toList)
+        //Ripuliamo item map e riordiniamo gli indici degli item riordinati
         trieGroup.clearitToMapAndCDifNod()
-
+        //Creiamo l'arrayTrie per ogni gruppo
         val arrayTrieGroup = new ArrayTrie(trieGroup)
 
+        //Restituiamo l'arrayTrie ed il numero di nodi del trie del gruppo
         (arrayTrieGroup, trieGroup.counterDifferentNode)
       })
 

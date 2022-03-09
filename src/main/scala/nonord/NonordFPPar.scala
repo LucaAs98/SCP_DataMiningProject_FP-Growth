@@ -118,8 +118,6 @@ object NonordFPPar extends App {
     }
   }
 
-
-
   def exec() = {
     //Calcolo della frequenza dei singoli items
     val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport)
@@ -134,11 +132,13 @@ object NonordFPPar extends App {
     //Ordiniamo le transazioni del dataset in modo decrescente
     val orderDataset = datasetFilter(firstMapSorted.keys.toList).seq.toList
 
+    //Creiamo il trie
     val trie = new Trie(firstMapWithIndex)
+
+    //Aggiungo le transazioni al trie
     trie.addTransactions(orderDataset)
 
-    /* Inizializzazione dell'array in cui sono contenuti gli indici, che indicano da dove iniziano le celle contigue
-    * per ogni item nell'arrayTrie. */
+    //Creazione dell'array che rappresenta il trie
     val arrayTrie = new ArrayTrie(trie)
 
     //Creiamo il conditionalPB dall'arrayTrie

@@ -88,7 +88,7 @@ object FPGrowthStarRDD extends App {
       getListOfPaths(linkedList.tail, itemsStringFreqSorted, accPaths :+ pathOrdered)
     }
     else {
-      //restituzione della lista dei path
+      //Restituzione della lista dei path
       accPaths
     }
   }
@@ -97,7 +97,6 @@ object FPGrowthStarRDD extends App {
   def createFreqItemSet(tree: TreeStar,
                         validateSuffix: String => Boolean = _ => true): Iterator[(List[String], Int)] = {
     //Creazione mappa da indice -> item
-
     val headerTable = tree.getHt
     val indexToItemMap = headerTable.map(x => x._2._2 -> x._1)
     headerTable.iterator.flatMap {

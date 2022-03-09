@@ -141,9 +141,9 @@ object FPGrowthPar extends App {
     val conditionalPatternBase = singleElementsCrescentOrder.map(x => x._1 -> newTree.getAllPathsFromItem(x._1)).par
 
     //Vengono calcolati gli itemSet frequenti
-    val allFreqitemset = condFPTree(conditionalPatternBase, firstMapSorted)
+    val allFreqItemset = condFPTree(conditionalPatternBase, firstMapSorted)
     //Viene restituito il frequentItemSet come una mappa
-    allFreqitemset.map(x => x._1.toSet -> x._2).toMap
+    allFreqItemset.map(x => x._1.toSet -> x._2).toMap
   }
 
   val result = time(exec())

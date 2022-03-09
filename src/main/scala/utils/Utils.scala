@@ -17,11 +17,11 @@ object Utils {
     5 -> "datasetLettere2.txt",
     6 -> "T40I10D100K.txt")
 
-  val numFileDataset = 4
+  val numFileDataset = 0
   val spazioVirgola = ","
 
   //Parametro di basket mining
-  val minSupport = 2
+  val minSupport = 30
 
   //Funzione per prendere il dataset dal file
   def prendiDataset(): List[Set[String]] = {
@@ -133,16 +133,5 @@ object Utils {
   def getRDD(nomeFile: String, sc: SparkContext): RDD[String] = {
     val file = "src/main/resources/dataset/" + nomeFile
     sc.textFile(file)
-  }
-
-  //Metodo per la stampa dell'albero
-  def printTree(tree: Node[String], str: String): Unit = {
-    if (tree.occurrence != -1) {
-      println(str + tree.value + " " + tree.occurrence)
-      tree.sons.foreach(printTree(_, str + "\t"))
-    }
-    else {
-      tree.sons.foreach(printTree(_, str))
-    }
   }
 }

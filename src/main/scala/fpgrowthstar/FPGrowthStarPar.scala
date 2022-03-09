@@ -76,22 +76,22 @@ object FPGrowthStarPar extends App {
     }
   }
 
+  //Calcolo dei ItemSet frequenti per ogni item
   def fpGrowthStarCore(item: String, freq: Int, itemFreqItem: List[Int], indexToItemMap: ListMap[Int, String], linkedList: List[Node[String]]) = {
-
     if (itemFreqItem.nonEmpty) {
       //Ricaviamo l'item sottoforma di stringa dagli indici degli array, ordinati per occorrenze
       val itemsStringFreq = itemFreqItem.zipWithIndex.map(x => indexToItemMap(x._2) -> x._1)
-      val itemsStringFreqSorted = ListMap(itemsStringFreq.filter(_._2 >= minSupport).sortWith((elem1, elem2) => functionOrder(elem1, elem2)).zipWithIndex
-        .map(x => x._1._1 -> (x._1._2, x._2)): _*)
-      //Creazione della matrice, ht e dell'albero
+      val itemsStringFreqSorted = ListMap(itemsStringFreq.filter(_._2 >= minSupport).sortWith((elem1, elem2) => functionOrder(elem1, elem2))
+        .zipWithIndex.map(x => x._1._1 -> (x._1._2, x._2)): _*)
 
+      //Creazione della matrice, ht e dell'albero
       val treeItem = new TreeStar(itemsStringFreqSorted)
 
       //Viene restituita la lista dei path relativa all'item
       val listOfPaths = getListOfPaths(linkedList, itemsStringFreqSorted, List[(List[String], Int)]())
+
       //Inserimento dei path nell'albero
       treeItem.addPaths(listOfPaths)
-
 
       //Se l'albero ha solo un branch
       if (!treeItem.moreBranch) {
@@ -132,7 +132,7 @@ object FPGrowthStarPar extends App {
       getListOfPaths(linkedList.tail, itemsStringFreqSorted, accPaths :+ pathOrdered)
     }
     else {
-      //restituzione della lista dei path
+      //Restituzione della lista dei path
       accPaths
     }
   }
@@ -144,23 +144,25 @@ object FPGrowthStarPar extends App {
 
     //Ordina gli item dal più frequente al meno
     val firstMapSorted = ListMap(firstStep.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2)): _*)
+
     // Vengono restituiti gli elementi con la loro frequenza e l'indice relativo ad essi
     //Item -> (Frequenza, Indice)
     val firstMapSortedWithIndex = firstMapSorted.zipWithIndex.map(x => x._1._1 -> (x._1._2, x._2))
 
-
     //Ordiniamo le transazioni del dataset in modo decrescente
     val orderDataset = datasetFilter(firstMapSorted.keys.toList).seq.toList
 
+    //Creazione albero
     val newTree = new TreeStar(firstMapSortedWithIndex)
 
+    //Aggiunta transazioni all'albero
     newTree.addTransactions(orderDataset)
 
     //Vengono calcolati gli itemSet frequenti
     val allFreqitemset = calcFreqItemset(newTree.getHt.keys.toList, newTree, List[(List[String], Int)]())
+
     //Viene restituito il frequentItemSet come una mappa
     allFreqitemset.map(x => x._1.toSet -> x._2).toMap
-
   }
 
 

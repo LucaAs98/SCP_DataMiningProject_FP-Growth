@@ -4,21 +4,24 @@ import scala.annotation.tailrec
 import scala.collection.mutable
 
 class Trie(var itemMap: Map[String, (Int, Int)]) extends Serializable {
-
+  //Inizializziamo il Trie partendo dal solito firstMapWithIndex
   val root = new NodeTrie(null, List())
   var moreBranch: Boolean = false
+  //Numero nodi diversi per ciascun item
   var counterDifferentNode: mutable.Map[Int, Int] = mutable.Map(itemMap.map(_._2._1 -> 0).toSeq: _*)
+  //Numero nodi dell'intero trie
   var nodeCounter = 0
 
 
-  def getItemMap: Map[String, (Int, Int)] ={
+  def getItemMap: Map[String, (Int, Int)] = {
     itemMap
   }
 
-  def nonEmptyTrie: Boolean ={
+  def nonEmptyTrie: Boolean = {
     root.sons.nonEmpty
   }
 
+  //Aggiungiamo le transazioni al trie
   @tailrec
   final def addTransactions(transactions: List[List[String]]): Unit = {
     if (transactions.nonEmpty) {
@@ -31,26 +34,28 @@ class Trie(var itemMap: Map[String, (Int, Int)]) extends Serializable {
     }
   }
 
-  //Aggiungiamo i nodo di una transazione all'albero
+  //Aggiungiamo i nodo di una transazione al trie
   @tailrec
   private def addNodeTransaction(lastNode: NodeTrie, transazione: List[String]): Unit = {
     //Passo base
     if (transazione.nonEmpty) {
-
+      //Prendiamo un singolo elemento della transazione
       val item = transazione.head
 
       //Aggiungiamo all'ultimo nodo creato il nuovo
       val (node, flagNewNode) = lastNode.add(item)
 
+      //Se abbiamo aggiunto un nuovo nodo aggiorniamo il counter totale dei nodi del trie e quello del singolo item
       if (flagNewNode) {
         nodeCounter = nodeCounter + 1
         counterDifferentNode(itemMap(node.value)._1) += 1
       }
-
+      //Iteriamo sul resto della transazione
       addNodeTransaction(node, transazione.tail)
     }
   }
 
+  //Aggiungiamo i path al nostro trie condizionale
   @tailrec
   final def addPaths(sortedPaths: List[(List[String], Int)]): Unit = {
     if (sortedPaths.nonEmpty) {
@@ -63,7 +68,7 @@ class Trie(var itemMap: Map[String, (Int, Int)]) extends Serializable {
     }
   }
 
-  //Aggiungiamo i nodo di un path all'albero
+  //Aggiungiamo i nodo di un path al trie
   @tailrec
   private def addNodePath(lastNode: NodeTrie, path: List[String], countPath: Int): Unit = {
 
@@ -73,14 +78,15 @@ class Trie(var itemMap: Map[String, (Int, Int)]) extends Serializable {
       val (node, flagNewNode) = lastNode.add(item, countPath)
 
       //Viene controllato se sono presenti altri branch
-
       if (!moreBranch && lastNode.sons.size > 1) moreBranch = true
 
-      if(flagNewNode){
+      //Se abbiamo aggiunto un nuovo nodo aggiorniamo il counter totale dei nodi del trie e quello del singolo item
+      if (flagNewNode) {
         counterDifferentNode(itemMap(node.value)._1) += 1
         nodeCounter += 1
       }
 
+      //Iteriamo sul resto del path
       addNodePath(node, path.tail, countPath)
     }
   }
@@ -125,13 +131,12 @@ class Trie(var itemMap: Map[String, (Int, Int)]) extends Serializable {
     this
   }
 
-  def clearitToMapAndCDifNod(): Unit ={
-    itemMap = itemMap.filter(x => counterDifferentNode(x._2._1) > 0).toList.sortBy(_._2._1).zipWithIndex.map(elem => elem._1._1 -> (elem._2, elem._1._2._2)).toMap
-    counterDifferentNode = mutable.Map(counterDifferentNode.filter(_._2 > 0).toList.sortBy(_._1).zipWithIndex.map(elem => elem._2 -> elem._1._2): _*)
+  //RDD: Dobbiamo pulire l'item map togliendo gli item non presenti e riassegnando gli indici agli item in base alla frequenza
+  def clearitToMapAndCDifNod(): Unit = {
+    itemMap = itemMap.filter(x => counterDifferentNode(x._2._1) > 0).toList
+      .sortBy(_._2._1).zipWithIndex.map(elem => elem._1._1 -> (elem._2, elem._1._2._2)).toMap
+
+    counterDifferentNode = mutable.Map(counterDifferentNode.filter(_._2 > 0).toList
+      .sortBy(_._1).zipWithIndex.map(elem => elem._2 -> elem._1._2): _*)
   }
-
-
-
-
-
 }

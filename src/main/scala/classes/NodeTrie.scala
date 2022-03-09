@@ -1,5 +1,6 @@
 package classes
 
+//Come Node classico, ma senza padre
 class NodeTrie(var value: String, var sons: List[NodeTrie]) extends Serializable {
   var occurrence: Int = {
     if (value == null || value == -1) -1 else 1
@@ -58,6 +59,4 @@ class NodeTrie(var value: String, var sons: List[NodeTrie]) extends Serializable
   override def toString: String = {
     "Value: " + this.value + " Occorrenze: " + this.occurrence
   }
-
 }
-
