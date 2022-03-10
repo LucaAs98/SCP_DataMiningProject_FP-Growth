@@ -1,9 +1,10 @@
 package fpgrowthmod
 
+import classes.Tree
+import utils.Utils._
+
 import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
-import utils.Utils._
-import classes.Node
 
 
 object FPGrowthMod extends App {
@@ -11,11 +12,11 @@ object FPGrowthMod extends App {
   val dataset = prendiDataset()
 
   //Elementi singoli presenti nel dataset
-  val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList
+  val totalItem = dataset.reduce((xs, x) => xs ++ x).toList
 
   //Passando la lista dei set degli item creati, conta quante volte c'è l'insieme nelle transazioni
   def countItemSet(item: List[String]): Map[String, Int] = {
-    (item map (x => x -> (dataset count (y => y.contains(x))))).toMap
+    item.map(x => x -> dataset.count(y => y.contains(x))).toMap
   }
 
   //Ordiniamo le transazioni in modo decrescente
@@ -32,84 +33,48 @@ object FPGrowthMod extends App {
       elem1._2 > elem2._2
   }
 
-  //Aggiungiamo un nodo di una transazione all'albero
+  /* Calcolo Frequent ItemSet per un singolo item. */
   @tailrec
-  def addNodeTransaction(lastNode: Node[String], transazione: List[String], headerTable: ListMap[String, (Int, List[Node[String]])]): ListMap[String, (Int, List[Node[String]])] = {
-    //Passo base
-    if (transazione.nonEmpty) {
-      //Aggiungiamo all'ultimo nodo creato il nuovo
-      val node = lastNode.add(transazione.head)
-
-      //Se è stato creato lo aggiungiamo all'headerTable
-      if (node._2) {
-        val old = (headerTable.get(transazione.head) match {
-          case Some(value) => value
-          case None => (0, List[Node[String]]()) //Non entra mai, già inizializzata dall'exec
-        })
-
-        //Aggiornamento dell'ht, si aggiorna solo la linked list dei nodi
-        val newTable = headerTable + (transazione.head -> (old._1, old._2 :+ node._1))
-
-        //Richiamiamo questa funzione su tutti gli elementi della transazione
-        addNodeTransaction(node._1, transazione.tail, newTable)
-      } else {
-        //Se il nodo era già presente continuiamo l'aggiunta degli elementi senza aggiornare l'ht
-        addNodeTransaction(node._1, transazione.tail, headerTable)
-      }
-    } else {
-      //Quando finisce una singola transazione
-      headerTable
-    }
-  }
-
-  @tailrec
-  def creazioneAlbero(tree: Node[String], transactions: List[List[String]], headerTable: ListMap[String, (Int, List[Node[String]])]): ListMap[String, (Int, List[Node[String]])] = {
-    if (transactions.nonEmpty) {
-      val head = transactions.head //Singola transazione
-      val newHeaderTable = addNodeTransaction(tree, head, headerTable) //Ricorsivo su tutta la transazione
-      creazioneAlbero(tree, transactions.tail, newHeaderTable) //Una volta aggiunta una transazione continuiamo con le successive
-    } else headerTable //Finite tutte le transazioni del dataset restituiamo l'ht
-  }
-
-  //Risaliamo l'albero per restituire il percorso inerente ad un nodo specifico
-  @tailrec
-  def listaPercorsi(nodo: Node[String], listaPercorsoAcc: List[String]): List[String] = {
-    if (!nodo.padre.isHead) //Se non è il primo nodo
-      listaPercorsi(nodo.padre, nodo.padre.value :: listaPercorsoAcc) //Continuiamo a risalire l'albero col padre
-    else
-      listaPercorsoAcc //Restituiamo tutto il percorso trovato
-  }
-
-  @tailrec
-  def itemSetFromOne(item: String, oneCondPatt: List[(List[String], Int)], accSubMap: Map[Set[String], Int]): Map[Set[String], Int] = {
+  def freqItemSetOneItem(item: String, oneCondPatt: List[(List[String], Int)], accFreqItemSet: Map[Set[String], Int]): Map[Set[String], Int] = {
     if (oneCondPatt.nonEmpty) {
+      //Prendiamo un percorso
       val head = oneCondPatt.head
+      //Creiamo i subset con gli elementi di tale percorso + l'item preso in considerazione
       val subMap = head._1.toSet.subsets().map(elem => elem + item -> head._2).filter(_._1.nonEmpty).toMap
-      val subMapFinal = accSubMap ++ subMap.map { case (k, v) => k -> (v + accSubMap.getOrElse(k, 0)) }
-      itemSetFromOne(item, oneCondPatt.tail, subMapFinal)
+      //Aggiorno l'accumulatore dei frequent itemset trovati incrementando il valore delle occorrenze per tale subset
+      val subMapFinal = accFreqItemSet ++ subMap.map { case (k, v) => k -> (v + accFreqItemSet.getOrElse(k, 0)) }
+      //Richiamiamo questo metodo ricorsivamente su i restanti path
+      freqItemSetOneItem(item, oneCondPatt.tail, subMapFinal)
     } else {
-      accSubMap
+      //Restituiamo i freq itemset per un determinato item
+      accFreqItemSet
     }
   }
 
+  /* Calcolo Frequent Itemset. */
   @tailrec
-  def itemSetFromOneRec(cpb: ListMap[String, List[(List[String], Int)]], acc: Map[Set[String], Int]): Map[Set[String], Int] = {
+  def calcFreqItemSet(cpb: ListMap[String, List[(List[String], Int)]], accFreqItemset: Map[Set[String], Int]): Map[Set[String], Int] = {
     if (cpb.nonEmpty) {
-      val elem = cpb.head
-      //println(elem._1)
-      val freqItemset = itemSetFromOne(elem._1, elem._2, Map[Set[String], Int]()).filter(item => item._2 >= minSupport)
-      val newMap = acc ++ freqItemset
-      itemSetFromOneRec(cpb.tail, newMap)
+      //Prendiamo un cpb
+      val oneCpb = cpb.head
+      //Calcoliamo tutti i freq itemset per tale cpb
+      val freqItemset = freqItemSetOneItem(oneCpb._1, oneCpb._2, Map[Set[String], Int]()).filter(item => item._2 >= minSupport)
+      //Aggiungiamo i freq itemset di tale item a tutti quelli trovati in precedenza
+      val newAcc = accFreqItemset ++ freqItemset
+      //Continuiamo con i restanti item
+      calcFreqItemSet(cpb.tail, newAcc)
     }
     else {
-      acc
+      //Restituiamo i freq itemset finali
+      accFreqItemset
     }
   }
 
 
   def exec(): Map[Set[String], Int] = {
 
-    val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport) //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
+    //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
+    val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport)
 
     //Ordina gli item dal più frequente al meno
     val firstMapSorted = ListMap(firstStep.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2)): _*)
@@ -118,24 +83,19 @@ object FPGrowthMod extends App {
     val orderDataset = datasetFilter(firstMapSorted.keys.toList)
 
     //Creiamo il nostro albero vuoto
-    val newTree = new Node[String](null, List())
+    val newTree = new Tree(firstMapSorted)
 
-    //Accumulatore per tutta l'headerTable
-    val headerTable = firstMapSorted.map(x => x._1 -> (x._2, List[Node[String]]()))
-
-    //Scorriamo tutte le transazioni creando il nostro albero e restituendo l'headerTable finale
-    val headerTableFinal = creazioneAlbero(newTree, orderDataset, headerTable)
-
-    //printTree(newTree, "")
+    //Aggiungiamo le transazioni al nuovo albero
+    newTree.addTransactions(orderDataset)
 
     //Ordiniamo i singoli item in modo crescente per occorrenze e modo non alfabetico
     val singleElementsCrescentOrder = ListMap(firstMapSorted.toList.reverse: _*)
 
     //Creazione conditional pattern base, per ogni nodo prendiamo i percorsi in cui quel nodo è presente
-    val conditionalPatternBase = singleElementsCrescentOrder.map(x => x._1 -> headerTableFinal(x._1)._2.map(y => (listaPercorsi(y, List[String]()), y.occurrence)))
+    val conditionalPatternBase = singleElementsCrescentOrder.map(x => x._1 -> newTree.getAllPathsFromItem(x._1))
 
     //Calcoliamo il nostro risultato finale
-    val frequentItemSet = itemSetFromOneRec(conditionalPatternBase, Map[Set[String], Int]())
+    val frequentItemSet = calcFreqItemSet(conditionalPatternBase, Map[Set[String], Int]())
 
     frequentItemSet
   }

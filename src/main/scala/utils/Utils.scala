@@ -15,7 +15,8 @@ object Utils {
     3 -> "T10I4D100K.txt",
     4 -> "datasetLettere.txt",
     5 -> "datasetLettere2.txt",
-    6 -> "T40I10D100K.txt")
+    6 -> "T40I10D100K.txt",
+    7 -> "datasetLettereDemo.txt")
 
   val numFileDataset = 0
   val spazioVirgola = ","
