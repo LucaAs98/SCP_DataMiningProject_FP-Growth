@@ -1,4 +1,4 @@
-package fpgrowthmod
+package fpgrowthold
 
 import classes.Node
 import utils.Utils._
@@ -6,11 +6,9 @@ import utils.Utils._
 import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 
-
-object FPGrowthModOld extends App {
+object FPGrowthModParOld extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)
   val dataset = prendiDataset()
-
   //Elementi singoli presenti nel dataset
   val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList
 
@@ -93,24 +91,10 @@ object FPGrowthModOld extends App {
     }
   }
 
-  @tailrec
-  def itemSetFromOneRec(cpb: ListMap[String, List[(List[String], Int)]], acc: Map[Set[String], Int]): Map[Set[String], Int] = {
-    if (cpb.nonEmpty) {
-      val elem = cpb.head
-      val freqItemset = itemSetFromOne(elem._1, elem._2, Map[Set[String], Int]()).filter(item => item._2 >= minSupport)
-      val newMap = acc ++ freqItemset
-      itemSetFromOneRec(cpb.tail, newMap)
-    }
-    else {
-      acc
-    }
-  }
-
 
   def exec(): Map[Set[String], Int] = {
-
-    //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
-    val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport)
+    //totalItems che rispettano il minSupport
+    val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport) //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
 
     //Ordina gli item dal più frequente al meno
     val firstMapSorted = ListMap(firstStep.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2)): _*)
@@ -127,23 +111,21 @@ object FPGrowthModOld extends App {
     //Scorriamo tutte le transazioni creando il nostro albero e restituendo l'headerTable finale
     val headerTableFinal = creazioneAlbero(newTree, orderDataset, headerTable)
 
-    //printTree(newTree, "")
-
     //Ordiniamo i singoli item in modo crescente per occorrenze e modo non alfabetico
-    val singleElementsCrescentOrder = ListMap(firstMapSorted.toList.reverse: _*)
+    val singleElementsCrescentOrder = ListMap(firstStep.toList.sortWith((elem1, elem2) => !functionOrder(elem1, elem2)): _*)
 
     //Creazione conditional pattern base, per ogni nodo prendiamo i percorsi in cui quel nodo è presente
     val conditionalPatternBase = singleElementsCrescentOrder.map(x => x._1 -> headerTableFinal(x._1)._2.map(y => (listaPercorsi(y, List[String]()), y.occurrence)))
 
     //Calcoliamo il nostro risultato finale
-    val frequentItemSet = itemSetFromOneRec(conditionalPatternBase, Map[Set[String], Int]())
+    val frequentItemSet = conditionalPatternBase.par.flatMap(elem => itemSetFromOne(elem._1, elem._2, Map[Set[String], Int]())).filter(_._2 >= minSupport)
 
-    frequentItemSet
+    frequentItemSet.seq
   }
 
   val result = time(exec())
   val numTransazioni = dataset.size.toFloat
 
-  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthModResult.txt")
-  scriviSuFileSupporto(result, numTransazioni, "FPGrowthResultModSupport.txt")
+  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthParModResult.txt")
+  scriviSuFileSupporto(result, numTransazioni, "FPGrowthResultParModSupport.txt")
 }

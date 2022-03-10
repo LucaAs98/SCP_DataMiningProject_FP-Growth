@@ -16,7 +16,9 @@ object AprioriRDD extends App {
   }
 
   def prune(itemCandRDD: List[Set[String]], itemsSetPrec: Array[Set[String]]) = {
-    itemCandRDD.filter(x => x.subsets(x.size - 1).forall(y => itemsSetPrec.contains(y)))
+    if (itemCandRDD.head.size > 2) {
+      itemCandRDD.filter(x => x.subsets(x.size - 1).forall(y => itemsSetPrec.contains(y)))
+    } else itemCandRDD
   }
 
   def listOfTuples(str: String, itemSets: List[Set[String]], size: Int) = {
@@ -42,14 +44,17 @@ object AprioriRDD extends App {
     val itemsSetPrec = sc.parallelize(mapItem.keys.filter(x => x.size == (dim - 1)).toList)
     val candidati = generazioneCandidati(itemsSetPrec, dim)
     val itemSets = prune(candidati, itemsSetPrec.collect())
-    val itemSetCounts = countItemSet(itemSets, dim).filter(_._2 >= minSupport)
 
-    if (itemSetCounts.isEmpty) {
-      mapItem
-    }
-    else {
-      aprioriIter(mapItem ++ itemSetCounts, dim + 1)
-    }
+    if (itemSets.nonEmpty) {
+      val itemSetCounts = countItemSet(itemSets, dim).filter(_._2 >= minSupport)
+
+      if (itemSetCounts.isEmpty) {
+        mapItem
+      }
+      else {
+        aprioriIter(mapItem ++ itemSetCounts, dim + 1)
+      }
+    } else mapItem
   }
 
   def firstStep(): Map[Set[String], Int] = {

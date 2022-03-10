@@ -18,11 +18,11 @@ object Utils {
     6 -> "T40I10D100K.txt",
     7 -> "datasetLettereDemo.txt")
 
-  val numFileDataset = 0
+  val numFileDataset = 7
   val spazioVirgola = ","
 
   //Parametro di basket mining
-  val minSupport = 30
+  val minSupport = 2
 
   //Funzione per prendere il dataset dal file
   def prendiDataset(): List[Set[String]] = {
