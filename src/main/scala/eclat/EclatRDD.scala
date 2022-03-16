@@ -7,7 +7,7 @@ import mainClass.MainClass.minSupport
 object EclatRDD extends App {
   val sc = getSparkContext("EclatRDD")
   //Prendiamo il dataset (vedi Utils per dettagli)
-  val lines = getRDD(sc)
+  val (lines, dimDataset) = getRDD(sc)
   val dataset = lines.map(x => x.split(" ").toSet)
   val transazioniFile = dataset.zipWithIndex.map({ x => x._2 -> x._1 })
 
@@ -59,7 +59,12 @@ object EclatRDD extends App {
 
   /* Funzione creata per calcolare il tempo dell'esecuzione, restituisce il risultato che otteniamo dalla computazione in
      modo tale da salvarlo su file. */
-  def exec(): Map[Set[String], Int] = {
+
+  def exec() = {
+    val (result, tempo) = time(avviaAlgoritmo())
+    (result, tempo, dimDataset)
+  }
+  def avviaAlgoritmo():Map[Set[String], Int] = {
 
     val itemTransazioni = transazioniFile.flatMap(x => x._2.map(y => y -> x._1)).groupByKey().filter(_._2.size >= minSupport).map(x => Set(x._1) -> x._2.toSet).collect().toSet
 
@@ -67,10 +72,10 @@ object EclatRDD extends App {
   }
 
   //Valutiamo il risultato
-  val result = time(exec())
+  /*val result = time(exec())
 
   val numTransazioni = transazioniFile.count().toFloat
 
   scriviSuFileFrequentItemSet(result, numTransazioni, "EclatRDDResult.txt")
-  scriviSuFileSupporto(result, numTransazioni, "EclatRDDResultSupport.txt")
+  scriviSuFileSupporto(result, numTransazioni, "EclatRDDResultSupport.txt")*/
 }

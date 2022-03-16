@@ -8,7 +8,8 @@ import mainClass.MainClass.minSupport
 /** Per commenti più dettagliati vedi file dell'algoritmo classico. * */
 object EclatPar extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)
-  val dataset = prendiDataset().par
+  val (datasetAux, dimDataset) = prendiDataset()
+  val dataset = (datasetAux).par
 
   val transazioniFile = dataset.zipWithIndex.map(elem => elem._2 -> elem._1)
 
@@ -64,7 +65,13 @@ object EclatPar extends App {
 
   /* Funzione creata per calcolare il tempo dell'esecuzione, restituisce il risultato che otteniamo dalla computazione in
      modo tale da salvarlo su file. */
-  def exec(): Map[Set[String], Int] = {
+
+
+  def exec() = {
+    val (result, tempo) = time(avviaAlgoritmo())
+    (result, tempo, dimDataset)
+  }
+  def avviaAlgoritmo():Map[Set[String], Int] = {
 
     //Lista degli item presenti nel dataset (colonne) senza ripetizioni. //List("Pane", "Burro",....)
     val itemSingoli = dataset.foldLeft(Set[String]())(_ ++ _)
@@ -79,9 +86,11 @@ object EclatPar extends App {
     avviaIntersezione(itemTransazioni, itemSingoli).map(elem => elem._1 -> elem._2.size).seq
   }
 
+
+
   //Valutiamo il risultato
-  val result = time(exec())
+  /*val result = time(exec())
 
   scriviSuFileFrequentItemSet(result, numTransazioni.toFloat, "EclatResultParallelo.txt")
-  scriviSuFileSupporto(result, numTransazioni, "EclatResultSupportParallelo.txt")
+  scriviSuFileSupporto(result, numTransazioni, "EclatResultSupportParallelo.txt")*/
 }

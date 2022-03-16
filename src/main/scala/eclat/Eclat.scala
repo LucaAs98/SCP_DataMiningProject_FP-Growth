@@ -1,12 +1,15 @@
 package eclat
 
+import fpgrowthold.FPGrowthModOld.{avviaAlgoritmo, dimDataset}
 import utils.Utils._
+
 import scala.annotation.tailrec
 import mainClass.MainClass.minSupport
 
 object Eclat extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)
-  val dataset = prendiDataset()
+  //val dataset = prendiDataset()
+  val (dataset, dimDataset) = prendiDataset()
 
   //Creiamo gli ID per ogni transazione dato che non sono presenti nel dataset
   val transazioniFile = dataset.zipWithIndex.map({ x => (x._2, x._1) })
@@ -76,7 +79,7 @@ object Eclat extends App {
 
   /* Funzione creata per calcolare il tempo dell'esecuzione, restituisce il risultato che otteniamo dalla computazione in
      modo tale da salvarlo su file. */
-  def exec(): Map[Set[String], Int] = {
+  /*def exec(): Map[Set[String], Int] = {
 
     /* Il primo passo consiste nell'assegnare ad ogni item singolo l'ID delle transazioni in cui si trova.
     * Nel nostro caso l'ID è l'indice in cui la transazione si trova nel dataset. //(item, lista transazioni), (item, lista transazioni)...*/
@@ -88,11 +91,29 @@ object Eclat extends App {
     val itemTransazioni = itemTransNotFiltered.filter(_._2.size >= minSupport).map(elem => Set(elem._1) -> elem._2.toSet)
 
     avviaIntersezione(itemTransazioni, itemSingoli).map(elem => elem._1 -> elem._2.size)
+  }*/
+  //Esecuzione effettiva dell'algoritmo
+  def exec() = {
+    val (result, tempo) = time(avviaAlgoritmo())
+    (result, tempo, dimDataset)
+  }
+  def avviaAlgoritmo():Map[Set[String], Int] = {
+    /* Il primo passo consiste nell'assegnare ad ogni item singolo l'ID delle transazioni in cui si trova.
+    * Nel nostro caso l'ID è l'indice in cui la transazione si trova nel dataset. //(item, lista transazioni), (item, lista transazioni)...*/
+    val (itemTransNotFiltered, itemSingoli) = firstStep()
+
+    /* Piccola ottimizzazione. Prendiamo gli item singoli (sarà utile per non doverli calcolare ogni volta
+    * all'interno di "intersezione"), filtriamoli per minSupport e trasformiamo la chiave e la lista delle transazioni in set.
+    * Ci servirà per la ricorsione. */
+    val itemTransazioni = itemTransNotFiltered.filter(_._2.size >= minSupport).map(elem => Set(elem._1) -> elem._2.toSet)
+
+    avviaIntersezione(itemTransazioni, itemSingoli).map(elem => elem._1 -> elem._2.size)
+
   }
 
   //Valutiamo il risultato
-  val result = time(exec())
+ /* val result = time(exec())
 
   scriviSuFileFrequentItemSet(result, numTransazioni.toFloat, "EclatResult.txt")
-  scriviSuFileSupporto(result, numTransazioni, "EclatResultSupport.txt")
+  scriviSuFileSupporto(result, numTransazioni, "EclatResultSupport.txt")*/
 }
