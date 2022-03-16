@@ -112,15 +112,16 @@ object Utils {
   }
 
   //Restituisce un RDD da file
-  def getRDD(sc: SparkContext): RDD[String] = {
+  def getRDD(sc: SparkContext): (RDD[String], Float) = {
     val file = "src/main/resources/dataset/" + nomeFile
-    sc.textFile(file)
+    val dataset = sc.textFile(file)
+    (dataset, dataset.count().toFloat)
   }
 
   //Restituisce un RDD da file
-  def getRDD(nomeFile: String, sc: SparkContext): RDD[String] = {
+  def getRDD(nomeFile: String, sc: SparkContext): (RDD[String], Float) = {
     val file = "src/main/resources/dataset/" + nomeFile
-    sc.textFile(file)
+    val dataset = sc.textFile(file)
+    (dataset, dataset.count().toFloat)
   }
-
 }
