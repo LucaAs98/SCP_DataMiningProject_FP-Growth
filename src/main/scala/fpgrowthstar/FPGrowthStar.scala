@@ -4,6 +4,7 @@ import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 import utils.Utils._
 import classes.{TreeStar, Node}
+import mainClass.MainClass.minSupport
 
 object FPGrowthStar extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)

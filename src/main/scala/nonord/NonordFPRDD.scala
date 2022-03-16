@@ -7,12 +7,13 @@ import scala.collection.immutable.ListMap
 import scala.collection.mutable
 import utils.Utils._
 import classes.{Trie, ArrayTrie}
+import mainClass.MainClass.minSupport
 
 object NonordFPRDD extends App {
   val sc = getSparkContext("NonordFPRDDOld")
   //Prendiamo il dataset (vedi Utils per dettagli)
   val lines = getRDD(sc)
-  val dataset = lines.map(x => x.split(spazioVirgola))
+  val dataset = lines.map(x => x.split(" "))
 
   val numParts = 300
 

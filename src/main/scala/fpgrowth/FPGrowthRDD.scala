@@ -8,11 +8,13 @@ import scala.collection.mutable
 import utils.Utils._
 import classes.{Tree,Node}
 
+import mainClass.MainClass.minSupport
+
 object FPGrowthRDD extends App {
   val sc = getSparkContext("FPGrowthRDD")
   //Prendiamo il dataset (vedi Utils per dettagli)
   val lines = getRDD(sc)
-  val dataset = lines.map(x => x.split(spazioVirgola))
+  val dataset = lines.map(x => x.split(" "))
 
   val numParts = 300
 

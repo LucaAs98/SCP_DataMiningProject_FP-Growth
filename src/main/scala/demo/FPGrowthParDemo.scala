@@ -6,7 +6,7 @@ import utils.Utils._
 import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 import scala.collection.parallel.ParMap
-
+import mainClass.MainClass.minSupport
 object FPGrowthParDemo extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)
   val dataset = prendiDataset().par

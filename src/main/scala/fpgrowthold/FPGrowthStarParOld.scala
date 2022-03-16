@@ -4,6 +4,7 @@ import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 import utils.Utils._
 import classes.Node
+import mainClass.MainClass.minSupport
 
 object FPGrowthStarParOld extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)

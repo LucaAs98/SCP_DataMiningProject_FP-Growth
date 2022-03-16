@@ -2,6 +2,7 @@ package eclat
 
 import utils.Utils._
 import scala.annotation.tailrec
+import mainClass.MainClass.minSupport
 
 object Eclat extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)
@@ -75,7 +76,7 @@ object Eclat extends App {
 
   /* Funzione creata per calcolare il tempo dell'esecuzione, restituisce il risultato che otteniamo dalla computazione in
      modo tale da salvarlo su file. */
-  def avvia(): Map[Set[String], Set[Int]] = {
+  def exec(): Map[Set[String], Int] = {
 
     /* Il primo passo consiste nell'assegnare ad ogni item singolo l'ID delle transazioni in cui si trova.
     * Nel nostro caso l'ID è l'indice in cui la transazione si trova nel dataset. //(item, lista transazioni), (item, lista transazioni)...*/
@@ -86,13 +87,12 @@ object Eclat extends App {
     * Ci servirà per la ricorsione. */
     val itemTransazioni = itemTransNotFiltered.filter(_._2.size >= minSupport).map(elem => Set(elem._1) -> elem._2.toSet)
 
-    avviaIntersezione(itemTransazioni, itemSingoli)
+    avviaIntersezione(itemTransazioni, itemSingoli).map(elem => elem._1 -> elem._2.size)
   }
 
   //Valutiamo il risultato
-  val result = time(avvia())
-  val result2 = result.map(elem => elem._1 -> elem._2.size)
+  val result = time(exec())
 
-  scriviSuFileFrequentItemSet(result2, numTransazioni.toFloat, "EclatResult.txt")
-  scriviSuFileSupporto(result2, numTransazioni, "EclatResultSupport.txt")
+  scriviSuFileFrequentItemSet(result, numTransazioni.toFloat, "EclatResult.txt")
+  scriviSuFileSupporto(result, numTransazioni, "EclatResultSupport.txt")
 }

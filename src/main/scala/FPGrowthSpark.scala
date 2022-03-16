@@ -1,15 +1,14 @@
-import org.apache.spark.mllib.fpm.FPGrowth
-
 import java.io.{BufferedWriter, File, FileWriter}
-import utils.Utils._
 
+import org.apache.spark.mllib.fpm.FPGrowth
+import utils.Utils._
 
 //Versione FPGrowth spark già implementata
 object FPGrowthSpark extends App {
   val sc = getSparkContext("FPGrowthSpark")
   //Prendiamo il dataset (vedi Utils per dettagli)
   val lines = getRDD(sc)
-  val dataset = lines.map(x => x.split(spazioVirgola))
+  val dataset = lines.map(x => x.split(" "))
 
   //nostro supp/num. trans
   val fpg = new FPGrowth().setMinSupport(0.003).setNumPartitions(800)

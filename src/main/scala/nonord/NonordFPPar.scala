@@ -6,6 +6,7 @@ import scala.collection.mutable
 import scala.collection.parallel.{ParIterable, ParMap}
 import utils.Utils._
 import classes.{Trie, ArrayTrie}
+import mainClass.MainClass.minSupport
 
 object NonordFPPar extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)

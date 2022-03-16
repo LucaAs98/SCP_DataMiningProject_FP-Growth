@@ -1,37 +1,23 @@
 package utils
+import java.io.{BufferedWriter, File, FileWriter}
 
-import classes.Node
+
+import mainClass.MainClass.nomeFile
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
-import java.io.{BufferedWriter, File, FileWriter}
 import scala.io.Source
 
 object Utils {
-  val mappaNomiFile: Map[Int, String] = Map[Int, String](
-    0 -> "datasetKaggleAlimenti.txt",
-    1 -> "datasetKaggleAlimenti10.txt",
-    2 -> "datasetKaggleAlimenti100.txt",
-    3 -> "T10I4D100K.txt",
-    4 -> "datasetLettere.txt",
-    5 -> "datasetLettere2.txt",
-    6 -> "T40I10D100K.txt",
-    7 -> "datasetLettereDemo.txt")
-
-  val numFileDataset = 7
-  val spazioVirgola = ","
-
-  //Parametro di basket mining
-  val minSupport = 2
 
   //Funzione per prendere il dataset dal file
-  def prendiDataset(): List[Set[String]] = {
-    val filePath = "src/main/resources/dataset/" + mappaNomiFile(numFileDataset)
+  def prendiDataset(): (List[Set[String]], Float) = {
+    val filePath = "src/main/resources/dataset/" + nomeFile
     val file = new File(filePath)
     val source = Source.fromFile(file)
-    val dataset = source.getLines().map(x => x.split(spazioVirgola).toSet).toList //Contenuto di tutto il file come lista
+    val dataset = source.getLines().map(x => x.split(" ").toSet).toList //Contenuto di tutto il file come lista
     source.close()
-    dataset
+    (dataset, dataset.size.toFloat)
   }
 
   //Funzione per prendere il dataset dal file
@@ -39,7 +25,7 @@ object Utils {
     val filePath = "src/main/resources/dataset/" + nomeFile
     val file = new File(filePath)
     val source = Source.fromFile(file)
-    val dataset = source.getLines().map(x => x.split(",").toSet).toList //Contenuto di tutto il file come lista
+    val dataset = source.getLines().map(x => x.split(" ").toSet).toList //Contenuto di tutto il file come lista
     source.close()
 
     val distinctDataset = dataset.flatten.distinct.sortWith(_ < _).zipWithIndex.toMap
@@ -48,12 +34,13 @@ object Utils {
   }
 
   //Valuta il tempo di un'espressione
-  def time[R](block: => R): R = {
+  def time[R](block: => R): (R, Long) = {
     val t0 = System.nanoTime()
     val result = block // call-by-name
     val t1 = System.nanoTime()
-    println("Tempo di esecuzione: " + (t1 - t0) / 1000000 + "ms")
-    result
+    val tempo = (t1 - t0) / 1000000
+    println("Tempo di esecuzione: " + tempo + "ms")
+    (result, tempo)
   }
 
   //Calcolo delle confidenze
@@ -126,7 +113,7 @@ object Utils {
 
   //Restituisce un RDD da file
   def getRDD(sc: SparkContext): RDD[String] = {
-    val file = "src/main/resources/dataset/" + mappaNomiFile(numFileDataset)
+    val file = "src/main/resources/dataset/" + nomeFile
     sc.textFile(file)
   }
 
@@ -135,4 +122,5 @@ object Utils {
     val file = "src/main/resources/dataset/" + nomeFile
     sc.textFile(file)
   }
+
 }

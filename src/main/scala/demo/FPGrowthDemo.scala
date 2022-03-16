@@ -5,6 +5,7 @@ import utils.Utils._
 
 import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
+import mainClass.MainClass.minSupport
 
 object FPGrowthDemo extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)

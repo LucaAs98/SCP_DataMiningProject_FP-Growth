@@ -2,12 +2,13 @@ package eclat
 
 import scala.annotation.tailrec
 import utils.Utils._
+import mainClass.MainClass.minSupport
 
 object EclatRDD extends App {
   val sc = getSparkContext("EclatRDD")
   //Prendiamo il dataset (vedi Utils per dettagli)
   val lines = getRDD(sc)
-  val dataset = lines.map(x => x.split(spazioVirgola).toSet)
+  val dataset = lines.map(x => x.split(" ").toSet)
   val transazioniFile = dataset.zipWithIndex.map({ x => x._2 -> x._1 })
 
   /* Funzione nella quale avviene tutto il processo dell'Eclat. Dati gli item singoli e le transazioni associate ad essi
@@ -58,19 +59,18 @@ object EclatRDD extends App {
 
   /* Funzione creata per calcolare il tempo dell'esecuzione, restituisce il risultato che otteniamo dalla computazione in
      modo tale da salvarlo su file. */
-  def avvia(): Map[Set[String], Set[Long]] = {
+  def exec(): Map[Set[String], Int] = {
 
     val itemTransazioni = transazioniFile.flatMap(x => x._2.map(y => y -> x._1)).groupByKey().filter(_._2.size >= minSupport).map(x => Set(x._1) -> x._2.toSet).collect().toSet
 
-    avviaIntersezione(itemTransazioni)
+    avviaIntersezione(itemTransazioni) map (elem => elem._1 -> elem._2.size)
   }
 
   //Valutiamo il risultato
-  val result = time(avvia())
-  val result2 = result.map(elem => elem._1 -> elem._2.size)
+  val result = time(exec())
 
   val numTransazioni = transazioniFile.count().toFloat
 
-  scriviSuFileFrequentItemSet(result2, numTransazioni, "EclatRDDResult.txt")
-  scriviSuFileSupporto(result2, numTransazioni, "EclatRDDResultSupport.txt")
+  scriviSuFileFrequentItemSet(result, numTransazioni, "EclatRDDResult.txt")
+  scriviSuFileSupporto(result, numTransazioni, "EclatRDDResultSupport.txt")
 }

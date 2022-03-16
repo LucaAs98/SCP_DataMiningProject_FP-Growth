@@ -1,12 +1,4 @@
-import org.apache.spark.{HashPartitioner, Partitioner, SparkConf, SparkContext}
-
-import scala.annotation.tailrec
-import scala.collection.immutable.ListMap
-import scala.collection.mutable
-import Utils._
-import java.io.Serializable
-
-
+/*
 object FPGrowthRDDGCP extends Serializable {
   def main(args: Array[String]): Unit = {
     if (args.length != 2) {
@@ -146,4 +138,4 @@ object FPGrowthRDDGCP extends Serializable {
 
     freqItemSet.map(x => x._1.toSet -> x._2).saveAsTextFile(outputPath)
   }
-}
+}*/

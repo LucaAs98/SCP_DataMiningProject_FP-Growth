@@ -4,12 +4,13 @@ import org.apache.spark.rdd.RDD
 import utils.Utils._
 
 import scala.annotation.tailrec
+import mainClass.MainClass.minSupport
 
 object AprioriRDD extends App {
   val sc = getSparkContext("AprioriRDD")
   //Prendiamo il dataset (vedi Utils per dettagli)
   val dataset = getRDD(sc)
-  val items = dataset.flatMap(x => x.split(spazioVirgola))
+  val items = dataset.flatMap(x => x.split(" "))
 
   def generazioneCandidati(itemSets: RDD[Set[String]], size: Int): List[Set[String]] = {
     (itemSets reduce ((x, y) => x ++ y)).subsets(size).toList
@@ -22,7 +23,7 @@ object AprioriRDD extends App {
   }
 
   def listOfTuples(str: String, itemSets: List[Set[String]], size: Int) = {
-    val items = str.split(spazioVirgola).toSet
+    val items = str.split(" ").toSet
     if (items.size >= size) {
       itemSets.filter(y => y.subsetOf(items))
     }

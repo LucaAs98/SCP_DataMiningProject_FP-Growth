@@ -4,6 +4,7 @@ import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 import utils.Utils._
 import classes.{Trie, ArrayTrie}
+import mainClass.MainClass.minSupport
 
 object NonordFP extends App {
 

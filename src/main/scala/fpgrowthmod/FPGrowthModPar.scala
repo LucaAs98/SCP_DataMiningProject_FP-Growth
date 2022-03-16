@@ -4,6 +4,7 @@ import classes.Tree
 import utils.Utils._
 
 import scala.collection.immutable.ListMap
+import mainClass.MainClass.minSupport
 
 object FPGrowthModPar extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)

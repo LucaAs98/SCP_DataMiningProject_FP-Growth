@@ -3,6 +3,7 @@ package demo
 import utils.Utils._
 
 import scala.annotation.tailrec
+import mainClass.MainClass.minSupport
 
 //Demo da effettuare con T10 minSup = 2000
 

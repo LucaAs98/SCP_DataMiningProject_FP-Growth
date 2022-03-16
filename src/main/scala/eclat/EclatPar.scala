@@ -3,6 +3,7 @@ package eclat
 import scala.annotation.tailrec
 import scala.collection.parallel.immutable.{ParMap, ParSet}
 import utils.Utils._
+import mainClass.MainClass.minSupport
 
 /** Per commenti più dettagliati vedi file dell'algoritmo classico. * */
 object EclatPar extends App {
@@ -63,7 +64,7 @@ object EclatPar extends App {
 
   /* Funzione creata per calcolare il tempo dell'esecuzione, restituisce il risultato che otteniamo dalla computazione in
      modo tale da salvarlo su file. */
-  def avvia(): ParMap[Set[String], Set[Int]] = {
+  def exec(): Map[Set[String], Int] = {
 
     //Lista degli item presenti nel dataset (colonne) senza ripetizioni. //List("Pane", "Burro",....)
     val itemSingoli = dataset.foldLeft(Set[String]())(_ ++ _)
@@ -75,13 +76,12 @@ object EclatPar extends App {
     /* Piccola ottimizzazione. Prendiamo gli item singoli, sarà utile per creare le possibili combinazioni.  */
     val itemTransazioni = itemTransNotFiltered.filter(_._2.size >= minSupport).map(elem => Set(elem._1) -> elem._2.toSet)
 
-    avviaIntersezione(itemTransazioni, itemSingoli)
+    avviaIntersezione(itemTransazioni, itemSingoli).map(elem => elem._1 -> elem._2.size).seq
   }
 
   //Valutiamo il risultato
-  val result = time(avvia())
-  val result2 = result.map(elem => elem._1 -> elem._2.size).seq
+  val result = time(exec())
 
-  scriviSuFileFrequentItemSet(result2, numTransazioni.toFloat, "EclatResultParallelo.txt")
-  scriviSuFileSupporto(result2, numTransazioni, "EclatResultSupportParallelo.txt")
+  scriviSuFileFrequentItemSet(result, numTransazioni.toFloat, "EclatResultParallelo.txt")
+  scriviSuFileSupporto(result, numTransazioni, "EclatResultSupportParallelo.txt")
 }

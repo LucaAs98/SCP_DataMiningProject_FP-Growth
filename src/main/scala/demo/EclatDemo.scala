@@ -3,6 +3,7 @@ package demo
 import utils.Utils._
 
 import scala.annotation.tailrec
+import mainClass.MainClass.minSupport
 
 object EclatDemo extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)

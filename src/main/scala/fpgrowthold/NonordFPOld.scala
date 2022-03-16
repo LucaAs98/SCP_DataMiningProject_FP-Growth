@@ -5,6 +5,7 @@ import scala.collection.immutable.ListMap
 import scala.collection.mutable
 import utils.Utils._
 import classes.Node
+import mainClass.MainClass.minSupport
 
 object NonordFPOld extends App {
 

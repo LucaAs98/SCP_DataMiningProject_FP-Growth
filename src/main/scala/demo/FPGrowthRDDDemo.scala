@@ -7,12 +7,13 @@ import utils.Utils._
 import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 import scala.collection.mutable
+import mainClass.MainClass.minSupport
 
 object FPGrowthRDDDemo extends App {
   val sc = getSparkContext("FPGrowthRDD")
   //Prendiamo il dataset (vedi Utils per dettagli)
   val lines = getRDD(sc)
-  val dataset = lines.map(x => x.split(spazioVirgola))
+  val dataset = lines.map(x => x.split(" "))
 
   val numParts = 2
 

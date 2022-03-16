@@ -5,6 +5,7 @@ import scala.collection.immutable.ListMap
 import scala.collection.parallel.ParMap
 import utils.Utils._
 import classes.Tree
+import mainClass.MainClass.minSupport
 
 object FPGrowthPar extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)

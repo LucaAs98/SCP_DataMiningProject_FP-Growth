@@ -7,12 +7,13 @@ import scala.collection.immutable.ListMap
 import scala.collection.mutable
 import utils.Utils._
 import classes.{TreeStar,Node}
+import mainClass.MainClass.minSupport
 
 object FPGrowthStarRDD extends App {
   val sc = getSparkContext("FPGrowthStarRDDOld")
   //Prendiamo il dataset (vedi Utils per dettagli)
   val lines = getRDD(sc)
-  val dataset = lines.map(x => x.split(spazioVirgola))
+  val dataset = lines.map(x => x.split(" "))
 
   val numParts = 20
 
