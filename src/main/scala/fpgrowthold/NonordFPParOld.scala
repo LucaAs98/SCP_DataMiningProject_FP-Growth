@@ -10,7 +10,8 @@ import mainClass.MainClass.minSupport
 
 object NonordFPParOld extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)
-  val dataset = prendiDataset().par
+  val (datasetAux, dimDataset) = prendiDataset()
+  val dataset = datasetAux.par
 
   //Elementi singoli presenti nel dataset
   val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList
@@ -276,7 +277,13 @@ object NonordFPParOld extends App {
     mapItemPathMapped
   }
 
+  //Esecuzione effettiva dell'algoritmo
   def exec() = {
+    val (result, tempo) = time(avviaAlgoritmo())
+    (result, tempo, dimDataset)
+  }
+
+  def avviaAlgoritmo():Map[Set[String], Int] = {
     //Calcolo della frequenza dei singoli items
     val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport)
 
@@ -319,10 +326,4 @@ object NonordFPParOld extends App {
     val frequentItemSet = createFreqItemSet(conditionalPatternBase, firstMapWithIndex)
     frequentItemSet.map(x => x._1.toSet -> x._2).toMap.seq
   }
-
-  val result = time(exec())
-  val numTransazioni = dataset.size.toFloat
-
-  scriviSuFileFrequentItemSet(result, numTransazioni, "NonordFPParOldResult.txt")
-  scriviSuFileSupporto(result, numTransazioni, "NonordFPParOldSupport.txt")
 }

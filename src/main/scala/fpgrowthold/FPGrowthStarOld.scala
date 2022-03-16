@@ -8,7 +8,7 @@ import mainClass.MainClass.minSupport
 
 object FPGrowthStarOld extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)
-  val dataset = prendiDataset()
+  val (dataset, dimDataset) = prendiDataset()
 
   //Elementi singoli presenti nel dataset
   val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList
@@ -175,43 +175,6 @@ object FPGrowthStarOld extends App {
       ListMap.empty[String, Array[Int]]
   }
 
-  def exec() = {
-
-    //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
-    val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport)
-
-    //Ordina gli item dal più frequente al meno
-    val firstMapSorted = ListMap(firstStep.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2)): _*)
-
-    //Ordiniamo le transazioni del dataset in modo decrescente
-    val orderDataset = datasetFilter(firstMapSorted.keys.toList)
-
-    //Creiamo il nostro albero vuoto
-    val newTree = new Node[String](null, List())
-
-    // Vengono restituiti gli elementi con la loro frequenza e l'indice relativo ad essi
-    //Item -> (Frequenza, Indice)
-    val firstMapSortedWithIndex = firstMapSorted.zipWithIndex.map(x => x._1._1 -> (x._1._2, x._2))
-
-
-    //Accumulatore per tutta l'headerTable
-    val headerTable = firstMapSortedWithIndex.map(x => x._1 -> (x._2._1, x._2._2, List[Node[String]]()))
-
-    //Per ogni elemento associamo un array in cui vengono riportate le occorrenze relative agli altri item
-    val matrix = creaMatrice(firstMapSortedWithIndex)
-
-    //Scorriamo tutte le transazioni creando il nostro albero e restituendo l'headerTable finale
-    val headerTableFinal = creazioneAlbero(newTree, orderDataset, headerTable, matrix)
-    //printTree(newTree, "")
-
-    //Vengono calcolati gli itemSet frequenti
-    val allFreqitemset = calcFreqItemset(headerTableFinal.keys.toList, headerTableFinal, matrix, List[(List[String], Int)]())
-    //Viene restituito il frequentItemSet come una mappa
-    allFreqitemset.map(x => x._1.toSet -> x._2).toMap
-
-  }
-
-
   //Calcolo dei frquentItemSet
   @tailrec
   def calcFreqItemset(listItem: List[String], headerTable: ListMap[String, (Int, Int, List[Node[String]])], matrix: ListMap[String, Array[Int]],
@@ -319,10 +282,43 @@ object FPGrowthStarOld extends App {
     } else (headerTable, flag) //Esaminati tutti i path restituiamo ht e il flag dei branch
   }
 
+  //Esecuzione effettiva dell'algoritmo
+  def exec() = {
+    val (result, tempo) = time(avviaAlgoritmo())
+    (result, tempo, dimDataset)
+  }
 
-  val result = time(exec())
-  val numTransazioni = dataset.size.toFloat
+  def avviaAlgoritmo():Map[Set[String], Int] = {
+    //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
+    val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport)
 
-  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthStarOldResult.txt")
-  scriviSuFileSupporto(result, numTransazioni, "FPGrowthResultStarOldSupport.txt")
+    //Ordina gli item dal più frequente al meno
+    val firstMapSorted = ListMap(firstStep.toList.sortWith((elem1, elem2) => functionOrder(elem1, elem2)): _*)
+
+    //Ordiniamo le transazioni del dataset in modo decrescente
+    val orderDataset = datasetFilter(firstMapSorted.keys.toList)
+
+    //Creiamo il nostro albero vuoto
+    val newTree = new Node[String](null, List())
+
+    // Vengono restituiti gli elementi con la loro frequenza e l'indice relativo ad essi
+    //Item -> (Frequenza, Indice)
+    val firstMapSortedWithIndex = firstMapSorted.zipWithIndex.map(x => x._1._1 -> (x._1._2, x._2))
+
+
+    //Accumulatore per tutta l'headerTable
+    val headerTable = firstMapSortedWithIndex.map(x => x._1 -> (x._2._1, x._2._2, List[Node[String]]()))
+
+    //Per ogni elemento associamo un array in cui vengono riportate le occorrenze relative agli altri item
+    val matrix = creaMatrice(firstMapSortedWithIndex)
+
+    //Scorriamo tutte le transazioni creando il nostro albero e restituendo l'headerTable finale
+    val headerTableFinal = creazioneAlbero(newTree, orderDataset, headerTable, matrix)
+    //printTree(newTree, "")
+
+    //Vengono calcolati gli itemSet frequenti
+    val allFreqitemset = calcFreqItemset(headerTableFinal.keys.toList, headerTableFinal, matrix, List[(List[String], Int)]())
+    //Viene restituito il frequentItemSet come una mappa
+    allFreqitemset.map(x => x._1.toSet -> x._2).toMap
+  }
 }

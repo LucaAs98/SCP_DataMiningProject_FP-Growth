@@ -7,9 +7,8 @@ import classes.{Trie, ArrayTrie}
 import mainClass.MainClass.minSupport
 
 object NonordFP extends App {
-
   //Prendiamo il dataset (vedi Utils per dettagli)
-  val dataset = prendiDataset()
+  val (dataset, dimDataset) = prendiDataset()
 
   //Elementi singoli presenti nel dataset
   val totalItem = dataset.reduce((xs, x) => xs ++ x).toList
@@ -120,7 +119,11 @@ object NonordFP extends App {
   }
 
   def exec() = {
+    val (result, tempo) = time(avviaAlgoritmo())
+    (result, tempo, dimDataset)
+  }
 
+  def avviaAlgoritmo():Map[Set[String], Int] = {
     //Calcolo della frequenza dei singoli items
     val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport)
 
@@ -151,10 +154,4 @@ object NonordFP extends App {
     //Risultato finale
     frequentItemSet.map(x => x._1.toSet -> x._2).toMap
   }
-
-  val result = time(exec())
-  val numTransazioni = dataset.size.toFloat
-
-  scriviSuFileFrequentItemSet(result, numTransazioni, "NonordFPResult.txt")
-  scriviSuFileSupporto(result, numTransazioni, "NonordFPSupport.txt")
 }

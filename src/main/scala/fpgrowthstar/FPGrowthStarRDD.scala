@@ -12,7 +12,7 @@ import mainClass.MainClass.minSupport
 object FPGrowthStarRDD extends App {
   val sc = getSparkContext("FPGrowthStarRDDOld")
   //Prendiamo il dataset (vedi Utils per dettagli)
-  val lines = getRDD(sc)
+  val (lines, dimDataset) = getRDD(sc)
   val dataset = lines.map(x => x.split(" "))
 
   val numParts = 20
@@ -132,7 +132,13 @@ object FPGrowthStarRDD extends App {
     }
   }
 
-  def exec(): Map[Set[String], Int] = {
+  //Esecuzione effettiva dell'algoritmo
+  def exec() = {
+    val (result, tempo) = time(avviaAlgoritmo())
+    (result, tempo, dimDataset)
+  }
+
+  def avviaAlgoritmo():Map[Set[String], Int] = {
     //Creiamo il partitioner
     val partitioner = new HashPartitioner(numParts)
 
@@ -162,10 +168,4 @@ object FPGrowthStarRDD extends App {
 
     freqItemSet.map(x => x._1.toSet -> x._2).collect().toMap
   }
-
-  val result = time(exec())
-  val numTransazioni = dataset.count().toFloat
-
-  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthStarRDDResult.txt")
-  scriviSuFileSupporto(result, numTransazioni, "FPGrowthStarRDDResultSupport.txt")
 }
