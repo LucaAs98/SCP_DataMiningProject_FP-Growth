@@ -7,7 +7,7 @@ import mainClass.MainClass.minSupport
 
 object AprioriDemo extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)
-  val dataset = prendiDataset()
+  val (dataset, dimDataset) = prendiDataset()
 
   println("-----------------------------------")
   println("Dataset:\n" + dataset.mkString("\n"))
@@ -63,6 +63,11 @@ object AprioriDemo extends App {
 
   //Esecuzione effettiva dell'algoritmo
   def exec() = {
+    val (result, tempo) = time(avviaAlgoritmo())
+    (result, tempo, dimDataset)
+  }
+
+  def avviaAlgoritmo():Map[Set[String], Int] = {
     //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
     val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport)
 
@@ -71,9 +76,4 @@ object AprioriDemo extends App {
 
     aprioriIter(firstStep, 2)
   }
-
-  val result = time(exec())
-
-  scriviSuFileFrequentItemSet(result, dataset.size.toFloat, "AprioriResult.txt")
-  scriviSuFileSupporto(result, dataset.size.toFloat, "AprioriConfidenzaResult.txt")
 }

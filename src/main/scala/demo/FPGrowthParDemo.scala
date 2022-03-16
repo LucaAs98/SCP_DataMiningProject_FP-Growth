@@ -7,9 +7,11 @@ import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 import scala.collection.parallel.ParMap
 import mainClass.MainClass.minSupport
+
 object FPGrowthParDemo extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)
-  val dataset = prendiDataset().par
+  val (datasetAux, dimDataset) = prendiDataset()
+  val dataset = datasetAux.par
 
   //Elementi singoli presenti nel dataset
   val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList
@@ -150,7 +152,7 @@ object FPGrowthParDemo extends App {
 
   //Creazione alberi condizionali e vengono restituiti gli Itemset frequenti
   def condFPTreePar(conditionalPatternBase: ParMap[String, List[(List[String], Int)]],
-                 firstMapSorted: ListMap[String, Int]): List[(List[String], Int)] = {
+                    firstMapSorted: ListMap[String, Int]): List[(List[String], Int)] = {
 
     //Calcolo degli itemset frequenti per ogni item
     val freqItemsets = conditionalPatternBase.map(elem => freqItemsetCondPBPar(elem._1, elem._2, firstMapSorted))
@@ -176,6 +178,11 @@ object FPGrowthParDemo extends App {
 
 
   def exec() = {
+    val (result, tempo) = time(avviaAlgoritmo())
+    (result, tempo, dimDataset)
+  }
+
+  def avviaAlgoritmo(): Map[Set[String], Int] = {
 
     //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
     val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport)
@@ -201,14 +208,9 @@ object FPGrowthParDemo extends App {
 
     //Vengono calcolati gli itemSet frequenti
     //val allFreqItemset = time(condFPTree(conditionalPatternBase, firstMapSorted, List[(List[String], Int)]()))
-    val allFreqItemset = time(condFPTreePar(conditionalPatternBase.par, firstMapSorted))
+    val allFreqItemset = time(condFPTreePar(conditionalPatternBase.par, firstMapSorted))._1
     //Viene restituito il frequentItemSet come una mappa
     allFreqItemset.map(x => x._1.toSet -> x._2).toMap
   }
 
-  val result = time(exec())
-  val numTransazioni = dataset.size.toFloat
-
-  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthNewParResult.txt")
-  scriviSuFileSupporto(result, numTransazioni, "FPGrowthNewResultParSupport.txt")
 }

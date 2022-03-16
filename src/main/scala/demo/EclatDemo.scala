@@ -7,7 +7,7 @@ import mainClass.MainClass.minSupport
 
 object EclatDemo extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)
-  val dataset = prendiDataset()
+  val (dataset, dimDataset) = prendiDataset()
 
   //Creiamo gli ID per ogni transazione dato che non sono presenti nel dataset
   val transazioniFile = dataset.zipWithIndex.map({ x => (x._2, x._1) })
@@ -88,10 +88,16 @@ object EclatDemo extends App {
     intersezione(2, transazioniElementiSingoli.toMap)
   }
 
-  /* Funzione creata per calcolare il tempo dell'esecuzione, restituisce il risultato che otteniamo dalla computazione in
-     modo tale da salvarlo su file. */
-  def avvia(): Map[Set[String], Set[Int]] = {
 
+  def exec() = {
+    val (result, tempo) = time(avviaAlgoritmo())
+    (result, tempo, dimDataset)
+
+  }
+
+  /* Funzione creata per calcolare il tempo dell'esecuzione, restituisce il risultato che otteniamo dalla computazione in
+       modo tale da salvarlo su file. */
+  def avviaAlgoritmo():Map[Set[String], Int] = {
     /* Il primo passo consiste nell'assegnare ad ogni item singolo l'ID delle transazioni in cui si trova.
     * Nel nostro caso l'ID è l'indice in cui la transazione si trova nel dataset. //(item, lista transazioni), (item, lista transazioni)...*/
     val (itemTransNotFiltered, itemSingoli) = firstStep()
@@ -101,13 +107,8 @@ object EclatDemo extends App {
     * Ci servirà per la ricorsione. */
     val itemTransazioni = itemTransNotFiltered.filter(_._2.size >= minSupport).map(elem => Set(elem._1) -> elem._2.toSet)
 
-    avviaIntersezione(itemTransazioni, itemSingoli)
+    avviaIntersezione(itemTransazioni, itemSingoli).map(elem => elem._1 -> elem._2.size)
   }
 
-  //Valutiamo il risultato
-  val result = time(avvia())
-  val result2 = result.map(elem => elem._1 -> elem._2.size)
 
-  scriviSuFileFrequentItemSet(result2, numTransazioni.toFloat, "EclatResult.txt")
-  scriviSuFileSupporto(result2, numTransazioni, "EclatResultSupport.txt")
 }

@@ -1,15 +1,15 @@
 package apriori
 
+import mainClass.MainClass.minSupport
 import org.apache.spark.rdd.RDD
 import utils.Utils._
 
 import scala.annotation.tailrec
-import mainClass.MainClass.minSupport
 
 object AprioriRDD extends App {
   val sc = getSparkContext("AprioriRDD")
   //Prendiamo il dataset (vedi Utils per dettagli)
-  val dataset = getRDD(sc)
+  val (dataset, dimDataset) = getRDD(sc)
   val items = dataset.flatMap(x => x.split(" "))
 
   def generazioneCandidati(itemSets: RDD[Set[String]], size: Int): List[Set[String]] = {
@@ -65,6 +65,11 @@ object AprioriRDD extends App {
   }
 
   def exec() = {
+    val (result, tempo) = time(avviaAlgoritmo())
+    (result, tempo, dimDataset)
+  }
+
+  def avviaAlgoritmo(): Map[Set[String], Int]={
     val itemSingoli = firstStep()
 
     if (itemSingoli.isEmpty) {
@@ -74,10 +79,4 @@ object AprioriRDD extends App {
       aprioriIter(itemSingoli, 2)
     }
   }
-
-  val result = time(exec())
-  val numTransazioni = dataset.count().toFloat
-
-  scriviSuFileFrequentItemSet(result, numTransazioni, "AprioriRDDResult.txt")
-  scriviSuFileSupporto(result, numTransazioni, "AprioriRDDResultSupport.txt")
 }

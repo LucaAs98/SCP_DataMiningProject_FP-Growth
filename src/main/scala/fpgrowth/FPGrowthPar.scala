@@ -9,7 +9,8 @@ import mainClass.MainClass.minSupport
 
 object FPGrowthPar extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)
-  val dataset = prendiDataset().par
+  val (datasetAux, dimDataset) = prendiDataset()
+  val dataset = datasetAux.par
 
   //Elementi singoli presenti nel dataset
   val totalItem = (dataset reduce ((xs, x) => xs ++ x)).toList
@@ -119,7 +120,11 @@ object FPGrowthPar extends App {
 
 
   def exec() = {
+    val (result, tempo) = time(avviaAlgoritmo())
+    (result, tempo, dimDataset)
+  }
 
+  def avviaAlgoritmo(): Map[Set[String], Int] = {
     //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
     val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport)
 
@@ -147,9 +152,4 @@ object FPGrowthPar extends App {
     allFreqItemset.map(x => x._1.toSet -> x._2).toMap
   }
 
-  val result = time(exec())
-  val numTransazioni = dataset.size.toFloat
-
-  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthNewParResult.txt")
-  scriviSuFileSupporto(result, numTransazioni, "FPGrowthNewResultParSupport.txt")
 }

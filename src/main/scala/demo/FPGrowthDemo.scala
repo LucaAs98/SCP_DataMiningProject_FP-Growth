@@ -9,7 +9,7 @@ import mainClass.MainClass.minSupport
 
 object FPGrowthDemo extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)
-  val dataset = prendiDataset()
+  val (dataset, dimDataset) = prendiDataset()
   println("-----------------------------------")
   println("Dataset iniziale:\n" + dataset.mkString("\n"))
   println("-----------------------------------")
@@ -117,7 +117,7 @@ object FPGrowthDemo extends App {
         val subItemsFreq = itemsFreq.subsets().filter(_.nonEmpty).toList
         //Vengono ottenuti i frequentItemSet (aggiungendo a questi l'item) per poi aggiungere l'item di partenza alla lista degli item più frequenti
         val freqItemset = subItemsFreq.map(set => calcoloMinimi(set)).map(x => (x._1 :+ item) -> x._2) :+ (List(item) -> firstMapSorted(item))
-        if(item == "c"){
+        if (item == "c") {
           println("Frequent itemset derivati da c:\n" + freqItemset.mkString("\n"))
           println("-----------------------------------")
         }
@@ -156,7 +156,11 @@ object FPGrowthDemo extends App {
 
 
   def exec() = {
+    val (result, tempo) = time(avviaAlgoritmo())
+    (result, tempo, dimDataset)
+  }
 
+  def avviaAlgoritmo(): Map[Set[String], Int] = {
     //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
     val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport)
 
@@ -194,9 +198,4 @@ object FPGrowthDemo extends App {
     allFreqitemset.map(x => x._1.toSet -> x._2).toMap
   }
 
-  val result = time(exec())
-  val numTransazioni = dataset.size.toFloat
-
-  scriviSuFileFrequentItemSet(result, numTransazioni, "FPGrowthNewResult.txt")
-  scriviSuFileSupporto(result, numTransazioni, "FPGrowthNewResultSupport.txt")
 }

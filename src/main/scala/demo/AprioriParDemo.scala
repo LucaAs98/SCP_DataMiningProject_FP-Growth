@@ -9,12 +9,13 @@ import mainClass.MainClass.minSupport
 
 object AprioriParDemo extends App {
   //Prendiamo il dataset (vedi Utils per dettagli)
-  val dataset = prendiDataset().par
+  val (datasetAux, dimDataset) = prendiDataset()
+  val dataset = datasetAux.par
 
   //Passando la lista dei set degli item creati, conta quante volte c'è l'insieme nelle transazioni
   def countItemSet(item: List[Set[String]]): Map[Set[String], Int] = {
     //time(item.par.map(x => x -> dataset.count(y => x.subsetOf(y))).seq.toMap)
-    time(item.map(x => x -> dataset.count(y => x.subsetOf(y))).seq.toMap)
+    time(item.map(x => x -> dataset.count(y => x.subsetOf(y))).seq.toMap)._1
   }
 
   //Filtraggio degli itemset, vengono eliminati se i subset non itemset frequenti, poi vengono eliminati anche filtrati
@@ -50,12 +51,13 @@ object AprioriParDemo extends App {
 
   //Esecuzione effettiva dell'algoritmo
   def exec() = {
+    val (result, tempo) = time(avviaAlgoritmo())
+    (result, tempo, dimDataset)
+  }
+
+  def avviaAlgoritmo():Map[Set[String], Int] = {
     val firstStep = countItemSet(totalItem).filter(x => x._2 >= minSupport)
     //Primo passo, conteggio delle occorrenze dei singoli item con il filtraggio
     aprioriIter(firstStep, 2)
   }
-
-  val result = time(exec())
-  scriviSuFileFrequentItemSet(result, dataset.size.toFloat, "AprioriParResult.txt")
-  scriviSuFileSupporto(result, dataset.size.toFloat, "AprioriParConfidenzaResult.txt")
 }
