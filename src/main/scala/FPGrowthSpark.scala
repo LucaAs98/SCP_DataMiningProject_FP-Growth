@@ -7,11 +7,11 @@ import utils.Utils._
 object FPGrowthSpark extends App {
   val sc = getSparkContext("FPGrowthSpark")
   //Prendiamo il dataset (vedi Utils per dettagli)
-  val lines = getRDD(sc)
+  val (lines, dimDataset) = getRDD(sc)
   val dataset = lines.map(x => x.split(" "))
 
   //nostro supp/num. trans
-  val fpg = new FPGrowth().setMinSupport(0.003).setNumPartitions(800)
+  val fpg = new FPGrowth().setMinSupport(0.0024).setNumPartitions(800)
 
   def avvia() = {
     val model = fpg.run(dataset)
@@ -20,7 +20,7 @@ object FPGrowthSpark extends App {
     (model, freqItemSet)
   }
 
-  val (model, result) = time(avvia())
+  val (model, result) = time(avvia())._1
   //Scriviamo il risultato nel file
   val writingFile = new File("src/main/resources/results/FPGrowthFreqItemSetSpark.txt")
   val bw = new BufferedWriter(new FileWriter(writingFile))

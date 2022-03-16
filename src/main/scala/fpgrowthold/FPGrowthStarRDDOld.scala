@@ -7,15 +7,14 @@ import scala.collection.immutable.ListMap
 import scala.collection.mutable
 import utils.Utils._
 import classes.Node
-import mainClass.MainClass.minSupport
+
+import mainClass.MainClass.{minSupport, numParts}
 
 object FPGrowthStarRDDOld extends App {
   val sc = getSparkContext("FPGrowthStarRDDOld")
   //Prendiamo il dataset (vedi Utils per dettagli)
   val (lines, dimDataset) = getRDD(sc)
   val dataset = lines.map(x => x.split(" "))
-
-  val numParts = 20
 
   //Contiamo, filtriamo e sortiamo tutti gli elementi nel dataset
   def getSingleItemCount(partitioner: Partitioner): Array[(String, Int)] = {

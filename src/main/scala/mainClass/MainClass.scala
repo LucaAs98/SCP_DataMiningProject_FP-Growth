@@ -10,32 +10,32 @@ import utils.Utils.{scriviSuFileFrequentItemSet, scriviSuFileSupporto}
 
 object MainClass {
 
-  val algoritmo = 0
+  val algoritmo = 13
   val dataset = 0
   val flagScriviSuFile = true
   //Parametro di basket mining
-  val minSupport = 2000
+  val minSupport = 30
+  val numParts = 20
 
   val mappaAlgoritmi: Map[Int, String] = Map[Int, String](
-    1 -> "Apriori",
-    2 -> "AprioriPar",
-    3 -> "AprioriRDD",
-    4 -> "Eclat",
-    5 -> "EclatPar",
-    6 -> "EclatRDD",
-    7 -> "FPGrowth",
-    8 -> "FPGrowthPar",
-    9 -> "FPGrowthRDD",
-    10 -> "FPGrowthStar",
-    11 -> "FPGrowthStarPar",
-    12 -> "FPGrowthStarRDD",
-    13 -> "NonordFP",
-    14 -> "NonordFPPar",
-    15 -> "NonordFPRDD",
-    16 -> "FPGrowthMod",
-    17 -> "FPGrowthModPar",
-    18 -> "FPGrowthModRDD",
-    19 -> "FPGrowthSpark")
+    0 -> "Apriori",
+    1 -> "AprioriPar",
+    2 -> "AprioriRDD",
+    3 -> "Eclat",
+    4 -> "EclatPar",
+    5 -> "EclatRDD",
+    6 -> "FPGrowth",
+    7 -> "FPGrowthPar",
+    8 -> "FPGrowthRDD",
+    9 -> "FPGrowthStar",
+    10 -> "FPGrowthStarPar",
+    11 -> "FPGrowthStarRDD",
+    12 -> "NonordFP",
+    13 -> "NonordFPPar",
+    14 -> "NonordFPRDD",
+    15 -> "FPGrowthMod",
+    16 -> "FPGrowthModPar",
+    17 -> "FPGrowthModRDD")
 
   val mappaNomiFile: Map[Int, String] = Map[Int, String](
     0 -> "datasetKaggleAlimenti.txt",
@@ -64,8 +64,7 @@ object MainClass {
     val partizioni
     */
 
-
-    val (result, time) = algoritmo match {
+    val (result, time, size) = algoritmo match {
       case 0 => Apriori.exec()
       case 1 => AprioriPar.exec()
       case 2 => AprioriRDD.exec()
@@ -88,8 +87,8 @@ object MainClass {
 
 
     if (flagScriviSuFile) {
-      scriviSuFileFrequentItemSet(result, dataset.size.toFloat, mappaAlgoritmi(algoritmo) + "Result.txt")
-      scriviSuFileSupporto(result, dataset.size.toFloat, mappaAlgoritmi(algoritmo) + "ConfidenzaResult.txt")
+      scriviSuFileFrequentItemSet(result, size, mappaAlgoritmi(algoritmo) + "Result.txt")
+      scriviSuFileSupporto(result, size, mappaAlgoritmi(algoritmo) + "ConfidenzaResult.txt")
     }
 
   }

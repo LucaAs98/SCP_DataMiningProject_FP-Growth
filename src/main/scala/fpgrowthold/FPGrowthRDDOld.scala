@@ -1,13 +1,13 @@
 package fpgrowthold
 
+import classes.Node
+import mainClass.MainClass.{minSupport, numParts}
 import org.apache.spark.{HashPartitioner, Partitioner}
+import utils.Utils._
 
 import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 import scala.collection.mutable
-import utils.Utils._
-import classes.Node
-import mainClass.MainClass.minSupport
 
 object FPGrowthRDDOld extends App {
   val sc = getSparkContext("FPGrowthRDD")
@@ -15,7 +15,6 @@ object FPGrowthRDDOld extends App {
   val (lines, dimDataset) = getRDD(sc)
   val dataset = lines.map(x => x.split(" "))
 
-  val numParts = 300
 
   //Contiamo, filtriamo e sortiamo tutti gli elementi nel dataset
   def getSingleItemCount(partitioner: Partitioner): Array[(String, Int)] = {
@@ -199,7 +198,7 @@ object FPGrowthRDDOld extends App {
     (result, tempo, dimDataset)
   }
 
-  def avviaAlgoritmo():Map[Set[String], Int] = {
+  def avviaAlgoritmo(): Map[Set[String], Int] = {
     //Creiamo il partitioner
     val partitioner = new HashPartitioner(numParts)
 

@@ -1,13 +1,14 @@
 package demo
 
 import classes.{Node, Tree}
+import mainClass.MainClass.{minSupport, numParts}
 import org.apache.spark.{HashPartitioner, Partitioner}
 import utils.Utils._
 
 import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 import scala.collection.mutable
-import mainClass.MainClass.minSupport
+
 
 object FPGrowthRDDDemo extends App {
   val sc = getSparkContext("FPGrowthRDD")
@@ -15,7 +16,6 @@ object FPGrowthRDDDemo extends App {
   val (lines, dimDataset) = getRDD(sc)
   val dataset = lines.map(x => x.split(" "))
 
-  val numParts = 2
 
   //Contiamo, filtriamo e sortiamo tutti gli elementi nel dataset
   def getSingleItemCount(partitioner: Partitioner): Array[(String, Int)] = {
