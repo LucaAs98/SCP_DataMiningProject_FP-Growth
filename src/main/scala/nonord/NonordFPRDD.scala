@@ -1,7 +1,6 @@
 package nonord
 
 import classes.{ArrayTrie, Trie}
-import mainClass.MainClass.{minSupport, numParts}
 import org.apache.spark.{HashPartitioner, Partitioner}
 import utils.Utils._
 
@@ -9,13 +8,12 @@ import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 import scala.collection.mutable
 
-object NonordFPRDD{
+object NonordFPRDD {
   //Esecuzione effettiva dell'algoritmo
-  def exec(): (Map[Set[String], Int], Long, Float) = {
-
-    val sc = getSparkContext("NonordFPRDDOld")
+  def exec(minSupport: Int, numParts: Int, pathInput: String): (Map[Set[String], Int], Long, Float) = {
+    val sc = getSparkContext("NonordFPRDD")
     //Prendiamo il dataset (vedi Utils per dettagli)
-    val (lines, dimDataset) = getRDD(sc)
+    val (lines, dimDataset) = getRDD(pathInput, sc)
     val dataset = lines.map(x => x.split(" "))
 
     //Contiamo, filtriamo e sortiamo tutti gli elementi nel dataset

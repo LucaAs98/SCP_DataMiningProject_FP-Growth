@@ -5,14 +5,13 @@ import scala.collection.immutable.ListMap
 import scala.collection.parallel.ParMap
 import utils.Utils._
 import classes.Tree
-import mainClass.MainClass.minSupport
 
 object FPGrowthPar extends App {
 
-  def exec() = {
+  def exec(minSupport: Int, pathInput:String) = {
 
     //Prendiamo il dataset (vedi Utils per dettagli)
-    val (datasetAux, dimDataset) = prendiDataset()
+    val (datasetAux, dimDataset) = prendiDataset(pathInput)
     val dataset = datasetAux.par
 
     //Elementi singoli presenti nel dataset

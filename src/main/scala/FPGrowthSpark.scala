@@ -1,3 +1,4 @@
+/*
 import java.io.{BufferedWriter, File, FileWriter}
 
 import org.apache.spark.mllib.fpm.FPGrowth
@@ -40,3 +41,4 @@ object FPGrowthSpark extends App {
   }
   bw2.close()
 }
+*/

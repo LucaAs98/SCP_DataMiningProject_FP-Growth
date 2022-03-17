@@ -1,16 +1,15 @@
 package eclat
 
-import mainClass.MainClass.minSupport
 import utils.Utils._
 
 import scala.annotation.tailrec
 
 object Eclat {
   //Esecuzione effettiva dell'algoritmo
-  def exec(): (Map[Set[String], Int], Long, Float) = {
+  def exec(minSupport: Int, pathInput: String): (Map[Set[String], Int], Long, Float) = {
     //Prendiamo il dataset (vedi Utils per dettagli)
     //val dataset = prendiDataset()
-    val (dataset, dimDataset) = prendiDataset()
+    val (dataset, dimDataset) = prendiDataset(pathInput)
 
     //Creiamo gli ID per ogni transazione dato che non sono presenti nel dataset
     val transazioniFile = dataset.zipWithIndex.map({ x => (x._2, x._1) })

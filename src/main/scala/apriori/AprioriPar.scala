@@ -2,15 +2,14 @@ package apriori
 
 import scala.annotation.tailrec
 import utils.Utils._
-import mainClass.MainClass.minSupport
 
 object AprioriPar{
 
   //Esecuzione effettiva dell'algoritmo
-  def exec(): (Map[Set[String], Int], Long, Float) = {
+  def exec(minSupport: Int, pathInput:String): (Map[Set[String], Int], Long, Float) = {
 
     //Prendiamo il dataset (vedi Utils per dettagli)
-    val (datasetAux, dimDataset) = prendiDataset()
+    val (datasetAux, dimDataset) = prendiDataset(pathInput)
     val dataset = (datasetAux).par
 
     //Passando la lista dei set degli item creati, conta quante volte c'è l'insieme nelle transazioni

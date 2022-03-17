@@ -1,7 +1,6 @@
 package fpgrowth
 
 import classes.{Node, Tree}
-import mainClass.MainClass.{minSupport, numParts}
 import org.apache.spark.{HashPartitioner, Partitioner}
 import utils.Utils._
 
@@ -10,10 +9,10 @@ import scala.collection.immutable.ListMap
 import scala.collection.mutable
 
 object FPGrowthRDD {
-  def exec() = {
+  def exec(minSupport: Int, numParts:Int, pathInput:String) = {
     val sc = getSparkContext("FPGrowthRDD")
     //Prendiamo il dataset (vedi Utils per dettagli)
-    val (lines, dimDataset) = getRDD(sc)
+    val (lines, dimDataset) = getRDD(pathInput,sc)
     val dataset = lines.map(x => x.split(" "))
 
     //Contiamo, filtriamo e sortiamo tutti gli elementi nel dataset

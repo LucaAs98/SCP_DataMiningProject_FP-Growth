@@ -4,15 +4,13 @@ import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 import utils.Utils._
 import classes.{TreeStar, Node}
-import mainClass.MainClass.minSupport
 
 object FPGrowthStarPar {
 
   //Esecuzione effettiva dell'algoritmo
-  def exec(): (Map[Set[String], Int], Long, Float) = {
-
+  def exec(minSupport: Int, pathInput:String): (Map[Set[String], Int], Long, Float) = {
     //Prendiamo il dataset (vedi Utils per dettagli)
-    val (datasetAux, dimDataset) = prendiDataset()
+    val (datasetAux, dimDataset) = prendiDataset(pathInput)
     val dataset = (datasetAux).par
 
     //Elementi singoli presenti nel dataset

@@ -5,12 +5,11 @@ import utils.Utils._
 
 import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
-import mainClass.MainClass.minSupport
 
 object FPGrowthDemo {
-  def exec(): (Map[Set[String], Int], Long, Float) = {
+  def exec(minSupport: Int, pathInput:String): (Map[Set[String], Int], Long, Float) = {
     //Prendiamo il dataset (vedi Utils per dettagli)
-    val (dataset, dimDataset) = prendiDataset()
+    val (dataset, dimDataset) = prendiDataset(pathInput)
     println("-----------------------------------")
     println("Dataset iniziale:\n" + dataset.mkString("\n"))
     println("-----------------------------------")

@@ -2,14 +2,13 @@ package apriori
 
 import scala.annotation.tailrec
 import utils.Utils._
-import mainClass.MainClass.minSupport
 
 
 object Apriori extends App {
   //Esecuzione effettiva dell'algoritmo
-  def exec() = {
+  def exec(minSupport: Int, pathInput: String) = {
     //Prendiamo il dataset (vedi Utils per dettagli)
-    val (dataset, dimDataset) = prendiDataset()
+    val (dataset, dimDataset) = prendiDataset(pathInput)
     //Calcolo di tutti i singoli item
     val totalItem = (dataset reduce ((xs, x) => xs ++ x) map (x => Set(x))).toList
 

@@ -1,8 +1,8 @@
 package utils
+
 import java.io.{BufferedWriter, File, FileWriter}
 
 
-import mainClass.MainClass.nomeFile
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
@@ -11,26 +11,12 @@ import scala.io.Source
 object Utils {
 
   //Funzione per prendere il dataset dal file
-  def prendiDataset(): (List[Set[String]], Float) = {
-    val filePath = "src/main/resources/dataset/" + nomeFile
-    val file = new File(filePath)
+  def prendiDataset(path: String): (List[Set[String]], Float) = {
+    val file = new File(path)
     val source = Source.fromFile(file)
     val dataset = source.getLines().map(x => x.split(" ").toSet).toList //Contenuto di tutto il file come lista
     source.close()
     (dataset, dataset.size.toFloat)
-  }
-
-  //Funzione per prendere il dataset dal file
-  def prendiDatasetInt(nomeFile: String): List[Set[Int]] = {
-    val filePath = "src/main/resources/dataset/" + nomeFile
-    val file = new File(filePath)
-    val source = Source.fromFile(file)
-    val dataset = source.getLines().map(x => x.split(" ").toSet).toList //Contenuto di tutto il file come lista
-    source.close()
-
-    val distinctDataset = dataset.flatten.distinct.sortWith(_ < _).zipWithIndex.toMap
-
-    dataset.map(x => x.map(distinctDataset(_)))
   }
 
   //Valuta il tempo di un'espressione
@@ -80,23 +66,23 @@ object Utils {
   }
 
   //Formatta il risultato ottenuto dalle computazioni in modo tale da calcolarne i frequentItemSet e lo salva su file
-  def scriviSuFileFrequentItemSet(result: Map[Set[String], Int], numTransazioni: Float, nomeFile: String): Unit = {
+  def scriviSuFileFrequentItemSet(result: Map[Set[String], Int], numTransazioni: Float, path: String): Unit = {
     //Riordiniamo il risultato per visualizzarlo meglio sul file
     val resultOrdered1 = result.toSeq.sortBy(_._2).map(elem => elem._1 -> (elem._2, elem._2.toFloat / numTransazioni)).toList.map(elem => elem.toString())
 
-    scrivi(resultOrdered1, nomeFile)
+    scrivi(resultOrdered1, path)
   }
 
   //Formatta il risultato ottenuto dalle computazioni in modo tale da calcolarne il supporto e lo salva su file
-  def scriviSuFileSupporto(result: Map[Set[String], Int], numTransazioni: Float, nomeFile: String): Unit = {
+  def scriviSuFileSupporto(result: Map[Set[String], Int], numTransazioni: Float, path: String): Unit = {
     val result2 = result.filter(x => x._1.size > 1).keys.toList.flatMap(x => calcoloConfidenza(x, numTransazioni, result))
 
-    scrivi(result2, nomeFile)
+    scrivi(result2, path)
   }
 
   //Scrittura effettiva su file
-  def scrivi(daScrivere: List[String], nomeFile: String): Unit = {
-    val writingFile = new File("src/main/resources/results/" + nomeFile)
+  def scrivi(daScrivere: List[String], path: String): Unit = {
+    val writingFile = new File(path)
     val bw = new BufferedWriter(new FileWriter(writingFile))
     for (row <- daScrivere) {
       bw.write(row + "\n")
@@ -112,16 +98,8 @@ object Utils {
   }
 
   //Restituisce un RDD da file
-  def getRDD(sc: SparkContext): (RDD[String], Float) = {
-    val file = "src/main/resources/dataset/" + nomeFile
-    val dataset = sc.textFile(file)
-    (dataset, dataset.count().toFloat)
-  }
-
-  //Restituisce un RDD da file
-  def getRDD(nomeFile: String, sc: SparkContext): (RDD[String], Float) = {
-    val file = "src/main/resources/dataset/" + nomeFile
-    val dataset = sc.textFile(file)
+  def getRDD(path: String, sc: SparkContext): (RDD[String], Float) = {
+    val dataset = sc.textFile(path)
     (dataset, dataset.count().toFloat)
   }
 }

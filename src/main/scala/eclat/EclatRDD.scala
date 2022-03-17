@@ -2,14 +2,13 @@ package eclat
 
 import scala.annotation.tailrec
 import utils.Utils._
-import mainClass.MainClass.minSupport
 
 object EclatRDD{
 
-  def exec(): (Map[Set[String], Int], Long, Float) = {
+  def exec(minSupport: Int, pathInput:String): (Map[Set[String], Int], Long, Float) = {
     val sc = getSparkContext("EclatRDD")
     //Prendiamo il dataset (vedi Utils per dettagli)
-    val (lines, dimDataset) = getRDD(sc)
+    val (lines, dimDataset) = getRDD(pathInput, sc)
     val dataset = lines.map(x => x.split(" ").toSet)
     val transazioniFile = dataset.zipWithIndex.map({ x => x._2 -> x._1 })
 

@@ -6,14 +6,12 @@ import scala.collection.mutable
 import scala.collection.parallel.{ParIterable, ParMap}
 import utils.Utils._
 import classes.{Trie, ArrayTrie}
-import mainClass.MainClass.minSupport
 
-object NonordFPPar{
+object NonordFPPar {
   //Esecuzione effettiva dell'algoritmo
-  def exec(): (Map[Set[String], Int], Long, Float) = {
-
+  def exec(minSupport: Int, pathInput:String): (Map[Set[String], Int], Long, Float) = {
     //Prendiamo il dataset (vedi Utils per dettagli)
-    val (datasetAux, dimDataset) = prendiDataset()
+    val (datasetAux, dimDataset) = prendiDataset(pathInput)
     val dataset = (datasetAux).par
 
     //Elementi singoli presenti nel dataset

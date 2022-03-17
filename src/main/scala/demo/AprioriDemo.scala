@@ -3,14 +3,13 @@ package demo
 import utils.Utils._
 
 import scala.annotation.tailrec
-import mainClass.MainClass.minSupport
 
 object AprioriDemo extends App {
 
   //Esecuzione effettiva dell'algoritmo
-  def exec() = {
+  def exec(minSupport: Int, pathInput:String) = {
     //Prendiamo il dataset (vedi Utils per dettagli)
-    val (dataset, dimDataset) = prendiDataset()
+    val (dataset, dimDataset) = prendiDataset(pathInput)
 
     println("-----------------------------------")
     println("Dataset:\n" + dataset.mkString("\n"))

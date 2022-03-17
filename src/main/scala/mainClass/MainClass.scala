@@ -46,50 +46,34 @@ object MainClass {
     5 -> "datasetLettereDemo.txt"
   )
 
-  def nomeFile: String = mappaNomiFile(dataset)
+  val nomeDataset: String = "src/main/resources/dataset/" + mappaNomiFile(dataset)
 
-  def main(args: Array[String]) {
-
-    /*
-    if (args.length != 2) {
-      throw new IllegalArgumentException(
-        "Exactly 2 arguments are required: <inputPath> <outputPath>")
-    }
-
-    val inputPath = args(0)
-    val outputPath = args(1)
-    val algortmo
-    val support
-    val dataset
-    val partizioni
-    */
+  def main(args: Array[String]): Unit = {
 
     val (result, time, size) = algoritmo match {
-      case 0 => Apriori.exec()
-      case 1 => AprioriPar.exec()
-      case 2 => AprioriRDD.exec()
-      case 3 => Eclat.exec()
-      case 4 => EclatPar.exec()
-      case 5 => EclatRDD.exec()
-      case 6 => FPGrowth.exec()
-      case 7 => FPGrowthPar.exec()
-      case 8 => FPGrowthRDD.exec()
-      case 9 => FPGrowthStar.exec()
-      case 10 => FPGrowthStarPar.exec()
-      case 11 => FPGrowthStarRDD.exec()
-      case 12 => NonordFP.exec()
-      case 13 => NonordFPPar.exec()
-      case 14 => NonordFPRDD.exec()
-      case 15 => FPGrowthMod.exec()
-      case 16 => FPGrowthModPar.exec()
-      case 17 => FPGrowthModRDD.exec()
+      case 0 => Apriori.exec(minSupport, nomeDataset)
+      case 1 => AprioriPar.exec(minSupport, nomeDataset)
+      case 2 => AprioriRDD.exec(minSupport, nomeDataset)
+      case 3 => Eclat.exec(minSupport, nomeDataset)
+      case 4 => EclatPar.exec(minSupport, nomeDataset)
+      case 5 => EclatRDD.exec(minSupport, nomeDataset)
+      case 6 => FPGrowth.exec(minSupport, nomeDataset)
+      case 7 => FPGrowthPar.exec(minSupport, nomeDataset)
+      case 8 => FPGrowthRDD.exec(minSupport, numParts, nomeDataset)
+      case 9 => FPGrowthStar.exec(minSupport, nomeDataset)
+      case 10 => FPGrowthStarPar.exec(minSupport, nomeDataset)
+      case 11 => FPGrowthStarRDD.exec(minSupport, numParts, nomeDataset)
+      case 12 => NonordFP.exec(minSupport, nomeDataset)
+      case 13 => NonordFPPar.exec(minSupport, nomeDataset)
+      case 14 => NonordFPRDD.exec(minSupport, numParts, nomeDataset)
+      case 15 => FPGrowthMod.exec(minSupport, nomeDataset)
+      case 16 => FPGrowthModPar.exec(minSupport, nomeDataset)
+      case 17 => FPGrowthModRDD.exec(minSupport, numParts, nomeDataset)
     }
-
 
     if (flagScriviSuFile) {
-      scriviSuFileFrequentItemSet(result, size, mappaAlgoritmi(algoritmo) + "Result.txt")
-      scriviSuFileSupporto(result, size, mappaAlgoritmi(algoritmo) + "ConfidenzaResult.txt")
+      scriviSuFileFrequentItemSet(result, size, "src/main/resources/results/" + mappaAlgoritmi(algoritmo) + "Result.txt")
+      scriviSuFileSupporto(result, size, "src/main/resources/results/" + mappaAlgoritmi(algoritmo) + "ConfidenzaResult.txt")
     }
-
   }
 }

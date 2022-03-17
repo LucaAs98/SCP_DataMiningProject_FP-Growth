@@ -1,6 +1,5 @@
 package apriori
 
-import mainClass.MainClass.minSupport
 import org.apache.spark.rdd.RDD
 import utils.Utils._
 
@@ -8,10 +7,10 @@ import scala.annotation.tailrec
 
 object AprioriRDD extends App {
 
-  def exec() = {
+  def exec(minSupport: Int, pathInput: String) = {
     val sc = getSparkContext("AprioriRDD")
     //Prendiamo il dataset (vedi Utils per dettagli)
-    val (dataset, dimDataset) = getRDD(sc)
+    val (dataset, dimDataset) = getRDD(pathInput, sc)
     val items = dataset.flatMap(x => x.split(" "))
 
     def generazioneCandidati(itemSets: RDD[Set[String]], size: Int): List[Set[String]] = {

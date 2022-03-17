@@ -1,7 +1,6 @@
 package fpgrowthmod
 
 import classes.{Node, Tree}
-import mainClass.MainClass.{minSupport, numParts}
 import org.apache.spark.{HashPartitioner, Partitioner}
 import utils.Utils._
 
@@ -11,11 +10,11 @@ import scala.collection.mutable
 
 object FPGrowthModRDD {
   //Esecuzione effettiva dell'algoritmo
-  def exec(): (Map[Set[String], Int], Long, Float) = {
+  def exec(minSupport: Int, numParts: Int, pathInput: String): (Map[Set[String], Int], Long, Float) = {
 
     val sc = getSparkContext("FPGrowthModRDD")
     //Prendiamo il dataset (vedi Utils per dettagli)
-    val (lines, dimDataset) = getRDD(sc)
+    val (lines, dimDataset) = getRDD(pathInput, sc)
     val dataset = lines.map(x => x.split(" "))
 
 

@@ -3,14 +3,13 @@ package eclat
 import scala.annotation.tailrec
 import scala.collection.parallel.immutable.{ParMap, ParSet}
 import utils.Utils._
-import mainClass.MainClass.minSupport
 
 /** Per commenti più dettagliati vedi file dell'algoritmo classico. * */
 object EclatPar {
-  def exec(): (Map[Set[String], Int], Long, Float) = {
+  def exec(minSupport: Int, pathInput: String): (Map[Set[String], Int], Long, Float) = {
 
     //Prendiamo il dataset (vedi Utils per dettagli)
-    val (datasetAux, dimDataset) = prendiDataset()
+    val (datasetAux, dimDataset) = prendiDataset(pathInput)
     val dataset = (datasetAux).par
 
     val transazioniFile = dataset.zipWithIndex.map(elem => elem._2 -> elem._1)

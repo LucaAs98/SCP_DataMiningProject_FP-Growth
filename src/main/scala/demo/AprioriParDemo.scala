@@ -3,15 +3,14 @@ package demo
 import utils.Utils._
 
 import scala.annotation.tailrec
-import mainClass.MainClass.minSupport
 
 //Demo da effettuare con T10 minSup = 2000
 
 object AprioriParDemo extends App {
   //Esecuzione effettiva dell'algoritmo
-  def exec() = {
+  def exec(minSupport: Int, pathInput:String) = {
     //Prendiamo il dataset (vedi Utils per dettagli)
-    val (datasetAux, dimDataset) = prendiDataset()
+    val (datasetAux, dimDataset) = prendiDataset(pathInput)
     val dataset = datasetAux.par
 
     //Passando la lista dei set degli item creati, conta quante volte c'è l'insieme nelle transazioni
