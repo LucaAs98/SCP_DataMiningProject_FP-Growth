@@ -1,12 +1,14 @@
 package mainClass
 
-import apriori.{Apriori, AprioriPar, AprioriRDD}
-import eclat.{Eclat, EclatPar, EclatRDD}
+import apriori.AprioriRDD
+import eclat.EclatRDD
 import fpgrowth.FPGrowthRDD
-import fpgrowthmod.{FPGrowthMod, FPGrowthModPar, FPGrowthModRDD}
-import fpgrowthstar.{FPGrowthStar, FPGrowthStarPar, FPGrowthStarRDD}
-import nonord.{NonordFP, NonordFPPar, NonordFPRDD}
-import utils.Utils.{scriviSuFileFrequentItemSet, scriviSuFileSupporto}
+import fpgrowthmod.FPGrowthModRDD
+import fpgrowthstar.FPGrowthStarRDD
+import nonord.NonordFPRDD
+import org.apache.spark.SparkContext
+import utils.Utils
+import utils.Utils.{getSparkContext, prova, scriviSuFileFrequentItemSet}
 
 object MainClassGCP {
   val mappaNomiFile: Map[Int, String] = Map[Int, String](
@@ -42,7 +44,9 @@ object MainClassGCP {
       case "FPGrowthModRDD" => FPGrowthModRDD.exec(minSupport, numParts, nomeDataset)
     }
 
-    scriviSuFileFrequentItemSet(result, size, outputPath + "/" + algoritmo + "Result.txt")
-    scriviSuFileSupporto(result, size, outputPath + "/" + algoritmo + "ConfidenzaResult.txt")
+    /*** DA SISTEMARE SPARK CONTEXT ***/
+    val sparkContext = SparkContext.getOrCreate()
+    sparkContext.parallelize(prova(result, size)).saveAsTextFile(outputPath + "/" + algoritmo + "Result.txt")
+    //scriviSuFileSupporto(result, size, outputPath + "/" + algoritmo + "ConfidenzaResult")//.txt")
   }
 }

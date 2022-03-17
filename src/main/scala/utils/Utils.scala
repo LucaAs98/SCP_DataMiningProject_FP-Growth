@@ -1,15 +1,12 @@
 package utils
 
-import java.io.{BufferedWriter, File, FileWriter}
-
-
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
+import java.io.{BufferedWriter, File, FileWriter}
 import scala.io.Source
 
 object Utils {
-
   //Funzione per prendere il dataset dal file
   def prendiDataset(path: String): (List[Set[String]], Float) = {
     val file = new File(path)
@@ -69,7 +66,6 @@ object Utils {
   def scriviSuFileFrequentItemSet(result: Map[Set[String], Int], numTransazioni: Float, path: String): Unit = {
     //Riordiniamo il risultato per visualizzarlo meglio sul file
     val resultOrdered1 = result.toSeq.sortBy(_._2).map(elem => elem._1 -> (elem._2, elem._2.toFloat / numTransazioni)).toList.map(elem => elem.toString())
-
     scrivi(resultOrdered1, path)
   }
 
@@ -101,5 +97,11 @@ object Utils {
   def getRDD(path: String, sc: SparkContext): (RDD[String], Float) = {
     val dataset = sc.textFile(path)
     (dataset, dataset.count().toFloat)
+  }
+
+  //Formatta il risultato ottenuto dalle computazioni in modo tale da calcolarne i frequentItemSet e lo salva su file
+  def prova(result: Map[Set[String], Int], numTransazioni: Float): List[String] = {
+    //Riordiniamo il risultato per visualizzarlo meglio sul file
+    result.toSeq.map(elem => elem._1 -> (elem._2, elem._2.toFloat / numTransazioni)).toList.map(elem => elem.toString())
   }
 }
