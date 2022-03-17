@@ -3,12 +3,11 @@ package demo
 import utils.Utils._
 
 import scala.annotation.tailrec
-import mainClass.MainClass.minSupport
 
 object EclatDemo extends App {
-  def exec() = {
+  def exec(minSupport: Int, pathInput:String) = {
     //Prendiamo il dataset (vedi Utils per dettagli)
-    val (dataset, dimDataset) = prendiDataset()
+    val (dataset, dimDataset) = prendiDataset(pathInput)
 
     //Creiamo gli ID per ogni transazione dato che non sono presenti nel dataset
     val transazioniFile = dataset.zipWithIndex.map({ x => (x._2, x._1) })
