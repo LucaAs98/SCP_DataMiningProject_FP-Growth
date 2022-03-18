@@ -8,11 +8,11 @@ import scala.collection.mutable
 import utils.Utils._
 import classes.{TreeStar, Node}
 
-object FPGrowthStarRDD {
+object FPGrowthStarRDD extends Serializable{
   //Esecuzione effettiva dell'algoritmo
-  def exec(minSupport: Int, numParts: Int, pathInput:String): (Map[Set[String], Int], Long, Float) = {
+  def exec(minSupport: Int, numParts: Int, pathInput:String, master: String): (Map[Set[String], Int], Long, Float) = {
 
-    val sc = getSparkContext("FPGrowthStarRDDOld")
+    val sc = getSparkContext("FPGrowthStarRDDOld", master)
     //Prendiamo il dataset (vedi Utils per dettagli)
     val (lines, dimDataset) = getRDD(pathInput,sc)
     val dataset = lines.map(x => x.split(" "))

@@ -1,10 +1,10 @@
 package utils
 
-import org.apache.spark.rdd.RDD
-import org.apache.spark.sql.SparkSession
-import org.apache.spark.{SparkConf, SparkContext}
-
 import java.io.{BufferedWriter, File, FileWriter}
+
+import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.rdd.RDD
+
 import scala.io.Source
 
 object Utils {
@@ -82,6 +82,12 @@ object Utils {
     scrivi(result2, path)
   }
 
+  //Formatta il risultato ottenuto dalle computazioni in modo tale da calcolarne il supporto e lo salva su file
+  def formattaPerOutputGCP_Supporto(result: Map[Set[String], Int], numTransazioni: Float): List[String] = {
+    result.filter(x => x._1.size > 1).keys.toList.flatMap(x => calcoloConfidenza(x, numTransazioni, result))
+  }
+
+
   //Scrittura effettiva su file
   def scrivi(daScrivere: List[String], path: String): Unit = {
     val writingFile = new File(path)
@@ -93,10 +99,9 @@ object Utils {
   }
 
   //Restituisce uno spark context
-  def getSparkContext(nomeContext: String): SparkContext = {
-    /*val conf = new SparkConf().setAppName(nomeContext).setMaster("local[*]")
-    val sc = new SparkContext(conf)*/
-    val sparkContext = SparkContext.getOrCreate()
+  def getSparkContext(nomeContext: String, master: String): SparkContext = {
+    val conf = new SparkConf().setAppName(nomeContext).setMaster(master)
+    val sparkContext = SparkContext.getOrCreate(conf)
     sparkContext
   }
 

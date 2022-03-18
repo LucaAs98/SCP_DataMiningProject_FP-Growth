@@ -8,10 +8,10 @@ import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 import scala.collection.mutable
 
-object NonordFPRDD {
+object NonordFPRDD extends Serializable{
   //Esecuzione effettiva dell'algoritmo
-  def exec(minSupport: Int, numParts: Int, pathInput: String): (Map[Set[String], Int], Long, Float) = {
-    val sc = getSparkContext("NonordFPRDD")
+  def exec(minSupport: Int, numParts: Int, pathInput: String, master: String): (Map[Set[String], Int], Long, Float) = {
+    val sc = getSparkContext("NonordFPRDD", master)
     //Prendiamo il dataset (vedi Utils per dettagli)
     val (lines, dimDataset) = getRDD(pathInput, sc)
     val dataset = lines.map(x => x.split(" "))
@@ -152,7 +152,7 @@ object NonordFPRDD {
       val itemToRank = firstMapSorted.zipWithIndex.map(x => x._1._1 -> (x._2, x._1._2))
 
       //Creiamo le transazioni condizionali in base al gruppo/partizione in cui si trova ogni item
-      val condTrans = dataset.flatMap(transaction => genCondTransactions(transaction, itemToRank, partitioner))
+      val condTrans = dataset.flatMap(transaction => genCondTransactions(transaction, itemToRank, partitioner)).partitionBy(partitioner)
 
       //Transazioni condizionali raggruppate per partizione
       val condTransGrouped = condTrans.groupByKey(partitioner.numPartitions)

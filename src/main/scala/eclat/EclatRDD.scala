@@ -5,8 +5,8 @@ import utils.Utils._
 
 object EclatRDD{
 
-  def exec(minSupport: Int, pathInput:String): (Map[Set[String], Int], Long, Float) = {
-    val sc = getSparkContext("EclatRDD")
+  def exec(minSupport: Int, pathInput:String, master: String): (Map[Set[String], Int], Long, Float) = {
+    val sc = getSparkContext("EclatRDD", master)
     //Prendiamo il dataset (vedi Utils per dettagli)
     val (lines, dimDataset) = getRDD(pathInput, sc)
     val dataset = lines.map(x => x.split(" ").toSet)

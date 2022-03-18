@@ -7,7 +7,7 @@ import fpgrowthmod.FPGrowthModRDD
 import fpgrowthstar.FPGrowthStarRDD
 import nonord.NonordFPRDD
 import org.apache.spark.SparkContext
-import utils.Utils.formattaPerOutputGCP_FreItems
+import utils.Utils.{formattaPerOutputGCP_FreItems, formattaPerOutputGCP_Supporto}
 
 object MainClassGCP {
   val mappaNomiFile: Map[Int, String] = Map[Int, String](
@@ -35,17 +35,16 @@ object MainClassGCP {
     val nomeDataset = inputPath + mappaNomiFile(dataset)
 
     val (result, time, size) = algoritmo match {
-      case "AprioriRDD" => AprioriRDD.exec(minSupport, nomeDataset)
-      case "EclatRDD" => EclatRDD.exec(minSupport, nomeDataset)
-      case "FPGrowthRDD" => FPGrowthRDD.exec(minSupport, numParts, nomeDataset)
-      case "FPGrowthStarRDD" => FPGrowthStarRDD.exec(minSupport, numParts, nomeDataset)
-      case "NonordFPRDD" => NonordFPRDD.exec(minSupport, numParts, nomeDataset)
-      case "FPGrowthModRDD" => FPGrowthModRDD.exec(minSupport, numParts, nomeDataset)
+      case "AprioriRDD" => AprioriRDD.exec(minSupport, nomeDataset, "yarn")
+      case "EclatRDD" => EclatRDD.exec(minSupport, nomeDataset, "yarn")
+      case "FPGrowthRDD" => FPGrowthRDD.exec(minSupport, numParts, nomeDataset, "yarn")
+      case "FPGrowthStarRDD" => FPGrowthStarRDD.exec(minSupport, numParts, nomeDataset, "yarn")
+      case "NonordFPRDD" => NonordFPRDD.exec(minSupport, numParts, nomeDataset, "yarn")
+      case "FPGrowthModRDD" => FPGrowthModRDD.exec(minSupport, numParts, nomeDataset, "yarn")
     }
 
-    /*** DA SISTEMARE SPARK CONTEXT ***/
     val sparkContext = SparkContext.getOrCreate()
     sparkContext.parallelize(formattaPerOutputGCP_FreItems(result, size)).saveAsTextFile(outputPath + "/" + algoritmo + "Result")
-    //scriviSuFileSupporto(result, size, outputPath + "/" + algoritmo + "ConfidenzaResult")//.txt")
+    sparkContext.parallelize(formattaPerOutputGCP_Supporto(result, size)).saveAsTextFile(outputPath + "/" + algoritmo + "ConfidenzaResult")
   }
 }

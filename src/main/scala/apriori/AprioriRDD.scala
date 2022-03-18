@@ -7,8 +7,8 @@ import scala.annotation.tailrec
 
 object AprioriRDD extends App {
 
-  def exec(minSupport: Int, pathInput: String) = {
-    val sc = getSparkContext("AprioriRDD")
+  def exec(minSupport: Int, pathInput: String, master: String) = {
+    val sc = getSparkContext("AprioriRDD", master)
     //Prendiamo il dataset (vedi Utils per dettagli)
     val (dataset, dimDataset) = getRDD(pathInput, sc)
     val items = dataset.flatMap(x => x.split(" "))

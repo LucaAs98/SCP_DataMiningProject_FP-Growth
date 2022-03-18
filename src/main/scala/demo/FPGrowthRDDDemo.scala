@@ -10,8 +10,8 @@ import scala.collection.mutable
 
 
 object FPGrowthRDDDemo extends App {
-  def exec(minSupport: Int, numParts: Int, pathInput: String) = {
-    val sc = getSparkContext("FPGrowthRDD")
+  def exec(minSupport: Int, numParts: Int, pathInput: String, master: String) = {
+    val sc = getSparkContext("FPGrowthRDD", master)
     //Prendiamo il dataset (vedi Utils per dettagli)
     val (lines, dimDataset) = getRDD(pathInput, sc)
     val dataset = lines.map(x => x.split(" "))

@@ -9,8 +9,8 @@ import scala.collection.immutable.ListMap
 import scala.collection.mutable
 
 object FPGrowthRDD extends Serializable {
-  def exec(minSupport: Int, numParts:Int, pathInput:String): (Map[Set[String], Int], Long, Float) = {
-    val sc = getSparkContext("FPGrowthRDD")
+  def exec(minSupport: Int, numParts:Int, pathInput:String, master: String): (Map[Set[String], Int], Long, Float) = {
+    val sc = getSparkContext("FPGrowthRDD", master)
     //Prendiamo il dataset (vedi Utils per dettagli)
     val (lines, dimDataset) = getRDD(pathInput,sc)
     val dataset = lines.map(x => x.split(" "))
@@ -121,7 +121,7 @@ object FPGrowthRDD extends Serializable {
 
       //Creiamo le transazioni condizionali in base al gruppo/partizione in cui si trova ogni item
       //(Verificare su cloud se il partition by può darci vantaggi o meno)
-      val condTrans = dataset.flatMap(transaction => genCondTransactions(transaction, itemToRank, partitioner)) //.partitionBy(partitioner)
+      val condTrans = dataset.flatMap(transaction => genCondTransactions(transaction, itemToRank, partitioner)).partitionBy(partitioner)
 
       /*val condTrees = condTrans.aggregateByKey(new Tree(firstMapSorted), partitioner)(
         (tree, transaction) => {

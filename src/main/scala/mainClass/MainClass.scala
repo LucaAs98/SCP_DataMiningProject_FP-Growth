@@ -10,12 +10,12 @@ import utils.Utils.{scriviSuFileFrequentItemSet, scriviSuFileSupporto}
 
 object MainClass {
 
-  val algoritmo = 13
+  val algoritmo = 8
   val dataset = 0
   val flagScriviSuFile = true
   //Parametro di basket mining
   val minSupport = 30
-  val numParts = 20
+  val numParts = 10
 
   val mappaAlgoritmi: Map[Int, String] = Map[Int, String](
     0 -> "Apriori",
@@ -53,22 +53,22 @@ object MainClass {
     val (result, time, size) = algoritmo match {
       case 0 => Apriori.exec(minSupport, nomeDataset)
       case 1 => AprioriPar.exec(minSupport, nomeDataset)
-      case 2 => AprioriRDD.exec(minSupport, nomeDataset)
+      case 2 => AprioriRDD.exec(minSupport, nomeDataset, "local[*]")
       case 3 => Eclat.exec(minSupport, nomeDataset)
       case 4 => EclatPar.exec(minSupport, nomeDataset)
-      case 5 => EclatRDD.exec(minSupport, nomeDataset)
+      case 5 => EclatRDD.exec(minSupport, nomeDataset, "local[*]")
       case 6 => FPGrowth.exec(minSupport, nomeDataset)
       case 7 => FPGrowthPar.exec(minSupport, nomeDataset)
-      case 8 => FPGrowthRDD.exec(minSupport, numParts, nomeDataset)
+      case 8 => FPGrowthRDD.exec(minSupport, numParts, nomeDataset, "local[*]")
       case 9 => FPGrowthStar.exec(minSupport, nomeDataset)
       case 10 => FPGrowthStarPar.exec(minSupport, nomeDataset)
-      case 11 => FPGrowthStarRDD.exec(minSupport, numParts, nomeDataset)
+      case 11 => FPGrowthStarRDD.exec(minSupport, numParts, nomeDataset, "local[*]")
       case 12 => NonordFP.exec(minSupport, nomeDataset)
       case 13 => NonordFPPar.exec(minSupport, nomeDataset)
-      case 14 => NonordFPRDD.exec(minSupport, numParts, nomeDataset)
+      case 14 => NonordFPRDD.exec(minSupport, numParts, nomeDataset, "local[*]")
       case 15 => FPGrowthMod.exec(minSupport, nomeDataset)
       case 16 => FPGrowthModPar.exec(minSupport, nomeDataset)
-      case 17 => FPGrowthModRDD.exec(minSupport, numParts, nomeDataset)
+      case 17 => FPGrowthModRDD.exec(minSupport, numParts, nomeDataset, "local[*]")
     }
 
     if (flagScriviSuFile) {
