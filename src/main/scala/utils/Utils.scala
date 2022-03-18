@@ -1,6 +1,7 @@
 package utils
 
 import org.apache.spark.rdd.RDD
+import org.apache.spark.sql.SparkSession
 import org.apache.spark.{SparkConf, SparkContext}
 
 import java.io.{BufferedWriter, File, FileWriter}
@@ -69,6 +70,11 @@ object Utils {
     scrivi(resultOrdered1, path)
   }
 
+  //Formatta il risultato ottenuto dalle computazioni in modo tale da calcolarne i frequentItemSet
+  def formattaPerOutputGCP_FreItems(result: Map[Set[String], Int], numTransazioni: Float): List[String] = {
+    result.toSeq.map(elem => elem._1 -> (elem._2, elem._2.toFloat / numTransazioni)).toList.map(elem => elem.toString())
+  }
+
   //Formatta il risultato ottenuto dalle computazioni in modo tale da calcolarne il supporto e lo salva su file
   def scriviSuFileSupporto(result: Map[Set[String], Int], numTransazioni: Float, path: String): Unit = {
     val result2 = result.filter(x => x._1.size > 1).keys.toList.flatMap(x => calcoloConfidenza(x, numTransazioni, result))
@@ -88,20 +94,15 @@ object Utils {
 
   //Restituisce uno spark context
   def getSparkContext(nomeContext: String): SparkContext = {
-    val conf = new SparkConf().setAppName(nomeContext).setMaster("local[*]")
-    val sc = new SparkContext(conf)
-    sc
+    /*val conf = new SparkConf().setAppName(nomeContext).setMaster("local[*]")
+    val sc = new SparkContext(conf)*/
+    val sparkContext = SparkContext.getOrCreate()
+    sparkContext
   }
 
   //Restituisce un RDD da file
   def getRDD(path: String, sc: SparkContext): (RDD[String], Float) = {
     val dataset = sc.textFile(path)
     (dataset, dataset.count().toFloat)
-  }
-
-  //Formatta il risultato ottenuto dalle computazioni in modo tale da calcolarne i frequentItemSet e lo salva su file
-  def prova(result: Map[Set[String], Int], numTransazioni: Float): List[String] = {
-    //Riordiniamo il risultato per visualizzarlo meglio sul file
-    result.toSeq.map(elem => elem._1 -> (elem._2, elem._2.toFloat / numTransazioni)).toList.map(elem => elem.toString())
   }
 }

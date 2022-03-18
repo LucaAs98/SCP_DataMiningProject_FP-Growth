@@ -8,8 +8,8 @@ import scala.annotation.tailrec
 import scala.collection.immutable.ListMap
 import scala.collection.mutable
 
-object FPGrowthRDD {
-  def exec(minSupport: Int, numParts:Int, pathInput:String) = {
+object FPGrowthRDD extends Serializable {
+  def exec(minSupport: Int, numParts:Int, pathInput:String): (Map[Set[String], Int], Long, Float) = {
     val sc = getSparkContext("FPGrowthRDD")
     //Prendiamo il dataset (vedi Utils per dettagli)
     val (lines, dimDataset) = getRDD(pathInput,sc)
@@ -149,5 +149,4 @@ object FPGrowthRDD {
     val (result, tempo) = time(avviaAlgoritmo())
     (result, tempo, dimDataset)
   }
-
 }

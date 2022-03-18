@@ -7,8 +7,7 @@ import fpgrowthmod.FPGrowthModRDD
 import fpgrowthstar.FPGrowthStarRDD
 import nonord.NonordFPRDD
 import org.apache.spark.SparkContext
-import utils.Utils
-import utils.Utils.{getSparkContext, prova, scriviSuFileFrequentItemSet}
+import utils.Utils.formattaPerOutputGCP_FreItems
 
 object MainClassGCP {
   val mappaNomiFile: Map[Int, String] = Map[Int, String](
@@ -46,7 +45,7 @@ object MainClassGCP {
 
     /*** DA SISTEMARE SPARK CONTEXT ***/
     val sparkContext = SparkContext.getOrCreate()
-    sparkContext.parallelize(prova(result, size)).saveAsTextFile(outputPath + "/" + algoritmo + "Result.txt")
+    sparkContext.parallelize(formattaPerOutputGCP_FreItems(result, size)).saveAsTextFile(outputPath + "/" + algoritmo + "Result")
     //scriviSuFileSupporto(result, size, outputPath + "/" + algoritmo + "ConfidenzaResult")//.txt")
   }
 }
