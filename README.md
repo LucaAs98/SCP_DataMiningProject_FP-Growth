@@ -3,7 +3,7 @@
 ### Introduzione:
 Questo progetto è stato sviluppato per il corso **Scalable and Cloud Programming** (Prof. **_Gianluigi Zavattaro_**) della laurea magistrale di Informatica a Bologna.  
    Ci siamo occupati del problema del **Frequent Itemset Mining** cioè del metodo che si occupa di trovare **regole associative** tra item. Il classico **esempio** a cui viene applicato è il **market basket analysis**, cioè fare un analisi sulle **abitudini di acquisto** dei clienti in un supermercato, con lo scopo di poter **aumentare i guadagni**.  
-  Come obiettivo del corso avevamo quello di imparare l'approccio funzionale alla realizzazione di sistemi scalabili tramite linguaggi e framework quali **Scala** e **Spark**. Abbiamo di conseguenza sviluppato il nostro codice in locale, usufruendo dell'IDE **IntelliJ** e del linguaggio **Scala** abbinato a **Spark**. Infine ci è stato richiesto di portare il nostro codice su un sistema **realmente distribuito**, in particolare sulla **Google Cloud Platform**. Per questo motivo alla fine del README, nella sezione [Configurazione Google CLoud Platform](#GCP), mostriamo come poter configurare quest'ultima in modo tale da poter testare il nostro codice.
+  Come obiettivo del corso avevamo quello di imparare l'approccio funzionale alla realizzazione di sistemi scalabili tramite linguaggi e framework quali **Scala** e **Spark**. Abbiamo di conseguenza sviluppato il nostro codice in locale, usufruendo dell'IDE **IntelliJ** e del linguaggio **Scala** abbinato a **Spark**. Infine ci è stato richiesto di portare il nostro codice su un sistema **realmente distribuito**, in particolare sulla **Google Cloud Platform**. Per questo motivo alla fine del README, nella sezione [Configurazione Google Cloud Platform](#configurazione-google-cloud-platform), mostriamo come poter configurare quest'ultima in modo tale da poter testare il nostro codice.
   
   
 ### Struttura del progetto:
@@ -33,7 +33,7 @@ All'interno di questi package troviamo tutte le implementazioni degli algoritmi 
 
 
 
-### [Configurazione Google CLoud Platform:](#GCP)
+### Configurazione Google Cloud Platform:
  <!--  <details><summary> 0. Pre-requisiti:  </summary>
 <p>
     Prima di iniziare la configurazione è necessario **creare un progetto** rinominato come _"ProgettoSCP"_ sul proprio profilo di **Google Cloud Platform**.      Assicurarsi inoltre di avere del **credito** per poter testare il tutto.
@@ -49,7 +49,7 @@ All'interno di questi package troviamo tutte le implementazioni degli algoritmi 
   Codice da eseguire sul terminale per avere il bucket con i parametri scritti in precedenza:
   
   ```
-  gsutil mb -l EUROPE-WEST3 -b on gs://bucket-dataset-scp       **DA TESTARE**
+  gsutil mb -l EUROPE-WEST3 -b on gs://bucket-dataset-scp
   ```
 
   #### 2. Creazione Cluster
@@ -62,29 +62,23 @@ All'interno di questi package troviamo tutte le implementazioni degli algoritmi 
   
   Codice da eseguire sul terminale per avere il cluster con i parametri scritti in precedenza:
   ```
-  gcloud dataproc clusters create cluster-1 --region europe-central2 --zone europe-central2-a --master-machine-type n1-standard-4 --master-boot-disk-size 500 --num-workers 2 --worker-machine-type n1-standard-4 --worker-boot-disk-size 500 --image-version 2.0-debian10 **DA TESTARE**
+  gcloud dataproc clusters create cluster-1 --region europe-central2 --zone europe-central2-a --master-machine-type n1-standard-4 --master-boot-disk-size 500 --num-workers 2 --worker-machine-type n1-standard-4 --worker-boot-disk-size 500 --image-version 2.0-debian10
   ```
 
   #### 3. Avviare il cluster
-  Per avviare il cluster possiamo semplicemente andare nella sezione **_Dataproc_** selezionare **_cluster_1_** dalla lista dei nostri cluster e cliccare su **_Avvia_**.
+  Dopo la creazione, il cluster dovrebbe attivarsi automaticamente. Se questo non dovesse succedere possiamo metterlo in esecuzione manualmente andando nella sezione **_Dataproc_**, selezionando **_cluster_1_** dalla lista dei nostri cluster e cliccando su **_Avvia_**.
 
   #### 4. Creare il .jar del nostro codice
   Utilizzando l'IDE IntelliJ andare nella sezione **_Terminale_** posta in basso ed eseguire il comando `sbt clean package` che andrà a creare il JAR composto solo dalle classi da eseguire in maniera distribuita. Troveremo il nostro archivio al seguente path: `target/scala-2.12/scp_dataminingproject_fp-growth_2.12-0.1.jar`.
 
   #### 5. Caricare il dataset ed il jar nel bucket
-  Per poter creare il job è necessario caricare il dataset ed il jar all'interno del bucket creato in precedenza. Possiamo semplicemnte caricarli da interfaccia grafica recandoci nel bucket e cliccando su **_UPLOAD FILES_**. **Attenzione:** il dataset va caricato a sua volta all'interno di una cartella nominata `input`.
-  
-  Possiamo altrimenti scrivere questa riga di comando sul terminale:
-  * Dataset:
-  ```
-  gsutil cp OBJECT_LOCATION gs://bucket-dataset-scp/input
-  ```
-  * File JAR:
-   ```
-  gsutil cp OBJECT_LOCATION gs://bucket-dataset-scp/
-  ```  
-  dove _OBJECT_LOCATION_ è il path locale del nostro file.
- 
+  Per poter creare il job è necessario caricare il dataset ed il jar all'interno del bucket creato in precedenza. Possiamo semplicemnte caricarli da interfaccia grafica recandoci nel bucket e cliccando su **_UPLOAD FILES_**. **Attenzione:** il dataset va caricato a sua volta all'interno di una cartella nominata `input`. Alla fine del procedimento avremo il nostro bucket composto in questo modo:
+```
+  ├── bucket-dataset-scp                  
+      scp_dataminingproject_fp-growth_2.12-0.1.jar
+      ├── input
+          dataset.txt               # Sarà il dataset che abbiamo caricato
+```
  
   #### 6. Creare un job con il nostro jar
   Per creare il Job ed eseguire la nostra applicazione abbiamo utilizzato direttamente il terminale. Le linee di comando utilizzate sono le seguenti:
