@@ -9,8 +9,15 @@ libraryDependencies += "org.apache.spark" %% "spark-core" % "3.0.3"
 // spark ml
 libraryDependencies += "org.apache.spark" %% "spark-mllib" % "3.1.2"
 
+
+
 def filterOut(name: String): Boolean = {
-  name.endsWith("RDD.class") || name.endsWith("RDD$.class") || name.endsWith("GCP.class") || name.endsWith("GCP$.class")
+
+  val flag = name.contains("utils") || name.contains("classes")
+
+  if(!flag)
+    name.endsWith("RDD.class") || name.endsWith("RDD$.class") || name.endsWith("GCP.class") || name.endsWith("GCP$.class")
+  else true
 }
 
 mappings in (Compile,packageBin) ~= {
