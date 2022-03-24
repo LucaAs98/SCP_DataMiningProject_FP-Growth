@@ -8,3 +8,12 @@ scalaVersion := "2.12.10"
 libraryDependencies += "org.apache.spark" %% "spark-core" % "3.0.3"
 // spark ml
 libraryDependencies += "org.apache.spark" %% "spark-mllib" % "3.1.2"
+
+def filterOut(name: String): Boolean = {
+  name.endsWith("RDD.class") || name.endsWith("RDD$.class") || name.endsWith("GCP.class") || name.endsWith("GCP$.class")
+}
+
+mappings in (Compile,packageBin) ~= {
+  (ms: Seq[(File,String)]) =>
+    ms filter { case (file, toPath) => filterOut(toPath) }
+}
