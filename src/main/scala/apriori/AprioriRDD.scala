@@ -45,18 +45,22 @@ object AprioriRDD extends App {
     def aprioriIter(mapItem: Map[Set[String], Int], dim: Int): Map[Set[String], Int] = {
       val itemsSetPrec = sc.parallelize(mapItem.keys.filter(x => x.size == (dim - 1)).toList)
       val candidati = generazioneCandidati(itemsSetPrec, dim)
-      val itemSets = prune(candidati, itemsSetPrec.collect())
+      if (candidati.nonEmpty) {
+        val itemSets = prune(candidati, itemsSetPrec.collect())
 
-      if (itemSets.nonEmpty) {
-        val itemSetCounts = countItemSet(itemSets, dim).filter(_._2 >= minSupport)
+        if (itemSets.nonEmpty) {
+          val itemSetCounts = countItemSet(itemSets, dim).filter(_._2 >= minSupport)
 
-        if (itemSetCounts.isEmpty) {
-          mapItem
-        }
-        else {
-          aprioriIter(mapItem ++ itemSetCounts, dim + 1)
-        }
-      } else mapItem
+          if (itemSetCounts.isEmpty) {
+            mapItem
+          }
+          else {
+            aprioriIter(mapItem ++ itemSetCounts, dim + 1)
+          }
+        } else mapItem
+      } else {
+        mapItem
+      }
     }
 
     def firstStep(): Map[Set[String], Int] = {
