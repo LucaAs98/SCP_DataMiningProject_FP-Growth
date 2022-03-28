@@ -32,6 +32,7 @@ object MainClassGCP {
     val dataset = args(3).toInt
     val minSupport = args(4).toInt
     val numParts = if (args.length > 5) args(5).toInt else 100
+    val saveOutput = if (args.length > 6) args(6).toBoolean else true
     val nomeDataset = inputPath + mappaNomiFile(dataset)
 
     val (result, time, size) = algoritmo match {
@@ -43,8 +44,10 @@ object MainClassGCP {
       case "FPGrowthModRDD" => FPGrowthModRDD.exec(minSupport, numParts, nomeDataset, "yarn")
     }
 
-    val sparkContext = SparkContext.getOrCreate()
-    sparkContext.parallelize(formattaPerOutputGCP_FreItems(result, size)).saveAsTextFile(outputPath + "/" + algoritmo + "Result")
-    sparkContext.parallelize(formattaPerOutputGCP_Supporto(result, size)).saveAsTextFile(outputPath + "/" + algoritmo + "ConfidenzaResult")
+    if (saveOutput) {
+      val sparkContext = SparkContext.getOrCreate()
+      sparkContext.parallelize(formattaPerOutputGCP_FreItems(result, size)).saveAsTextFile(outputPath + "/" + algoritmo + "Result")
+      sparkContext.parallelize(formattaPerOutputGCP_Supporto(result, size)).saveAsTextFile(outputPath + "/" + algoritmo + "ConfidenzaResult")
+    }
   }
 }
