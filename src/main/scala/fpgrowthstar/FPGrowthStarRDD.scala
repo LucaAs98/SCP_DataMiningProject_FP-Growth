@@ -26,6 +26,15 @@ object FPGrowthStarRDD extends Serializable{
         .sortBy(x => (-x._2, x._1))
     }
 
+    //Ordina gli elementi prima per numero di occorrenze, poi alfabeticamente
+    def functionOrder(elem1: (String, Int), elem2: (String, Int)): Boolean = {
+      if (elem1._2 == elem2._2)
+        elem1._1 < elem2._1
+      else
+        elem1._2 > elem2._2
+    }
+
+
     //Risaliamo l'albero per restituire il percorso inerente ad un nodo specifico
     @tailrec
     def listaPercorsi(nodo: Node[String], listaPercorsoAcc: List[String]): List[String] = {
@@ -60,15 +69,6 @@ object FPGrowthStarRDD extends Serializable{
       output
     }
 
-    //Occorrenze totali di quell'item
-    def countItemNodeFreq(list: List[Node[String]]): Int = {
-      list.foldLeft(0)((x, y) => x + y.occurrence)
-    }
-
-    //Restituisce tutti gli item singoli all'interno delle liste di path
-    def totalItem(listPaths: List[(List[String], Int)]): List[String] =
-      listPaths.foldLeft(Set[String]())((xs, x) => xs ++ x._1).toList
-
     //Per ogni nodo della lista vengono calcolati i path relativi e ordinati
     @tailrec
     def getListOfPaths(linkedList: List[Node[String]], itemsStringFreqSorted: ListMap[String, (Int, Int)], accPaths: List[(List[String], Int)]): List[(List[String], Int)] = {
@@ -102,10 +102,14 @@ object FPGrowthStarRDD extends Serializable{
             val itemFreqItem = tree.getFreqItems(item)
 
             if (itemFreqItem.nonEmpty) {
+              val itemsStringFreq = itemFreqItem.zipWithIndex.map(x => indexToItemMap(x._2) -> x._1)
+              val itemsStringFreqSorted = ListMap(itemsStringFreq.filter(_._2> 0).sortWith((elem1, elem2) => functionOrder(elem1, elem2)).zipWithIndex
+                .map(x => x._1._1 -> (x._1._2, x._2)): _*)
+
               //Ricaviamo l'item sottoforma di stringa dagli indici degli array, ordinati per occorrenze
-              val itemsStringFreq = ListMap(itemFreqItem.zipWithIndex.map(x => indexToItemMap(x._2) -> (x._1, x._2)).filter(_._2._1 > 0): _*)
-              val lPerc = linkedList.map(x => (listaPercorsi(x, List[String]()), x.occurrence))
-              val treeItem = new TreeStar(itemsStringFreq)
+
+              val lPerc = getListOfPaths(linkedList, itemsStringFreqSorted, List[(List[String], Int)]())
+              val treeItem = new TreeStar(itemsStringFreqSorted)
               treeItem.addPaths(lPerc)
 
               //Creazione dei freqItemSet
