@@ -121,7 +121,7 @@ object FPGrowthRDD extends Serializable {
 
       //Creiamo le transazioni condizionali in base al gruppo/partizione in cui si trova ogni item
       //(Verificare su cloud se il partition by può darci vantaggi o meno)
-      val condTrans = dataset.flatMap(transaction => genCondTransactions(transaction, itemToRank, partitioner)).partitionBy(partitioner)
+      val condTrans = dataset.flatMap(transaction => genCondTransactions(transaction, itemToRank, partitioner))
 
       /*val condTrees = condTrans.aggregateByKey(new Tree(firstMapSorted), partitioner)(
         (tree, transaction) => {

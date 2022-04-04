@@ -152,7 +152,7 @@ object NonordFPRDD extends Serializable{
       val itemToRank = firstMapSorted.zipWithIndex.map(x => x._1._1 -> (x._2, x._1._2))
 
       //Creiamo le transazioni condizionali in base al gruppo/partizione in cui si trova ogni item
-      val condTrans = dataset.flatMap(transaction => genCondTransactions(transaction, itemToRank, partitioner)).partitionBy(partitioner)
+      val condTrans = dataset.flatMap(transaction => genCondTransactions(transaction, itemToRank, partitioner))
 
       //Transazioni condizionali raggruppate per partizione
       val condTransGrouped = condTrans.groupByKey(partitioner.numPartitions)

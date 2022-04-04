@@ -6,17 +6,18 @@ import fpgrowth.{FPGrowth, FPGrowthPar, FPGrowthRDD}
 import fpgrowthmod.{FPGrowthMod, FPGrowthModPar, FPGrowthModRDD}
 import fpgrowthstar.{FPGrowthStar, FPGrowthStarPar, FPGrowthStarRDD}
 import nonord.{NonordFP, NonordFPPar, NonordFPRDD}
+import demo._
+import fpgrowthspark._
 import utils.Utils.{scriviSuFileFrequentItemSet, scriviSuFileSupporto}
 
 object MainClass {
 
-  val algoritmo = 8
+  val algoritmo = 26
   val dataset = 0
-  val flagScriviSuFile = true
+  val flagScriviSuFile = false
   //Parametro di basket mining
   val minSupport = 30
-  val numParts = 10
-
+  val numParts = 24
   val mappaAlgoritmi: Map[Int, String] = Map[Int, String](
     0 -> "Apriori",
     1 -> "AprioriPar",
@@ -69,9 +70,17 @@ object MainClass {
       case 15 => FPGrowthMod.exec(minSupport, nomeDataset)
       case 16 => FPGrowthModPar.exec(minSupport, nomeDataset)
       case 17 => FPGrowthModRDD.exec(minSupport, numParts, nomeDataset, "local[*]")
-    }
+      case 18 => AprioriDemo.exec(2, "src/main/resources/dataset/datasetLettereDemo.txt")
+      case 19 => AprioriParDemo.exec(2000, "src/main/resources/dataset/T10I4D100K.txt")
+      case 20 => EclatDemo.exec(2, "src/main/resources/dataset/datasetLettereDemo.txt")
+      case 21 => FPGrowthDemo.exec(2, "src/main/resources/dataset/datasetLettereDemo.txt")
+      case 22 => FPGrowthPar.exec(2,"src/main/resources/dataset/datasetLettereDemo.txt")
+      case 23 => FPGrowthRDDDemo.exec(2, 4, "src/main/resources/dataset/datasetLettereDemo.txt", "local[*]")
+      case 24 => FPGrowthStarDemo.exec(2, "src/main/resources/dataset/datasetLettereDemo.txt")
+      case 25 => NonordFPDemo.exec(2, "src/main/resources/dataset/datasetLettereDemo.txt")
+      case 26 => FPGrowthSpark.exec(minSupport, numParts, nomeDataset, "local[*]")}
 
-    if (flagScriviSuFile) {
+    if (flagScriviSuFile && result.nonEmpty) {
       scriviSuFileFrequentItemSet(result, size, "src/main/resources/results/" + mappaAlgoritmi(algoritmo) + "Result.txt")
       scriviSuFileSupporto(result, size, "src/main/resources/results/" + mappaAlgoritmi(algoritmo) + "ConfidenzaResult.txt")
     }
