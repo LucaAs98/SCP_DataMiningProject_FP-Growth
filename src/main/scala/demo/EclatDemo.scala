@@ -70,7 +70,7 @@ object EclatDemo extends App {
           println("Nuove tuple frequenti dopo l'intersezione ed il filtraggio:\n" + nuoveTupleTransazioni.mkString("\n"))
           println("-----------------------------------")
 
-          //Se non ci sono più nuuove tuple abbiamo finito, altrimenti andiamo a calcolare quelle di dimensione maggiore.
+          //Se non ci sono più nuove tuple abbiamo finito, altrimenti andiamo a calcolare quelle di dimensione maggiore.
           if (nuoveTupleTransazioni.nonEmpty) {
 
             //Uniamo le transazioni che abbiamo trovato finora con quelle nuove
@@ -102,6 +102,8 @@ object EclatDemo extends App {
       * Ci servirà per la ricorsione. */
       val itemTransazioni = itemTransNotFiltered.filter(_._2.size >= minSupport).map(elem => Set(elem._1) -> elem._2.toSet)
 
+      println("Filtraggio item singoli:\n" + itemTransazioni.mkString("\n"))
+      println("-----------------------------------")
       avviaIntersezione(itemTransazioni, itemSingoli).map(elem => elem._1 -> elem._2.size)
     }
 

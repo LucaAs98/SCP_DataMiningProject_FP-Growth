@@ -78,12 +78,12 @@ object FPGrowthStar{
         val head = listItem.head
         //Creazione mappa da indice -> item
         val indexToItemMap = headerTable.map(x => x._2._2 -> x._1)
-        //lista dei nodi dove è presente l'item
+        //Lista dei nodi dove è presente l'item
         val linkedList = headerTable(head)._3
         //Elementi che frequentemente  sono accoppiati con l'item esaminato
         val itemFreqItem = tree.getFreqItems(head)
 
-        //Calcolo dei ItemSet frequenti per l'item analizzato
+        //Calcolo degli ItemSet frequenti per l'item analizzato
         val freqItemSetSingle = fpGrowthStarCore(head, headerTable(head)._1, itemFreqItem, indexToItemMap, linkedList)
         calcFreqItemset(listItem.tail, tree, accFreqItemset ++ freqItemSetSingle)
       } else {

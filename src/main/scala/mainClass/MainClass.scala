@@ -12,9 +12,9 @@ import utils.Utils.{scriviSuFileFrequentItemSet, scriviSuFileSupporto}
 
 object MainClass {
 
-  val algoritmo = 26
+  val algoritmo = 21
   val dataset = 0
-  val flagScriviSuFile = false
+  val flagScriviSuFile = true
   //Parametro di basket mining
   val minSupport = 30
   val numParts = 24
@@ -36,7 +36,16 @@ object MainClass {
     14 -> "NonordFPRDD",
     15 -> "FPGrowthMod",
     16 -> "FPGrowthModPar",
-    17 -> "FPGrowthModRDD")
+    17 -> "FPGrowthModRDD",
+    18 -> "AprioriDemo",
+    19 -> "AprioriParDemo",
+    20 -> "EclatDemo",
+    21 -> "FPGrowthDemo",
+    22 -> "FPGrowthPar",
+    23 -> "FPGrowthRDDDemo",
+    24 -> "FPGrowthStarDemo",
+    25 -> "NonordFPDemo",
+    26 -> "FPGrowthSpark")
 
   val mappaNomiFile: Map[Int, String] = Map[Int, String](
     0 -> "datasetKaggleAlimenti.txt",
@@ -74,11 +83,12 @@ object MainClass {
       case 19 => AprioriParDemo.exec(2000, "src/main/resources/dataset/T10I4D100K.txt")
       case 20 => EclatDemo.exec(2, "src/main/resources/dataset/datasetLettereDemo.txt")
       case 21 => FPGrowthDemo.exec(2, "src/main/resources/dataset/datasetLettereDemo.txt")
-      case 22 => FPGrowthPar.exec(2,"src/main/resources/dataset/datasetLettereDemo.txt")
+      case 22 => FPGrowthPar.exec(2, "src/main/resources/dataset/datasetLettereDemo.txt")
       case 23 => FPGrowthRDDDemo.exec(2, 4, "src/main/resources/dataset/datasetLettereDemo.txt", "local[*]")
       case 24 => FPGrowthStarDemo.exec(2, "src/main/resources/dataset/datasetLettereDemo.txt")
       case 25 => NonordFPDemo.exec(2, "src/main/resources/dataset/datasetLettereDemo.txt")
-      case 26 => FPGrowthSpark.exec(minSupport, numParts, nomeDataset, "local[*]")}
+      case 26 => FPGrowthSpark.exec(minSupport, numParts, nomeDataset, "local[*]")
+    }
 
     if (flagScriviSuFile && result.nonEmpty) {
       scriviSuFileFrequentItemSet(result, size, "src/main/resources/results/" + mappaAlgoritmi(algoritmo) + "Result.txt")

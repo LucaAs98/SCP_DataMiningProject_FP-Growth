@@ -172,5 +172,4 @@ object FPGrowthStarDemo{
     val (result, tempo) = time(avviaAlgoritmo())
     (result, tempo, dimDataset)
   }
-
 }

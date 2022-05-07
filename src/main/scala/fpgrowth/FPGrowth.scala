@@ -69,7 +69,9 @@ object FPGrowth {
       }
     }
 
-    //Per ogni singolo elemento viene costituito il conditional FPTree per poi calcolare gli elementi frequenti
+    /*Per ogni singolo elemento viene costituito il conditional FPTree per poi calcolare gli elementi frequenti (saranno più o meno
+     gli stessi passaggi che si fanno all'inizio, solo che questa volta le transazioni sono i path che si trovano in
+     "pathList") */
     def freqItemsetCondPB(item: String, pathList: List[(List[String], Int)], firstMapSorted: ListMap[String, Int]): List[(List[String], Int)] = {
       //Conteggio elementi relativi Conditional Pattern Base
       val itemCount = countItemConPB(pathList, Map.empty[String, Int]).filter(x => x._2 >= minSupport)
