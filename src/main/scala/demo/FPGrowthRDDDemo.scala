@@ -9,8 +9,8 @@ import scala.collection.immutable.ListMap
 import scala.collection.mutable
 
 
-object FPGrowthRDDDemo extends App {
-  def exec(minSupport: Int, numParts: Int, pathInput: String, master: String) = {
+object FPGrowthRDDDemo extends Serializable{
+  def exec(minSupport: Int, numParts: Int, pathInput: String, master: String): (Map[Set[String], Int], Long, Float) = {
     val sc = getSparkContext("FPGrowthRDD", master)
     //Prendiamo il dataset (vedi Utils per dettagli)
     val (lines, dimDataset) = getRDD(pathInput, sc)

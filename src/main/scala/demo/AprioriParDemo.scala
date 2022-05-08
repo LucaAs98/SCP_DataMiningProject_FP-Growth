@@ -15,8 +15,8 @@ object AprioriParDemo extends App {
 
     //Passando la lista dei set degli item creati, conta quante volte c'è l'insieme nelle transazioni
     def countItemSet(item: List[Set[String]]): Map[Set[String], Int] = {
-      //time(item.par.map(x => x -> dataset.count(y => x.subsetOf(y))).seq.toMap)
-      time(item.map(x => x -> dataset.count(y => x.subsetOf(y))).seq.toMap)._1
+      time(item.par.map(x => x -> dataset.count(y => x.subsetOf(y))).seq.toMap)._1
+      //time(item.map(x => x -> dataset.count(y => x.subsetOf(y))).seq.toMap)._1
     }
 
     //Filtraggio degli itemset, vengono eliminati se i subset non itemset frequenti, poi vengono eliminati anche filtrati

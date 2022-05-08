@@ -31,7 +31,7 @@ object MainClassGCP {
     val algoritmo = args(2)
     val dataset = args(3).toInt
     val minSupport = args(4).toInt
-    val numParts = if (args.length > 5) args(5).toInt else 100
+    val numParts = if (args.length > 5) args(5).toInt else 36
     val saveOutput = if (args.length > 6) args(6).toBoolean else true
     val nomeDataset = inputPath + mappaNomiFile(dataset)
 
